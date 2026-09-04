@@ -1,867 +1,1131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Liah's Fin.Track</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
     background:
-        radial-gradient(
-            circle at top,
-            #17385f 0%,
-            #07111f 45%,
-            #030912 100%
-        );
-
-    color: #eaf4ff;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 18px;
+        radial-gradient(circle at top,#17385f 0%,#07111f 48%,#02070d 100%);
+    color:#eaf4ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
+button,input,select{
+    font:inherit;
+}
 
-/* =========================================================
-   APP WINDOW
-   ========================================================= */
+button{
+    cursor:pointer;
+}
 
-.app-window {
-
-    width: 100%;
-    max-width: 430px;
-
-    height: min(780px, 92vh);
-
-    background: #081a2e;
-
-    border: 1px solid #1d456d;
-
-    border-radius: 28px;
-
-    overflow: hidden;
-
+.app-window{
+    width:100%;
+    max-width:450px;
+    height:min(850px,94vh);
+    background:#071727;
+    border:1px solid #1d456d;
+    border-radius:28px;
+    overflow:hidden;
     box-shadow:
         0 25px 70px rgba(0,0,0,.55),
-        0 0 0 1px rgba(66,165,245,.05);
-
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
+        0 0 0 1px rgba(65,150,220,.08);
+    display:flex;
+    flex-direction:column;
 }
 
+/* TOP BAR */
 
-/* =========================================================
-   TOP BAR
-   ========================================================= */
-
-.topbar {
-
-    height: 62px;
-
-    padding: 12px 16px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    background: #0a2037;
-
-    border-bottom: 1px solid #173b5e;
+.topbar{
+    padding:15px 18px;
+    background:#081d32;
+    border-bottom:1px solid #173b5d;
+    display:flex;
+    align-items:center;
+    gap:11px;
 }
 
-.brand {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
+.logo{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    background:#0d3558;
+    border:1px solid #2b638f;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    font-weight:bold;
 }
 
-.logo {
-
-    width: 34px;
-    height: 34px;
-
-    border-radius: 10px;
-
-    background: #1677c8;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 16px;
-
-    font-weight: 900;
-
-    box-shadow:
-        0 5px 15px rgba(33,150,243,.25);
+.brand{
+    flex:1;
 }
 
-.brand-title {
-
-    font-size: 15px;
-
-    font-weight: 800;
-
-    letter-spacing: .2px;
+.brand-title{
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:.4px;
 }
 
-.brand-subtitle {
-
-    font-size: 9px;
-
-    color: #6f91af;
-
-    margin-top: 2px;
-
-    letter-spacing: .4px;
+.brand-sub{
+    color:#7194b4;
+    font-size:8px;
+    letter-spacing:1.4px;
+    margin-top:3px;
 }
 
-.status {
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #42d392;
-
-    box-shadow:
-        0 0 10px rgba(66,211,146,.7);
+.status{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-size:8px;
+    color:#78d5a2;
 }
 
-
-/* =========================================================
-   CONTENT
-   ========================================================= */
-
-.content {
-
-    flex: 1;
-
-    overflow-y: auto;
-
-    padding: 17px;
-
-    padding-bottom: 85px;
+.status-dot{
+    width:7px;
+    height:7px;
+    background:#58d98b;
+    border-radius:50%;
+    box-shadow:0 0 8px #58d98b;
 }
 
-.content::-webkit-scrollbar {
-    display: none;
+/* CONTENT */
+
+.content{
+    flex:1;
+    overflow-y:auto;
+    padding:17px;
+    scrollbar-width:none;
 }
 
-
-/* =========================================================
-   TITLES
-   ========================================================= */
-
-.page-header {
-
-    margin-bottom: 15px;
+.content::-webkit-scrollbar{
+    display:none;
 }
 
-.page-title {
+/* PAGES */
 
-    font-size: 20px;
-
-    font-weight: 850;
-
-    letter-spacing: -.3px;
+.page{
+    display:none;
 }
 
-.page-subtitle {
-
-    color: #708da8;
-
-    font-size: 10px;
-
-    margin-top: 4px;
+.page.active{
+    display:block;
 }
 
-
-/* =========================================================
-   BACK BUTTON
-   ========================================================= */
-
-.back-button {
-
-    border: 1px solid #1c466d;
-
-    background: #0d2946;
-
-    color: #a9c7df;
-
-    border-radius: 9px;
-
-    padding: 7px 10px;
-
-    font-size: 10px;
-
-    font-weight: 750;
-
-    margin-bottom: 13px;
+.page-title{
+    font-size:19px;
+    font-weight:800;
+    margin-bottom:4px;
 }
 
-.back-button:active {
-    transform: scale(.97);
+.page-subtitle{
+    font-size:9px;
+    color:#7898b5;
+    margin-bottom:17px;
 }
 
+/* CARDS */
 
-/* =========================================================
-   DASHBOARD GRID
-   ========================================================= */
-
-.dashboard {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 9px;
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
 }
 
-
-/* =========================================================
-   CARDS
-   ========================================================= */
-
-.card {
-
-    background:
-        linear-gradient(
-            145deg,
-            #0c2945,
-            #091f35
-        );
-
-    border: 1px solid #173e61;
-
-    border-radius: 14px;
-
-    padding: 13px;
-
-    box-shadow:
-        inset 0 1px rgba(255,255,255,.025);
+.card{
+    background:#0a2137;
+    border:1px solid #183e60;
+    border-radius:15px;
+    padding:13px;
 }
 
-.card.full {
-    grid-column: 1 / -1;
+.card-label{
+    font-size:8px;
+    color:#7797b3;
+    text-transform:uppercase;
+    letter-spacing:.8px;
 }
 
-.card-label {
-
-    font-size: 9px;
-
-    color: #7594b0;
-
-    text-transform: uppercase;
-
-    letter-spacing: .7px;
-
-    font-weight: 800;
-
-    margin-bottom: 7px;
+.card-value{
+    font-size:18px;
+    font-weight:800;
+    margin-top:7px;
 }
 
-.amount {
-
-    font-size: 17px;
-
-    font-weight: 850;
+.card-small{
+    font-size:8px;
+    color:#7797b3;
+    margin-top:4px;
 }
 
-.blue {
-    color: #4aaeff;
+/* SECTIONS */
+
+.section{
+    margin-top:17px;
 }
 
-.green {
-    color: #42d392;
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:9px;
 }
 
-.yellow {
-    color: #ffd166;
+.section-title{
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
 }
 
-.red {
-    color: #ff7182;
+.section-action{
+    font-size:8px;
+    color:#62aee8;
 }
 
-.muted {
+/* BUTTONS */
 
-    color: #6d8ba6;
-
-    font-size: 9px;
-
-    margin-top: 4px;
+.btn{
+    border:0;
+    border-radius:10px;
+    padding:10px 12px;
+    font-size:10px;
+    font-weight:700;
+    color:#eaf4ff;
+    background:#12456f;
+    border:1px solid #236a9f;
 }
 
-
-/* =========================================================
-   PROGRESS
-   ========================================================= */
-
-.progress {
-
-    height: 6px;
-
-    margin-top: 9px;
-
-    background: #142e48;
-
-    border-radius: 10px;
-
-    overflow: hidden;
+.btn:active{
+    transform:scale(.97);
 }
 
-.progress-bar {
-
-    height: 100%;
-
-    width: 0%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #1677c8,
-            #42a5f5
-        );
-
-    border-radius: 10px;
+.btn-primary{
+    background:#17639a;
+    border-color:#3189c6;
 }
 
-
-/* =========================================================
-   QUICK ACTIONS
-   ========================================================= */
-
-.quick-title {
-
-    margin-top: 18px;
-
-    margin-bottom: 9px;
-
-    font-size: 10px;
-
-    color: #7897b1;
-
-    font-weight: 800;
-
-    text-transform: uppercase;
-
-    letter-spacing: .6px;
+.btn-success{
+    background:#155d48;
+    border-color:#258c6d;
 }
 
-.quick-grid {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 8px;
+.btn-danger{
+    background:#612c38;
+    border-color:#984b5b;
 }
 
-.quick {
-
-    border: 1px solid #1b466d;
-
-    background: #0c2844;
-
-    color: #dcecff;
-
-    border-radius: 12px;
-
-    padding: 11px;
-
-    text-align: left;
-
-    font-size: 10px;
-
-    font-weight: 750;
+.btn-secondary{
+    background:#102c44;
+    border-color:#28506e;
 }
 
-.quick span {
-
-    display: block;
-
-    font-size: 16px;
-
-    margin-bottom: 5px;
+.btn-full{
+    width:100%;
 }
 
-.quick:active {
-    transform: scale(.97);
+.back-btn{
+    margin-bottom:14px;
 }
 
+/* MONTHS */
 
-/* =========================================================
-   LIST
-   ========================================================= */
-
-.list {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
+.month-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
 }
 
-.person {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 11px;
-
-    border-radius: 12px;
-
-    background: #0c2844;
-
-    border: 1px solid #173e61;
+.month-btn{
+    padding:9px 4px;
+    border-radius:8px;
+    border:1px solid #214966;
+    background:#0b263e;
+    color:#7899b5;
+    font-size:8px;
+    font-weight:800;
 }
 
-.person-left {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
+.month-btn.active{
+    background:#17639a;
+    color:#fff;
+    border-color:#3d94cd;
+    box-shadow:0 0 10px rgba(49,137,198,.25);
 }
 
-.avatar {
+/* LIST */
 
-    width: 32px;
-    height: 32px;
-
-    border-radius: 9px;
-
-    background: #155d98;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 10px;
-
-    font-weight: 850;
+.list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
 }
 
-.person-name {
-
-    font-size: 11px;
-
-    font-weight: 750;
+.list-item{
+    background:#0a2137;
+    border:1px solid #183e60;
+    border-radius:13px;
+    padding:12px;
 }
 
-.person-balance {
-
-    font-size: 9px;
-
-    color: #708da8;
-
-    margin-top: 3px;
+.item-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
 }
 
-.arrow {
-
-    color: #527695;
-
-    font-size: 17px;
+.item-name{
+    font-size:11px;
+    font-weight:800;
 }
 
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.primary {
-
-    width: 100%;
-
-    border: 0;
-
-    background: #1677c8;
-
-    color: white;
-
-    padding: 11px;
-
-    border-radius: 10px;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    margin-top: 9px;
+.item-meta{
+    font-size:8px;
+    color:#7898b5;
+    margin-top:4px;
 }
 
-.secondary {
-
-    width: 100%;
-
-    border: 1px solid #1d4b73;
-
-    background: #0d2b49;
-
-    color: #a9c7df;
-
-    padding: 10px;
-
-    border-radius: 10px;
-
-    font-size: 10px;
-
-    font-weight: 750;
-
-    margin-top: 8px;
+.item-amount{
+    font-size:13px;
+    font-weight:800;
+    white-space:nowrap;
 }
 
-
-/* =========================================================
-   MONTH BUTTONS
-   ========================================================= */
-
-.month-section {
-
-    margin-top: 15px;
+.item-actions{
+    display:flex;
+    gap:6px;
+    margin-top:10px;
+    flex-wrap:wrap;
 }
 
-.section-title {
-
-    font-size: 10px;
-
-    color: #7594b0;
-
-    font-weight: 800;
-
-    text-transform: uppercase;
-
-    letter-spacing: .6px;
-
-    margin-bottom: 9px;
+.item-actions .btn{
+    padding:7px 9px;
+    font-size:8px;
 }
 
-.month-grid {
+/* PROGRESS */
 
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 7px;
+.progress-wrap{
+    margin-top:10px;
 }
 
-.month-button {
-
-    border: 1px solid #1a4164;
-
-    background: #0c2844;
-
-    color: #9bb9d2;
-
-    border-radius: 9px;
-
-    padding: 9px 4px;
-
-    font-size: 9px;
-
-    font-weight: 750;
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    font-size:8px;
+    color:#7797b3;
+    margin-bottom:5px;
 }
 
-.month-button.active {
-
-    background: #1265a8;
-
-    border-color: #2196f3;
-
-    color: white;
+.progress{
+    height:7px;
+    background:#06121e;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid #15324a;
 }
 
-
-/* =========================================================
-   MONTH RESULT
-   ========================================================= */
-
-.month-result {
-
-    margin-top: 12px;
+.progress-bar{
+    height:100%;
+    background:#39a7e8;
+    border-radius:20px;
+    transition:.3s;
 }
 
-.month-stat {
+/* STATUS */
 
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 7px;
+.badge{
+    display:inline-block;
+    padding:4px 7px;
+    border-radius:6px;
+    font-size:7px;
+    font-weight:800;
+    letter-spacing:.5px;
 }
 
-.stat {
-
-    background: #0a233d;
-
-    border: 1px solid #173e61;
-
-    border-radius: 10px;
-
-    padding: 10px;
-
-    text-align: center;
+.badge-paid{
+    background:#123f35;
+    color:#65dca8;
+    border:1px solid #1c6a55;
 }
 
-.stat-label {
-
-    font-size: 8px;
-
-    color: #6686a1;
+.badge-unpaid{
+    background:#4b252d;
+    color:#ff9aa8;
+    border:1px solid #793b48;
 }
 
-.stat-value {
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    margin-top: 4px;
+.badge-partial{
+    background:#443a19;
+    color:#f0ce6b;
+    border:1px solid #716027;
 }
 
+/* FORMS */
 
-/* =========================================================
-   FORM
-   ========================================================= */
-
-.form {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
+.form-group{
+    margin-bottom:12px;
 }
 
-label {
-
-    display: block;
-
-    font-size: 9px;
-
-    color: #7797b2;
-
-    font-weight: 750;
-
-    margin-bottom: 5px;
+.form-label{
+    display:block;
+    font-size:8px;
+    color:#83a2bd;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    margin-bottom:6px;
 }
 
-input,
-select {
-
-    width: 100%;
-
-    border: 1px solid #1d466b;
-
-    background: #071b30;
-
-    color: white;
-
-    padding: 10px;
-
-    border-radius: 9px;
-
-    outline: none;
-
-    font-size: 11px;
+.form-input,
+.form-select{
+    width:100%;
+    padding:11px;
+    border-radius:9px;
+    border:1px solid #214966;
+    background:#061522;
+    color:#edf6ff;
+    outline:none;
+    font-size:10px;
 }
 
-input:focus {
-
-    border-color: #2196f3;
+.form-input:focus,
+.form-select:focus{
+    border-color:#398bc0;
 }
 
+/* EMPTY */
 
-/* =========================================================
-   BOTTOM NAV
-   ========================================================= */
-
-.bottom-nav {
-
-    position: absolute;
-
-    bottom: 10px;
-
-    left: 10px;
-
-    right: 10px;
-
-    height: 57px;
-
-    background: rgba(7,26,45,.96);
-
-    border: 1px solid #1b4366;
-
-    border-radius: 17px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    z-index: 20;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.4);
+.empty{
+    text-align:center;
+    padding:25px 10px;
+    color:#66839d;
+    font-size:9px;
+    border:1px dashed #1c3c56;
+    border-radius:12px;
 }
 
-.nav-item {
+/* NOTIFICATION */
 
-    border: 0;
-
-    background: transparent;
-
-    color: #55738d;
-
-    font-size: 8px;
-
-    font-weight: 750;
+.toast{
+    position:absolute;
+    left:50%;
+    bottom:78px;
+    transform:translateX(-50%) translateY(20px);
+    width:calc(100% - 34px);
+    max-width:400px;
+    background:#102d45;
+    border:1px solid #28618a;
+    border-radius:11px;
+    padding:10px 12px;
+    font-size:9px;
+    text-align:center;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+    z-index:50;
 }
 
-.nav-item.active {
-
-    color: #42a5f5;
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
 }
 
-.nav-icon {
-
-    display: block;
-
-    font-size: 17px;
-
-    margin-bottom: 3px;
+.toast.error{
+    border-color:#8d4554;
+    background:#351b24;
 }
 
-
-/* =========================================================
-   EMPTY
-   ========================================================= */
-
-.empty {
-
-    text-align: center;
-
-    padding: 25px 10px;
-
-    color: #587690;
-
-    font-size: 10px;
+.toast.success{
+    border-color:#28745d;
+    background:#10352c;
 }
 
+/* BOTTOM NAV */
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+.bottom-nav{
+    border-top:1px solid #173b5d;
+    background:#071827;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:7px 6px 8px;
+}
 
-@media(max-width:500px) {
+.nav-btn{
+    border:0;
+    background:none;
+    color:#5f7e98;
+    padding:7px 2px;
+    font-size:7px;
+    font-weight:700;
+}
 
-    body {
-        padding: 0;
+.nav-icon{
+    font-size:14px;
+    display:block;
+    margin-bottom:3px;
+}
+
+.nav-btn.active{
+    color:#55aee9;
+}
+
+/* DETAIL */
+
+.detail-main{
+    background:#0a2137;
+    border:1px solid #183e60;
+    border-radius:16px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+.detail-name{
+    font-size:17px;
+    font-weight:800;
+}
+
+.detail-type{
+    color:#7194b4;
+    font-size:8px;
+    margin-top:4px;
+}
+
+.detail-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+    margin-top:15px;
+}
+
+.detail-stat{
+    background:#071827;
+    border-radius:10px;
+    padding:9px;
+}
+
+.detail-stat-label{
+    color:#6686a2;
+    font-size:7px;
+}
+
+.detail-stat-value{
+    font-size:11px;
+    font-weight:800;
+    margin-top:4px;
+}
+
+/* MONTHLY RECORD */
+
+.monthly-box{
+    background:#091e31;
+    border:1px solid #173c5a;
+    border-radius:13px;
+    padding:12px;
+}
+
+.monthly-row{
+    display:flex;
+    justify-content:space-between;
+    padding:7px 0;
+    border-bottom:1px solid #112f47;
+    font-size:9px;
+}
+
+.monthly-row:last-child{
+    border-bottom:0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:500px){
+    body{
+        padding:0;
+        background:#071727;
     }
 
-    .app-window {
-
-        max-width: none;
-
-        height: 100vh;
-
-        border-radius: 0;
-
-        border: 0;
+    .app-window{
+        max-width:none;
+        height:100vh;
+        border-radius:0;
+        border:0;
     }
 }
-
 </style>
-
 </head>
 
 <body>
 
-
 <div class="app-window">
 
-
     <!-- TOP BAR -->
-
     <div class="topbar">
+        <div class="logo">₱</div>
 
         <div class="brand">
+            <div class="brand-title">Liah's Fin.Track</div>
+            <div class="brand-sub">PERSONAL FINANCE SYSTEM</div>
+        </div>
 
-            <div class="logo">
-                ₱
+        <div class="status">
+            <span class="status-dot"></span>
+            ONLINE
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- ================= HOME ================= -->
+
+        <div id="page-home" class="page active">
+
+            <div class="page-title">Dashboard</div>
+            <div class="page-subtitle">Financial overview & monthly tracking</div>
+
+            <div class="grid">
+
+                <div class="card">
+                    <div class="card-label">Expenses</div>
+                    <div class="card-value" id="dashExpenses">₱0.00</div>
+                    <div class="card-small">All expenses</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">Savings</div>
+                    <div class="card-value" id="dashSavings">₱0.00</div>
+                    <div class="card-small">Current savings</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">Money Owed to Me</div>
+                    <div class="card-value" id="dashOwed">₱0.00</div>
+                    <div class="card-small">Remaining</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">My Debts</div>
+                    <div class="card-value" id="dashMyDebt">₱0.00</div>
+                    <div class="card-small">Remaining</div>
+                </div>
+
             </div>
 
-            <div>
+            <!-- QUICK ACTIONS -->
 
-                <div class="brand-title">
-                    Liah's Fin.Track
+            <div class="section">
+
+                <div class="section-header">
+                    <div class="section-title">Quick Actions</div>
                 </div>
 
-                <div class="brand-subtitle">
-                    PERSONAL FINANCE SYSTEM
+                <div class="grid">
+
+                    <button class="btn btn-primary"
+                        onclick="showPage('people')">
+                        + Utang
+                    </button>
+
+                    <button class="btn btn-primary"
+                        onclick="showPage('mydebts')">
+                        + My Debt
+                    </button>
+
+                    <button class="btn btn-secondary"
+                        onclick="showPage('expenses')">
+                        + Expense
+                    </button>
+
+                    <button class="btn btn-secondary"
+                        onclick="showPage('savings')">
+                        + Savings
+                    </button>
+
                 </div>
+
+            </div>
+
+            <!-- MONTHLY -->
+
+            <div class="section">
+
+                <div class="section-header">
+                    <div class="section-title">Monthly Tracking</div>
+                    <div class="section-action" id="selectedMonthLabel">
+                        Current
+                    </div>
+                </div>
+
+                <div class="month-grid" id="monthGrid"></div>
+
+            </div>
+
+            <div class="section">
+
+                <div class="section-header">
+                    <div class="section-title" id="monthlyTitle">
+                        Monthly Unpaid
+                    </div>
+                </div>
+
+                <div id="monthlyUnpaidList"></div>
 
             </div>
 
         </div>
 
-        <div class="status"></div>
 
-    </div>
+        <!-- ================= PEOPLE ================= -->
+
+        <div id="page-people" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('home')">
+                ← Back
+            </button>
+
+            <div class="page-title">Utang</div>
+            <div class="page-subtitle">
+                People who owe money to you
+            </div>
+
+            <button class="btn btn-primary btn-full"
+                onclick="showPage('add-person-debt')">
+                + Add Utang
+            </button>
+
+            <div class="section">
+
+                <div class="section-header">
+                    <div class="section-title">People</div>
+                </div>
+
+                <div id="peopleList"></div>
+
+            </div>
+
+        </div>
 
 
-    <!-- CONTENT -->
+        <!-- ================= MY DEBTS ================= -->
 
-    <div class="content"
-         id="app">
+        <div id="page-mydebts" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('home')">
+                ← Back
+            </button>
+
+            <div class="page-title">My Debts</div>
+            <div class="page-subtitle">
+                Money that you need to pay
+            </div>
+
+            <button class="btn btn-primary btn-full"
+                onclick="showPage('add-my-debt')">
+                + Add My Debt
+            </button>
+
+            <div class="section">
+
+                <div class="section-header">
+                    <div class="section-title">My Debt Accounts</div>
+                </div>
+
+                <div id="myDebtsList"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= ADD PERSON DEBT ================= -->
+
+        <div id="page-add-person-debt" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('people')">
+                ← Back
+            </button>
+
+            <div class="page-title">Add Utang</div>
+            <div class="page-subtitle">
+                Record money owed to you
+            </div>
+
+            <form onsubmit="addPersonDebt(event)">
+
+                <div class="form-group">
+                    <label class="form-label">Person Name</label>
+                    <input
+                        class="form-input"
+                        id="personName"
+                        type="text"
+                        placeholder="Enter name"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Total Amount</label>
+                    <input
+                        class="form-input"
+                        id="personAmount"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="0.00"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Monthly Payment</label>
+                    <input
+                        class="form-input"
+                        id="personMonthly"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="0.00">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Due Date</label>
+                    <input
+                        class="form-input"
+                        id="personDueDate"
+                        type="date"
+                        required>
+                </div>
+
+                <button class="btn btn-primary btn-full">
+                    Save Utang
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ================= ADD MY DEBT ================= -->
+
+        <div id="page-add-my-debt" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('mydebts')">
+                ← Back
+            </button>
+
+            <div class="page-title">Add My Debt</div>
+            <div class="page-subtitle">
+                Record money that you need to pay
+            </div>
+
+            <form onsubmit="addMyDebt(event)">
+
+                <div class="form-group">
+                    <label class="form-label">Creditor / Account Name</label>
+                    <input
+                        class="form-input"
+                        id="myDebtName"
+                        type="text"
+                        placeholder="Enter name"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Total Amount</label>
+                    <input
+                        class="form-input"
+                        id="myDebtAmount"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="0.00"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Monthly Payment</label>
+                    <input
+                        class="form-input"
+                        id="myDebtMonthly"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="0.00"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Due Date</label>
+                    <input
+                        class="form-input"
+                        id="myDebtDueDate"
+                        type="date"
+                        required>
+                </div>
+
+                <button class="btn btn-primary btn-full">
+                    Save My Debt
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ================= PERSON DETAIL ================= -->
+
+        <div id="page-person-detail" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('people')">
+                ← Back
+            </button>
+
+            <div id="personDetail"></div>
+
+        </div>
+
+
+        <!-- ================= MY DEBT DETAIL ================= -->
+
+        <div id="page-my-debt-detail" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('mydebts')">
+                ← Back
+            </button>
+
+            <div id="myDebtDetail"></div>
+
+        </div>
+
+
+        <!-- ================= ADD PAYMENT ================= -->
+
+        <div id="page-add-payment" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="goBackToDetail()">
+                ← Back
+            </button>
+
+            <div class="page-title">Add Payment</div>
+            <div class="page-subtitle" id="paymentSubtitle">
+                Record payment
+            </div>
+
+            <form onsubmit="savePayment(event)">
+
+                <div class="form-group">
+                    <label class="form-label">Payment Amount</label>
+
+                    <input
+                        class="form-input"
+                        id="paymentAmount"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="0.00"
+                        required>
+                </div>
+
+                <button class="btn btn-success btn-full">
+                    Save Payment
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ================= EXPENSES ================= -->
+
+        <div id="page-expenses" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('home')">
+                ← Back
+            </button>
+
+            <div class="page-title">Expenses</div>
+            <div class="page-subtitle">
+                Track your spending
+            </div>
+
+            <button class="btn btn-primary btn-full"
+                onclick="showPage('add-expense')">
+                + Add Expense
+            </button>
+
+            <div class="section">
+                <div id="expenseList"></div>
+            </div>
+
+        </div>
+
+
+        <!-- ================= ADD EXPENSE ================= -->
+
+        <div id="page-add-expense" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('expenses')">
+                ← Back
+            </button>
+
+            <div class="page-title">Add Expense</div>
+
+            <form onsubmit="addExpense(event)">
+
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <input
+                        class="form-input"
+                        id="expenseDescription"
+                        type="text"
+                        placeholder="Example: Food"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Amount</label>
+                    <input
+                        class="form-input"
+                        id="expenseAmount"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+
+                    <select
+                        class="form-select"
+                        id="expenseCategory">
+
+                        <option>Food</option>
+                        <option>Transportation</option>
+                        <option>Bills</option>
+                        <option>Shopping</option>
+                        <option>School</option>
+                        <option>Family</option>
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+                <button class="btn btn-primary btn-full">
+                    Save Expense
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ================= SAVINGS ================= -->
+
+        <div id="page-savings" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('home')">
+                ← Back
+            </button>
+
+            <div class="page-title">Savings</div>
+            <div class="page-subtitle">
+                Track your savings goals
+            </div>
+
+            <button class="btn btn-primary btn-full"
+                onclick="showPage('add-savings')">
+                + Add Savings Goal
+            </button>
+
+            <div class="section">
+                <div id="savingsList"></div>
+            </div>
+
+        </div>
+
+
+        <!-- ================= ADD SAVINGS ================= -->
+
+        <div id="page-add-savings" class="page">
+
+            <button class="btn btn-secondary back-btn"
+                onclick="showPage('savings')">
+                ← Back
+            </button>
+
+            <div class="page-title">Add Savings Goal</div>
+
+            <form onsubmit="addSavings(event)">
+
+                <div class="form-group">
+                    <label class="form-label">Goal Name</label>
+
+                    <input
+                        class="form-input"
+                        id="savingsName"
+                        type="text"
+                        placeholder="Example: Emergency Fund"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Target Amount</label>
+
+                    <input
+                        class="form-input"
+                        id="savingsTarget"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Current Amount</label>
+
+                    <input
+                        class="form-input"
+                        id="savingsCurrent"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value="0">
+
+                </div>
+
+                <button class="btn btn-primary btn-full">
+                    Save Goal
+                </button>
+
+            </form>
+
+        </div>
 
     </div>
 
@@ -871,715 +1135,407 @@ input:focus {
     <div class="bottom-nav">
 
         <button
-            class="nav-item active"
+            class="nav-btn active"
+            id="nav-home"
             onclick="showPage('home')">
 
-            <span class="nav-icon">
-                ⌂
-            </span>
-
+            <span class="nav-icon">⌂</span>
             Home
 
         </button>
 
         <button
-            class="nav-item"
-            onclick="showPage('expenses')">
-
-            <span class="nav-icon">
-                💸
-            </span>
-
-            Expenses
-
-        </button>
-
-        <button
-            class="nav-item"
+            class="nav-btn"
+            id="nav-people"
             onclick="showPage('people')">
 
-            <span class="nav-icon">
-                👥
-            </span>
-
+            <span class="nav-icon">👥</span>
             Utang
 
         </button>
 
         <button
-            class="nav-item"
+            class="nav-btn"
+            id="nav-mydebts"
+            onclick="showPage('mydebts')">
+
+            <span class="nav-icon">₱</span>
+            My Debts
+
+        </button>
+
+        <button
+            class="nav-btn"
+            id="nav-savings"
             onclick="showPage('savings')">
 
-            <span class="nav-icon">
-                🏦
-            </span>
-
+            <span class="nav-icon">▣</span>
             Savings
 
         </button>
 
     </div>
 
+    <div id="toast" class="toast"></div>
+
 </div>
 
 
 <script>
 
-
 /* =========================================================
    DATA
-   ========================================================= */
+========================================================= */
 
-let data = {
+const STORAGE_KEY = "liahs_fintrack_data";
 
+let data = JSON.parse(
+    localStorage.getItem(STORAGE_KEY)
+) || {
     expenses: [],
-
     debts: [],
-
+    myDebts: [],
     savings: []
-
 };
 
-let currentPage = "home";
 
-let selectedMonth =
-    new Date().getMonth();
+/* =========================================================
+   SAVE
+========================================================= */
+
+function saveData(){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
+    refreshAll();
+}
 
 
 /* =========================================================
    MONEY
-   ========================================================= */
-
-function peso(amount) {
-
-    return "₱" +
-        Number(amount || 0)
-        .toLocaleString(
-            "en-PH",
-            {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }
-        );
-}
-
-
-/* =========================================================
-   HOME
-   ========================================================= */
-
-function homePage() {
-
-    return `
-
-        <div class="page-header">
-
-            <div class="page-title">
-                Dashboard
-            </div>
-
-            <div class="page-subtitle">
-                Overview ng iyong finances
-            </div>
-
-        </div>
-
-
-        <div class="dashboard">
-
-
-            <div class="card">
-
-                <div class="card-label">
-                    Expenses
-                </div>
-
-                <div class="amount red">
-                    ${peso(0)}
-                </div>
-
-                <div class="muted">
-                    This month
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-label">
-                    To Collect
-                </div>
-
-                <div class="amount yellow">
-                    ${peso(0)}
-                </div>
-
-                <div class="muted">
-                    Natitirang utang
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-label">
-                    Savings
-                </div>
-
-                <div class="amount green">
-                    ${peso(0)}
-                </div>
-
-                <div class="muted">
-                    Current savings
-                </div>
-
-                <div class="progress">
-
-                    <div
-                        class="progress-bar"
-                        style="width:0%">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-label">
-                    Accounts
-                </div>
-
-                <div class="amount blue">
-                    0
-                </div>
-
-                <div class="muted">
-                    Active people
-                </div>
-
-            </div>
-
-
-            <div class="card full">
-
-                <div class="card-label">
-                    Collection Progress
-                </div>
-
-                <div class="muted">
-                    Total: ₱0.00
-                </div>
-
-                <div class="muted">
-                    Paid: ₱0.00
-                </div>
-
-                <div class="progress">
-
-                    <div
-                        class="progress-bar"
-                        style="width:0%">
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="quick-title">
-            Quick Actions
-        </div>
-
-
-        <div class="quick-grid">
-
-
-            <button
-                class="quick"
-                onclick="showPage('addDebt')">
-
-                <span>💵</span>
-
-                Add Utang
-
-            </button>
-
-
-            <button
-                class="quick"
-                onclick="showPage('unpaid')">
-
-                <span>⏳</span>
-
-                Unpaid
-
-            </button>
-
-
-            <button
-                class="quick"
-                onclick="showPage('addExpense')">
-
-                <span>💸</span>
-
-                Add Expense
-
-            </button>
-
-
-            <button
-                class="quick"
-                onclick="showPage('addSavings')">
-
-                <span>🏦</span>
-
-                Add Savings
-
-            </button>
-
-        </div>
-
-
-        <div class="month-section">
-
-            <div class="section-title">
-                Monthly Progress
-            </div>
-
-            <div class="month-grid">
-
-                ${monthButtons()}
-
-            </div>
-
-            <div
-                class="month-result"
-                id="monthResult">
-
-                ${monthResult()}
-
-            </div>
-
-        </div>
-
-    `;
-}
-
-
-/* =========================================================
-   MONTHS
-   ========================================================= */
-
-function monthButtons() {
-
-    const months = [
-
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC"
-
-    ];
-
-    return months.map(
-        (month,index) => `
-
-            <button
-                class="month-button
-                ${selectedMonth === index
-                    ? "active"
-                    : ""}"
-                onclick="selectMonth(${index})">
-
-                ${month}
-
-            </button>
-
-        `
-    ).join("");
-
-}
-
-
-function selectMonth(month) {
-
-    selectedMonth = month;
-
-    render();
-
-}
-
-
-function monthResult() {
-
-    const names = [
-
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-
-    ];
-
-    return `
-
-        <div class="card">
-
-            <div class="card-label">
-                ${names[selectedMonth]} ${new Date().getFullYear()}
-            </div>
-
-            <div class="month-stat">
-
-                <div class="stat">
-
-                    <div class="stat-label">
-                        Utang
-                    </div>
-
-                    <div class="stat-value">
-                        ₱0.00
-                    </div>
-
-                </div>
-
-                <div class="stat">
-
-                    <div class="stat-label">
-                        Paid
-                    </div>
-
-                    <div class="stat-value green">
-                        ₱0.00
-                    </div>
-
-                </div>
-
-                <div class="stat">
-
-                    <div class="stat-label">
-                        Unpaid
-                    </div>
-
-                    <div class="stat-value yellow">
-                        ₱0.00
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    `;
+========================================================= */
+
+function peso(amount){
+
+    return Number(amount || 0).toLocaleString(
+        "en-PH",
+        {
+            style:"currency",
+            currency:"PHP"
+        }
+    );
 
 }
 
 
 /* =========================================================
-   SIMPLE PAGES
-   ========================================================= */
+   DATE
+========================================================= */
 
-function expensesPage() {
+function today(){
 
-    return `
+    return new Date().toISOString().split("T")[0];
 
-        ${backButton()}
-
-        <div class="page-header">
-
-            <div class="page-title">
-                Expenses
-            </div>
-
-            <div class="page-subtitle">
-                Talaan ng iyong mga gastos
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <div class="card-label">
-                Total Expenses
-            </div>
-
-            <div class="amount red">
-                ₱0.00
-            </div>
-
-        </div>
-
-        <button
-            class="primary"
-            onclick="showPage('addExpense')">
-
-            + Add Expense
-
-        </button>
-
-        <div class="empty">
-            Wala pang expense records.
-        </div>
-
-    `;
 }
 
+function formatDate(date){
 
-function peoplePage() {
+    if(!date) return "-";
 
-    return `
+    return new Date(date).toLocaleDateString(
+        "en-PH",
+        {
+            month:"short",
+            day:"numeric",
+            year:"numeric"
+        }
+    );
 
-        ${backButton()}
-
-        <div class="page-header">
-
-            <div class="page-title">
-                Utang / People
-            </div>
-
-            <div class="page-subtitle">
-                Bawat tao ay may sariling account.
-            </div>
-
-        </div>
-
-        <div class="empty">
-
-            Wala pang account.
-
-            <button
-                class="primary"
-                onclick="showPage('addDebt')">
-
-                + Add New Utang
-
-            </button>
-
-        </div>
-
-    `;
-}
-
-
-function savingsPage() {
-
-    return `
-
-        ${backButton()}
-
-        <div class="page-header">
-
-            <div class="page-title">
-                Savings
-            </div>
-
-            <div class="page-subtitle">
-                I-track ang iyong savings goals.
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <div class="card-label">
-                Total Saved
-            </div>
-
-            <div class="amount green">
-                ₱0.00
-            </div>
-
-        </div>
-
-        <button
-            class="primary"
-            onclick="showPage('addSavings')">
-
-            + Add Savings Goal
-
-        </button>
-
-        <div class="empty">
-            Wala pang savings goals.
-        </div>
-
-    `;
 }
 
 
 /* =========================================================
-   ADD DEBT
-   ========================================================= */
+   ID
+========================================================= */
 
-function addDebtPage() {
+function uid(){
 
-    return `
+    return Date.now() + Math.random();
 
-        ${backButton()}
-
-        <div class="page-header">
-
-            <div class="page-title">
-                Add Utang
-            </div>
-
-            <div class="page-subtitle">
-                Gumawa ng bagong debt record.
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="form">
-
-                <div>
-
-                    <label>
-                        PANGALAN
-                    </label>
-
-                    <input
-                        id="debtName"
-                        placeholder="Hal. Maria">
-
-                </div>
-
-
-                <div>
-
-                    <label>
-                        HALAGA
-                    </label>
-
-                    <input
-                        id="debtAmount"
-                        type="number"
-                        placeholder="0.00">
-
-                </div>
-
-
-                <div>
-
-                    <label>
-                        DUE DATE
-                    </label>
-
-                    <input
-                        id="debtDate"
-                        type="date">
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="primary"
-            onclick="saveDebt()">
-
-            I-save ang Utang
-
-        </button>
-
-    `;
 }
 
 
-function saveDebt() {
+/* =========================================================
+   TOAST
+========================================================= */
 
-    const name =
-        document.getElementById(
-            "debtName"
-        ).value.trim();
+function toast(message,type="success"){
 
-    const amount =
-        Number(
-            document.getElementById(
-                "debtAmount"
-            ).value
-        );
+    const el = document.getElementById("toast");
 
-    const date =
-        document.getElementById(
-            "debtDate"
-        ).value;
+    el.textContent = message;
+
+    el.className = "toast show " + type;
+
+    setTimeout(()=>{
+        el.className = "toast";
+    },2500);
+
+}
 
 
-    if (!name) {
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
 
-        alert(
-            "Pakilagay ang pangalan."
-        );
+let currentPage = "home";
 
-        return;
+function showPage(page){
+
+    document.querySelectorAll(".page")
+        .forEach(p=>p.classList.remove("active"));
+
+    const target =
+        document.getElementById("page-"+page);
+
+    if(target){
+
+        target.classList.add("active");
+        currentPage = page;
 
     }
 
+    document.querySelectorAll(".nav-btn")
+        .forEach(btn=>btn.classList.remove("active"));
 
-    if (!amount || amount <= 0) {
+    if(
+        page === "home" ||
+        page === "people" ||
+        page === "mydebts" ||
+        page === "savings"
+    ){
 
-        alert(
-            "Pakilagay ang tamang halaga ng utang."
-        );
+        const nav =
+            document.getElementById("nav-"+page);
 
-        return;
+        if(nav) nav.classList.add("active");
 
     }
 
+    if(page==="add-person-debt"){
+        document.getElementById("personDueDate").value =
+            today();
+    }
 
-    data.debts.push({
+    if(page==="add-my-debt"){
+        document.getElementById("myDebtDueDate").value =
+            today();
+    }
 
-        person: name,
+    refreshAll();
 
-        amount: amount,
+}
 
-        paidAmount: 0,
 
-        dueDate: date,
+/* =========================================================
+   MONTH
+========================================================= */
 
-        date: new Date().toISOString(),
+let selectedMonth = new Date().getMonth();
 
-        payments: []
+const months = [
+    "JAN","FEB","MAR","APR",
+    "MAY","JUN","JUL","AUG",
+    "SEP","OCT","NOV","DEC"
+];
+
+function renderMonths(){
+
+    const grid =
+        document.getElementById("monthGrid");
+
+    grid.innerHTML = "";
+
+    months.forEach((month,index)=>{
+
+        const btn =
+            document.createElement("button");
+
+        btn.className =
+            "month-btn " +
+            (index===selectedMonth ? "active":"");
+
+        btn.textContent = month;
+
+        btn.onclick = function(){
+
+            selectedMonth = index;
+
+            renderMonths();
+            renderMonthlyUnpaid();
+
+        };
+
+        grid.appendChild(btn);
 
     });
 
+    document.getElementById("selectedMonthLabel")
+        .textContent =
+        months[selectedMonth] + " " +
+        new Date().getFullYear();
+
+}
+
+
+/* =========================================================
+   MONTH MATCH
+========================================================= */
+
+function sameMonth(date,month){
+
+    if(!date) return false;
+
+    const d = new Date(date);
+
+    return (
+        d.getMonth() === month &&
+        d.getFullYear() === new Date().getFullYear()
+    );
+
+}
+
+
+/* =========================================================
+   DEBT STATUS
+========================================================= */
+
+function debtStatus(debt){
+
+    const total =
+        Number(debt.amount || 0);
+
+    const paid =
+        Number(debt.paidAmount || 0);
+
+    if(paid >= total){
+        return "paid";
+    }
+
+    if(paid > 0){
+        return "partial";
+    }
+
+    return "unpaid";
+
+}
+
+
+function statusBadge(debt){
+
+    const status = debtStatus(debt);
+
+    if(status==="paid"){
+        return `<span class="badge badge-paid">PAID</span>`;
+    }
+
+    if(status==="partial"){
+        return `<span class="badge badge-partial">PARTIAL</span>`;
+    }
+
+    return `<span class="badge badge-unpaid">UNPAID</span>`;
+
+}
+
+
+function progress(debt){
+
+    const total =
+        Number(debt.amount || 0);
+
+    const paid =
+        Number(debt.paidAmount || 0);
+
+    if(total<=0) return 0;
+
+    return Math.min(
+        100,
+        Math.round((paid/total)*100)
+    );
+
+}
+
+
+/* =========================================================
+   ADD UTANG
+========================================================= */
+
+function addPersonDebt(event){
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("personName")
+            .value.trim();
+
+    const amount =
+        Number(
+            document.getElementById("personAmount")
+                .value
+        );
+
+    const monthly =
+        Number(
+            document.getElementById("personMonthly")
+                .value || 0
+        );
+
+    const dueDate =
+        document.getElementById("personDueDate")
+            .value;
+
+    if(!name){
+
+        toast("Please enter a person name.","error");
+        return;
+
+    }
+
+    if(amount<=0){
+
+        toast("Please enter a valid amount.","error");
+        return;
+
+    }
+
+    data.debts.push({
+
+        id:uid(),
+
+        person:name,
+
+        amount:amount,
+
+        monthlyPayment:monthly,
+
+        paidAmount:0,
+
+        dueDate:dueDate,
+
+        date:today(),
+
+        payments:[]
+
+    });
 
     saveData();
 
+    event.target.reset();
 
-    alert(
-        "Matagumpay na na-save ang utang."
-    );
-
+    toast("Utang successfully saved.");
 
     showPage("people");
 
@@ -1587,458 +1543,1618 @@ function saveDebt() {
 
 
 /* =========================================================
-   ADD EXPENSE
-   ========================================================= */
+   PEOPLE LIST
+========================================================= */
 
-function addExpensePage() {
+function renderPeople(){
 
-    return `
+    const container =
+        document.getElementById("peopleList");
 
-        ${backButton()}
+    if(!data.debts.length){
 
-        <div class="page-header">
-
-            <div class="page-title">
-                Add Expense
-            </div>
-
-            <div class="page-subtitle">
-                Magdagdag ng bagong gastos.
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="form">
-
-                <div>
-
-                    <label>
-                        DESCRIPTION
-                    </label>
-
-                    <input
-                        id="expenseName"
-                        placeholder="Hal. Food">
-
-                </div>
-
-
-                <div>
-
-                    <label>
-                        HALAGA
-                    </label>
-
-                    <input
-                        id="expenseAmount"
-                        type="number"
-                        placeholder="0.00">
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="primary"
-            onclick="saveExpense()">
-
-            I-save ang Expense
-
-        </button>
-
-    `;
-}
-
-
-function saveExpense() {
-
-    const name =
-        document.getElementById(
-            "expenseName"
-        ).value.trim();
-
-    const amount =
-        Number(
-            document.getElementById(
-                "expenseAmount"
-            ).value
-        );
-
-
-    if (!name) {
-
-        alert(
-            "Pakilagay kung saan ginastos ang pera."
-        );
+        container.innerHTML =
+            `<div class="empty">
+                No Utang records yet.
+            </div>`;
 
         return;
 
     }
 
+    const names = [
+        ...new Set(
+            data.debts.map(d=>d.person)
+        )
+    ].sort();
 
-    if (!amount || amount <= 0) {
+    container.innerHTML = "";
 
-        alert(
-            "Pakilagay ang tamang halaga."
-        );
+    names.forEach(name=>{
 
-        return;
+        const records =
+            data.debts.filter(
+                d=>d.person===name
+            );
 
-    }
+        const total =
+            records.reduce(
+                (sum,d)=>sum+Number(d.amount||0),
+                0
+            );
 
+        const paid =
+            records.reduce(
+                (sum,d)=>sum+Number(d.paidAmount||0),
+                0
+            );
 
-    data.expenses.push({
+        const remaining =
+            Math.max(0,total-paid);
 
-        description: name,
+        const percent =
+            total>0
+                ? Math.round((paid/total)*100)
+                : 0;
 
-        amount: amount,
+        const div =
+            document.createElement("div");
 
-        date: new Date().toISOString()
+        div.className="list-item";
+
+        div.innerHTML=`
+
+            <div class="item-top">
+
+                <div>
+                    <div class="item-name">
+                        ${escapeHtml(name)}
+                    </div>
+
+                    <div class="item-meta">
+                        ${records.length} debt record${records.length>1?"s":""}
+                    </div>
+                </div>
+
+                <div class="item-amount">
+                    ${peso(remaining)}
+                </div>
+
+            </div>
+
+            <div class="progress-wrap">
+
+                <div class="progress-info">
+                    <span>${percent}% Paid</span>
+                    <span>
+                        ${peso(paid)} / ${peso(total)}
+                    </span>
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-bar"
+                        style="width:${percent}%">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="item-actions">
+
+                <button
+                    class="btn btn-primary"
+                    onclick='openPerson("${encodeURIComponent(name)}")'>
+                    View Account
+                </button>
+
+                <button
+                    class="btn btn-danger"
+                    onclick='deletePerson("${encodeURIComponent(name)}")'>
+                    Delete
+                </button>
+
+            </div>
+        `;
+
+        container.appendChild(div);
 
     });
 
+}
+
+
+/* =========================================================
+   PERSON DETAIL
+========================================================= */
+
+let selectedPerson = null;
+
+function openPerson(encodedName){
+
+    selectedPerson =
+        decodeURIComponent(encodedName);
+
+    renderPersonDetail();
+
+    showPage("person-detail");
+
+}
+
+
+function renderPersonDetail(){
+
+    const name = selectedPerson;
+
+    const records =
+        data.debts.filter(
+            d=>d.person===name
+        );
+
+    const total =
+        records.reduce(
+            (s,d)=>s+Number(d.amount||0),
+            0
+        );
+
+    const paid =
+        records.reduce(
+            (s,d)=>s+Number(d.paidAmount||0),
+            0
+        );
+
+    const remaining =
+        Math.max(0,total-paid);
+
+    const percent =
+        total>0
+            ? Math.round((paid/total)*100)
+            : 0;
+
+    let html = `
+
+        <div class="detail-main">
+
+            <div class="detail-name">
+                ${escapeHtml(name)}
+            </div>
+
+            <div class="detail-type">
+                Money owed to you
+            </div>
+
+            <div class="detail-stats">
+
+                <div class="detail-stat">
+                    <div class="detail-stat-label">
+                        TOTAL
+                    </div>
+                    <div class="detail-stat-value">
+                        ${peso(total)}
+                    </div>
+                </div>
+
+                <div class="detail-stat">
+                    <div class="detail-stat-label">
+                        PAID
+                    </div>
+                    <div class="detail-stat-value">
+                        ${peso(paid)}
+                    </div>
+                </div>
+
+                <div class="detail-stat">
+                    <div class="detail-stat-label">
+                        REMAINING
+                    </div>
+                    <div class="detail-stat-value">
+                        ${peso(remaining)}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="progress-wrap">
+
+                <div class="progress-info">
+                    <span>${percent}% Paid</span>
+                    <span>${statusText(total,paid)}</span>
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-bar"
+                        style="width:${percent}%">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button
+            class="btn btn-success btn-full"
+            onclick="openPaymentPage('person')"
+            ${remaining<=0?"disabled":""}>
+            + Add Payment
+        </button>
+
+        <div class="section">
+
+            <div class="section-header">
+                <div class="section-title">
+                    Debt Records
+                </div>
+            </div>
+
+            <div class="list">
+    `;
+
+    records.forEach(debt=>{
+
+        html += debtCard(debt,"person");
+
+    });
+
+    html += `
+            </div>
+        </div>
+
+        <div class="section">
+
+            <div class="section-header">
+                <div class="section-title">
+                    Payment History
+                </div>
+            </div>
+
+            ${paymentHistory(records)}
+
+        </div>
+    `;
+
+    document.getElementById("personDetail")
+        .innerHTML = html;
+
+}
+
+
+function statusText(total,paid){
+
+    if(paid>=total) return "PAID";
+
+    if(paid>0) return "PARTIAL";
+
+    return "UNPAID";
+
+}
+
+
+/* =========================================================
+   DEBT CARD
+========================================================= */
+
+function debtCard(debt,type){
+
+    const percent =
+        progress(debt);
+
+    const remaining =
+        Math.max(
+            0,
+            Number(debt.amount||0) -
+            Number(debt.paidAmount||0)
+        );
+
+    return `
+
+        <div class="list-item">
+
+            <div class="item-top">
+
+                <div>
+
+                    <div class="item-name">
+                        ${type==="person" ? "Utang" : "Debt"}
+                    </div>
+
+                    <div class="item-meta">
+                        Due: ${formatDate(debt.dueDate)}
+                    </div>
+
+                    ${
+                        debt.monthlyPayment
+                        ?
+                        `<div class="item-meta">
+                            Monthly: ${peso(debt.monthlyPayment)}
+                        </div>`
+                        :""
+                    }
+
+                </div>
+
+                <div>
+                    ${statusBadge(debt)}
+                </div>
+
+            </div>
+
+            <div class="progress-wrap">
+
+                <div class="progress-info">
+                    <span>${percent}% Paid</span>
+                    <span>${peso(remaining)} left</span>
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-bar"
+                        style="width:${percent}%">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="item-actions">
+
+                ${
+                    remaining>0
+                    ?
+                    `<button
+                        class="btn btn-success"
+                        onclick="openPaymentForDebt('${debt.id}')">
+                        Add Payment
+                    </button>`
+                    :""
+                }
+
+                <button
+                    class="btn btn-danger"
+                    onclick="deleteDebt('${debt.id}','${type}')">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
+
+/* =========================================================
+   PAYMENT PAGE
+========================================================= */
+
+let paymentType = null;
+
+function openPaymentPage(type){
+
+    paymentType = type;
+
+    document.getElementById("paymentSubtitle")
+        .textContent =
+        type==="person"
+        ? selectedPerson
+        : selectedMyDebtName;
+
+    document.getElementById("paymentAmount")
+        .value="";
+
+    showPage("add-payment");
+
+}
+
+
+let selectedDebtId = null;
+
+function openPaymentForDebt(id){
+
+    selectedDebtId = id;
+
+    const debt =
+        data.debts.find(
+            d=>String(d.id)===String(id)
+        );
+
+    if(!debt) return;
+
+    paymentType="person";
+
+    document.getElementById("paymentSubtitle")
+        .textContent =
+        `${selectedPerson} — Remaining ${peso(
+            debt.amount-debt.paidAmount
+        )}`;
+
+    document.getElementById("paymentAmount")
+        .value="";
+
+    showPage("add-payment");
+
+}
+
+
+function openPaymentForMyDebt(id){
+
+    selectedDebtId=id;
+
+    const debt =
+        data.myDebts.find(
+            d=>String(d.id)===String(id)
+        );
+
+    if(!debt) return;
+
+    paymentType="mydebt";
+
+    document.getElementById("paymentSubtitle")
+        .textContent =
+        `${selectedMyDebtName} — Remaining ${peso(
+            debt.amount-debt.paidAmount
+        )}`;
+
+    document.getElementById("paymentAmount")
+        .value="";
+
+    showPage("add-payment");
+
+}
+
+
+/* =========================================================
+   SAVE PAYMENT
+========================================================= */
+
+function savePayment(event){
+
+    event.preventDefault();
+
+    const amount =
+        Number(
+            document.getElementById("paymentAmount")
+                .value
+        );
+
+    if(amount<=0){
+
+        toast(
+            "Please enter a valid payment amount.",
+            "error"
+        );
+
+        return;
+
+    }
+
+    let debt;
+
+    if(paymentType==="person"){
+
+        debt =
+            data.debts.find(
+                d=>String(d.id)===String(selectedDebtId)
+            );
+
+    }else{
+
+        debt =
+            data.myDebts.find(
+                d=>String(d.id)===String(selectedDebtId)
+            );
+
+    }
+
+    if(!debt){
+
+        toast("Debt record not found.","error");
+        return;
+
+    }
+
+    const remaining =
+        Number(debt.amount) -
+        Number(debt.paidAmount||0);
+
+    if(amount>remaining){
+
+        toast(
+            `Payment cannot exceed ${peso(remaining)}.`,
+            "error"
+        );
+
+        return;
+
+    }
+
+    debt.paidAmount =
+        Number(debt.paidAmount||0) + amount;
+
+    if(!debt.payments){
+        debt.payments=[];
+    }
+
+    debt.payments.push({
+
+        id:uid(),
+        amount:amount,
+        date:today()
+
+    });
 
     saveData();
 
+    toast("Payment successfully saved.");
 
-    alert(
-        "Matagumpay na na-save ang expense."
+    if(paymentType==="person"){
+
+        renderPersonDetail();
+        showPage("person-detail");
+
+    }else{
+
+        renderMyDebtDetail();
+        showPage("my-debt-detail");
+
+    }
+
+}
+
+
+/* =========================================================
+   PAYMENT HISTORY
+========================================================= */
+
+function paymentHistory(records){
+
+    const payments=[];
+
+    records.forEach(debt=>{
+
+        (debt.payments||[]).forEach(payment=>{
+
+            payments.push({
+
+                amount:payment.amount,
+                date:payment.date
+
+            });
+
+        });
+
+    });
+
+    payments.sort(
+        (a,b)=>
+        new Date(b.date)-new Date(a.date)
     );
 
+    if(!payments.length){
+
+        return `
+            <div class="empty">
+                No payment history yet.
+            </div>
+        `;
+
+    }
+
+    return `
+
+        <div class="list">
+
+            ${payments.map(payment=>`
+
+                <div class="list-item">
+
+                    <div class="item-top">
+
+                        <div>
+                            <div class="item-name">
+                                Payment
+                            </div>
+
+                            <div class="item-meta">
+                                ${formatDate(payment.date)}
+                            </div>
+                        </div>
+
+                        <div class="item-amount">
+                            ${peso(payment.amount)}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `).join("")}
+
+        </div>
+    `;
+
+}
+
+
+/* =========================================================
+   DELETE PERSON
+========================================================= */
+
+function deletePerson(encodedName){
+
+    const name =
+        decodeURIComponent(encodedName);
+
+    if(!confirm(
+        `Delete all Utang records for ${name}?`
+    )) return;
+
+    data.debts =
+        data.debts.filter(
+            d=>d.person!==name
+        );
+
+    saveData();
+
+    toast("Records deleted.");
+
+}
+
+
+/* =========================================================
+   DELETE DEBT
+========================================================= */
+
+function deleteDebt(id,type){
+
+    if(!confirm("Delete this debt record?")) return;
+
+    if(type==="person"){
+
+        data.debts =
+            data.debts.filter(
+                d=>String(d.id)!==String(id)
+            );
+
+        renderPersonDetail();
+
+    }else{
+
+        data.myDebts =
+            data.myDebts.filter(
+                d=>String(d.id)!==String(id)
+            );
+
+        renderMyDebtDetail();
+
+    }
+
+    saveData();
+
+    toast("Debt record deleted.");
+
+}
+
+
+/* =========================================================
+   MY DEBTS
+========================================================= */
+
+function addMyDebt(event){
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("myDebtName")
+            .value.trim();
+
+    const amount =
+        Number(
+            document.getElementById("myDebtAmount")
+                .value
+        );
+
+    const monthly =
+        Number(
+            document.getElementById("myDebtMonthly")
+                .value || 0
+        );
+
+    const dueDate =
+        document.getElementById("myDebtDueDate")
+            .value;
+
+    if(!name){
+
+        toast(
+            "Please enter an account name.",
+            "error"
+        );
+
+        return;
+
+    }
+
+    if(amount<=0){
+
+        toast(
+            "Please enter a valid amount.",
+            "error"
+        );
+
+        return;
+
+    }
+
+    data.myDebts.push({
+
+        id:uid(),
+
+        name:name,
+
+        amount:amount,
+
+        monthlyPayment:monthly,
+
+        paidAmount:0,
+
+        dueDate:dueDate,
+
+        date:today(),
+
+        payments:[]
+
+    });
+
+    saveData();
+
+    event.target.reset();
+
+    toast("My debt successfully saved.");
+
+    showPage("mydebts");
+
+}
+
+
+function renderMyDebts(){
+
+    const container =
+        document.getElementById("myDebtsList");
+
+    if(!data.myDebts.length){
+
+        container.innerHTML =
+            `<div class="empty">
+                No personal debt records yet.
+            </div>`;
+
+        return;
+
+    }
+
+    container.innerHTML="";
+
+    data.myDebts.forEach(debt=>{
+
+        const remaining =
+            Math.max(
+                0,
+                debt.amount -
+                Number(debt.paidAmount||0)
+            );
+
+        const div =
+            document.createElement("div");
+
+        div.className="list-item";
+
+        div.innerHTML=`
+
+            <div class="item-top">
+
+                <div>
+
+                    <div class="item-name">
+                        ${escapeHtml(debt.name)}
+                    </div>
+
+                    <div class="item-meta">
+                        Due: ${formatDate(debt.dueDate)}
+                    </div>
+
+                    <div class="item-meta">
+                        Monthly:
+                        ${peso(debt.monthlyPayment)}
+                    </div>
+
+                </div>
+
+                <div class="item-amount">
+                    ${peso(remaining)}
+                </div>
+
+            </div>
+
+            <div class="progress-wrap">
+
+                <div class="progress-info">
+                    <span>${progress(debt)}% Paid</span>
+                    ${statusBadge(debt)}
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-bar"
+                        style="width:${progress(debt)}%">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="item-actions">
+
+                <button
+                    class="btn btn-primary"
+                    onclick='openMyDebt("${encodeURIComponent(debt.name)}")'>
+                    View Account
+                </button>
+
+                <button
+                    class="btn btn-danger"
+                    onclick="deleteDebt('${debt.id}','mydebt')">
+                    Delete
+                </button>
+
+            </div>
+        `;
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+let selectedMyDebtName=null;
+
+function openMyDebt(encodedName){
+
+    selectedMyDebtName =
+        decodeURIComponent(encodedName);
+
+    renderMyDebtDetail();
+
+    showPage("my-debt-detail");
+
+}
+
+
+function renderMyDebtDetail(){
+
+    const name =
+        selectedMyDebtName;
+
+    const records =
+        data.myDebts.filter(
+            d=>d.name===name
+        );
+
+    const total =
+        records.reduce(
+            (s,d)=>s+Number(d.amount||0),
+            0
+        );
+
+    const paid =
+        records.reduce(
+            (s,d)=>s+Number(d.paidAmount||0),
+            0
+        );
+
+    const remaining =
+        Math.max(0,total-paid);
+
+    const percent =
+        total>0
+        ? Math.round((paid/total)*100)
+        : 0;
+
+    let html=`
+
+        <div class="detail-main">
+
+            <div class="detail-name">
+                ${escapeHtml(name)}
+            </div>
+
+            <div class="detail-type">
+                My debt
+            </div>
+
+            <div class="detail-stats">
+
+                <div class="detail-stat">
+                    <div class="detail-stat-label">
+                        TOTAL
+                    </div>
+                    <div class="detail-stat-value">
+                        ${peso(total)}
+                    </div>
+                </div>
+
+                <div class="detail-stat">
+                    <div class="detail-stat-label">
+                        PAID
+                    </div>
+                    <div class="detail-stat-value">
+                        ${peso(paid)}
+                    </div>
+                </div>
+
+                <div class="detail-stat">
+                    <div class="detail-stat-label">
+                        REMAINING
+                    </div>
+                    <div class="detail-stat-value">
+                        ${peso(remaining)}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="progress-wrap">
+
+                <div class="progress-info">
+                    <span>${percent}% Paid</span>
+                    <span>${statusText(total,paid)}</span>
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-bar"
+                        style="width:${percent}%">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button
+            class="btn btn-success btn-full"
+            onclick="openPaymentPage('mydebt')">
+            + Add Payment
+        </button>
+
+        <div class="section">
+
+            <div class="section-header">
+                <div class="section-title">
+                    Debt Records
+                </div>
+            </div>
+
+            <div class="list">
+
+    `;
+
+    records.forEach(debt=>{
+
+        html += debtCard(debt,"mydebt");
+
+    });
+
+    html += `
+
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <div class="section-header">
+                <div class="section-title">
+                    Payment History
+                </div>
+            </div>
+
+            ${paymentHistory(records)}
+
+        </div>
+    `;
+
+    document.getElementById("myDebtDetail")
+        .innerHTML=html;
+
+}
+
+
+/* =========================================================
+   EXPENSES
+========================================================= */
+
+function addExpense(event){
+
+    event.preventDefault();
+
+    const description =
+        document.getElementById("expenseDescription")
+            .value.trim();
+
+    const amount =
+        Number(
+            document.getElementById("expenseAmount")
+                .value
+        );
+
+    const category =
+        document.getElementById("expenseCategory")
+            .value;
+
+    if(!description || amount<=0){
+
+        toast(
+            "Please enter valid expense details.",
+            "error"
+        );
+
+        return;
+
+    }
+
+    data.expenses.push({
+
+        id:uid(),
+
+        description:description,
+
+        amount:amount,
+
+        category:category,
+
+        date:today()
+
+    });
+
+    saveData();
+
+    event.target.reset();
+
+    toast("Expense successfully saved.");
 
     showPage("expenses");
 
 }
 
 
-/* =========================================================
-   ADD SAVINGS
-   ========================================================= */
+function renderExpenses(){
 
-function addSavingsPage() {
+    const container =
+        document.getElementById("expenseList");
 
-    return `
+    if(!data.expenses.length){
 
-        ${backButton()}
+        container.innerHTML =
+            `<div class="empty">
+                No expenses yet.
+            </div>`;
 
-        <div class="page-header">
+        return;
 
-            <div class="page-title">
-                Add Savings
-            </div>
+    }
 
-            <div class="page-subtitle">
-                Gumawa ng bagong savings goal.
-            </div>
+    container.innerHTML="";
 
-        </div>
+    [...data.expenses]
+        .sort(
+            (a,b)=>
+            new Date(b.date)-new Date(a.date)
+        )
+        .forEach(expense=>{
 
+            const div =
+                document.createElement("div");
 
-        <div class="card">
+            div.className="list-item";
 
-            <div class="form">
+            div.innerHTML=`
 
-                <div>
+                <div class="item-top">
 
-                    <label>
-                        GOAL NAME
-                    </label>
+                    <div>
 
-                    <input
-                        id="savingName"
-                        placeholder="Hal. Emergency Fund">
+                        <div class="item-name">
+                            ${escapeHtml(expense.description)}
+                        </div>
 
-                </div>
+                        <div class="item-meta">
+                            ${expense.category}
+                            ·
+                            ${formatDate(expense.date)}
+                        </div>
 
+                    </div>
 
-                <div>
-
-                    <label>
-                        TARGET
-                    </label>
-
-                    <input
-                        id="savingTarget"
-                        type="number"
-                        placeholder="0.00">
-
-                </div>
-
-
-                <div>
-
-                    <label>
-                        CURRENT SAVINGS
-                    </label>
-
-                    <input
-                        id="savingCurrent"
-                        type="number"
-                        value="0">
+                    <div class="item-amount">
+                        ${peso(expense.amount)}
+                    </div>
 
                 </div>
 
-            </div>
+                <div class="item-actions">
 
-        </div>
+                    <button
+                        class="btn btn-danger"
+                        onclick="deleteExpense('${expense.id}')">
+                        Delete
+                    </button>
 
+                </div>
 
-        <button
-            class="primary"
-            onclick="saveSavings()">
+            `;
 
-            I-save ang Savings Goal
+            container.appendChild(div);
 
-        </button>
+        });
 
-    `;
 }
 
 
-function saveSavings() {
+function deleteExpense(id){
+
+    if(!confirm("Delete this expense?")) return;
+
+    data.expenses =
+        data.expenses.filter(
+            e=>String(e.id)!==String(id)
+        );
+
+    saveData();
+
+    toast("Expense deleted.");
+
+}
+
+
+/* =========================================================
+   SAVINGS
+========================================================= */
+
+function addSavings(event){
+
+    event.preventDefault();
 
     const name =
-        document.getElementById(
-            "savingName"
-        ).value.trim();
+        document.getElementById("savingsName")
+            .value.trim();
 
     const target =
         Number(
-            document.getElementById(
-                "savingTarget"
-            ).value
+            document.getElementById("savingsTarget")
+                .value
         );
 
     const current =
         Number(
-            document.getElementById(
-                "savingCurrent"
-            ).value
+            document.getElementById("savingsCurrent")
+                .value || 0
         );
 
+    if(!name || target<=0){
 
-    if (!name) {
-
-        alert(
-            "Pakilagay ang pangalan ng savings goal."
-        );
-
-        return;
-
-    }
-
-
-    if (!target || target <= 0) {
-
-        alert(
-            "Pakilagay ang tamang target amount."
+        toast(
+            "Please enter valid savings details.",
+            "error"
         );
 
         return;
 
     }
-
 
     data.savings.push({
 
-        name: name,
+        id:uid(),
 
-        target: target,
+        name:name,
 
-        current: Math.max(
-            0,
-            current || 0
-        )
+        target:target,
+
+        current:Math.max(0,current)
 
     });
 
-
     saveData();
 
+    event.target.reset();
 
-    alert(
-        "Matagumpay na na-save ang savings goal."
-    );
-
+    toast("Savings goal successfully saved.");
 
     showPage("savings");
 
 }
 
 
-/* =========================================================
-   UNPAID
-   ========================================================= */
+function renderSavings(){
 
-function unpaidPage() {
+    const container =
+        document.getElementById("savingsList");
 
-    return `
+    if(!data.savings.length){
 
-        ${backButton()}
+        container.innerHTML =
+            `<div class="empty">
+                No savings goals yet.
+            </div>`;
 
-        <div class="page-header">
+        return;
 
-            <div class="page-title">
-                Unpaid
+    }
+
+    container.innerHTML="";
+
+    data.savings.forEach(goal=>{
+
+        const percent =
+            goal.target>0
+            ? Math.min(
+                100,
+                Math.round(
+                    goal.current/goal.target*100
+                )
+            )
+            :0;
+
+        const div =
+            document.createElement("div");
+
+        div.className="list-item";
+
+        div.innerHTML=`
+
+            <div class="item-top">
+
+                <div class="item-name">
+                    ${escapeHtml(goal.name)}
+                </div>
+
+                <div class="item-amount">
+                    ${peso(goal.current)}
+                </div>
+
             </div>
 
-            <div class="page-subtitle">
-                Mga hindi pa nababayarang utang.
+            <div class="progress-wrap">
+
+                <div class="progress-info">
+                    <span>${percent}%</span>
+                    <span>Target ${peso(goal.target)}</span>
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-bar"
+                        style="width:${percent}%">
+                    </div>
+                </div>
+
             </div>
 
-        </div>
+            <div class="item-actions">
 
+                <button
+                    class="btn btn-secondary"
+                    onclick="addSavingsMoney('${goal.id}')">
+                    Add Money
+                </button>
 
-        <div class="card">
+                <button
+                    class="btn btn-danger"
+                    onclick="deleteSavings('${goal.id}')">
+                    Delete
+                </button>
 
-            <div class="card-label">
-                Total Unpaid
             </div>
 
-            <div class="amount yellow">
-                ₱0.00
-            </div>
+        `;
 
-        </div>
+        container.appendChild(div);
 
-
-        <div class="empty">
-
-            🎉 Wala pang unpaid records.
-
-        </div>
-
-    `;
-}
-
-
-/* =========================================================
-   BACK BUTTON
-   ========================================================= */
-
-function backButton() {
-
-    return `
-
-        <button
-            class="back-button"
-            onclick="goBack()">
-
-            ← Bumalik
-
-        </button>
-
-    `;
-
-}
-
-
-function goBack() {
-
-    showPage("home");
-
-}
-
-
-/* =========================================================
-   ROUTER
-   ========================================================= */
-
-function showPage(page) {
-
-    currentPage = page;
-
-    const app =
-        document.getElementById("app");
-
-
-    if (page === "home")
-        app.innerHTML =
-            homePage();
-
-
-    else if (page === "expenses")
-        app.innerHTML =
-            expensesPage();
-
-
-    else if (page === "people")
-        app.innerHTML =
-            peoplePage();
-
-
-    else if (page === "savings")
-        app.innerHTML =
-            savingsPage();
-
-
-    else if (page === "addDebt")
-        app.innerHTML =
-            addDebtPage();
-
-
-    else if (page === "addExpense")
-        app.innerHTML =
-            addExpensePage();
-
-
-    else if (page === "addSavings")
-        app.innerHTML =
-            addSavingsPage();
-
-
-    else if (page === "unpaid")
-        app.innerHTML =
-            unpaidPage();
-
-
-    updateNav();
+    });
 
 }
 
 
+function addSavingsMoney(id){
+
+    const goal =
+        data.savings.find(
+            s=>String(s.id)===String(id)
+        );
+
+    if(!goal) return;
+
+    const amount =
+        Number(
+            prompt("Enter amount to add:")
+        );
+
+    if(!amount || amount<=0){
+
+        toast(
+            "Please enter a valid amount.",
+            "error"
+        );
+
+        return;
+
+    }
+
+    goal.current += amount;
+
+    saveData();
+
+    toast("Savings updated.");
+
+}
+
+
+function deleteSavings(id){
+
+    if(!confirm("Delete this savings goal?")) return;
+
+    data.savings =
+        data.savings.filter(
+            s=>String(s.id)!==String(id)
+        );
+
+    saveData();
+
+    toast("Savings goal deleted.");
+
+}
+
+
 /* =========================================================
-   NAV
-   ========================================================= */
+   DASHBOARD
+========================================================= */
 
-function updateNav() {
+function refreshDashboard(){
 
-    document
-        .querySelectorAll(".nav-item")
-        .forEach(button => {
+    const expenses =
+        data.expenses.reduce(
+            (s,e)=>s+Number(e.amount||0),
+            0
+        );
 
-            button.classList.remove(
-                "active"
+    const savings =
+        data.savings.reduce(
+            (s,e)=>s+Number(e.current||0),
+            0
+        );
+
+    const owed =
+        data.debts.reduce(
+            (s,d)=>
+                s+
+                Math.max(
+                    0,
+                    Number(d.amount||0) -
+                    Number(d.paidAmount||0)
+                ),
+            0
+        );
+
+    const myDebt =
+        data.myDebts.reduce(
+            (s,d)=>
+                s+
+                Math.max(
+                    0,
+                    Number(d.amount||0) -
+                    Number(d.paidAmount||0)
+                ),
+            0
+        );
+
+    document.getElementById("dashExpenses")
+        .textContent=peso(expenses);
+
+    document.getElementById("dashSavings")
+        .textContent=peso(savings);
+
+    document.getElementById("dashOwed")
+        .textContent=peso(owed);
+
+    document.getElementById("dashMyDebt")
+        .textContent=peso(myDebt);
+
+}
+
+
+/* =========================================================
+   MONTHLY UNPAID
+========================================================= */
+
+function renderMonthlyUnpaid(){
+
+    const container =
+        document.getElementById(
+            "monthlyUnpaidList"
+        );
+
+    const year =
+        new Date().getFullYear();
+
+    const month =
+        selectedMonth;
+
+    const peopleUnpaid =
+        data.debts.filter(debt=>{
+
+            const remaining =
+                Number(debt.amount||0) -
+                Number(debt.paidAmount||0);
+
+            const relevantDate =
+                debt.dueDate || debt.date;
+
+            return (
+                remaining>0 &&
+                sameMonth(relevantDate,month)
             );
 
         });
 
+    const myUnpaid =
+        data.myDebts.filter(debt=>{
 
-    const map = {
+            const remaining =
+                Number(debt.amount||0) -
+                Number(debt.paidAmount||0);
 
-        home: 0,
+            const relevantDate =
+                debt.dueDate || debt.date;
 
-        expenses: 1,
+            return (
+                remaining>0 &&
+                sameMonth(relevantDate,month)
+            );
 
-        people: 2,
+        });
 
-        savings: 3
+    document.getElementById("monthlyTitle")
+        .textContent =
+        `${months[month]} ${year} — Unpaid`;
 
-    };
+    let html="";
+
+    if(
+        !peopleUnpaid.length &&
+        !myUnpaid.length
+    ){
+
+        container.innerHTML =
+            `<div class="empty">
+                No unpaid debts for this month.
+            </div>`;
+
+        return;
+
+    }
 
 
-    if (map[currentPage] !== undefined) {
+    /* MONEY OWED TO ME */
 
-        document
-            .querySelectorAll(".nav-item")
-            [map[currentPage]]
-            .classList.add("active");
+    if(peopleUnpaid.length){
+
+        html += `
+
+            <div class="monthly-box">
+
+                <div class="section-title"
+                    style="margin-bottom:5px;">
+                    Money Owed to Me
+                </div>
+
+        `;
+
+        peopleUnpaid.forEach(debt=>{
+
+            const remaining =
+                Math.max(
+                    0,
+                    debt.amount-debt.paidAmount
+                );
+
+            html += `
+
+                <div class="monthly-row">
+
+                    <span>
+                        ${escapeHtml(debt.person)}
+                    </span>
+
+                    <strong>
+                        ${peso(remaining)}
+                    </strong>
+
+                </div>
+
+            `;
+
+        });
+
+        html += `</div>`;
+
+    }
+
+
+    /* MY DEBTS */
+
+    if(myUnpaid.length){
+
+        html += `
+
+            <div class="monthly-box"
+                style="margin-top:8px;">
+
+                <div class="section-title"
+                    style="margin-bottom:5px;">
+                    My Debts
+                </div>
+
+        `;
+
+        myUnpaid.forEach(debt=>{
+
+            const remaining =
+                Math.max(
+                    0,
+                    debt.amount-debt.paidAmount
+                );
+
+            html += `
+
+                <div class="monthly-row">
+
+                    <span>
+                        ${escapeHtml(debt.name)}
+                    </span>
+
+                    <strong>
+                        ${peso(remaining)}
+                    </strong>
+
+                </div>
+
+            `;
+
+        });
+
+        html += `</div>`;
+
+    }
+
+    container.innerHTML=html;
+
+}
+
+
+/* =========================================================
+   BACK TO DETAIL
+========================================================= */
+
+function goBackToDetail(){
+
+    if(paymentType==="person"){
+
+        renderPersonDetail();
+        showPage("person-detail");
+
+    }else{
+
+        renderMyDebtDetail();
+        showPage("my-debt-detail");
 
     }
 
@@ -2046,43 +3162,47 @@ function updateNav() {
 
 
 /* =========================================================
-   STORAGE
-   ========================================================= */
+   ESCAPE HTML
+========================================================= */
 
-function saveData() {
+function escapeHtml(text){
 
-    localStorage.setItem(
-        "liahs_fintrack_data",
-        JSON.stringify(data)
-    );
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
-function loadData() {
+/* =========================================================
+   REFRESH ALL
+========================================================= */
 
-    try {
+function refreshAll(){
 
-        const saved =
-            localStorage.getItem(
-                "liahs_fintrack_data"
-            );
+    refreshDashboard();
 
+    renderMonths();
 
-        if (saved) {
+    renderMonthlyUnpaid();
 
-            data =
-                JSON.parse(saved);
+    renderPeople();
 
-        }
+    renderMyDebts();
 
+    renderExpenses();
+
+    renderSavings();
+
+    if(currentPage==="person-detail"){
+        renderPersonDetail();
     }
-    catch(error) {
 
-        alert(
-            "Hindi mabasa ang saved data."
-        );
-
+    if(currentPage==="my-debt-detail"){
+        renderMyDebtDetail();
     }
 
 }
@@ -2090,11 +3210,9 @@ function loadData() {
 
 /* =========================================================
    START
-   ========================================================= */
+========================================================= */
 
-loadData();
-
-showPage("home");
+refreshAll();
 
 </script>
 
