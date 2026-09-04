@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Liah's Fin.Track</title>
 
 <style>
@@ -15,9 +15,8 @@ body{
     margin:0;
     min-height:100vh;
     font-family:Arial,Helvetica,sans-serif;
-    background:
-        radial-gradient(circle at top,#17385f 0%,#07111f 48%,#02070d 100%);
-    color:#eaf4ff;
+    background:radial-gradient(circle at top,#173b63,#071321 55%,#02060b);
+    color:#eaf5ff;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -32,76 +31,73 @@ button{
     cursor:pointer;
 }
 
-.app-window{
+.app{
     width:100%;
-    max-width:450px;
-    height:min(850px,94vh);
-    background:#071727;
-    border:1px solid #1d456d;
-    border-radius:28px;
+    max-width:460px;
+    height:min(880px,94vh);
+    background:#071827;
+    border:1px solid #1e486d;
+    border-radius:27px;
     overflow:hidden;
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.55),
-        0 0 0 1px rgba(65,150,220,.08);
+    box-shadow:0 25px 70px rgba(0,0,0,.6);
     display:flex;
     flex-direction:column;
+    position:relative;
 }
 
-/* TOP BAR */
+/* TOP */
 
-.topbar{
-    padding:15px 18px;
-    background:#081d32;
-    border-bottom:1px solid #173b5d;
+.top{
+    padding:14px 17px;
+    background:#081d31;
+    border-bottom:1px solid #173b5c;
     display:flex;
     align-items:center;
-    gap:11px;
+    gap:10px;
 }
 
 .logo{
     width:38px;
     height:38px;
     border-radius:11px;
-    background:#0d3558;
-    border:1px solid #2b638f;
+    background:#10436b;
+    border:1px solid #2e73a3;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     font-size:18px;
-    font-weight:bold;
 }
 
 .brand{
     flex:1;
 }
 
-.brand-title{
+.brand-name{
     font-size:15px;
     font-weight:800;
-    letter-spacing:.4px;
 }
 
 .brand-sub{
-    color:#7194b4;
-    font-size:8px;
-    letter-spacing:1.4px;
+    font-size:7px;
+    letter-spacing:1.5px;
+    color:#7192ad;
     margin-top:3px;
 }
 
-.status{
+.online{
+    font-size:7px;
+    color:#67dc9e;
     display:flex;
+    gap:4px;
     align-items:center;
-    gap:5px;
-    font-size:8px;
-    color:#78d5a2;
 }
 
-.status-dot{
+.dot{
     width:7px;
     height:7px;
-    background:#58d98b;
     border-radius:50%;
-    box-shadow:0 0 8px #58d98b;
+    background:#59d78d;
+    box-shadow:0 0 8px #59d78d;
 }
 
 /* CONTENT */
@@ -117,8 +113,6 @@ button{
     display:none;
 }
 
-/* PAGES */
-
 .page{
     display:none;
 }
@@ -127,15 +121,15 @@ button{
     display:block;
 }
 
-.page-title{
-    font-size:19px;
+.title{
+    font-size:20px;
     font-weight:800;
-    margin-bottom:4px;
 }
 
-.page-subtitle{
+.subtitle{
+    color:#7595b0;
     font-size:9px;
-    color:#7898b5;
+    margin-top:4px;
     margin-bottom:17px;
 }
 
@@ -149,123 +143,116 @@ button{
 
 .card{
     background:#0a2137;
-    border:1px solid #183e60;
+    border:1px solid #19415f;
     border-radius:15px;
     padding:13px;
 }
 
-.card-label{
-    font-size:8px;
-    color:#7797b3;
+.label{
+    font-size:7px;
+    color:#7796ae;
     text-transform:uppercase;
     letter-spacing:.8px;
 }
 
-.card-value{
-    font-size:18px;
+.number{
+    font-size:17px;
     font-weight:800;
     margin-top:7px;
 }
 
-.card-small{
-    font-size:8px;
-    color:#7797b3;
-    margin-top:4px;
-}
+.blue{color:#57b9f1}
+.green{color:#5ddd9c}
+.red{color:#ff7588}
+.yellow{color:#f2cd61}
+.white{color:#edf7ff}
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
-    margin-top:17px;
-}
-
-.section-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:9px;
+    margin-top:18px;
 }
 
 .section-title{
-    font-size:11px;
+    font-size:10px;
     font-weight:800;
     text-transform:uppercase;
     letter-spacing:1px;
+    margin-bottom:9px;
 }
 
-.section-action{
-    font-size:8px;
-    color:#62aee8;
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 /* BUTTONS */
 
 .btn{
-    border:0;
+    border:1px solid #285775;
+    background:#102e47;
+    color:#eaf5ff;
     border-radius:10px;
     padding:10px 12px;
-    font-size:10px;
+    font-size:9px;
     font-weight:700;
-    color:#eaf4ff;
-    background:#12456f;
-    border:1px solid #236a9f;
 }
 
 .btn:active{
-    transform:scale(.97);
+    transform:scale(.96);
 }
 
-.btn-primary{
-    background:#17639a;
-    border-color:#3189c6;
+.primary{
+    background:#155b8e;
+    border-color:#338ac0;
 }
 
-.btn-success{
-    background:#155d48;
-    border-color:#258c6d;
+.success{
+    background:#12533f;
+    border-color:#258465;
 }
 
-.btn-danger{
-    background:#612c38;
-    border-color:#984b5b;
+.danger{
+    background:#5b2935;
+    border-color:#8e4655;
 }
 
-.btn-secondary{
-    background:#102c44;
-    border-color:#28506e;
+.warning{
+    background:#584919;
+    border-color:#806b27;
 }
 
-.btn-full{
+.full{
     width:100%;
 }
 
-.back-btn{
+.back{
     margin-bottom:14px;
 }
 
 /* MONTHS */
 
-.month-grid{
+.months{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:6px;
 }
 
-.month-btn{
-    padding:9px 4px;
+.month{
+    border:1px solid #214862;
+    background:#0a253b;
+    color:#7593aa;
     border-radius:8px;
-    border:1px solid #214966;
-    background:#0b263e;
-    color:#7899b5;
+    padding:9px 3px;
     font-size:8px;
     font-weight:800;
 }
 
-.month-btn.active{
-    background:#17639a;
-    color:#fff;
-    border-color:#3d94cd;
-    box-shadow:0 0 10px rgba(49,137,198,.25);
+.month.active{
+    background:#17669d;
+    border-color:#3c9ad0;
+    color:white;
 }
 
 /* LIST */
@@ -273,20 +260,19 @@ button{
 .list{
     display:flex;
     flex-direction:column;
-    gap:8px;
+    gap:9px;
 }
 
-.list-item{
+.item{
     background:#0a2137;
-    border:1px solid #183e60;
-    border-radius:13px;
+    border:1px solid #193f5c;
+    border-radius:14px;
     padding:12px;
 }
 
 .item-top{
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
     gap:10px;
 }
 
@@ -297,55 +283,87 @@ button{
 
 .item-meta{
     font-size:8px;
-    color:#7898b5;
+    color:#7694ad;
     margin-top:4px;
 }
 
-.item-amount{
+.item-money{
     font-size:13px;
     font-weight:800;
-    white-space:nowrap;
 }
 
-.item-actions{
+/* PIE */
+
+.account-row{
     display:flex;
-    gap:6px;
-    margin-top:10px;
-    flex-wrap:wrap;
+    align-items:center;
+    gap:13px;
 }
 
-.item-actions .btn{
-    padding:7px 9px;
-    font-size:8px;
+.pie{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    background:conic-gradient(#36a9e8 0deg,#36a9e8 0deg,#10283c 0deg);
+}
+
+.pie-inner{
+    width:55px;
+    height:55px;
+    background:#081a2b;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.pie-percent{
+    font-size:11px;
+    font-weight:800;
+    color:#5bc0f5;
+}
+
+.pie-label{
+    font-size:6px;
+    color:#7594ac;
+    margin-top:2px;
+}
+
+.account-info{
+    flex:1;
 }
 
 /* PROGRESS */
 
-.progress-wrap{
+.progress-box{
     margin-top:10px;
 }
 
 .progress-info{
     display:flex;
     justify-content:space-between;
-    font-size:8px;
-    color:#7797b3;
+    font-size:7px;
+    color:#7896ad;
     margin-bottom:5px;
 }
 
 .progress{
     height:7px;
-    background:#06121e;
+    background:#06121d;
+    border:1px solid #153248;
     border-radius:20px;
     overflow:hidden;
-    border:1px solid #15324a;
 }
 
-.progress-bar{
+.bar{
     height:100%;
-    background:#39a7e8;
+    background:#36a9e8;
     border-radius:20px;
-    transition:.3s;
 }
 
 /* STATUS */
@@ -356,28 +374,41 @@ button{
     border-radius:6px;
     font-size:7px;
     font-weight:800;
-    letter-spacing:.5px;
 }
 
-.badge-paid{
-    background:#123f35;
-    color:#65dca8;
-    border:1px solid #1c6a55;
+.paid{
+    background:#113e32;
+    border:1px solid #247459;
+    color:#63dfa3;
 }
 
-.badge-unpaid{
-    background:#4b252d;
-    color:#ff9aa8;
-    border:1px solid #793b48;
+.partial{
+    background:#443a18;
+    border:1px solid #756128;
+    color:#f3d36a;
 }
 
-.badge-partial{
-    background:#443a19;
-    color:#f0ce6b;
-    border:1px solid #716027;
+.unpaid{
+    background:#47232c;
+    border:1px solid #7d3b4a;
+    color:#ff8798;
 }
 
-/* FORMS */
+/* ACTIONS */
+
+.actions{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.actions .btn{
+    padding:7px 9px;
+    font-size:8px;
+}
+
+/* FORM */
 
 .form-group{
     margin-bottom:12px;
@@ -386,184 +417,131 @@ button{
 .form-label{
     display:block;
     font-size:8px;
-    color:#83a2bd;
+    color:#83a0b7;
     text-transform:uppercase;
-    letter-spacing:.7px;
     margin-bottom:6px;
 }
 
-.form-input,
-.form-select{
+.input,
+.select{
     width:100%;
     padding:11px;
-    border-radius:9px;
-    border:1px solid #214966;
     background:#061522;
-    color:#edf6ff;
+    border:1px solid #214862;
+    color:white;
+    border-radius:9px;
     outline:none;
     font-size:10px;
 }
 
-.form-input:focus,
-.form-select:focus{
-    border-color:#398bc0;
+.input:focus,
+.select:focus{
+    border-color:#3c91c5;
+}
+
+/* MONTHLY */
+
+.month-box{
+    background:#091f32;
+    border:1px solid #193d58;
+    border-radius:12px;
+    padding:11px;
+}
+
+.month-row{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px solid #123149;
+    font-size:8px;
+}
+
+.month-row:last-child{
+    border-bottom:0;
 }
 
 /* EMPTY */
 
 .empty{
+    padding:24px 10px;
     text-align:center;
-    padding:25px 10px;
-    color:#66839d;
-    font-size:9px;
-    border:1px dashed #1c3c56;
+    border:1px dashed #20415a;
     border-radius:12px;
+    color:#66839c;
+    font-size:9px;
 }
 
-/* NOTIFICATION */
+/* NAV */
+
+.nav{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    background:#061522;
+    border-top:1px solid #183b58;
+    padding:6px 4px 7px;
+}
+
+.nav button{
+    background:none;
+    border:0;
+    color:#5e7c94;
+    font-size:7px;
+    font-weight:700;
+    padding:5px 2px;
+}
+
+.nav-icon{
+    display:block;
+    font-size:15px;
+    margin-bottom:3px;
+}
+
+.nav button.active{
+    color:#5bbcf3;
+}
+
+/* TOAST */
 
 .toast{
     position:absolute;
     left:50%;
     bottom:78px;
-    transform:translateX(-50%) translateY(20px);
+    transform:translate(-50%,20px);
     width:calc(100% - 34px);
-    max-width:400px;
-    background:#102d45;
-    border:1px solid #28618a;
+    background:#12334d;
+    border:1px solid #2b6c94;
     border-radius:11px;
-    padding:10px 12px;
-    font-size:9px;
+    padding:10px;
     text-align:center;
+    font-size:9px;
     opacity:0;
     pointer-events:none;
     transition:.25s;
-    z-index:50;
+    z-index:99;
 }
 
 .toast.show{
     opacity:1;
-    transform:translateX(-50%) translateY(0);
+    transform:translate(-50%,0);
 }
 
 .toast.error{
-    border-color:#8d4554;
-    background:#351b24;
+    background:#391e27;
+    border-color:#854354;
 }
-
-.toast.success{
-    border-color:#28745d;
-    background:#10352c;
-}
-
-/* BOTTOM NAV */
-
-.bottom-nav{
-    border-top:1px solid #173b5d;
-    background:#071827;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    padding:7px 6px 8px;
-}
-
-.nav-btn{
-    border:0;
-    background:none;
-    color:#5f7e98;
-    padding:7px 2px;
-    font-size:7px;
-    font-weight:700;
-}
-
-.nav-icon{
-    font-size:14px;
-    display:block;
-    margin-bottom:3px;
-}
-
-.nav-btn.active{
-    color:#55aee9;
-}
-
-/* DETAIL */
-
-.detail-main{
-    background:#0a2137;
-    border:1px solid #183e60;
-    border-radius:16px;
-    padding:15px;
-    margin-bottom:12px;
-}
-
-.detail-name{
-    font-size:17px;
-    font-weight:800;
-}
-
-.detail-type{
-    color:#7194b4;
-    font-size:8px;
-    margin-top:4px;
-}
-
-.detail-stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:7px;
-    margin-top:15px;
-}
-
-.detail-stat{
-    background:#071827;
-    border-radius:10px;
-    padding:9px;
-}
-
-.detail-stat-label{
-    color:#6686a2;
-    font-size:7px;
-}
-
-.detail-stat-value{
-    font-size:11px;
-    font-weight:800;
-    margin-top:4px;
-}
-
-/* MONTHLY RECORD */
-
-.monthly-box{
-    background:#091e31;
-    border:1px solid #173c5a;
-    border-radius:13px;
-    padding:12px;
-}
-
-.monthly-row{
-    display:flex;
-    justify-content:space-between;
-    padding:7px 0;
-    border-bottom:1px solid #112f47;
-    font-size:9px;
-}
-
-.monthly-row:last-child{
-    border-bottom:0;
-}
-
-/* RESPONSIVE */
 
 @media(max-width:500px){
+
     body{
         padding:0;
-        background:#071727;
+        background:#071827;
     }
 
-    .app-window{
+    .app{
         max-width:none;
         height:100vh;
-        border-radius:0;
         border:0;
+        border-radius:0;
     }
 }
 </style>
@@ -571,656 +549,801 @@ button{
 
 <body>
 
-<div class="app-window">
+<div class="app">
 
-    <!-- TOP BAR -->
-    <div class="topbar">
-        <div class="logo">₱</div>
+<!-- TOP -->
+<div class="top">
 
-        <div class="brand">
-            <div class="brand-title">Liah's Fin.Track</div>
-            <div class="brand-sub">PERSONAL FINANCE SYSTEM</div>
-        </div>
+    <div class="logo">₱</div>
 
-        <div class="status">
-            <span class="status-dot"></span>
-            ONLINE
-        </div>
+    <div class="brand">
+        <div class="brand-name">Liah's Fin.Track</div>
+        <div class="brand-sub">PERSONAL FINANCE SYSTEM</div>
     </div>
 
-    <div class="content">
+    <div class="online">
+        <span class="dot"></span>
+        ONLINE
+    </div>
 
-        <!-- ================= HOME ================= -->
+</div>
 
-        <div id="page-home" class="page active">
 
-            <div class="page-title">Dashboard</div>
-            <div class="page-subtitle">Financial overview & monthly tracking</div>
+<div class="content">
 
-            <div class="grid">
+<!-- =====================================================
+HOME
+===================================================== -->
 
-                <div class="card">
-                    <div class="card-label">Expenses</div>
-                    <div class="card-value" id="dashExpenses">₱0.00</div>
-                    <div class="card-small">All expenses</div>
-                </div>
+<div id="page-home" class="page active">
 
-                <div class="card">
-                    <div class="card-label">Savings</div>
-                    <div class="card-value" id="dashSavings">₱0.00</div>
-                    <div class="card-small">Current savings</div>
-                </div>
+    <div class="title">Dashboard</div>
+    <div class="subtitle">
+        Financial overview & monthly tracking
+    </div>
 
-                <div class="card">
-                    <div class="card-label">Money Owed to Me</div>
-                    <div class="card-value" id="dashOwed">₱0.00</div>
-                    <div class="card-small">Remaining</div>
-                </div>
 
-                <div class="card">
-                    <div class="card-label">My Debts</div>
-                    <div class="card-value" id="dashMyDebt">₱0.00</div>
-                    <div class="card-small">Remaining</div>
-                </div>
+    <div class="grid">
 
+        <div class="card">
+            <div class="label">Expenses</div>
+            <div class="number red" id="dashExpenses">
+                ₱0.00
             </div>
-
-            <!-- QUICK ACTIONS -->
-
-            <div class="section">
-
-                <div class="section-header">
-                    <div class="section-title">Quick Actions</div>
-                </div>
-
-                <div class="grid">
-
-                    <button class="btn btn-primary"
-                        onclick="showPage('people')">
-                        + Utang
-                    </button>
-
-                    <button class="btn btn-primary"
-                        onclick="showPage('mydebts')">
-                        + My Debt
-                    </button>
-
-                    <button class="btn btn-secondary"
-                        onclick="showPage('expenses')">
-                        + Expense
-                    </button>
-
-                    <button class="btn btn-secondary"
-                        onclick="showPage('savings')">
-                        + Savings
-                    </button>
-
-                </div>
-
-            </div>
-
-            <!-- MONTHLY -->
-
-            <div class="section">
-
-                <div class="section-header">
-                    <div class="section-title">Monthly Tracking</div>
-                    <div class="section-action" id="selectedMonthLabel">
-                        Current
-                    </div>
-                </div>
-
-                <div class="month-grid" id="monthGrid"></div>
-
-            </div>
-
-            <div class="section">
-
-                <div class="section-header">
-                    <div class="section-title" id="monthlyTitle">
-                        Monthly Unpaid
-                    </div>
-                </div>
-
-                <div id="monthlyUnpaidList"></div>
-
-            </div>
-
         </div>
 
-
-        <!-- ================= PEOPLE ================= -->
-
-        <div id="page-people" class="page">
-
-            <button class="btn btn-secondary back-btn"
-                onclick="showPage('home')">
-                ← Back
-            </button>
-
-            <div class="page-title">Utang</div>
-            <div class="page-subtitle">
-                People who owe money to you
+        <div class="card">
+            <div class="label">Savings</div>
+            <div class="number green" id="dashSavings">
+                ₱0.00
             </div>
-
-            <button class="btn btn-primary btn-full"
-                onclick="showPage('add-person-debt')">
-                + Add Utang
-            </button>
-
-            <div class="section">
-
-                <div class="section-header">
-                    <div class="section-title">People</div>
-                </div>
-
-                <div id="peopleList"></div>
-
-            </div>
-
         </div>
 
-
-        <!-- ================= MY DEBTS ================= -->
-
-        <div id="page-mydebts" class="page">
-
-            <button class="btn btn-secondary back-btn"
-                onclick="showPage('home')">
-                ← Back
-            </button>
-
-            <div class="page-title">My Debts</div>
-            <div class="page-subtitle">
-                Money that you need to pay
+        <div class="card">
+            <div class="label">Money Owed to Me</div>
+            <div class="number blue" id="dashOwed">
+                ₱0.00
             </div>
-
-            <button class="btn btn-primary btn-full"
-                onclick="showPage('add-my-debt')">
-                + Add My Debt
-            </button>
-
-            <div class="section">
-
-                <div class="section-header">
-                    <div class="section-title">My Debt Accounts</div>
-                </div>
-
-                <div id="myDebtsList"></div>
-
-            </div>
-
         </div>
 
+        <div class="card">
+            <div class="label">My Debts</div>
+            <div class="number yellow" id="dashMyDebt">
+                ₱0.00
+            </div>
+        </div>
 
-        <!-- ================= ADD PERSON DEBT ================= -->
+    </div>
 
-        <div id="page-add-person-debt" class="page">
 
-            <button class="btn btn-secondary back-btn"
+    <!-- QUICK -->
+
+    <div class="section">
+
+        <div class="section-title">
+            Quick Actions
+        </div>
+
+        <div class="grid">
+
+            <button class="btn primary"
                 onclick="showPage('people')">
-                ← Back
+                👥 Add Utang
             </button>
 
-            <div class="page-title">Add Utang</div>
-            <div class="page-subtitle">
-                Record money owed to you
-            </div>
-
-            <form onsubmit="addPersonDebt(event)">
-
-                <div class="form-group">
-                    <label class="form-label">Person Name</label>
-                    <input
-                        class="form-input"
-                        id="personName"
-                        type="text"
-                        placeholder="Enter name"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Total Amount</label>
-                    <input
-                        class="form-input"
-                        id="personAmount"
-                        type="number"
-                        min="0.01"
-                        step="0.01"
-                        placeholder="0.00"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Monthly Payment</label>
-                    <input
-                        class="form-input"
-                        id="personMonthly"
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        placeholder="0.00">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Due Date</label>
-                    <input
-                        class="form-input"
-                        id="personDueDate"
-                        type="date"
-                        required>
-                </div>
-
-                <button class="btn btn-primary btn-full">
-                    Save Utang
-                </button>
-
-            </form>
-
-        </div>
-
-
-        <!-- ================= ADD MY DEBT ================= -->
-
-        <div id="page-add-my-debt" class="page">
-
-            <button class="btn btn-secondary back-btn"
+            <button class="btn primary"
                 onclick="showPage('mydebts')">
-                ← Back
+                💳 My Debts
             </button>
 
-            <div class="page-title">Add My Debt</div>
-            <div class="page-subtitle">
-                Record money that you need to pay
-            </div>
-
-            <form onsubmit="addMyDebt(event)">
-
-                <div class="form-group">
-                    <label class="form-label">Creditor / Account Name</label>
-                    <input
-                        class="form-input"
-                        id="myDebtName"
-                        type="text"
-                        placeholder="Enter name"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Total Amount</label>
-                    <input
-                        class="form-input"
-                        id="myDebtAmount"
-                        type="number"
-                        min="0.01"
-                        step="0.01"
-                        placeholder="0.00"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Monthly Payment</label>
-                    <input
-                        class="form-input"
-                        id="myDebtMonthly"
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        placeholder="0.00"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Due Date</label>
-                    <input
-                        class="form-input"
-                        id="myDebtDueDate"
-                        type="date"
-                        required>
-                </div>
-
-                <button class="btn btn-primary btn-full">
-                    Save My Debt
-                </button>
-
-            </form>
-
-        </div>
-
-
-        <!-- ================= PERSON DETAIL ================= -->
-
-        <div id="page-person-detail" class="page">
-
-            <button class="btn btn-secondary back-btn"
-                onclick="showPage('people')">
-                ← Back
-            </button>
-
-            <div id="personDetail"></div>
-
-        </div>
-
-
-        <!-- ================= MY DEBT DETAIL ================= -->
-
-        <div id="page-my-debt-detail" class="page">
-
-            <button class="btn btn-secondary back-btn"
-                onclick="showPage('mydebts')">
-                ← Back
-            </button>
-
-            <div id="myDebtDetail"></div>
-
-        </div>
-
-
-        <!-- ================= ADD PAYMENT ================= -->
-
-        <div id="page-add-payment" class="page">
-
-            <button class="btn btn-secondary back-btn"
-                onclick="goBackToDetail()">
-                ← Back
-            </button>
-
-            <div class="page-title">Add Payment</div>
-            <div class="page-subtitle" id="paymentSubtitle">
-                Record payment
-            </div>
-
-            <form onsubmit="savePayment(event)">
-
-                <div class="form-group">
-                    <label class="form-label">Payment Amount</label>
-
-                    <input
-                        class="form-input"
-                        id="paymentAmount"
-                        type="number"
-                        min="0.01"
-                        step="0.01"
-                        placeholder="0.00"
-                        required>
-                </div>
-
-                <button class="btn btn-success btn-full">
-                    Save Payment
-                </button>
-
-            </form>
-
-        </div>
-
-
-        <!-- ================= EXPENSES ================= -->
-
-        <div id="page-expenses" class="page">
-
-            <button class="btn btn-secondary back-btn"
-                onclick="showPage('home')">
-                ← Back
-            </button>
-
-            <div class="page-title">Expenses</div>
-            <div class="page-subtitle">
-                Track your spending
-            </div>
-
-            <button class="btn btn-primary btn-full"
-                onclick="showPage('add-expense')">
-                + Add Expense
-            </button>
-
-            <div class="section">
-                <div id="expenseList"></div>
-            </div>
-
-        </div>
-
-
-        <!-- ================= ADD EXPENSE ================= -->
-
-        <div id="page-add-expense" class="page">
-
-            <button class="btn btn-secondary back-btn"
+            <button class="btn"
                 onclick="showPage('expenses')">
-                ← Back
+                🧾 Expenses
             </button>
 
-            <div class="page-title">Add Expense</div>
-
-            <form onsubmit="addExpense(event)">
-
-                <div class="form-group">
-                    <label class="form-label">Description</label>
-                    <input
-                        class="form-input"
-                        id="expenseDescription"
-                        type="text"
-                        placeholder="Example: Food"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Amount</label>
-                    <input
-                        class="form-input"
-                        id="expenseAmount"
-                        type="number"
-                        min="0.01"
-                        step="0.01"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Category</label>
-
-                    <select
-                        class="form-select"
-                        id="expenseCategory">
-
-                        <option>Food</option>
-                        <option>Transportation</option>
-                        <option>Bills</option>
-                        <option>Shopping</option>
-                        <option>School</option>
-                        <option>Family</option>
-                        <option>Other</option>
-
-                    </select>
-
-                </div>
-
-                <button class="btn btn-primary btn-full">
-                    Save Expense
-                </button>
-
-            </form>
-
-        </div>
-
-
-        <!-- ================= SAVINGS ================= -->
-
-        <div id="page-savings" class="page">
-
-            <button class="btn btn-secondary back-btn"
-                onclick="showPage('home')">
-                ← Back
-            </button>
-
-            <div class="page-title">Savings</div>
-            <div class="page-subtitle">
-                Track your savings goals
-            </div>
-
-            <button class="btn btn-primary btn-full"
-                onclick="showPage('add-savings')">
-                + Add Savings Goal
-            </button>
-
-            <div class="section">
-                <div id="savingsList"></div>
-            </div>
-
-        </div>
-
-
-        <!-- ================= ADD SAVINGS ================= -->
-
-        <div id="page-add-savings" class="page">
-
-            <button class="btn btn-secondary back-btn"
+            <button class="btn"
                 onclick="showPage('savings')">
-                ← Back
+                💰 Savings
             </button>
-
-            <div class="page-title">Add Savings Goal</div>
-
-            <form onsubmit="addSavings(event)">
-
-                <div class="form-group">
-                    <label class="form-label">Goal Name</label>
-
-                    <input
-                        class="form-input"
-                        id="savingsName"
-                        type="text"
-                        placeholder="Example: Emergency Fund"
-                        required>
-
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Target Amount</label>
-
-                    <input
-                        class="form-input"
-                        id="savingsTarget"
-                        type="number"
-                        min="0.01"
-                        step="0.01"
-                        required>
-
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Current Amount</label>
-
-                    <input
-                        class="form-input"
-                        id="savingsCurrent"
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        value="0">
-
-                </div>
-
-                <button class="btn btn-primary btn-full">
-                    Save Goal
-                </button>
-
-            </form>
 
         </div>
 
     </div>
 
 
-    <!-- BOTTOM NAV -->
+    <!-- MONTHS -->
 
-    <div class="bottom-nav">
+    <div class="section">
 
-        <button
-            class="nav-btn active"
-            id="nav-home"
-            onclick="showPage('home')">
+        <div class="section-head">
+            <div class="section-title">
+                Monthly Tracking
+            </div>
 
-            <span class="nav-icon">⌂</span>
-            Home
+            <span
+                id="monthLabel"
+                class="blue"
+                style="font-size:8px;">
+            </span>
+        </div>
 
-        </button>
-
-        <button
-            class="nav-btn"
-            id="nav-people"
-            onclick="showPage('people')">
-
-            <span class="nav-icon">👥</span>
-            Utang
-
-        </button>
-
-        <button
-            class="nav-btn"
-            id="nav-mydebts"
-            onclick="showPage('mydebts')">
-
-            <span class="nav-icon">₱</span>
-            My Debts
-
-        </button>
-
-        <button
-            class="nav-btn"
-            id="nav-savings"
-            onclick="showPage('savings')">
-
-            <span class="nav-icon">▣</span>
-            Savings
-
-        </button>
+        <div
+            class="months"
+            id="monthGrid">
+        </div>
 
     </div>
 
-    <div id="toast" class="toast"></div>
+
+    <!-- MONTHLY UNPAID -->
+
+    <div class="section">
+
+        <div class="section-title">
+            Monthly Unpaid
+        </div>
+
+        <div id="monthlyList"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+PEOPLE
+===================================================== -->
+
+<div id="page-people" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('home')">
+        ← Back
+    </button>
+
+    <div class="title">Utang</div>
+
+    <div class="subtitle">
+        People who owe money to you
+    </div>
+
+    <button
+        class="btn primary full"
+        onclick="showPage('add-person')">
+        👤 + Add Utang
+    </button>
+
+    <div class="section">
+
+        <div class="section-title">
+            People
+        </div>
+
+        <div id="peopleList"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+MY DEBTS
+===================================================== -->
+
+<div id="page-mydebts" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('home')">
+        ← Back
+    </button>
+
+    <div class="title">My Debts</div>
+
+    <div class="subtitle">
+        Money that you need to pay
+    </div>
+
+    <button
+        class="btn primary full"
+        onclick="showPage('add-mydebt')">
+        💳 + Add My Debt
+    </button>
+
+    <div class="section">
+
+        <div class="section-title">
+            My Debt Accounts
+        </div>
+
+        <div id="myDebtList"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+ADD PERSON DEBT
+===================================================== -->
+
+<div id="page-add-person" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('people')">
+        ← Back
+    </button>
+
+    <div class="title">Add Utang</div>
+
+    <div class="subtitle">
+        Record money owed to you
+    </div>
+
+    <form onsubmit="addPersonDebt(event)">
+
+        <div class="form-group">
+            <label class="form-label">
+                Person Name
+            </label>
+
+            <input
+                id="personName"
+                class="input"
+                placeholder="Enter name"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">
+                Total Amount
+            </label>
+
+            <input
+                id="personAmount"
+                class="input"
+                type="number"
+                min="0.01"
+                step="0.01"
+                placeholder="0.00"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">
+                Monthly Payment
+            </label>
+
+            <input
+                id="personMonthly"
+                class="input"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="0.00">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">
+                Due Date
+            </label>
+
+            <input
+                id="personDue"
+                class="input"
+                type="date"
+                required>
+        </div>
+
+        <button class="btn primary full">
+            💾 Save Utang
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =====================================================
+ADD MY DEBT
+===================================================== -->
+
+<div id="page-add-mydebt" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('mydebts')">
+        ← Back
+    </button>
+
+    <div class="title">Add My Debt</div>
+
+    <div class="subtitle">
+        Record money that you need to pay
+    </div>
+
+    <form onsubmit="addMyDebt(event)">
+
+        <div class="form-group">
+            <label class="form-label">
+                Creditor / Account Name
+            </label>
+
+            <input
+                id="myDebtName"
+                class="input"
+                placeholder="Enter name"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">
+                Total Amount
+            </label>
+
+            <input
+                id="myDebtAmount"
+                class="input"
+                type="number"
+                min="0.01"
+                step="0.01"
+                placeholder="0.00"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">
+                Monthly Payment
+            </label>
+
+            <input
+                id="myDebtMonthly"
+                class="input"
+                type="number"
+                min="0.01"
+                step="0.01"
+                placeholder="0.00"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">
+                Due Date
+            </label>
+
+            <input
+                id="myDebtDue"
+                class="input"
+                type="date"
+                required>
+        </div>
+
+        <button class="btn primary full">
+            💾 Save My Debt
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =====================================================
+PERSON DETAIL
+===================================================== -->
+
+<div id="page-person-detail" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('people')">
+        ← Back
+    </button>
+
+    <div id="personDetail"></div>
+
+</div>
+
+
+<!-- =====================================================
+MY DEBT DETAIL
+===================================================== -->
+
+<div id="page-mydebt-detail" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('mydebts')">
+        ← Back
+    </button>
+
+    <div id="myDebtDetail"></div>
+
+</div>
+
+
+<!-- =====================================================
+PAYMENT
+===================================================== -->
+
+<div id="page-payment" class="page">
+
+    <button
+        class="btn back"
+        onclick="backFromPayment()">
+        ← Back
+    </button>
+
+    <div class="title">
+        Add Payment
+    </div>
+
+    <div
+        class="subtitle"
+        id="paymentSubtitle">
+    </div>
+
+    <form onsubmit="savePayment(event)">
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Payment Amount
+            </label>
+
+            <input
+                id="paymentAmount"
+                class="input"
+                type="number"
+                min="0.01"
+                step="0.01"
+                placeholder="0.00"
+                required>
+
+        </div>
+
+        <button
+            type="submit"
+            class="btn success full">
+            💵 Save Payment
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =====================================================
+EXPENSES
+===================================================== -->
+
+<div id="page-expenses" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('home')">
+        ← Back
+    </button>
+
+    <div class="title">Expenses</div>
+
+    <div class="subtitle">
+        Track your spending
+    </div>
+
+    <button
+        class="btn primary full"
+        onclick="showPage('add-expense')">
+        🧾 + Add Expense
+    </button>
+
+    <div class="section">
+
+        <div class="section-title">
+            Expense Records
+        </div>
+
+        <div id="expenseList"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+ADD EXPENSE
+===================================================== -->
+
+<div id="page-add-expense" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('expenses')">
+        ← Back
+    </button>
+
+    <div class="title">
+        Add Expense
+    </div>
+
+    <form onsubmit="addExpense(event)">
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Description
+            </label>
+
+            <input
+                id="expenseDescription"
+                class="input"
+                placeholder="Example: Food"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Amount
+            </label>
+
+            <input
+                id="expenseAmount"
+                class="input"
+                type="number"
+                min="0.01"
+                step="0.01"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Category
+            </label>
+
+            <select
+                id="expenseCategory"
+                class="select">
+
+                <option>Food</option>
+                <option>Transportation</option>
+                <option>Bills</option>
+                <option>Shopping</option>
+                <option>School</option>
+                <option>Family</option>
+                <option>Other</option>
+
+            </select>
+
+        </div>
+
+        <button class="btn primary full">
+            💾 Save Expense
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =====================================================
+SAVINGS
+===================================================== -->
+
+<div id="page-savings" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('home')">
+        ← Back
+    </button>
+
+    <div class="title">Savings</div>
+
+    <div class="subtitle">
+        Track your savings goals
+    </div>
+
+    <button
+        class="btn primary full"
+        onclick="showPage('add-savings')">
+        💰 + Add Savings Goal
+    </button>
+
+    <div class="section">
+
+        <div id="savingsList"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+ADD SAVINGS
+===================================================== -->
+
+<div id="page-add-savings" class="page">
+
+    <button
+        class="btn back"
+        onclick="showPage('savings')">
+        ← Back
+    </button>
+
+    <div class="title">
+        Add Savings Goal
+    </div>
+
+    <form onsubmit="addSavings(event)">
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Goal Name
+            </label>
+
+            <input
+                id="savingsName"
+                class="input"
+                placeholder="Example: Emergency Fund"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Target Amount
+            </label>
+
+            <input
+                id="savingsTarget"
+                class="input"
+                type="number"
+                min="0.01"
+                step="0.01"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Current Amount
+            </label>
+
+            <input
+                id="savingsCurrent"
+                class="input"
+                type="number"
+                min="0"
+                step="0.01"
+                value="0">
+
+        </div>
+
+        <button class="btn primary full">
+            💾 Save Goal
+        </button>
+
+    </form>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+BOTTOM NAV
+===================================================== -->
+
+<div class="nav">
+
+    <button
+        id="nav-home"
+        class="active"
+        onclick="showPage('home')">
+
+        <span class="nav-icon">🏠</span>
+        Home
+
+    </button>
+
+    <button
+        id="nav-people"
+        onclick="showPage('people')">
+
+        <span class="nav-icon">👥</span>
+        Utang
+
+    </button>
+
+    <button
+        id="nav-mydebts"
+        onclick="showPage('mydebts')">
+
+        <span class="nav-icon">💳</span>
+        My Debts
+
+    </button>
+
+    <button
+        id="nav-expenses"
+        onclick="showPage('expenses')">
+
+        <span class="nav-icon">🧾</span>
+        Expenses
+
+    </button>
+
+    <button
+        id="nav-savings"
+        onclick="showPage('savings')">
+
+        <span class="nav-icon">💰</span>
+        Savings
+
+    </button>
+
+</div>
+
+<div id="toast" class="toast"></div>
 
 </div>
 
 
 <script>
 
-/* =========================================================
-   DATA
-========================================================= */
+/* =====================================================
+DATA
+===================================================== */
 
-const STORAGE_KEY = "liahs_fintrack_data";
+const KEY = "liahs_fintrack_v6";
 
 let data = JSON.parse(
-    localStorage.getItem(STORAGE_KEY)
+    localStorage.getItem(KEY)
 ) || {
-    expenses: [],
-    debts: [],
-    myDebts: [],
-    savings: []
+    expenses:[],
+    debts:[],
+    myDebts:[],
+    savings:[]
 };
 
 
-/* =========================================================
-   SAVE
-========================================================= */
+/* =====================================================
+SAVE
+===================================================== */
 
-function saveData(){
+function save(){
 
     localStorage.setItem(
-        STORAGE_KEY,
+        KEY,
         JSON.stringify(data)
     );
 
-    refreshAll();
+    refresh();
+
 }
 
 
-/* =========================================================
-   MONEY
-========================================================= */
+/* =====================================================
+HELPERS
+===================================================== */
 
-function peso(amount){
+function id(){
 
-    return Number(amount || 0).toLocaleString(
+    return Date.now()+Math.random();
+
+}
+
+function peso(n){
+
+    return Number(n||0).toLocaleString(
         "en-PH",
         {
             style:"currency",
@@ -1230,14 +1353,11 @@ function peso(amount){
 
 }
 
-
-/* =========================================================
-   DATE
-========================================================= */
-
 function today(){
 
-    return new Date().toISOString().split("T")[0];
+    return new Date()
+        .toISOString()
+        .split("T")[0];
 
 }
 
@@ -1245,237 +1365,245 @@ function formatDate(date){
 
     if(!date) return "-";
 
-    return new Date(date).toLocaleDateString(
-        "en-PH",
-        {
-            month:"short",
-            day:"numeric",
-            year:"numeric"
-        }
-    );
+    return new Date(date)
+        .toLocaleDateString(
+            "en-PH",
+            {
+                month:"short",
+                day:"numeric",
+                year:"numeric"
+            }
+        );
+
+}
+
+function esc(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
-/* =========================================================
-   ID
-========================================================= */
+/* =====================================================
+TOAST
+===================================================== */
 
-function uid(){
+function toast(message,error=false){
 
-    return Date.now() + Math.random();
+    const el =
+        document.getElementById("toast");
 
-}
+    el.textContent=message;
 
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-function toast(message,type="success"){
-
-    const el = document.getElementById("toast");
-
-    el.textContent = message;
-
-    el.className = "toast show " + type;
+    el.className =
+        "toast show" +
+        (error ? " error":"");
 
     setTimeout(()=>{
-        el.className = "toast";
-    },2500);
+        el.className="toast";
+    },2300);
 
 }
 
 
-/* =========================================================
-   PAGE NAVIGATION
-========================================================= */
+/* =====================================================
+NAVIGATION
+===================================================== */
 
-let currentPage = "home";
+let currentPage="home";
 
 function showPage(page){
 
-    document.querySelectorAll(".page")
-        .forEach(p=>p.classList.remove("active"));
+    document
+        .querySelectorAll(".page")
+        .forEach(p=>{
+            p.classList.remove("active");
+        });
 
     const target =
         document.getElementById("page-"+page);
 
     if(target){
-
         target.classList.add("active");
-        currentPage = page;
-
     }
 
-    document.querySelectorAll(".nav-btn")
-        .forEach(btn=>btn.classList.remove("active"));
+    currentPage=page;
 
-    if(
-        page === "home" ||
-        page === "people" ||
-        page === "mydebts" ||
-        page === "savings"
-    ){
+    document
+        .querySelectorAll(".nav button")
+        .forEach(b=>{
+            b.classList.remove("active");
+        });
 
-        const nav =
-            document.getElementById("nav-"+page);
+    const nav =
+        document.getElementById("nav-"+page);
 
-        if(nav) nav.classList.add("active");
-
+    if(nav){
+        nav.classList.add("active");
     }
 
-    if(page==="add-person-debt"){
-        document.getElementById("personDueDate").value =
-            today();
-    }
-
-    if(page==="add-my-debt"){
-        document.getElementById("myDebtDueDate").value =
-            today();
-    }
-
-    refreshAll();
+    refresh();
 
 }
 
 
-/* =========================================================
-   MONTH
-========================================================= */
+/* =====================================================
+MONTH
+===================================================== */
 
-let selectedMonth = new Date().getMonth();
-
-const months = [
+const monthNames=[
     "JAN","FEB","MAR","APR",
     "MAY","JUN","JUL","AUG",
     "SEP","OCT","NOV","DEC"
 ];
+
+let selectedMonth =
+    new Date().getMonth();
 
 function renderMonths(){
 
     const grid =
         document.getElementById("monthGrid");
 
-    grid.innerHTML = "";
+    grid.innerHTML="";
 
-    months.forEach((month,index)=>{
+    monthNames.forEach((month,index)=>{
 
-        const btn =
+        const button =
             document.createElement("button");
 
-        btn.className =
-            "month-btn " +
-            (index===selectedMonth ? "active":"");
+        button.className =
+            "month" +
+            (index===selectedMonth
+                ? " active":"");
 
-        btn.textContent = month;
+        button.textContent=month;
 
-        btn.onclick = function(){
+        button.onclick=()=>{
 
-            selectedMonth = index;
+            selectedMonth=index;
 
             renderMonths();
-            renderMonthlyUnpaid();
+            renderMonthly();
 
         };
 
-        grid.appendChild(btn);
+        grid.appendChild(button);
 
     });
 
-    document.getElementById("selectedMonthLabel")
+    document.getElementById("monthLabel")
         .textContent =
-        months[selectedMonth] + " " +
+        monthNames[selectedMonth]+" "+
         new Date().getFullYear();
 
 }
 
 
-/* =========================================================
-   MONTH MATCH
-========================================================= */
+/* =====================================================
+STATUS
+===================================================== */
 
-function sameMonth(date,month){
-
-    if(!date) return false;
-
-    const d = new Date(date);
-
-    return (
-        d.getMonth() === month &&
-        d.getFullYear() === new Date().getFullYear()
-    );
-
-}
-
-
-/* =========================================================
-   DEBT STATUS
-========================================================= */
-
-function debtStatus(debt){
+function status(debt){
 
     const total =
-        Number(debt.amount || 0);
+        Number(debt.amount||0);
 
     const paid =
-        Number(debt.paidAmount || 0);
+        Number(debt.paidAmount||0);
 
-    if(paid >= total){
-        return "paid";
-    }
+    if(paid>=total) return "paid";
 
-    if(paid > 0){
-        return "partial";
-    }
+    if(paid>0) return "partial";
 
     return "unpaid";
 
 }
 
+function badge(debt){
 
-function statusBadge(debt){
+    const s=status(debt);
 
-    const status = debtStatus(debt);
+    if(s==="paid")
+        return `<span class="badge paid">PAID</span>`;
 
-    if(status==="paid"){
-        return `<span class="badge badge-paid">PAID</span>`;
-    }
+    if(s==="partial")
+        return `<span class="badge partial">PARTIAL</span>`;
 
-    if(status==="partial"){
-        return `<span class="badge badge-partial">PARTIAL</span>`;
-    }
-
-    return `<span class="badge badge-unpaid">UNPAID</span>`;
+    return `<span class="badge unpaid">UNPAID</span>`;
 
 }
 
-
-function progress(debt){
+function percent(debt){
 
     const total =
-        Number(debt.amount || 0);
+        Number(debt.amount||0);
 
     const paid =
-        Number(debt.paidAmount || 0);
+        Number(debt.paidAmount||0);
 
     if(total<=0) return 0;
 
     return Math.min(
         100,
-        Math.round((paid/total)*100)
+        Math.round(paid/total*100)
     );
 
 }
 
 
-/* =========================================================
-   ADD UTANG
-========================================================= */
+/* =====================================================
+PIE
+===================================================== */
 
-function addPersonDebt(event){
+function pie(percentValue){
 
-    event.preventDefault();
+    const degrees =
+        Math.round(percentValue*3.6);
+
+    return `
+        <div
+            class="pie"
+            style="
+                background:
+                conic-gradient(
+                    #36a9e8 0deg,
+                    #36a9e8 ${degrees}deg,
+                    #10283c ${degrees}deg,
+                    #10283c 360deg
+                );
+            ">
+
+            <div class="pie-inner">
+
+                <div class="pie-percent">
+                    ${percentValue}%
+                </div>
+
+                <div class="pie-label">
+                    PAID
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
+
+/* =====================================================
+ADD PERSON DEBT
+===================================================== */
+
+function addPersonDebt(e){
+
+    e.preventDefault();
 
     const name =
         document.getElementById("personName")
@@ -1493,47 +1621,46 @@ function addPersonDebt(event){
                 .value || 0
         );
 
-    const dueDate =
-        document.getElementById("personDueDate")
+    const due =
+        document.getElementById("personDue")
             .value;
 
     if(!name){
 
-        toast("Please enter a person name.","error");
-        return;
+        toast(
+            "Please enter the person's name.",
+            true
+        );
 
+        return;
     }
 
     if(amount<=0){
 
-        toast("Please enter a valid amount.","error");
-        return;
+        toast(
+            "Please enter a valid amount.",
+            true
+        );
 
+        return;
     }
 
     data.debts.push({
 
-        id:uid(),
-
+        id:id(),
         person:name,
-
         amount:amount,
-
-        monthlyPayment:monthly,
-
         paidAmount:0,
-
-        dueDate:dueDate,
-
+        monthlyPayment:monthly,
+        dueDate:due,
         date:today(),
-
         payments:[]
 
     });
 
-    saveData();
+    save();
 
-    event.target.reset();
+    e.target.reset();
 
     toast("Utang successfully saved.");
 
@@ -1542,33 +1669,32 @@ function addPersonDebt(event){
 }
 
 
-/* =========================================================
-   PEOPLE LIST
-========================================================= */
+/* =====================================================
+PEOPLE LIST
+===================================================== */
 
 function renderPeople(){
 
-    const container =
+    const box =
         document.getElementById("peopleList");
 
     if(!data.debts.length){
 
-        container.innerHTML =
+        box.innerHTML=
             `<div class="empty">
                 No Utang records yet.
             </div>`;
 
         return;
-
     }
 
-    const names = [
+    const names=[
         ...new Set(
             data.debts.map(d=>d.person)
         )
     ].sort();
 
-    container.innerHTML = "";
+    box.innerHTML="";
 
     names.forEach(name=>{
 
@@ -1579,101 +1705,131 @@ function renderPeople(){
 
         const total =
             records.reduce(
-                (sum,d)=>sum+Number(d.amount||0),
+                (s,d)=>s+Number(d.amount||0),
                 0
             );
 
         const paid =
             records.reduce(
-                (sum,d)=>sum+Number(d.paidAmount||0),
+                (s,d)=>s+Number(d.paidAmount||0),
                 0
             );
 
         const remaining =
             Math.max(0,total-paid);
 
-        const percent =
+        const pct =
             total>0
-                ? Math.round((paid/total)*100)
-                : 0;
+            ? Math.round(paid/total*100)
+            : 0;
 
-        const div =
-            document.createElement("div");
+        const encoded =
+            encodeURIComponent(name);
 
-        div.className="list-item";
+        box.innerHTML+=`
 
-        div.innerHTML=`
+            <div class="item">
 
-            <div class="item-top">
+                <div class="account-row">
 
-                <div>
-                    <div class="item-name">
-                        ${escapeHtml(name)}
+                    ${pie(pct)}
+
+                    <div class="account-info">
+
+                        <div class="item-name">
+                            ${esc(name)}
+                        </div>
+
+                        <div class="item-meta">
+                            ${records.length}
+                            record${records.length!==1?"s":""}
+                        </div>
+
+                        <div
+                            style="
+                            margin-top:7px;
+                            font-size:10px;
+                            font-weight:800;
+                            "
+                            class="blue">
+
+                            ${peso(remaining)}
+
+                        </div>
+
                     </div>
 
-                    <div class="item-meta">
-                        ${records.length} debt record${records.length>1?"s":""}
+                </div>
+
+                <div class="progress-box">
+
+                    <div class="progress-info">
+
+                        <span>
+                            <span class="green">
+                                ${peso(paid)}
+                            </span>
+                            paid
+                        </span>
+
+                        <span>
+                            <span class="red">
+                                ${peso(remaining)}
+                            </span>
+                            remaining
+                        </span>
+
                     </div>
-                </div>
 
-                <div class="item-amount">
-                    ${peso(remaining)}
-                </div>
+                    <div class="progress">
 
-            </div>
+                        <div
+                            class="bar"
+                            style="width:${pct}%">
+                        </div>
 
-            <div class="progress-wrap">
-
-                <div class="progress-info">
-                    <span>${percent}% Paid</span>
-                    <span>
-                        ${peso(paid)} / ${peso(total)}
-                    </span>
-                </div>
-
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:${percent}%">
                     </div>
+
                 </div>
 
-            </div>
+                <div class="actions">
 
-            <div class="item-actions">
+                    <button
+                        class="btn primary"
+                        onclick="openPerson('${encoded}')">
 
-                <button
-                    class="btn btn-primary"
-                    onclick='openPerson("${encodeURIComponent(name)}")'>
-                    View Account
-                </button>
+                        👤 View Account
 
-                <button
-                    class="btn btn-danger"
-                    onclick='deletePerson("${encodeURIComponent(name)}")'>
-                    Delete
-                </button>
+                    </button>
+
+                    <button
+                        class="btn danger"
+                        onclick="deletePerson('${encoded}')">
+
+                        🗑️ Delete
+
+                    </button>
+
+                </div>
 
             </div>
         `;
-
-        container.appendChild(div);
 
     });
 
 }
 
 
-/* =========================================================
-   PERSON DETAIL
-========================================================= */
+/* =====================================================
+PERSON DETAIL
+===================================================== */
 
-let selectedPerson = null;
+let selectedPerson=null;
 
-function openPerson(encodedName){
+function openPerson(encoded){
 
     selectedPerson =
-        decodeURIComponent(encodedName);
+        decodeURIComponent(encoded);
 
     renderPersonDetail();
 
@@ -1684,11 +1840,9 @@ function openPerson(encodedName){
 
 function renderPersonDetail(){
 
-    const name = selectedPerson;
-
     const records =
         data.debts.filter(
-            d=>d.person===name
+            d=>d.person===selectedPerson
         );
 
     const total =
@@ -1706,85 +1860,106 @@ function renderPersonDetail(){
     const remaining =
         Math.max(0,total-paid);
 
-    const percent =
+    const pct =
         total>0
-            ? Math.round((paid/total)*100)
-            : 0;
+        ? Math.round(paid/total*100)
+        :0;
 
-    let html = `
+    let html=`
 
-        <div class="detail-main">
+        <div class="item">
 
-            <div class="detail-name">
-                ${escapeHtml(name)}
-            </div>
+            <div class="account-row">
 
-            <div class="detail-type">
-                Money owed to you
-            </div>
+                ${pie(pct)}
 
-            <div class="detail-stats">
+                <div>
 
-                <div class="detail-stat">
-                    <div class="detail-stat-label">
-                        TOTAL
+                    <div class="title">
+                        ${esc(selectedPerson)}
                     </div>
-                    <div class="detail-stat-value">
+
+                    <div class="item-meta">
+                        Money owed to you
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="grid"
+                style="margin-top:15px;">
+
+                <div class="card">
+
+                    <div class="label">
+                        Total
+                    </div>
+
+                    <div class="number blue">
                         ${peso(total)}
                     </div>
+
                 </div>
 
-                <div class="detail-stat">
-                    <div class="detail-stat-label">
-                        PAID
+                <div class="card">
+
+                    <div class="label">
+                        Paid
                     </div>
-                    <div class="detail-stat-value">
+
+                    <div class="number green">
                         ${peso(paid)}
                     </div>
+
                 </div>
 
-                <div class="detail-stat">
-                    <div class="detail-stat-label">
-                        REMAINING
+                <div class="card">
+
+                    <div class="label">
+                        Remaining
                     </div>
-                    <div class="detail-stat-value">
+
+                    <div class="number red">
                         ${peso(remaining)}
                     </div>
+
                 </div>
 
-            </div>
+                <div class="card">
 
-            <div class="progress-wrap">
-
-                <div class="progress-info">
-                    <span>${percent}% Paid</span>
-                    <span>${statusText(total,paid)}</span>
-                </div>
-
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:${percent}%">
+                    <div class="label">
+                        Progress
                     </div>
+
+                    <div class="number yellow">
+                        ${pct}%
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
 
-        <button
-            class="btn btn-success btn-full"
-            onclick="openPaymentPage('person')"
-            ${remaining<=0?"disabled":""}>
-            + Add Payment
-        </button>
+        <div class="section">
+
+            <button
+                type="button"
+                class="btn success full"
+                onclick="startPayment('person')"
+                ${remaining<=0?"disabled":""}>
+
+                💵 Add Payment
+
+            </button>
+
+        </div>
 
         <div class="section">
 
-            <div class="section-header">
-                <div class="section-title">
-                    Debt Records
-                </div>
+            <div class="section-title">
+                Debt Records
             </div>
 
             <div class="list">
@@ -1792,318 +1967,131 @@ function renderPersonDetail(){
 
     records.forEach(debt=>{
 
-        html += debtCard(debt,"person");
+        html+=`
+
+            <div class="item">
+
+                <div class="item-top">
+
+                    <div>
+
+                        <div class="item-name">
+                            Utang
+                        </div>
+
+                        <div class="item-meta">
+                            📅 Due:
+                            ${formatDate(debt.dueDate)}
+                        </div>
+
+                        <div class="item-meta">
+                            📆 Monthly:
+                            <span class="yellow">
+                                ${peso(debt.monthlyPayment)}
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        ${badge(debt)}
+                    </div>
+
+                </div>
+
+                <div class="progress-box">
+
+                    <div class="progress-info">
+
+                        <span>
+                            ${percent(debt)}% Paid
+                        </span>
+
+                        <span>
+                            ${peso(
+                                Math.max(
+                                    0,
+                                    debt.amount-debt.paidAmount
+                                )
+                            )}
+                            left
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div
+                            class="bar"
+                            style="width:${percent(debt)}%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="actions">
+
+                    ${
+                        status(debt)!=="paid"
+                        ?
+                        `
+                        <button
+                            type="button"
+                            class="btn success"
+                            onclick="startPaymentForDebt('${debt.id}','person')">
+
+                            💵 Add Payment
+
+                        </button>
+                        `
+                        :""
+                    }
+
+                    <button
+                        type="button"
+                        class="btn danger"
+                        onclick="deleteDebt('${debt.id}','person')">
+
+                        🗑️ Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
 
     });
 
-    html += `
+    html+=`
+
             </div>
+
         </div>
 
         <div class="section">
 
-            <div class="section-header">
-                <div class="section-title">
-                    Payment History
-                </div>
+            <div class="section-title">
+                Payment History
             </div>
 
             ${paymentHistory(records)}
 
         </div>
+
     `;
 
     document.getElementById("personDetail")
-        .innerHTML = html;
+        .innerHTML=html;
 
 }
 
 
-function statusText(total,paid){
-
-    if(paid>=total) return "PAID";
-
-    if(paid>0) return "PARTIAL";
-
-    return "UNPAID";
-
-}
-
-
-/* =========================================================
-   DEBT CARD
-========================================================= */
-
-function debtCard(debt,type){
-
-    const percent =
-        progress(debt);
-
-    const remaining =
-        Math.max(
-            0,
-            Number(debt.amount||0) -
-            Number(debt.paidAmount||0)
-        );
-
-    return `
-
-        <div class="list-item">
-
-            <div class="item-top">
-
-                <div>
-
-                    <div class="item-name">
-                        ${type==="person" ? "Utang" : "Debt"}
-                    </div>
-
-                    <div class="item-meta">
-                        Due: ${formatDate(debt.dueDate)}
-                    </div>
-
-                    ${
-                        debt.monthlyPayment
-                        ?
-                        `<div class="item-meta">
-                            Monthly: ${peso(debt.monthlyPayment)}
-                        </div>`
-                        :""
-                    }
-
-                </div>
-
-                <div>
-                    ${statusBadge(debt)}
-                </div>
-
-            </div>
-
-            <div class="progress-wrap">
-
-                <div class="progress-info">
-                    <span>${percent}% Paid</span>
-                    <span>${peso(remaining)} left</span>
-                </div>
-
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:${percent}%">
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="item-actions">
-
-                ${
-                    remaining>0
-                    ?
-                    `<button
-                        class="btn btn-success"
-                        onclick="openPaymentForDebt('${debt.id}')">
-                        Add Payment
-                    </button>`
-                    :""
-                }
-
-                <button
-                    class="btn btn-danger"
-                    onclick="deleteDebt('${debt.id}','${type}')">
-                    Delete
-                </button>
-
-            </div>
-
-        </div>
-    `;
-
-}
-
-
-/* =========================================================
-   PAYMENT PAGE
-========================================================= */
-
-let paymentType = null;
-
-function openPaymentPage(type){
-
-    paymentType = type;
-
-    document.getElementById("paymentSubtitle")
-        .textContent =
-        type==="person"
-        ? selectedPerson
-        : selectedMyDebtName;
-
-    document.getElementById("paymentAmount")
-        .value="";
-
-    showPage("add-payment");
-
-}
-
-
-let selectedDebtId = null;
-
-function openPaymentForDebt(id){
-
-    selectedDebtId = id;
-
-    const debt =
-        data.debts.find(
-            d=>String(d.id)===String(id)
-        );
-
-    if(!debt) return;
-
-    paymentType="person";
-
-    document.getElementById("paymentSubtitle")
-        .textContent =
-        `${selectedPerson} — Remaining ${peso(
-            debt.amount-debt.paidAmount
-        )}`;
-
-    document.getElementById("paymentAmount")
-        .value="";
-
-    showPage("add-payment");
-
-}
-
-
-function openPaymentForMyDebt(id){
-
-    selectedDebtId=id;
-
-    const debt =
-        data.myDebts.find(
-            d=>String(d.id)===String(id)
-        );
-
-    if(!debt) return;
-
-    paymentType="mydebt";
-
-    document.getElementById("paymentSubtitle")
-        .textContent =
-        `${selectedMyDebtName} — Remaining ${peso(
-            debt.amount-debt.paidAmount
-        )}`;
-
-    document.getElementById("paymentAmount")
-        .value="";
-
-    showPage("add-payment");
-
-}
-
-
-/* =========================================================
-   SAVE PAYMENT
-========================================================= */
-
-function savePayment(event){
-
-    event.preventDefault();
-
-    const amount =
-        Number(
-            document.getElementById("paymentAmount")
-                .value
-        );
-
-    if(amount<=0){
-
-        toast(
-            "Please enter a valid payment amount.",
-            "error"
-        );
-
-        return;
-
-    }
-
-    let debt;
-
-    if(paymentType==="person"){
-
-        debt =
-            data.debts.find(
-                d=>String(d.id)===String(selectedDebtId)
-            );
-
-    }else{
-
-        debt =
-            data.myDebts.find(
-                d=>String(d.id)===String(selectedDebtId)
-            );
-
-    }
-
-    if(!debt){
-
-        toast("Debt record not found.","error");
-        return;
-
-    }
-
-    const remaining =
-        Number(debt.amount) -
-        Number(debt.paidAmount||0);
-
-    if(amount>remaining){
-
-        toast(
-            `Payment cannot exceed ${peso(remaining)}.`,
-            "error"
-        );
-
-        return;
-
-    }
-
-    debt.paidAmount =
-        Number(debt.paidAmount||0) + amount;
-
-    if(!debt.payments){
-        debt.payments=[];
-    }
-
-    debt.payments.push({
-
-        id:uid(),
-        amount:amount,
-        date:today()
-
-    });
-
-    saveData();
-
-    toast("Payment successfully saved.");
-
-    if(paymentType==="person"){
-
-        renderPersonDetail();
-        showPage("person-detail");
-
-    }else{
-
-        renderMyDebtDetail();
-        showPage("my-debt-detail");
-
-    }
-
-}
-
-
-/* =========================================================
-   PAYMENT HISTORY
-========================================================= */
+/* =====================================================
+PAYMENT HISTORY
+===================================================== */
 
 function paymentHistory(records){
 
@@ -2114,10 +2102,8 @@ function paymentHistory(records){
         (debt.payments||[]).forEach(payment=>{
 
             payments.push({
-
                 amount:payment.amount,
                 date:payment.date
-
             });
 
         });
@@ -2126,7 +2112,8 @@ function paymentHistory(records){
 
     payments.sort(
         (a,b)=>
-        new Date(b.date)-new Date(a.date)
+        new Date(b.date)-
+        new Date(a.date)
     );
 
     if(!payments.length){
@@ -2140,27 +2127,28 @@ function paymentHistory(records){
     }
 
     return `
-
         <div class="list">
 
-            ${payments.map(payment=>`
+            ${payments.map(p=>`
 
-                <div class="list-item">
+                <div class="item">
 
                     <div class="item-top">
 
                         <div>
+
                             <div class="item-name">
-                                Payment
+                                💵 Payment
                             </div>
 
                             <div class="item-meta">
-                                ${formatDate(payment.date)}
+                                ${formatDate(p.date)}
                             </div>
+
                         </div>
 
-                        <div class="item-amount">
-                            ${peso(payment.amount)}
+                        <div class="item-money green">
+                            +${peso(p.amount)}
                         </div>
 
                     </div>
@@ -2175,17 +2163,275 @@ function paymentHistory(records){
 }
 
 
-/* =========================================================
-   DELETE PERSON
-========================================================= */
+/* =====================================================
+PAYMENT STATE
+===================================================== */
 
-function deletePerson(encodedName){
+let paymentType=null;
+let paymentDebtId=null;
+let paymentParent=null;
+
+function startPayment(type){
+
+    paymentType=type;
+    paymentDebtId=null;
+
+    if(type==="person"){
+
+        paymentParent="person";
+
+        document.getElementById("paymentSubtitle")
+            .textContent=
+            selectedPerson;
+
+    }else{
+
+        paymentParent="mydebt";
+
+        document.getElementById("paymentSubtitle")
+            .textContent=
+            selectedMyDebtName;
+
+    }
+
+    document.getElementById("paymentAmount")
+        .value="";
+
+    showPage("payment");
+
+}
+
+
+function startPaymentForDebt(idValue,type){
+
+    paymentType=type;
+    paymentDebtId=idValue;
+
+    let debt;
+
+    if(type==="person"){
+
+        debt=data.debts.find(
+            d=>String(d.id)===String(idValue)
+        );
+
+        paymentParent="person";
+
+    }else{
+
+        debt=data.myDebts.find(
+            d=>String(d.id)===String(idValue)
+        );
+
+        paymentParent="mydebt";
+
+    }
+
+    if(!debt){
+
+        toast(
+            "Debt record not found.",
+            true
+        );
+
+        return;
+
+    }
+
+    const remaining =
+        Math.max(
+            0,
+            Number(debt.amount)-
+            Number(debt.paidAmount||0)
+        );
+
+    document.getElementById("paymentSubtitle")
+        .textContent=
+        `Remaining: ${peso(remaining)}`;
+
+    document.getElementById("paymentAmount")
+        .value="";
+
+    showPage("payment");
+
+}
+
+
+/* =====================================================
+SAVE PAYMENT
+===================================================== */
+
+function savePayment(e){
+
+    e.preventDefault();
+
+    const amount =
+        Number(
+            document.getElementById("paymentAmount")
+                .value
+        );
+
+    if(amount<=0){
+
+        toast(
+            "Please enter a valid payment amount.",
+            true
+        );
+
+        return;
+
+    }
+
+    let debt;
+
+    if(paymentType==="person"){
+
+        if(paymentDebtId){
+
+            debt=data.debts.find(
+                d=>String(d.id)===String(paymentDebtId)
+            );
+
+        }else{
+
+            debt=data.debts
+                .filter(
+                    d=>d.person===selectedPerson
+                )
+                .sort(
+                    (a,b)=>
+                    new Date(a.date)-
+                    new Date(b.date)
+                )
+                .find(
+                    d=>
+                    Number(d.paidAmount||0)<
+                    Number(d.amount||0)
+                );
+
+        }
+
+    }else{
+
+        if(paymentDebtId){
+
+            debt=data.myDebts.find(
+                d=>String(d.id)===String(paymentDebtId)
+            );
+
+        }else{
+
+            debt=data.myDebts
+                .filter(
+                    d=>d.name===selectedMyDebtName
+                )
+                .sort(
+                    (a,b)=>
+                    new Date(a.date)-
+                    new Date(b.date)
+                )
+                .find(
+                    d=>
+                    Number(d.paidAmount||0)<
+                    Number(d.amount||0)
+                );
+
+        }
+
+    }
+
+    if(!debt){
+
+        toast(
+            "No unpaid debt record found.",
+            true
+        );
+
+        return;
+
+    }
+
+    const remaining =
+        Number(debt.amount)-
+        Number(debt.paidAmount||0);
+
+    if(amount>remaining){
+
+        toast(
+            `Payment cannot exceed ${peso(remaining)}.`,
+            true
+        );
+
+        return;
+
+    }
+
+    debt.paidAmount =
+        Number(debt.paidAmount||0)+amount;
+
+    if(!debt.payments){
+        debt.payments=[];
+    }
+
+    debt.payments.push({
+
+        id:id(),
+        amount:amount,
+        date:today()
+
+    });
+
+    save();
+
+    toast("Payment successfully saved.");
+
+    if(paymentType==="person"){
+
+        renderPersonDetail();
+        showPage("person-detail");
+
+    }else{
+
+        renderMyDebtDetail();
+        showPage("mydebt-detail");
+
+    }
+
+}
+
+
+/* =====================================================
+BACK PAYMENT
+===================================================== */
+
+function backFromPayment(){
+
+    if(paymentType==="person"){
+
+        renderPersonDetail();
+        showPage("person-detail");
+
+    }else{
+
+        renderMyDebtDetail();
+        showPage("mydebt-detail");
+
+    }
+
+}
+
+
+/* =====================================================
+DELETE PERSON
+===================================================== */
+
+function deletePerson(encoded){
 
     const name =
-        decodeURIComponent(encodedName);
+        decodeURIComponent(encoded);
 
     if(!confirm(
-        `Delete all Utang records for ${name}?`
+        `Delete all records for ${name}?`
     )) return;
 
     data.debts =
@@ -2193,27 +2439,31 @@ function deletePerson(encodedName){
             d=>d.person!==name
         );
 
-    saveData();
+    save();
 
     toast("Records deleted.");
 
 }
 
 
-/* =========================================================
-   DELETE DEBT
-========================================================= */
+/* =====================================================
+DELETE DEBT
+===================================================== */
 
-function deleteDebt(id,type){
+function deleteDebt(idValue,type){
 
-    if(!confirm("Delete this debt record?")) return;
+    if(!confirm(
+        "Delete this debt record?"
+    )) return;
 
     if(type==="person"){
 
         data.debts =
             data.debts.filter(
-                d=>String(d.id)!==String(id)
+                d=>String(d.id)!==String(idValue)
             );
+
+        save();
 
         renderPersonDetail();
 
@@ -2221,27 +2471,29 @@ function deleteDebt(id,type){
 
         data.myDebts =
             data.myDebts.filter(
-                d=>String(d.id)!==String(id)
+                d=>String(d.id)!==String(idValue)
             );
+
+        save();
 
         renderMyDebtDetail();
 
     }
-
-    saveData();
 
     toast("Debt record deleted.");
 
 }
 
 
-/* =========================================================
-   MY DEBTS
-========================================================= */
+/* =====================================================
+MY DEBT
+===================================================== */
 
-function addMyDebt(event){
+let selectedMyDebtName=null;
 
-    event.preventDefault();
+function addMyDebt(e){
+
+    e.preventDefault();
 
     const name =
         document.getElementById("myDebtName")
@@ -2256,18 +2508,18 @@ function addMyDebt(event){
     const monthly =
         Number(
             document.getElementById("myDebtMonthly")
-                .value || 0
+                .value
         );
 
-    const dueDate =
-        document.getElementById("myDebtDueDate")
+    const due =
+        document.getElementById("myDebtDue")
             .value;
 
     if(!name){
 
         toast(
             "Please enter an account name.",
-            "error"
+            true
         );
 
         return;
@@ -2278,7 +2530,7 @@ function addMyDebt(event){
 
         toast(
             "Please enter a valid amount.",
-            "error"
+            true
         );
 
         return;
@@ -2287,27 +2539,20 @@ function addMyDebt(event){
 
     data.myDebts.push({
 
-        id:uid(),
-
+        id:id(),
         name:name,
-
         amount:amount,
-
-        monthlyPayment:monthly,
-
         paidAmount:0,
-
-        dueDate:dueDate,
-
+        monthlyPayment:monthly,
+        dueDate:due,
         date:today(),
-
         payments:[]
 
     });
 
-    saveData();
+    save();
 
-    event.target.reset();
+    e.target.reset();
 
     toast("My debt successfully saved.");
 
@@ -2318,12 +2563,12 @@ function addMyDebt(event){
 
 function renderMyDebts(){
 
-    const container =
-        document.getElementById("myDebtsList");
+    const box =
+        document.getElementById("myDebtList");
 
     if(!data.myDebts.length){
 
-        container.innerHTML =
+        box.innerHTML=
             `<div class="empty">
                 No personal debt records yet.
             </div>`;
@@ -2332,111 +2577,153 @@ function renderMyDebts(){
 
     }
 
-    container.innerHTML="";
+    box.innerHTML="";
 
-    data.myDebts.forEach(debt=>{
+    const names=[
+        ...new Set(
+            data.myDebts.map(d=>d.name)
+        )
+    ].sort();
 
-        const remaining =
-            Math.max(
-                0,
-                debt.amount -
-                Number(debt.paidAmount||0)
+    names.forEach(name=>{
+
+        const records =
+            data.myDebts.filter(
+                d=>d.name===name
             );
 
-        const div =
-            document.createElement("div");
+        const total =
+            records.reduce(
+                (s,d)=>s+Number(d.amount||0),
+                0
+            );
 
-        div.className="list-item";
+        const paid =
+            records.reduce(
+                (s,d)=>s+Number(d.paidAmount||0),
+                0
+            );
 
-        div.innerHTML=`
+        const remaining =
+            Math.max(0,total-paid);
 
-            <div class="item-top">
+        const pct =
+            total>0
+            ? Math.round(paid/total*100)
+            :0;
 
-                <div>
+        box.innerHTML+=`
 
-                    <div class="item-name">
-                        ${escapeHtml(debt.name)}
-                    </div>
+            <div class="item">
 
-                    <div class="item-meta">
-                        Due: ${formatDate(debt.dueDate)}
-                    </div>
+                <div class="account-row">
 
-                    <div class="item-meta">
-                        Monthly:
-                        ${peso(debt.monthlyPayment)}
+                    ${pie(pct)}
+
+                    <div class="account-info">
+
+                        <div class="item-name">
+                            ${esc(name)}
+                        </div>
+
+                        <div class="item-meta">
+                            ${records.length}
+                            record${records.length!==1?"s":""}
+                        </div>
+
+                        <div
+                            class="yellow"
+                            style="
+                            margin-top:7px;
+                            font-size:11px;
+                            font-weight:800;
+                            ">
+
+                            ${peso(remaining)}
+
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div class="item-amount">
-                    ${peso(remaining)}
+                <div class="progress-box">
+
+                    <div class="progress-info">
+
+                        <span>
+                            <span class="green">
+                                ${peso(paid)}
+                            </span>
+                            paid
+                        </span>
+
+                        <span>
+                            <span class="red">
+                                ${peso(remaining)}
+                            </span>
+                            remaining
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div
+                            class="bar"
+                            style="width:${pct}%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="actions">
+
+                    <button
+                        class="btn primary"
+                        onclick='openMyDebt("${encodeURIComponent(name)}")'>
+
+                        💳 View Account
+
+                    </button>
+
+                    <button
+                        class="btn danger"
+                        onclick='deleteMyDebtPerson("${encodeURIComponent(name)}")'>
+
+                        🗑️ Delete
+
+                    </button>
+
                 </div>
 
             </div>
 
-            <div class="progress-wrap">
-
-                <div class="progress-info">
-                    <span>${progress(debt)}% Paid</span>
-                    ${statusBadge(debt)}
-                </div>
-
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:${progress(debt)}%">
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="item-actions">
-
-                <button
-                    class="btn btn-primary"
-                    onclick='openMyDebt("${encodeURIComponent(debt.name)}")'>
-                    View Account
-                </button>
-
-                <button
-                    class="btn btn-danger"
-                    onclick="deleteDebt('${debt.id}','mydebt')">
-                    Delete
-                </button>
-
-            </div>
         `;
-
-        container.appendChild(div);
 
     });
 
 }
 
 
-let selectedMyDebtName=null;
-
-function openMyDebt(encodedName){
+function openMyDebt(encoded){
 
     selectedMyDebtName =
-        decodeURIComponent(encodedName);
+        decodeURIComponent(encoded);
 
     renderMyDebtDetail();
 
-    showPage("my-debt-detail");
+    showPage("mydebt-detail");
 
 }
 
 
 function renderMyDebtDetail(){
 
-    const name =
-        selectedMyDebtName;
-
     const records =
         data.myDebts.filter(
-            d=>d.name===name
+            d=>d.name===selectedMyDebtName
         );
 
     const total =
@@ -2454,97 +2741,211 @@ function renderMyDebtDetail(){
     const remaining =
         Math.max(0,total-paid);
 
-    const percent =
+    const pct =
         total>0
-        ? Math.round((paid/total)*100)
-        : 0;
+        ? Math.round(paid/total*100)
+        :0;
 
     let html=`
 
-        <div class="detail-main">
+        <div class="item">
 
-            <div class="detail-name">
-                ${escapeHtml(name)}
-            </div>
+            <div class="account-row">
 
-            <div class="detail-type">
-                My debt
-            </div>
+                ${pie(pct)}
 
-            <div class="detail-stats">
+                <div>
 
-                <div class="detail-stat">
-                    <div class="detail-stat-label">
-                        TOTAL
+                    <div class="title">
+                        ${esc(selectedMyDebtName)}
                     </div>
-                    <div class="detail-stat-value">
+
+                    <div class="item-meta">
+                        My debt
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="grid"
+                style="margin-top:15px;">
+
+                <div class="card">
+
+                    <div class="label">
+                        Total
+                    </div>
+
+                    <div class="number yellow">
                         ${peso(total)}
                     </div>
+
                 </div>
 
-                <div class="detail-stat">
-                    <div class="detail-stat-label">
-                        PAID
+                <div class="card">
+
+                    <div class="label">
+                        Paid
                     </div>
-                    <div class="detail-stat-value">
+
+                    <div class="number green">
                         ${peso(paid)}
                     </div>
+
                 </div>
 
-                <div class="detail-stat">
-                    <div class="detail-stat-label">
-                        REMAINING
+                <div class="card">
+
+                    <div class="label">
+                        Remaining
                     </div>
-                    <div class="detail-stat-value">
+
+                    <div class="number red">
                         ${peso(remaining)}
                     </div>
+
                 </div>
 
-            </div>
+                <div class="card">
 
-            <div class="progress-wrap">
-
-                <div class="progress-info">
-                    <span>${percent}% Paid</span>
-                    <span>${statusText(total,paid)}</span>
-                </div>
-
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:${percent}%">
+                    <div class="label">
+                        Progress
                     </div>
+
+                    <div class="number blue">
+                        ${pct}%
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
 
-        <button
-            class="btn btn-success btn-full"
-            onclick="openPaymentPage('mydebt')">
-            + Add Payment
-        </button>
+        <div class="section">
+
+            <button
+                type="button"
+                class="btn success full"
+                onclick="startPayment('mydebt')">
+
+                💵 Add Payment
+
+            </button>
+
+        </div>
 
         <div class="section">
 
-            <div class="section-header">
-                <div class="section-title">
-                    Debt Records
-                </div>
+            <div class="section-title">
+                Debt Records
             </div>
 
             <div class="list">
-
     `;
 
     records.forEach(debt=>{
 
-        html += debtCard(debt,"mydebt");
+        html+=`
+
+            <div class="item">
+
+                <div class="item-top">
+
+                    <div>
+
+                        <div class="item-name">
+                            💳 Debt
+                        </div>
+
+                        <div class="item-meta">
+                            📅 Due:
+                            ${formatDate(debt.dueDate)}
+                        </div>
+
+                        <div class="item-meta">
+                            📆 Monthly:
+                            <span class="yellow">
+                                ${peso(debt.monthlyPayment)}
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        ${badge(debt)}
+                    </div>
+
+                </div>
+
+                <div class="progress-box">
+
+                    <div class="progress-info">
+
+                        <span>
+                            ${percent(debt)}% Paid
+                        </span>
+
+                        <span>
+                            ${peso(
+                                Math.max(
+                                    0,
+                                    debt.amount-debt.paidAmount
+                                )
+                            )}
+                            left
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div
+                            class="bar"
+                            style="width:${percent(debt)}%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="actions">
+
+                    ${
+                        status(debt)!=="paid"
+                        ?
+                        `
+                        <button
+                            type="button"
+                            class="btn success"
+                            onclick="startPaymentForDebt('${debt.id}','mydebt')">
+
+                            💵 Add Payment
+
+                        </button>
+                        `
+                        :""
+                    }
+
+                    <button
+                        type="button"
+                        class="btn danger"
+                        onclick="deleteDebt('${debt.id}','mydebt')">
+
+                        🗑️ Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
 
     });
 
-    html += `
+    html+=`
 
             </div>
 
@@ -2552,15 +2953,14 @@ function renderMyDebtDetail(){
 
         <div class="section">
 
-            <div class="section-header">
-                <div class="section-title">
-                    Payment History
-                </div>
+            <div class="section-title">
+                Payment History
             </div>
 
             ${paymentHistory(records)}
 
         </div>
+
     `;
 
     document.getElementById("myDebtDetail")
@@ -2569,33 +2969,57 @@ function renderMyDebtDetail(){
 }
 
 
-/* =========================================================
-   EXPENSES
-========================================================= */
+function deleteMyDebtPerson(encoded){
 
-function addExpense(event){
+    const name =
+        decodeURIComponent(encoded);
 
-    event.preventDefault();
+    if(!confirm(
+        `Delete all debt records for ${name}?`
+    )) return;
+
+    data.myDebts =
+        data.myDebts.filter(
+            d=>d.name!==name
+        );
+
+    save();
+
+    toast("Debt records deleted.");
+
+}
+
+
+/* =====================================================
+EXPENSES
+===================================================== */
+
+function addExpense(e){
+
+    e.preventDefault();
 
     const description =
-        document.getElementById("expenseDescription")
-            .value.trim();
+        document.getElementById(
+            "expenseDescription"
+        ).value.trim();
 
     const amount =
         Number(
-            document.getElementById("expenseAmount")
-                .value
+            document.getElementById(
+                "expenseAmount"
+            ).value
         );
 
     const category =
-        document.getElementById("expenseCategory")
-            .value;
+        document.getElementById(
+            "expenseCategory"
+        ).value;
 
     if(!description || amount<=0){
 
         toast(
             "Please enter valid expense details.",
-            "error"
+            true
         );
 
         return;
@@ -2604,21 +3028,17 @@ function addExpense(event){
 
     data.expenses.push({
 
-        id:uid(),
-
+        id:id(),
         description:description,
-
         amount:amount,
-
         category:category,
-
         date:today()
 
     });
 
-    saveData();
+    save();
 
-    event.target.reset();
+    e.target.reset();
 
     toast("Expense successfully saved.");
 
@@ -2629,12 +3049,12 @@ function addExpense(event){
 
 function renderExpenses(){
 
-    const container =
+    const box =
         document.getElementById("expenseList");
 
     if(!data.expenses.length){
 
-        container.innerHTML =
+        box.innerHTML=
             `<div class="empty">
                 No expenses yet.
             </div>`;
@@ -2643,108 +3063,113 @@ function renderExpenses(){
 
     }
 
-    container.innerHTML="";
+    box.innerHTML="";
 
     [...data.expenses]
         .sort(
             (a,b)=>
-            new Date(b.date)-new Date(a.date)
+            new Date(b.date)-
+            new Date(a.date)
         )
         .forEach(expense=>{
 
-            const div =
-                document.createElement("div");
+            box.innerHTML+=`
 
-            div.className="list-item";
+                <div class="item">
 
-            div.innerHTML=`
+                    <div class="item-top">
 
-                <div class="item-top">
+                        <div>
 
-                    <div>
+                            <div class="item-name">
+                                ${esc(expense.description)}
+                            </div>
 
-                        <div class="item-name">
-                            ${escapeHtml(expense.description)}
+                            <div class="item-meta">
+                                🏷️ ${expense.category}
+                                ·
+                                📅 ${formatDate(expense.date)}
+                            </div>
+
                         </div>
 
-                        <div class="item-meta">
-                            ${expense.category}
-                            ·
-                            ${formatDate(expense.date)}
+                        <div class="item-money red">
+                            ${peso(expense.amount)}
                         </div>
 
                     </div>
 
-                    <div class="item-amount">
-                        ${peso(expense.amount)}
+                    <div class="actions">
+
+                        <button
+                            class="btn danger"
+                            onclick="deleteExpense('${expense.id}')">
+
+                            🗑️ Delete
+
+                        </button>
+
                     </div>
-
-                </div>
-
-                <div class="item-actions">
-
-                    <button
-                        class="btn btn-danger"
-                        onclick="deleteExpense('${expense.id}')">
-                        Delete
-                    </button>
 
                 </div>
 
             `;
-
-            container.appendChild(div);
 
         });
 
 }
 
 
-function deleteExpense(id){
+function deleteExpense(idValue){
 
-    if(!confirm("Delete this expense?")) return;
+    if(!confirm(
+        "Delete this expense?"
+    )) return;
 
     data.expenses =
         data.expenses.filter(
-            e=>String(e.id)!==String(id)
+            e=>String(e.id)!==String(idValue)
         );
 
-    saveData();
+    save();
 
     toast("Expense deleted.");
 
 }
 
 
-/* =========================================================
-   SAVINGS
-========================================================= */
+/* =====================================================
+SAVINGS
+===================================================== */
 
-function addSavings(event){
+function addSavings(e){
 
-    event.preventDefault();
+    e.preventDefault();
 
     const name =
-        document.getElementById("savingsName")
-            .value.trim();
+        document.getElementById(
+            "savingsName"
+        ).value.trim();
 
     const target =
         Number(
-            document.getElementById("savingsTarget")
-                .value
+            document.getElementById(
+                "savingsTarget"
+            ).value
         );
 
     const current =
         Number(
-            document.getElementById("savingsCurrent")
-                .value || 0
+            document.getElementById(
+                "savingsCurrent"
+            ).value || 0
         );
 
     if(!name || target<=0){
 
         toast(
             "Please enter valid savings details.",
-            "error"
+            true
         );
 
         return;
@@ -2753,19 +3178,16 @@ function addSavings(event){
 
     data.savings.push({
 
-        id:uid(),
-
+        id:id(),
         name:name,
-
         target:target,
-
         current:Math.max(0,current)
 
     });
 
-    saveData();
+    save();
 
-    event.target.reset();
+    e.target.reset();
 
     toast("Savings goal successfully saved.");
 
@@ -2776,12 +3198,12 @@ function addSavings(event){
 
 function renderSavings(){
 
-    const container =
+    const box =
         document.getElementById("savingsList");
 
     if(!data.savings.length){
 
-        container.innerHTML =
+        box.innerHTML=
             `<div class="empty">
                 No savings goals yet.
             </div>`;
@@ -2790,85 +3212,92 @@ function renderSavings(){
 
     }
 
-    container.innerHTML="";
+    box.innerHTML="";
 
     data.savings.forEach(goal=>{
 
-        const percent =
+        const pct =
             goal.target>0
             ? Math.min(
                 100,
                 Math.round(
-                    goal.current/goal.target*100
+                    goal.current/
+                    goal.target*100
                 )
             )
             :0;
 
-        const div =
-            document.createElement("div");
+        box.innerHTML+=`
 
-        div.className="list-item";
+            <div class="item">
 
-        div.innerHTML=`
+                <div class="account-row">
 
-            <div class="item-top">
+                    ${pie(pct)}
 
-                <div class="item-name">
-                    ${escapeHtml(goal.name)}
-                </div>
+                    <div class="account-info">
 
-                <div class="item-amount">
-                    ${peso(goal.current)}
-                </div>
+                        <div class="item-name">
+                            ${esc(goal.name)}
+                        </div>
 
-            </div>
+                        <div class="item-meta">
+                            Target:
+                            <span class="blue">
+                                ${peso(goal.target)}
+                            </span>
+                        </div>
 
-            <div class="progress-wrap">
+                        <div
+                            class="green"
+                            style="
+                            margin-top:6px;
+                            font-size:12px;
+                            font-weight:800;
+                            ">
 
-                <div class="progress-info">
-                    <span>${percent}%</span>
-                    <span>Target ${peso(goal.target)}</span>
-                </div>
+                            ${peso(goal.current)}
 
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:${percent}%">
+                        </div>
+
                     </div>
+
                 </div>
 
-            </div>
+                <div class="actions">
 
-            <div class="item-actions">
+                    <button
+                        class="btn success"
+                        onclick="addSavingsMoney('${goal.id}')">
 
-                <button
-                    class="btn btn-secondary"
-                    onclick="addSavingsMoney('${goal.id}')">
-                    Add Money
-                </button>
+                        💵 Add Money
 
-                <button
-                    class="btn btn-danger"
-                    onclick="deleteSavings('${goal.id}')">
-                    Delete
-                </button>
+                    </button>
+
+                    <button
+                        class="btn danger"
+                        onclick="deleteSavings('${goal.id}')">
+
+                        🗑️ Delete
+
+                    </button>
+
+                </div>
 
             </div>
 
         `;
-
-        container.appendChild(div);
 
     });
 
 }
 
 
-function addSavingsMoney(id){
+function addSavingsMoney(idValue){
 
     const goal =
         data.savings.find(
-            s=>String(s.id)===String(id)
+            s=>String(s.id)===String(idValue)
         );
 
     if(!goal) return;
@@ -2882,77 +3311,253 @@ function addSavingsMoney(id){
 
         toast(
             "Please enter a valid amount.",
-            "error"
+            true
         );
 
         return;
 
     }
 
-    goal.current += amount;
+    goal.current+=amount;
 
-    saveData();
+    save();
 
     toast("Savings updated.");
 
 }
 
 
-function deleteSavings(id){
+function deleteSavings(idValue){
 
-    if(!confirm("Delete this savings goal?")) return;
+    if(!confirm(
+        "Delete this savings goal?"
+    )) return;
 
     data.savings =
         data.savings.filter(
-            s=>String(s.id)!==String(id)
+            s=>String(s.id)!==String(idValue)
         );
 
-    saveData();
+    save();
 
     toast("Savings goal deleted.");
 
 }
 
 
-/* =========================================================
-   DASHBOARD
-========================================================= */
+/* =====================================================
+MONTHLY UNPAID
+===================================================== */
+
+function sameMonth(date,month){
+
+    if(!date) return false;
+
+    const d =
+        new Date(date);
+
+    return (
+        d.getMonth()===month &&
+        d.getFullYear()===
+        new Date().getFullYear()
+    );
+
+}
+
+
+function renderMonthly(){
+
+    const box =
+        document.getElementById("monthlyList");
+
+    let people =
+        data.debts.filter(debt=>{
+
+            const remaining =
+                Number(debt.amount||0)-
+                Number(debt.paidAmount||0);
+
+            const date =
+                debt.dueDate ||
+                debt.date;
+
+            return (
+                remaining>0 &&
+                sameMonth(
+                    date,
+                    selectedMonth
+                )
+            );
+
+        });
+
+    let mine =
+        data.myDebts.filter(debt=>{
+
+            const remaining =
+                Number(debt.amount||0)-
+                Number(debt.paidAmount||0);
+
+            const date =
+                debt.dueDate ||
+                debt.date;
+
+            return (
+                remaining>0 &&
+                sameMonth(
+                    date,
+                    selectedMonth
+                )
+            );
+
+        });
+
+    if(!people.length && !mine.length){
+
+        box.innerHTML=
+            `<div class="empty">
+                No unpaid debts for
+                ${monthNames[selectedMonth]}.
+            </div>`;
+
+        return;
+
+    }
+
+    let html="";
+
+
+    if(people.length){
+
+        html+=`
+
+            <div class="month-box">
+
+                <div class="section-title">
+                    👥 Money Owed to Me
+                </div>
+
+        `;
+
+        people.forEach(debt=>{
+
+            html+=`
+
+                <div class="month-row">
+
+                    <span>
+                        ${esc(debt.person)}
+                    </span>
+
+                    <strong class="red">
+                        ${peso(
+                            Math.max(
+                                0,
+                                debt.amount-debt.paidAmount
+                            )
+                        )}
+                    </strong>
+
+                </div>
+
+            `;
+
+        });
+
+        html+=`</div>`;
+
+    }
+
+
+    if(mine.length){
+
+        html+=`
+
+            <div
+                class="month-box"
+                style="margin-top:8px;">
+
+                <div class="section-title">
+                    💳 My Debts
+                </div>
+
+        `;
+
+        mine.forEach(debt=>{
+
+            html+=`
+
+                <div class="month-row">
+
+                    <span>
+                        ${esc(debt.name)}
+                    </span>
+
+                    <strong class="yellow">
+                        ${peso(
+                            Math.max(
+                                0,
+                                debt.amount-debt.paidAmount
+                            )
+                        )}
+                    </strong>
+
+                </div>
+
+            `;
+
+        });
+
+        html+=`</div>`;
+
+    }
+
+    box.innerHTML=html;
+
+}
+
+
+/* =====================================================
+DASHBOARD
+===================================================== */
 
 function refreshDashboard(){
 
     const expenses =
         data.expenses.reduce(
-            (s,e)=>s+Number(e.amount||0),
+            (s,e)=>
+            s+Number(e.amount||0),
             0
         );
 
     const savings =
         data.savings.reduce(
-            (s,e)=>s+Number(e.current||0),
+            (s,e)=>
+            s+Number(e.current||0),
             0
         );
 
     const owed =
         data.debts.reduce(
             (s,d)=>
-                s+
-                Math.max(
-                    0,
-                    Number(d.amount||0) -
-                    Number(d.paidAmount||0)
-                ),
+            s+
+            Math.max(
+                0,
+                Number(d.amount||0)-
+                Number(d.paidAmount||0)
+            ),
             0
         );
 
     const myDebt =
         data.myDebts.reduce(
             (s,d)=>
-                s+
-                Math.max(
-                    0,
-                    Number(d.amount||0) -
-                    Number(d.paidAmount||0)
-                ),
+            s+
+            Math.max(
+                0,
+                Number(d.amount||0)-
+                Number(d.paidAmount||0)
+            ),
             0
         );
 
@@ -2971,223 +3576,17 @@ function refreshDashboard(){
 }
 
 
-/* =========================================================
-   MONTHLY UNPAID
-========================================================= */
-
-function renderMonthlyUnpaid(){
-
-    const container =
-        document.getElementById(
-            "monthlyUnpaidList"
-        );
-
-    const year =
-        new Date().getFullYear();
-
-    const month =
-        selectedMonth;
-
-    const peopleUnpaid =
-        data.debts.filter(debt=>{
-
-            const remaining =
-                Number(debt.amount||0) -
-                Number(debt.paidAmount||0);
-
-            const relevantDate =
-                debt.dueDate || debt.date;
-
-            return (
-                remaining>0 &&
-                sameMonth(relevantDate,month)
-            );
-
-        });
-
-    const myUnpaid =
-        data.myDebts.filter(debt=>{
-
-            const remaining =
-                Number(debt.amount||0) -
-                Number(debt.paidAmount||0);
-
-            const relevantDate =
-                debt.dueDate || debt.date;
-
-            return (
-                remaining>0 &&
-                sameMonth(relevantDate,month)
-            );
-
-        });
-
-    document.getElementById("monthlyTitle")
-        .textContent =
-        `${months[month]} ${year} — Unpaid`;
-
-    let html="";
-
-    if(
-        !peopleUnpaid.length &&
-        !myUnpaid.length
-    ){
-
-        container.innerHTML =
-            `<div class="empty">
-                No unpaid debts for this month.
-            </div>`;
-
-        return;
-
-    }
-
-
-    /* MONEY OWED TO ME */
-
-    if(peopleUnpaid.length){
-
-        html += `
-
-            <div class="monthly-box">
-
-                <div class="section-title"
-                    style="margin-bottom:5px;">
-                    Money Owed to Me
-                </div>
-
-        `;
-
-        peopleUnpaid.forEach(debt=>{
-
-            const remaining =
-                Math.max(
-                    0,
-                    debt.amount-debt.paidAmount
-                );
-
-            html += `
-
-                <div class="monthly-row">
-
-                    <span>
-                        ${escapeHtml(debt.person)}
-                    </span>
-
-                    <strong>
-                        ${peso(remaining)}
-                    </strong>
-
-                </div>
-
-            `;
-
-        });
-
-        html += `</div>`;
-
-    }
-
-
-    /* MY DEBTS */
-
-    if(myUnpaid.length){
-
-        html += `
-
-            <div class="monthly-box"
-                style="margin-top:8px;">
-
-                <div class="section-title"
-                    style="margin-bottom:5px;">
-                    My Debts
-                </div>
-
-        `;
-
-        myUnpaid.forEach(debt=>{
-
-            const remaining =
-                Math.max(
-                    0,
-                    debt.amount-debt.paidAmount
-                );
-
-            html += `
-
-                <div class="monthly-row">
-
-                    <span>
-                        ${escapeHtml(debt.name)}
-                    </span>
-
-                    <strong>
-                        ${peso(remaining)}
-                    </strong>
-
-                </div>
-
-            `;
-
-        });
-
-        html += `</div>`;
-
-    }
-
-    container.innerHTML=html;
-
-}
-
-
-/* =========================================================
-   BACK TO DETAIL
-========================================================= */
-
-function goBackToDetail(){
-
-    if(paymentType==="person"){
-
-        renderPersonDetail();
-        showPage("person-detail");
-
-    }else{
-
-        renderMyDebtDetail();
-        showPage("my-debt-detail");
-
-    }
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHtml(text){
-
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================================
-   REFRESH ALL
-========================================================= */
-
-function refreshAll(){
+/* =====================================================
+REFRESH
+===================================================== */
+
+function refresh(){
 
     refreshDashboard();
 
     renderMonths();
 
-    renderMonthlyUnpaid();
+    renderMonthly();
 
     renderPeople();
 
@@ -3197,22 +3596,14 @@ function refreshAll(){
 
     renderSavings();
 
-    if(currentPage==="person-detail"){
-        renderPersonDetail();
-    }
-
-    if(currentPage==="my-debt-detail"){
-        renderMyDebtDetail();
-    }
-
 }
 
 
-/* =========================================================
-   START
-========================================================= */
+/* =====================================================
+START
+===================================================== */
 
-refreshAll();
+refresh();
 
 </script>
 
