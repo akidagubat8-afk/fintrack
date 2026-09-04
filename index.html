@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
+
+<title>Liah's Fin.Track</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #17385f 0%,
+            #07111f 45%,
+            #030912 100%
+        );
+
+    color: #eaf4ff;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 18px;
+}
+
+
+/* =========================================================
+   APP WINDOW
+   ========================================================= */
+
+.app-window {
+
+    width: 100%;
+    max-width: 430px;
+
+    height: min(780px, 92vh);
+
+    background: #081a2e;
+
+    border: 1px solid #1d456d;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.55),
+        0 0 0 1px rgba(66,165,245,.05);
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.topbar {
+
+    height: 62px;
+
+    padding: 12px 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #0a2037;
+
+    border-bottom: 1px solid #173b5e;
+}
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.logo {
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 10px;
+
+    background: #1677c8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 5px 15px rgba(33,150,243,.25);
+}
+
+.brand-title {
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: .2px;
+}
+
+.brand-subtitle {
+
+    font-size: 9px;
+
+    color: #6f91af;
+
+    margin-top: 2px;
+
+    letter-spacing: .4px;
+}
+
+.status {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #42d392;
+
+    box-shadow:
+        0 0 10px rgba(66,211,146,.7);
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.content {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 17px;
+
+    padding-bottom: 85px;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   TITLES
+   ========================================================= */
+
+.page-header {
+
+    margin-bottom: 15px;
+}
+
+.page-title {
+
+    font-size: 20px;
+
+    font-weight: 850;
+
+    letter-spacing: -.3px;
+}
+
+.page-subtitle {
+
+    color: #708da8;
+
+    font-size: 10px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.back-button {
+
+    border: 1px solid #1c466d;
+
+    background: #0d2946;
+
+    color: #a9c7df;
+
+    border-radius: 9px;
+
+    padding: 7px 10px;
+
+    font-size: 10px;
+
+    font-weight: 750;
+
+    margin-bottom: 13px;
+}
+
+.back-button:active {
+    transform: scale(.97);
+}
+
+
+/* =========================================================
+   DASHBOARD GRID
+   ========================================================= */
+
+.dashboard {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c2945,
+            #091f35
+        );
+
+    border: 1px solid #173e61;
+
+    border-radius: 14px;
+
+    padding: 13px;
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.025);
+}
+
+.card.full {
+    grid-column: 1 / -1;
+}
+
+.card-label {
+
+    font-size: 9px;
+
+    color: #7594b0;
+
+    text-transform: uppercase;
+
+    letter-spacing: .7px;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+}
+
+.amount {
+
+    font-size: 17px;
+
+    font-weight: 850;
+}
+
+.blue {
+    color: #4aaeff;
+}
+
+.green {
+    color: #42d392;
+}
+
+.yellow {
+    color: #ffd166;
+}
+
+.red {
+    color: #ff7182;
+}
+
+.muted {
+
+    color: #6d8ba6;
+
+    font-size: 9px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.progress {
+
+    height: 6px;
+
+    margin-top: 9px;
+
+    background: #142e48;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1677c8,
+            #42a5f5
+        );
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+   ========================================================= */
+
+.quick-title {
+
+    margin-top: 18px;
+
+    margin-bottom: 9px;
+
+    font-size: 10px;
+
+    color: #7897b1;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: .6px;
+}
+
+.quick-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+}
+
+.quick {
+
+    border: 1px solid #1b466d;
+
+    background: #0c2844;
+
+    color: #dcecff;
+
+    border-radius: 12px;
+
+    padding: 11px;
+
+    text-align: left;
+
+    font-size: 10px;
+
+    font-weight: 750;
+}
+
+.quick span {
+
+    display: block;
+
+    font-size: 16px;
+
+    margin-bottom: 5px;
+}
+
+.quick:active {
+    transform: scale(.97);
+}
+
+
+/* =========================================================
+   LIST
+   ========================================================= */
+
+.list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.person {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 11px;
+
+    border-radius: 12px;
+
+    background: #0c2844;
+
+    border: 1px solid #173e61;
+}
+
+.person-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.avatar {
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 9px;
+
+    background: #155d98;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 10px;
+
+    font-weight: 850;
+}
+
+.person-name {
+
+    font-size: 11px;
+
+    font-weight: 750;
+}
+
+.person-balance {
+
+    font-size: 9px;
+
+    color: #708da8;
+
+    margin-top: 3px;
+}
+
+.arrow {
+
+    color: #527695;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.primary {
+
+    width: 100%;
+
+    border: 0;
+
+    background: #1677c8;
+
+    color: white;
+
+    padding: 11px;
+
+    border-radius: 10px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    margin-top: 9px;
+}
+
+.secondary {
+
+    width: 100%;
+
+    border: 1px solid #1d4b73;
+
+    background: #0d2b49;
+
+    color: #a9c7df;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    font-size: 10px;
+
+    font-weight: 750;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   MONTH BUTTONS
+   ========================================================= */
+
+.month-section {
+
+    margin-top: 15px;
+}
+
+.section-title {
+
+    font-size: 10px;
+
+    color: #7594b0;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: .6px;
+
+    margin-bottom: 9px;
+}
+
+.month-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+}
+
+.month-button {
+
+    border: 1px solid #1a4164;
+
+    background: #0c2844;
+
+    color: #9bb9d2;
+
+    border-radius: 9px;
+
+    padding: 9px 4px;
+
+    font-size: 9px;
+
+    font-weight: 750;
+}
+
+.month-button.active {
+
+    background: #1265a8;
+
+    border-color: #2196f3;
+
+    color: white;
+}
+
+
+/* =========================================================
+   MONTH RESULT
+   ========================================================= */
+
+.month-result {
+
+    margin-top: 12px;
+}
+
+.month-stat {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+}
+
+.stat {
+
+    background: #0a233d;
+
+    border: 1px solid #173e61;
+
+    border-radius: 10px;
+
+    padding: 10px;
+
+    text-align: center;
+}
+
+.stat-label {
+
+    font-size: 8px;
+
+    color: #6686a1;
+}
+
+.stat-value {
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+label {
+
+    display: block;
+
+    font-size: 9px;
+
+    color: #7797b2;
+
+    font-weight: 750;
+
+    margin-bottom: 5px;
+}
+
+input,
+select {
+
+    width: 100%;
+
+    border: 1px solid #1d466b;
+
+    background: #071b30;
+
+    color: white;
+
+    padding: 10px;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 11px;
+}
+
+input:focus {
+
+    border-color: #2196f3;
+}
+
+
+/* =========================================================
+   BOTTOM NAV
+   ========================================================= */
+
+.bottom-nav {
+
+    position: absolute;
+
+    bottom: 10px;
+
+    left: 10px;
+
+    right: 10px;
+
+    height: 57px;
+
+    background: rgba(7,26,45,.96);
+
+    border: 1px solid #1b4366;
+
+    border-radius: 17px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    z-index: 20;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.4);
+}
+
+.nav-item {
+
+    border: 0;
+
+    background: transparent;
+
+    color: #55738d;
+
+    font-size: 8px;
+
+    font-weight: 750;
+}
+
+.nav-item.active {
+
+    color: #42a5f5;
+}
+
+.nav-icon {
+
+    display: block;
+
+    font-size: 17px;
+
+    margin-bottom: 3px;
+}
+
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.empty {
+
+    text-align: center;
+
+    padding: 25px 10px;
+
+    color: #587690;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:500px) {
+
+    body {
+        padding: 0;
+    }
+
+    .app-window {
+
+        max-width: none;
+
+        height: 100vh;
+
+        border-radius: 0;
+
+        border: 0;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="app-window">
+
+
+    <!-- TOP BAR -->
+
+    <div class="topbar">
+
+        <div class="brand">
+
+            <div class="logo">
+                ₱
+            </div>
+
+            <div>
+
+                <div class="brand-title">
+                    Liah's Fin.Track
+                </div>
+
+                <div class="brand-subtitle">
+                    PERSONAL FINANCE SYSTEM
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status"></div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="content"
+         id="app">
+
+    </div>
+
+
+    <!-- BOTTOM NAV -->
+
+    <div class="bottom-nav">
+
+        <button
+            class="nav-item active"
+            onclick="showPage('home')">
+
+            <span class="nav-icon">
+                ⌂
+            </span>
+
+            Home
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="showPage('expenses')">
+
+            <span class="nav-icon">
+                💸
+            </span>
+
+            Expenses
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="showPage('people')">
+
+            <span class="nav-icon">
+                👥
+            </span>
+
+            Utang
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="showPage('savings')">
+
+            <span class="nav-icon">
+                🏦
+            </span>
+
+            Savings
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================================================
+   DATA
+   ========================================================= */
+
+let data = {
+
+    expenses: [],
+
+    debts: [],
+
+    savings: []
+
+};
+
+let currentPage = "home";
+
+let selectedMonth =
+    new Date().getMonth();
+
+
+/* =========================================================
+   MONEY
+   ========================================================= */
+
+function peso(amount) {
+
+    return "₱" +
+        Number(amount || 0)
+        .toLocaleString(
+            "en-PH",
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
+}
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+function homePage() {
+
+    return `
+
+        <div class="page-header">
+
+            <div class="page-title">
+                Dashboard
+            </div>
+
+            <div class="page-subtitle">
+                Overview ng iyong finances
+            </div>
+
+        </div>
+
+
+        <div class="dashboard">
+
+
+            <div class="card">
+
+                <div class="card-label">
+                    Expenses
+                </div>
+
+                <div class="amount red">
+                    ${peso(0)}
+                </div>
+
+                <div class="muted">
+                    This month
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-label">
+                    To Collect
+                </div>
+
+                <div class="amount yellow">
+                    ${peso(0)}
+                </div>
+
+                <div class="muted">
+                    Natitirang utang
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-label">
+                    Savings
+                </div>
+
+                <div class="amount green">
+                    ${peso(0)}
+                </div>
+
+                <div class="muted">
+                    Current savings
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:0%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-label">
+                    Accounts
+                </div>
+
+                <div class="amount blue">
+                    0
+                </div>
+
+                <div class="muted">
+                    Active people
+                </div>
+
+            </div>
+
+
+            <div class="card full">
+
+                <div class="card-label">
+                    Collection Progress
+                </div>
+
+                <div class="muted">
+                    Total: ₱0.00
+                </div>
+
+                <div class="muted">
+                    Paid: ₱0.00
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:0%">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-title">
+            Quick Actions
+        </div>
+
+
+        <div class="quick-grid">
+
+
+            <button
+                class="quick"
+                onclick="showPage('addDebt')">
+
+                <span>💵</span>
+
+                Add Utang
+
+            </button>
+
+
+            <button
+                class="quick"
+                onclick="showPage('unpaid')">
+
+                <span>⏳</span>
+
+                Unpaid
+
+            </button>
+
+
+            <button
+                class="quick"
+                onclick="showPage('addExpense')">
+
+                <span>💸</span>
+
+                Add Expense
+
+            </button>
+
+
+            <button
+                class="quick"
+                onclick="showPage('addSavings')">
+
+                <span>🏦</span>
+
+                Add Savings
+
+            </button>
+
+        </div>
+
+
+        <div class="month-section">
+
+            <div class="section-title">
+                Monthly Progress
+            </div>
+
+            <div class="month-grid">
+
+                ${monthButtons()}
+
+            </div>
+
+            <div
+                class="month-result"
+                id="monthResult">
+
+                ${monthResult()}
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+
+/* =========================================================
+   MONTHS
+   ========================================================= */
+
+function monthButtons() {
+
+    const months = [
+
+        "JAN",
+        "FEB",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUN",
+        "JUL",
+        "AUG",
+        "SEP",
+        "OCT",
+        "NOV",
+        "DEC"
+
+    ];
+
+    return months.map(
+        (month,index) => `
+
+            <button
+                class="month-button
+                ${selectedMonth === index
+                    ? "active"
+                    : ""}"
+                onclick="selectMonth(${index})">
+
+                ${month}
+
+            </button>
+
+        `
+    ).join("");
+
+}
+
+
+function selectMonth(month) {
+
+    selectedMonth = month;
+
+    render();
+
+}
+
+
+function monthResult() {
+
+    const names = [
+
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+
+    ];
+
+    return `
+
+        <div class="card">
+
+            <div class="card-label">
+                ${names[selectedMonth]} ${new Date().getFullYear()}
+            </div>
+
+            <div class="month-stat">
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Utang
+                    </div>
+
+                    <div class="stat-value">
+                        ₱0.00
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Paid
+                    </div>
+
+                    <div class="stat-value green">
+                        ₱0.00
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Unpaid
+                    </div>
+
+                    <div class="stat-value yellow">
+                        ₱0.00
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   SIMPLE PAGES
+   ========================================================= */
+
+function expensesPage() {
+
+    return `
+
+        ${backButton()}
+
+        <div class="page-header">
+
+            <div class="page-title">
+                Expenses
+            </div>
+
+            <div class="page-subtitle">
+                Talaan ng iyong mga gastos
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-label">
+                Total Expenses
+            </div>
+
+            <div class="amount red">
+                ₱0.00
+            </div>
+
+        </div>
+
+        <button
+            class="primary"
+            onclick="showPage('addExpense')">
+
+            + Add Expense
+
+        </button>
+
+        <div class="empty">
+            Wala pang expense records.
+        </div>
+
+    `;
+}
+
+
+function peoplePage() {
+
+    return `
+
+        ${backButton()}
+
+        <div class="page-header">
+
+            <div class="page-title">
+                Utang / People
+            </div>
+
+            <div class="page-subtitle">
+                Bawat tao ay may sariling account.
+            </div>
+
+        </div>
+
+        <div class="empty">
+
+            Wala pang account.
+
+            <button
+                class="primary"
+                onclick="showPage('addDebt')">
+
+                + Add New Utang
+
+            </button>
+
+        </div>
+
+    `;
+}
+
+
+function savingsPage() {
+
+    return `
+
+        ${backButton()}
+
+        <div class="page-header">
+
+            <div class="page-title">
+                Savings
+            </div>
+
+            <div class="page-subtitle">
+                I-track ang iyong savings goals.
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-label">
+                Total Saved
+            </div>
+
+            <div class="amount green">
+                ₱0.00
+            </div>
+
+        </div>
+
+        <button
+            class="primary"
+            onclick="showPage('addSavings')">
+
+            + Add Savings Goal
+
+        </button>
+
+        <div class="empty">
+            Wala pang savings goals.
+        </div>
+
+    `;
+}
+
+
+/* =========================================================
+   ADD DEBT
+   ========================================================= */
+
+function addDebtPage() {
+
+    return `
+
+        ${backButton()}
+
+        <div class="page-header">
+
+            <div class="page-title">
+                Add Utang
+            </div>
+
+            <div class="page-subtitle">
+                Gumawa ng bagong debt record.
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="form">
+
+                <div>
+
+                    <label>
+                        PANGALAN
+                    </label>
+
+                    <input
+                        id="debtName"
+                        placeholder="Hal. Maria">
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        HALAGA
+                    </label>
+
+                    <input
+                        id="debtAmount"
+                        type="number"
+                        placeholder="0.00">
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        DUE DATE
+                    </label>
+
+                    <input
+                        id="debtDate"
+                        type="date">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary"
+            onclick="saveDebt()">
+
+            I-save ang Utang
+
+        </button>
+
+    `;
+}
+
+
+function saveDebt() {
+
+    const name =
+        document.getElementById(
+            "debtName"
+        ).value.trim();
+
+    const amount =
+        Number(
+            document.getElementById(
+                "debtAmount"
+            ).value
+        );
+
+    const date =
+        document.getElementById(
+            "debtDate"
+        ).value;
+
+
+    if (!name) {
+
+        alert(
+            "Pakilagay ang pangalan."
+        );
+
+        return;
+
+    }
+
+
+    if (!amount || amount <= 0) {
+
+        alert(
+            "Pakilagay ang tamang halaga ng utang."
+        );
+
+        return;
+
+    }
+
+
+    data.debts.push({
+
+        person: name,
+
+        amount: amount,
+
+        paidAmount: 0,
+
+        dueDate: date,
+
+        date: new Date().toISOString(),
+
+        payments: []
+
+    });
+
+
+    saveData();
+
+
+    alert(
+        "Matagumpay na na-save ang utang."
+    );
+
+
+    showPage("people");
+
+}
+
+
+/* =========================================================
+   ADD EXPENSE
+   ========================================================= */
+
+function addExpensePage() {
+
+    return `
+
+        ${backButton()}
+
+        <div class="page-header">
+
+            <div class="page-title">
+                Add Expense
+            </div>
+
+            <div class="page-subtitle">
+                Magdagdag ng bagong gastos.
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="form">
+
+                <div>
+
+                    <label>
+                        DESCRIPTION
+                    </label>
+
+                    <input
+                        id="expenseName"
+                        placeholder="Hal. Food">
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        HALAGA
+                    </label>
+
+                    <input
+                        id="expenseAmount"
+                        type="number"
+                        placeholder="0.00">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary"
+            onclick="saveExpense()">
+
+            I-save ang Expense
+
+        </button>
+
+    `;
+}
+
+
+function saveExpense() {
+
+    const name =
+        document.getElementById(
+            "expenseName"
+        ).value.trim();
+
+    const amount =
+        Number(
+            document.getElementById(
+                "expenseAmount"
+            ).value
+        );
+
+
+    if (!name) {
+
+        alert(
+            "Pakilagay kung saan ginastos ang pera."
+        );
+
+        return;
+
+    }
+
+
+    if (!amount || amount <= 0) {
+
+        alert(
+            "Pakilagay ang tamang halaga."
+        );
+
+        return;
+
+    }
+
+
+    data.expenses.push({
+
+        description: name,
+
+        amount: amount,
+
+        date: new Date().toISOString()
+
+    });
+
+
+    saveData();
+
+
+    alert(
+        "Matagumpay na na-save ang expense."
+    );
+
+
+    showPage("expenses");
+
+}
+
+
+/* =========================================================
+   ADD SAVINGS
+   ========================================================= */
+
+function addSavingsPage() {
+
+    return `
+
+        ${backButton()}
+
+        <div class="page-header">
+
+            <div class="page-title">
+                Add Savings
+            </div>
+
+            <div class="page-subtitle">
+                Gumawa ng bagong savings goal.
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="form">
+
+                <div>
+
+                    <label>
+                        GOAL NAME
+                    </label>
+
+                    <input
+                        id="savingName"
+                        placeholder="Hal. Emergency Fund">
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        TARGET
+                    </label>
+
+                    <input
+                        id="savingTarget"
+                        type="number"
+                        placeholder="0.00">
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        CURRENT SAVINGS
+                    </label>
+
+                    <input
+                        id="savingCurrent"
+                        type="number"
+                        value="0">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary"
+            onclick="saveSavings()">
+
+            I-save ang Savings Goal
+
+        </button>
+
+    `;
+}
+
+
+function saveSavings() {
+
+    const name =
+        document.getElementById(
+            "savingName"
+        ).value.trim();
+
+    const target =
+        Number(
+            document.getElementById(
+                "savingTarget"
+            ).value
+        );
+
+    const current =
+        Number(
+            document.getElementById(
+                "savingCurrent"
+            ).value
+        );
+
+
+    if (!name) {
+
+        alert(
+            "Pakilagay ang pangalan ng savings goal."
+        );
+
+        return;
+
+    }
+
+
+    if (!target || target <= 0) {
+
+        alert(
+            "Pakilagay ang tamang target amount."
+        );
+
+        return;
+
+    }
+
+
+    data.savings.push({
+
+        name: name,
+
+        target: target,
+
+        current: Math.max(
+            0,
+            current || 0
+        )
+
+    });
+
+
+    saveData();
+
+
+    alert(
+        "Matagumpay na na-save ang savings goal."
+    );
+
+
+    showPage("savings");
+
+}
+
+
+/* =========================================================
+   UNPAID
+   ========================================================= */
+
+function unpaidPage() {
+
+    return `
+
+        ${backButton()}
+
+        <div class="page-header">
+
+            <div class="page-title">
+                Unpaid
+            </div>
+
+            <div class="page-subtitle">
+                Mga hindi pa nababayarang utang.
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-label">
+                Total Unpaid
+            </div>
+
+            <div class="amount yellow">
+                ₱0.00
+            </div>
+
+        </div>
+
+
+        <div class="empty">
+
+            🎉 Wala pang unpaid records.
+
+        </div>
+
+    `;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+function backButton() {
+
+    return `
+
+        <button
+            class="back-button"
+            onclick="goBack()">
+
+            ← Bumalik
+
+        </button>
+
+    `;
+
+}
+
+
+function goBack() {
+
+    showPage("home");
+
+}
+
+
+/* =========================================================
+   ROUTER
+   ========================================================= */
+
+function showPage(page) {
+
+    currentPage = page;
+
+    const app =
+        document.getElementById("app");
+
+
+    if (page === "home")
+        app.innerHTML =
+            homePage();
+
+
+    else if (page === "expenses")
+        app.innerHTML =
+            expensesPage();
+
+
+    else if (page === "people")
+        app.innerHTML =
+            peoplePage();
+
+
+    else if (page === "savings")
+        app.innerHTML =
+            savingsPage();
+
+
+    else if (page === "addDebt")
+        app.innerHTML =
+            addDebtPage();
+
+
+    else if (page === "addExpense")
+        app.innerHTML =
+            addExpensePage();
+
+
+    else if (page === "addSavings")
+        app.innerHTML =
+            addSavingsPage();
+
+
+    else if (page === "unpaid")
+        app.innerHTML =
+            unpaidPage();
+
+
+    updateNav();
+
+}
+
+
+/* =========================================================
+   NAV
+   ========================================================= */
+
+function updateNav() {
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(button => {
+
+            button.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const map = {
+
+        home: 0,
+
+        expenses: 1,
+
+        people: 2,
+
+        savings: 3
+
+    };
+
+
+    if (map[currentPage] !== undefined) {
+
+        document
+            .querySelectorAll(".nav-item")
+            [map[currentPage]]
+            .classList.add("active");
+
+    }
+
+}
+
+
+/* =========================================================
+   STORAGE
+   ========================================================= */
+
+function saveData() {
+
+    localStorage.setItem(
+        "liahs_fintrack_data",
+        JSON.stringify(data)
+    );
+
+}
+
+
+function loadData() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "liahs_fintrack_data"
+            );
+
+
+        if (saved) {
+
+            data =
+                JSON.parse(saved);
+
+        }
+
+    }
+    catch(error) {
+
+        alert(
+            "Hindi mabasa ang saved data."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+loadData();
+
+showPage("home");
+
+</script>
+
+</body>
+</html>
