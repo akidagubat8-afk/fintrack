@@ -901,7 +901,6 @@ textarea:focus{
 
 /* ============================================================
    ADD PAYMENT MOBILE MODAL
-   NEW — ONLY FOR ADD PAYMENT
 ============================================================ */
 
 .payment-modal{
@@ -1075,22 +1074,15 @@ textarea:focus{
 
 </header>
 
-<!-- =========================
-     HOME
-========================= -->
+<!-- HOME -->
 
 <section id="homePage" class="page active">
 
     <div class="page-title">
-
         <div>
-
             <h1>Dashboard</h1>
-
             <p>Financial overview</p>
-
         </div>
-
     </div>
 
     <div class="grid">
@@ -1143,9 +1135,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     UTANG
-========================= -->
+<!-- UTANG -->
 
 <section id="utangPage" class="page">
 
@@ -1168,9 +1158,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     MY DEBTS
-========================= -->
+<!-- MY DEBTS -->
 
 <section id="myDebtsPage" class="page">
 
@@ -1197,9 +1185,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     EXPENSES
-========================= -->
+<!-- EXPENSES -->
 
 <section id="expensesPage" class="page">
 
@@ -1226,9 +1212,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     SAVINGS
-========================= -->
+<!-- SAVINGS -->
 
 <section id="savingsPage" class="page">
 
@@ -1255,9 +1239,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     ADD UTANG
-========================= -->
+<!-- ADD UTANG -->
 
 <section id="addUtangPage" class="page">
 
@@ -1380,9 +1362,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     ADD MY DEBT
-========================= -->
+<!-- ADD MY DEBT -->
 
 <section id="addMyDebtPage" class="page">
 
@@ -1505,9 +1485,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     ADD EXPENSE
-========================= -->
+<!-- ADD EXPENSE -->
 
 <section id="addExpensePage" class="page">
 
@@ -1594,9 +1572,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     ADD SAVINGS
-========================= -->
+<!-- ADD SAVINGS -->
 
 <section id="addSavingsPage" class="page">
 
@@ -1674,9 +1650,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     DETAIL PAGE
-========================= -->
+<!-- DETAIL -->
 
 <section id="detailPage" class="page">
 
@@ -1684,9 +1658,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     EDIT UTANG
-========================= -->
+<!-- EDIT UTANG -->
 
 <section id="editUtangPage" class="page">
 
@@ -1736,8 +1708,7 @@ textarea:focus{
 
             <textarea
                 id="editUtangReason"
-                class="input"
-                placeholder="Why does this person have this utang?"></textarea>
+                class="input"></textarea>
         </div>
 
         <div class="field">
@@ -1808,9 +1779,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     EDIT MY DEBT
-========================= -->
+<!-- EDIT MY DEBT -->
 
 <section id="editMyDebtPage" class="page">
 
@@ -1860,8 +1829,7 @@ textarea:focus{
 
             <textarea
                 id="editMyDebtReason"
-                class="input"
-                placeholder="What is this debt for?"></textarea>
+                class="input"></textarea>
         </div>
 
         <div class="field">
@@ -1932,9 +1900,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     EDIT EXPENSE
-========================= -->
+<!-- EDIT EXPENSE -->
 
 <section id="editExpensePage" class="page">
 
@@ -2020,9 +1986,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     EDIT SAVINGS
-========================= -->
+<!-- EDIT SAVINGS -->
 
 <section id="editSavingsPage" class="page">
 
@@ -2100,9 +2064,7 @@ textarea:focus{
 
 </section>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<!-- NAVIGATION -->
 
 <nav class="bottom-nav">
 
@@ -2162,9 +2124,7 @@ textarea:focus{
 
 <div id="toast" class="toast"></div>
 
-<!-- ============================================================
-     ADD PAYMENT MODAL
-============================================================ -->
+<!-- ADD PAYMENT MODAL -->
 
 <div
     id="paymentModal"
@@ -2234,28 +2194,21 @@ textarea:focus{
 /* ============================================================
    LIAH'S FIN.TRACK
    V9
-   BLUE ADMIN EDITION
 ============================================================ */
 
 const STORAGE_KEY = "liahs_fintrack_v7";
 
 let data = {
-
     expenses:[],
     debts:[],
     myDebts:[],
     savings:[]
-
 };
 
-let selectedYear =
-    new Date().getFullYear();
-
-let selectedMonth =
-    new Date().getMonth();
+let selectedYear = new Date().getFullYear();
+let selectedMonth = new Date().getMonth();
 
 let currentDetail = null;
-
 let lastPage = "homePage";
 
 /* ============================================================
@@ -2263,46 +2216,37 @@ let lastPage = "homePage";
 ============================================================ */
 
 function uid(){
-
-    return Date.now().toString(36)
-        +
-        Math.random()
-            .toString(36)
-            .slice(2);
-
+    return Date.now().toString(36) +
+        Math.random().toString(36).slice(2);
 }
 
 function today(){
 
     const d = new Date();
 
-    const y =
-        d.getFullYear();
+    const y = d.getFullYear();
 
-    const m =
-        String(d.getMonth()+1)
-            .padStart(2,"0");
+    const m = String(
+        d.getMonth()+1
+    ).padStart(2,"0");
 
-    const day =
-        String(d.getDate())
-            .padStart(2,"0");
+    const day = String(
+        d.getDate()
+    ).padStart(2,"0");
 
     return `${y}-${m}-${day}`;
-
 }
 
 function money(value){
 
     return "₱" +
-        Number(value || 0)
-            .toLocaleString(
-                "en-PH",
-                {
-                    minimumFractionDigits:2,
-                    maximumFractionDigits:2
-                }
-            );
-
+        Number(value || 0).toLocaleString(
+            "en-PH",
+            {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
+            }
+        );
 }
 
 function escapeHTML(value){
@@ -2326,8 +2270,9 @@ function percent(paid,total){
         100,
         Math.max(
             0,
-            (Number(paid || 0) /
-            Number(total)) * 100
+            Number(paid || 0) /
+            Number(total) *
+            100
         )
     );
 
@@ -2335,11 +2280,10 @@ function percent(paid,total){
 
 function statusClass(debt){
 
-    const p =
-        percent(
-            debt.paidAmount,
-            debt.amount
-        );
+    const p = percent(
+        debt.paidAmount,
+        debt.amount
+    );
 
     if(p >= 100){
         return "paid";
@@ -2350,16 +2294,14 @@ function statusClass(debt){
     }
 
     return "unpaid";
-
 }
 
 function statusText(debt){
 
-    const p =
-        percent(
-            debt.paidAmount,
-            debt.amount
-        );
+    const p = percent(
+        debt.paidAmount,
+        debt.amount
+    );
 
     if(p >= 100){
         return "PAID";
@@ -2370,15 +2312,33 @@ function statusText(debt){
     }
 
     return "UNPAID";
-
 }
+
+/* ============================================================
+   STORAGE
+============================================================ */
 
 function saveData(){
 
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(data)
-    );
+    try{
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(data)
+        );
+
+    }catch(error){
+
+        console.error(
+            "Unable to save data:",
+            error
+        );
+
+        toast(
+            "Unable to save data."
+        );
+
+    }
 
 }
 
@@ -2427,18 +2387,15 @@ function loadData(){
         console.error(error);
 
         data = {
-
             expenses:[],
             debts:[],
             myDebts:[],
             savings:[]
-
         };
 
     }
 
     migrateData();
-
     saveData();
 
 }
@@ -2461,7 +2418,7 @@ function migrateData(){
 
     data.expenses =
         data.expenses.map(
-            e=>({
+            e => ({
 
                 id:
                     e.id ||
@@ -2490,7 +2447,7 @@ function migrateData(){
 
     data.savings =
         data.savings.map(
-            s=>({
+            s => ({
 
                 id:
                     s.id ||
@@ -2569,8 +2526,7 @@ function migrateDebt(d){
         );
 
     if(
-        d.paymentType ===
-        "monthly"
+        d.paymentType === "monthly"
     ){
 
         d.startDate =
@@ -2595,9 +2551,7 @@ function migrateDebt(d){
     }else{
 
         d.monthlyPayment = 0;
-
         d.startDate = "";
-
         d.endDate = "";
 
     }
@@ -2623,8 +2577,7 @@ function calculateEndDate(
 
     const first =
         new Date(
-            start +
-            "T00:00:00"
+            start + "T00:00:00"
         );
 
     const count =
@@ -2659,27 +2612,18 @@ function calculateEndDate(
 
 }
 
-function monthKey(
-    year,
-    month
-){
+function monthKey(year,month){
 
-    return (
-        String(year)
-            +
-        "-"
-        +
-        String(month+1)
-            .padStart(2,"0")
-    );
+    return String(year) +
+        "-" +
+        String(month+1).padStart(2,"0");
 
 }
 
 function getDebtMonths(debt){
 
     if(
-        debt.paymentType !==
-        "monthly" ||
+        debt.paymentType !== "monthly" ||
         !debt.monthlyPayment ||
         !debt.startDate ||
         !debt.endDate
@@ -2717,9 +2661,7 @@ function getDebtMonths(debt){
             1
         );
 
-    while(
-        current <= endMonth
-    ){
+    while(current <= endMonth){
 
         result.push({
 
@@ -2796,8 +2738,7 @@ function showPage(pageId){
 
                 btn.classList.toggle(
                     "active",
-                    btn.dataset.page ===
-                    pageId
+                    btn.dataset.page === pageId
                 );
 
             }
@@ -2817,8 +2758,7 @@ function showPage(pageId){
         ].includes(pageId)
     ){
 
-        lastPage =
-            pageId;
+        lastPage = pageId;
 
     }
 
@@ -2830,8 +2770,7 @@ function goBackFromEdit(){
 
     if(
         currentDetail &&
-        currentDetail.mode ===
-        "person"
+        currentDetail.mode === "person"
     ){
 
         openPersonDetail(
@@ -2882,9 +2821,7 @@ function toast(message){
     el.textContent =
         message;
 
-    el.classList.add(
-        "show"
-    );
+    el.classList.add("show");
 
     clearTimeout(
         window.__toastTimer
@@ -2924,8 +2861,10 @@ function initYears(){
     for(
         let y =
             new Date().getFullYear()-5;
+
         y <=
             new Date().getFullYear()+5;
+
         y++
     ){
 
@@ -3018,17 +2957,10 @@ function toggleDebtFields(type){
 
     const prefixMap = {
 
-        utang:
-            "utang",
-
-        myDebt:
-            "myDebt",
-
-        editUtang:
-            "editUtang",
-
-        editMyDebt:
-            "editMyDebt"
+        utang:"utang",
+        myDebt:"myDebt",
+        editUtang:"editUtang",
+        editMyDebt:"editMyDebt"
 
     };
 
@@ -3059,8 +2991,7 @@ function toggleDebtFields(type){
 
     fields.classList.toggle(
         "show",
-        select.value ===
-        "monthly"
+        select.value === "monthly"
     );
 
 }
@@ -3117,44 +3048,34 @@ function openAddUtang(
     ).value =
         "";
 
-    toggleDebtFields(
-        "utang"
-    );
+    toggleDebtFields("utang");
 
-    showPage(
-        "addUtangPage"
-    );
+    showPage("addUtangPage");
 
 }
 
-function readDebtForm(
-    prefix
-){
+function readDebtForm(prefix){
 
     const name =
         document.getElementById(
-            prefix +
-            "Name"
+            prefix + "Name"
         ).value.trim();
 
     const amount =
         Number(
             document.getElementById(
-                prefix +
-                "Amount"
+                prefix + "Amount"
             ).value
         );
 
     const paymentType =
         document.getElementById(
-            prefix +
-            "PaymentType"
+            prefix + "PaymentType"
         ).value;
 
     const reason =
         document.getElementById(
-            prefix +
-            "Reason"
+            prefix + "Reason"
         ).value.trim();
 
     if(
@@ -3176,28 +3097,24 @@ function readDebtForm(
     let endDate = "";
 
     if(
-        paymentType ===
-        "monthly"
+        paymentType === "monthly"
     ){
 
         monthlyPayment =
             Number(
                 document.getElementById(
-                    prefix +
-                    "MonthlyPayment"
+                    prefix + "MonthlyPayment"
                 ).value
             );
 
         startDate =
             document.getElementById(
-                prefix +
-                "StartDate"
+                prefix + "StartDate"
             ).value;
 
         endDate =
             document.getElementById(
-                prefix +
-                "EndDate"
+                prefix + "EndDate"
             ).value;
 
         if(
@@ -3214,8 +3131,7 @@ function readDebtForm(
         }
 
         if(
-            monthlyPayment >
-            amount
+            monthlyPayment > amount
         ){
 
             toast(
@@ -3240,12 +3156,8 @@ function readDebtForm(
         }
 
         if(
-            new Date(
-                endDate
-            ) <
-            new Date(
-                startDate
-            )
+            new Date(endDate) <
+            new Date(startDate)
         ){
 
             toast(
@@ -3259,21 +3171,13 @@ function readDebtForm(
     }
 
     return {
-
         name,
-
         amount,
-
         paymentType,
-
         reason,
-
         monthlyPayment,
-
         startDate,
-
         endDate
-
     };
 
 }
@@ -3283,9 +3187,7 @@ function saveUtang(event){
     event.preventDefault();
 
     const form =
-        readDebtForm(
-            "utang"
-        );
+        readDebtForm("utang");
 
     if(!form){
         return;
@@ -3293,32 +3195,23 @@ function saveUtang(event){
 
     data.debts.push({
 
-        id:
-            uid(),
+        id:uid(),
 
-        name:
-            form.name,
+        name:form.name,
 
-        amount:
-            form.amount,
+        amount:form.amount,
 
-        paidAmount:
-            0,
+        paidAmount:0,
 
-        reason:
-            form.reason,
+        reason:form.reason,
 
-        paymentType:
-            form.paymentType,
+        paymentType:form.paymentType,
 
-        monthlyPayment:
-            form.monthlyPayment,
+        monthlyPayment:form.monthlyPayment,
 
-        startDate:
-            form.startDate,
+        startDate:form.startDate,
 
-        endDate:
-            form.endDate,
+        endDate:form.endDate,
 
         date:
             form.startDate ||
@@ -3339,17 +3232,11 @@ function saveUtang(event){
     ).value =
         "monthly";
 
-    toggleDebtFields(
-        "utang"
-    );
+    toggleDebtFields("utang");
 
-    toast(
-        "Utang added."
-    );
+    toast("Utang added.");
 
-    showPage(
-        "utangPage"
-    );
+    showPage("utangPage");
 
 }
 
@@ -3358,9 +3245,7 @@ function saveMyDebt(event){
     event.preventDefault();
 
     const form =
-        readDebtForm(
-            "myDebt"
-        );
+        readDebtForm("myDebt");
 
     if(!form){
         return;
@@ -3368,32 +3253,23 @@ function saveMyDebt(event){
 
     data.myDebts.push({
 
-        id:
-            uid(),
+        id:uid(),
 
-        name:
-            form.name,
+        name:form.name,
 
-        amount:
-            form.amount,
+        amount:form.amount,
 
-        paidAmount:
-            0,
+        paidAmount:0,
 
-        reason:
-            form.reason,
+        reason:form.reason,
 
-        paymentType:
-            form.paymentType,
+        paymentType:form.paymentType,
 
-        monthlyPayment:
-            form.monthlyPayment,
+        monthlyPayment:form.monthlyPayment,
 
-        startDate:
-            form.startDate,
+        startDate:form.startDate,
 
-        endDate:
-            form.endDate,
+        endDate:form.endDate,
 
         date:
             form.startDate ||
@@ -3414,17 +3290,11 @@ function saveMyDebt(event){
     ).value =
         "monthly";
 
-    toggleDebtFields(
-        "myDebt"
-    );
+    toggleDebtFields("myDebt");
 
-    toast(
-        "My debt added."
-    );
+    toast("My debt added.");
 
-    showPage(
-        "myDebtsPage"
-    );
+    showPage("myDebtsPage");
 
 }
 
@@ -3432,10 +3302,7 @@ function saveMyDebt(event){
    FIND / GROUP
 ============================================================ */
 
-function findDebt(
-    id,
-    type
-){
+function findDebt(id,type){
 
     const source =
         type === "utang"
@@ -3443,15 +3310,12 @@ function findDebt(
             : data.myDebts;
 
     return source.find(
-        d =>
-            d.id === id
+        d => d.id === id
     );
 
 }
 
-function groupDebts(
-    debts
-){
+function groupDebts(debts){
 
     const groups = {};
 
@@ -3482,16 +3346,12 @@ function groupDebts(
 
             groups[key]
                 .records
-                .push(
-                    debt
-                );
+                .push(debt);
 
         }
     );
 
-    return Object.values(
-        groups
-    );
+    return Object.values(groups);
 
 }
 
@@ -3506,11 +3366,8 @@ function openPersonDetail(
 
     currentDetail = {
 
-        mode:
-            "person",
-
+        mode:"person",
         name,
-
         type
 
     };
@@ -3520,9 +3377,7 @@ function openPersonDetail(
         type
     );
 
-    showPage(
-        "detailPage"
-    );
+    showPage("detailPage");
 
 }
 
@@ -3539,15 +3394,13 @@ function getPersonRecords(
     return source.filter(
         d =>
             String(
-                d.name ||
-                ""
+                d.name || ""
             )
             .trim()
             .toLowerCase()
             ===
             String(
-                name ||
-                ""
+                name || ""
             )
             .trim()
             .toLowerCase()
@@ -3555,9 +3408,7 @@ function getPersonRecords(
 
 }
 
-function escapeAttribute(
-    value
-){
+function escapeAttribute(value){
 
     return String(
         value ?? ""
@@ -3602,8 +3453,7 @@ function renderPersonDetail(
             (sum,d) =>
                 sum +
                 Number(
-                    d.amount ||
-                    0
+                    d.amount || 0
                 ),
             0
         );
@@ -3613,8 +3463,7 @@ function renderPersonDetail(
             (sum,d) =>
                 sum +
                 Number(
-                    d.paidAmount ||
-                    0
+                    d.paidAmount || 0
                 ),
             0
         );
@@ -3668,7 +3517,6 @@ function renderPersonDetail(
 
         </div>
 
-
         <div class="person-summary">
 
             <div class="overview-head">
@@ -3695,7 +3543,6 @@ function renderPersonDetail(
                 </div>
 
             </div>
-
 
             <div class="progress-wrap">
 
@@ -3727,7 +3574,6 @@ function renderPersonDetail(
                 </div>
 
             </div>
-
 
             <div class="overview-stats">
 
@@ -3771,7 +3617,6 @@ function renderPersonDetail(
 
         </div>
 
-
         <div class="form-actions">
 
             <button
@@ -3794,11 +3639,9 @@ function renderPersonDetail(
 
         </div>
 
-
         <div class="section-title">
             Records
         </div>
-
 
         ${
             records.length
@@ -3861,13 +3704,9 @@ function openAddMyDebtForPerson(
     ).value =
         "";
 
-    toggleDebtFields(
-        "myDebt"
-    );
+    toggleDebtFields("myDebt");
 
-    showPage(
-        "addMyDebtPage"
-    );
+    showPage("addMyDebtPage");
 
 }
 
@@ -3889,15 +3728,8 @@ function personRecordHTML(
     const remaining =
         Math.max(
             0,
-            Number(
-                debt.amount ||
-                0
-            )
-            -
-            Number(
-                debt.paidAmount ||
-                0
-            )
+            Number(debt.amount || 0) -
+            Number(debt.paidAmount || 0)
         );
 
     return `
@@ -3905,26 +3737,27 @@ function personRecordHTML(
         <div class="person-record">
 
             <div class="person-record-title">
-
                 ${escapeHTML(
-                    debt.name
+                    debt.reason ||
+                    (
+                        debt.paymentType === "monthly"
+                            ? "Monthly account"
+                            : "One-time account"
+                    )
                 )}
-
             </div>
 
-
-            <div class="person-record-reason">
-
-                ${
-                    debt.reason
-                        ? escapeHTML(
-                            debt.reason
-                        )
-                        : "No details provided."
-                }
-
-            </div>
-
+            ${
+                debt.reason
+                    ? `
+                        <div class="person-record-reason">
+                            ${escapeHTML(
+                                debt.reason
+                            )}
+                        </div>
+                    `
+                    : ""
+            }
 
             <div class="progress-wrap">
 
@@ -3936,46 +3769,70 @@ function personRecordHTML(
                                 ? "complete"
                                 : ""
                         }"
-                        style="
-                            width:${p}%
-                        ">
+                        style="width:${p}%">
                     </div>
 
                 </div>
 
-
                 <div class="progress-label">
 
                     <span>
-                        ${p.toFixed(0)}% paid
+                        ${money(
+                            debt.paidAmount
+                        )}
+                        / 
+                        ${money(
+                            debt.amount
+                        )}
                     </span>
 
                     <span>
-                        ${money(remaining)}
+                        ${p.toFixed(0)}%
                     </span>
 
                 </div>
 
             </div>
 
+            <div class="list-top" style="margin-top:8px">
 
-            <div
-                class="person-record-actions">
+                <div>
 
-                <button
-                    class="icon-btn payment"
-                    title="Add Payment"
-                    onclick="
-                        addPayment(
-                            '${debt.id}',
-                            '${type}'
-                        )
-                    ">
+                    <div class="amount blue">
+                        ${money(remaining)}
+                    </div>
 
-                    ₱
+                    <div class="list-meta">
+                        remaining
+                    </div>
 
-                </button>
+                </div>
 
+                <span class="status ${statusClass(debt)}">
+                    ${statusText(debt)}
+                </span>
+
+            </div>
+
+            <div class="person-record-actions">
+
+                ${
+                    remaining > 0
+                        ? `
+                            <button
+                                class="icon-btn payment"
+                                title="Add Payment"
+                                onclick="
+                                    addPayment(
+                                        '${debt.id}',
+                                        '${type}'
+                                    )
+                                ">
+                                ₱
+                            </button>
+                        `
+                        : ""
+                }
 
                 <button
                     class="icon-btn edit"
@@ -3986,11 +3843,8 @@ function personRecordHTML(
                             '${type}'
                         )
                     ">
-
                     ✎
-
                 </button>
-
 
                 <button
                     class="icon-btn delete"
@@ -4001,11 +3855,8 @@ function personRecordHTML(
                             '${type}'
                         )
                     ">
-
-                    🗑
-
+                    ×
                 </button>
-
 
                 <button
                     class="btn secondary"
@@ -4015,9 +3866,7 @@ function personRecordHTML(
                             '${type}'
                         )
                     ">
-
                     Details
-
                 </button>
 
             </div>
@@ -4044,20 +3893,15 @@ function openDebtDetail(
         );
 
     if(!debt){
-        toast(
-            "Account not found."
-        );
+        toast("Account not found.");
         return;
     }
 
     currentDetail = {
 
         id,
-
         type,
-
-        mode:
-            "debt"
+        mode:"debt"
 
     };
 
@@ -4066,9 +3910,7 @@ function openDebtDetail(
         type
     );
 
-    showPage(
-        "detailPage"
-    );
+    showPage("detailPage");
 
 }
 
@@ -4086,16 +3928,14 @@ function renderDebtDetail(
         return;
     }
 
-    const paid =
-        Number(
-            debt.paidAmount ||
-            0
-        );
-
     const total =
         Number(
-            debt.amount ||
-            0
+            debt.amount || 0
+        );
+
+    const paid =
+        Number(
+            debt.paidAmount || 0
         );
 
     const remaining =
@@ -4114,19 +3954,19 @@ function renderDebtDetail(
         Array.isArray(
             debt.payments
         )
-            ? [
-                ...debt.payments
-            ].sort(
-                (a,b) =>
-                    String(
-                        b.date
-                    ).localeCompare(
-                        String(
-                            a.date
-                        )
-                    )
-            )
+            ? [...debt.payments]
             : [];
+
+    payments.sort(
+        (a,b) =>
+            String(
+                b.date || ""
+            ).localeCompare(
+                String(
+                    a.date || ""
+                )
+            )
+    );
 
     const typeName =
         type === "utang"
@@ -4143,8 +3983,19 @@ function renderDebtDetail(
                     ${
                         currentDetail &&
                         currentDetail.mode === "person"
-                            ? `openPersonDetail('${escapeAttribute(debt.name)}','${type}')`
-                            : `showPage('${type === "utang" ? "utangPage" : "myDebtsPage"}')`
+                            ? `
+                                openPersonDetail(
+                                    '${escapeAttribute(debt.name)}',
+                                    '${type}'
+                                )
+                              `
+                            : `
+                                showPage(
+                                    '${type === "utang"
+                                        ? "utangPage"
+                                        : "myDebtsPage"}'
+                                )
+                              `
                     }
                 ">
 
@@ -4166,14 +4017,11 @@ function renderDebtDetail(
 
         </div>
 
-
         <div class="detail-cards">
 
             <div class="detail-card">
 
-                <label>
-                    TOTAL
-                </label>
+                <label>TOTAL</label>
 
                 <strong>
                     ${money(total)}
@@ -4181,12 +4029,9 @@ function renderDebtDetail(
 
             </div>
 
-
             <div class="detail-card">
 
-                <label>
-                    PAID
-                </label>
+                <label>PAID</label>
 
                 <strong class="green">
                     ${money(paid)}
@@ -4194,12 +4039,9 @@ function renderDebtDetail(
 
             </div>
 
-
             <div class="detail-card">
 
-                <label>
-                    REMAINING
-                </label>
+                <label>REMAINING</label>
 
                 <strong class="red">
                     ${money(remaining)}
@@ -4207,26 +4049,39 @@ function renderDebtDetail(
 
             </div>
 
-
             <div class="detail-card">
 
-                <label>
-                    STATUS
-                </label>
+                <label>STATUS</label>
 
-                <strong
-                    class="${statusClass(debt)}">
-
+                <strong class="${statusClass(debt)}">
                     ${statusText(debt)}
-
                 </strong>
 
             </div>
 
         </div>
 
+        <div class="overview">
 
-        <div class="progress-wrap">
+            <div class="overview-head">
+
+                <div>
+
+                    <div class="overview-title">
+                        Payment Progress
+                    </div>
+
+                    <div class="overview-sub">
+                        ${p.toFixed(0)}% completed
+                    </div>
+
+                </div>
+
+                <div class="amount blue">
+                    ${p.toFixed(0)}%
+                </div>
+
+            </div>
 
             <div class="progress">
 
@@ -4236,40 +4091,32 @@ function renderDebtDetail(
                             ? "complete"
                             : ""
                     }"
-                    style="
-                        width:${p}%
-                    ">
+                    style="width:${p}%">
                 </div>
 
             </div>
 
-
             <div class="progress-label">
 
                 <span>
-                    ${p.toFixed(0)}% paid
+                    ${money(paid)} paid
                 </span>
 
                 <span>
-                    ${money(remaining)}
+                    ${money(remaining)} left
                 </span>
 
             </div>
 
         </div>
 
-
         ${
             debt.reason
                 ? `
-                    <div class="section-title">
-                        Reason / Details
-                    </div>
-
                     <div class="reason-card">
 
                         <div class="reason-title">
-                            DETAILS
+                            Reason / Details
                         </div>
 
                         <div class="reason-text">
@@ -4282,7 +4129,6 @@ function renderDebtDetail(
                 `
                 : ""
         }
-
 
         <div class="form-actions">
 
@@ -4297,18 +4143,14 @@ function renderDebtDetail(
                                     '${type}'
                                 )
                             ">
-
-                            💵 Add Payment
-
+                            ＋ Add Payment
                         </button>
                     `
                     : `
                         <button
                             class="btn secondary"
                             disabled>
-
                             ✓ Fully Paid
-
                         </button>
                     `
             }
@@ -4321,38 +4163,29 @@ function renderDebtDetail(
                         '${type}'
                     )
                 ">
-
-                ✎ Edit
-
+                Edit
             </button>
 
         </div>
-
 
         ${
             debt.paymentType === "monthly"
                 ? `
                     <div class="section-title">
-                        Monthly Payment Schedule
+                        Monthly Payments
                     </div>
 
-                    <div class="month-checklist">
-
-                        ${monthlyChecklistHTML(
-                            debt,
-                            type
-                        )}
-
-                    </div>
+                    ${monthlyChecklistHTML(
+                        debt,
+                        type
+                    )}
                 `
                 : ""
         }
 
-
         <div class="section-title">
             Payment History
         </div>
-
 
         ${
             payments.length
@@ -4360,10 +4193,16 @@ function renderDebtDetail(
                     <div class="list">
 
                         ${
-                            payments
-                                .map(
-                                    payment =>
-                                        `
+                            payments.map(
+                                payment => {
+
+                                    const label =
+                                        payment.automatic
+                                            ? "Monthly Payment"
+                                            : "Manual Payment";
+
+                                    return `
+
                                         <div class="list-item">
 
                                             <div class="list-top">
@@ -4371,21 +4210,17 @@ function renderDebtDetail(
                                                 <div>
 
                                                     <div class="list-name">
-                                                        ${
-                                                            payment.automatic
-                                                                ? "Monthly Payment"
-                                                                : "Manual Payment"
-                                                        }
+                                                        ${label}
                                                     </div>
 
                                                     <div class="list-meta">
                                                         ${formatDate(
-                                                            payment.date
+                                                            payment.date ||
+                                                            today()
                                                         )}
                                                     </div>
 
                                                 </div>
-
 
                                                 <div class="amount green">
                                                     ${money(
@@ -4396,16 +4231,18 @@ function renderDebtDetail(
                                             </div>
 
                                         </div>
-                                        `
-                                )
-                                .join("")
+
+                                    `;
+
+                                }
+                            ).join("")
                         }
 
                     </div>
                 `
                 : `
                     <div class="empty">
-                        No payments recorded yet.
+                        No payments yet.
                     </div>
                 `
         }
@@ -4432,98 +4269,93 @@ function monthlyChecklistHTML(
 
         return `
             <div class="empty">
-                No monthly schedule available.
+                No monthly schedule.
             </div>
         `;
 
     }
 
-    return months
-        .map(
-            m => {
+    return `
 
-                const checked =
-                    !!(
-                        debt.monthlyPaid &&
-                        debt.monthlyPaid[
-                            m.key
-                        ]
-                    );
+        <div class="month-checklist">
 
-                const date =
-                    new Date(
-                        m.year,
-                        m.month,
-                        1
-                    );
+            ${
+                months.map(
+                    m => {
 
-                const monthName =
-                    date.toLocaleString(
-                        "en-US",
-                        {
-                            month:
-                                "long",
-                            year:
-                                "numeric"
-                        }
-                    );
+                        const checked =
+                            debt.monthlyPaid &&
+                            debt.monthlyPaid[m.key];
 
-                return `
+                        const date =
+                            new Date(
+                                m.year,
+                                m.month,
+                                1
+                            );
 
-                    <label
-                        class="month-check">
-
-                        <div
-                            class="month-check-left">
-
-                            <input
-                                type="checkbox"
-                                ${
-                                    checked
-                                        ? "checked"
-                                        : ""
+                        const label =
+                            date.toLocaleString(
+                                "en-US",
+                                {
+                                    month:"long",
+                                    year:"numeric"
                                 }
-                                onchange="
-                                    toggleMonthlyPayment(
-                                        '${debt.id}',
-                                        '${type}',
-                                        ${m.year},
-                                        ${m.month}
-                                    )
-                                ">
+                            );
 
-                            <span
-                                class="month-check-name">
+                        const monthAmount =
+                            Number(
+                                debt.monthlyPayment ||
+                                0
+                            );
 
-                                ${monthName}
+                        return `
 
-                            </span>
+                            <label class="month-check">
 
-                        </div>
+                                <div class="month-check-left">
 
+                                    <input
+                                        type="checkbox"
+                                        ${
+                                            checked
+                                                ? "checked"
+                                                : ""
+                                        }
+                                        onchange="
+                                            toggleMonthlyPayment(
+                                                '${debt.id}',
+                                                '${type}',
+                                                ${m.year},
+                                                ${m.month}
+                                            )
+                                        ">
 
-                        <span
-                            class="month-check-amount">
+                                    <span class="month-check-name">
+                                        ${label}
+                                    </span>
 
-                            ${money(
-                                debt.monthlyPayment
-                            )}
+                                </div>
 
-                        </span>
+                                <span class="month-check-amount">
+                                    ${money(monthAmount)}
+                                </span>
 
-                    </label>
+                            </label>
 
-                `;
+                        `;
 
+                    }
+                ).join("")
             }
-        )
-        .join("");
+
+        </div>
+
+    `;
 
 }
 
-function monthlyPaidCount(
-    debt
-){
+function monthlyPaidCount(debt){
 
     if(
         !debt.monthlyPaid
@@ -4533,9 +4365,7 @@ function monthlyPaidCount(
 
     return Object.values(
         debt.monthlyPaid
-    )
-    .filter(Boolean)
-    .length;
+    ).filter(Boolean).length;
 
 }
 
@@ -4553,6 +4383,8 @@ function toggleMonthlyPayment(
         );
 
     if(!debt){
+        toast("Account not found.");
+        renderAll();
         return;
     }
 
@@ -4565,8 +4397,13 @@ function toggleMonthlyPayment(
             "This account is not monthly."
         );
 
+        renderAll();
         return;
 
+    }
+
+    if(!debt.monthlyPaid){
+        debt.monthlyPaid = {};
     }
 
     const key =
@@ -4575,54 +4412,48 @@ function toggleMonthlyPayment(
             month
         );
 
-    debt.payments ||=
-        [];
+    const alreadyPaid =
+        !!debt.monthlyPaid[key];
 
-    debt.monthlyPaid ||=
-        {};
+    if(alreadyPaid){
 
-    if(
-        debt.monthlyPaid[
-            key
-        ]
-    ){
+        const automaticPayment =
+            Array.isArray(debt.payments)
+                ? debt.payments.find(
+                    p =>
+                        p.automatic === true &&
+                        p.monthlyKey === key
+                )
+                : null;
 
-        const automatic =
-            debt.payments.find(
-                p =>
-                    p.automatic &&
-                    p.monthlyKey === key
-            );
-
-        if(automatic){
+        if(automaticPayment){
 
             debt.paidAmount =
                 Math.max(
                     0,
                     Number(
-                        debt.paidAmount ||
-                        0
-                    )
-                    -
+                        debt.paidAmount || 0
+                    ) -
                     Number(
-                        automatic.amount ||
-                        0
+                        automaticPayment.amount || 0
                     )
                 );
 
             debt.payments =
                 debt.payments.filter(
                     p =>
-                        p.id !==
-                        automatic.id
+                        !(
+                            p.automatic === true &&
+                            p.monthlyKey === key
+                        )
                 );
 
         }
 
-        debt.monthlyPaid[
-            key
-        ] =
+        debt.monthlyPaid[key] =
             false;
+
+        saveData();
 
         toast(
             "Monthly payment unchecked."
@@ -4630,72 +4461,90 @@ function toggleMonthlyPayment(
 
     }else{
 
+        const total =
+            Number(
+                debt.amount || 0
+            );
+
+        const paid =
+            Number(
+                debt.paidAmount || 0
+            );
+
         const remaining =
             Math.max(
                 0,
-                Number(
-                    debt.amount ||
-                    0
-                )
-                -
-                Number(
-                    debt.paidAmount ||
-                    0
-                )
+                total-paid
             );
 
-        if(
-            remaining <= 0
-        ){
+        if(remaining <= 0){
 
             toast(
-                "This debt is already fully paid."
+                "This account is already fully paid."
             );
 
+            renderAll();
+            return;
+
+        }
+
+        const monthly =
+            Number(
+                debt.monthlyPayment || 0
+            );
+
+        if(monthly <= 0){
+
+            toast(
+                "Invalid monthly payment."
+            );
+
+            renderAll();
             return;
 
         }
 
         const actual =
             Math.min(
-                Number(
-                    debt.monthlyPayment ||
-                    0
-                ),
+                monthly,
                 remaining
             );
 
         debt.paidAmount =
-            Number(
-                debt.paidAmount ||
-                0
-            )
-            +
+            paid +
             actual;
+
+        if(
+            !Array.isArray(
+                debt.payments
+            )
+        ){
+
+            debt.payments = [];
+
+        }
 
         debt.payments.push({
 
-            id:
-                uid(),
+            id:uid(),
 
-            amount:
-                actual,
+            amount:actual,
 
             date:
-                `${year}-${String(month+1).padStart(2,"0")}-01`,
+                `${year}-${String(
+                    month+1
+                ).padStart(2,"0")}-01`,
 
-            monthlyKey:
-                key,
+            monthlyKey:key,
 
-            automatic:
-                true
+            automatic:true
 
         });
 
-        debt.monthlyPaid[
-            key
-        ] =
+        debt.monthlyPaid[key] =
             true;
+
+        saveData();
 
         toast(
             "Monthly payment recorded."
@@ -4703,16 +4552,13 @@ function toggleMonthlyPayment(
 
     }
 
-    saveData();
-
     refreshCurrentDetail();
-
     renderAll();
 
 }
 
 /* ============================================================
-   REFRESH DETAIL
+   DETAIL REFRESH
 ============================================================ */
 
 function refreshCurrentDetail(){
@@ -4754,7 +4600,7 @@ function refreshCurrentDetail(){
 
 /* ============================================================
    MANUAL ADD PAYMENT
-   MOBILE-SAFE VERSION
+   FIXED
 ============================================================ */
 
 let paymentTargetId = null;
@@ -4782,26 +4628,26 @@ function addPayment(
 
     }
 
+    const total =
+        Number(
+            debt.amount || 0
+        );
+
+    const paid =
+        Number(
+            debt.paidAmount || 0
+        );
+
     const remaining =
         Math.max(
             0,
-            Number(
-                debt.amount ||
-                0
-            )
-            -
-            Number(
-                debt.paidAmount ||
-                0
-            )
+            total-paid
         );
 
-    if(
-        remaining <= 0
-    ){
+    if(remaining <= 0){
 
         toast(
-            "This debt is already fully paid."
+            "This account is already fully paid."
         );
 
         return;
@@ -4847,9 +4693,7 @@ function addPayment(
     }
 
     remainingEl.textContent =
-        money(
-            remaining
-        );
+        money(remaining);
 
     input.value =
         "";
@@ -4887,14 +4731,18 @@ function closePaymentModal(){
 
     }
 
-    paymentTargetId =
-        null;
+    paymentTargetId = null;
+    paymentTargetType = null;
+    paymentTargetRemaining = 0;
 
-    paymentTargetType =
-        null;
+    const input =
+        document.getElementById(
+            "paymentAmountInput"
+        );
 
-    paymentTargetRemaining =
-        0;
+    if(input){
+        input.value = "";
+    }
 
 }
 
@@ -4921,7 +4769,9 @@ function confirmAddPayment(){
         !paymentTargetType
     ){
 
-        closePaymentModal();
+        toast(
+            "No payment account selected."
+        );
 
         return;
 
@@ -4935,12 +4785,11 @@ function confirmAddPayment(){
 
     if(!debt){
 
-        closePaymentModal();
-
         toast(
             "Account not found."
         );
 
+        closePaymentModal();
         return;
 
     }
@@ -4952,11 +4801,15 @@ function confirmAddPayment(){
 
     if(!input){
 
+        toast(
+            "Payment form unavailable."
+        );
+
         return;
 
     }
 
-    const clean =
+    let raw =
         String(
             input.value || ""
         )
@@ -4965,30 +4818,25 @@ function confirmAddPayment(){
         .trim();
 
     const amount =
+        Number(raw);
+
+    const total =
         Number(
-            clean
+            debt.amount || 0
+        );
+
+    const paid =
+        Number(
+            debt.paidAmount || 0
         );
 
     const remaining =
         Math.max(
             0,
-            Number(
-                debt.amount ||
-                0
-            )
-            -
-            Number(
-                debt.paidAmount ||
-                0
-            )
+            total-paid
         );
 
-    if(
-        !Number.isFinite(
-            amount
-        ) ||
-        amount <= 0
-    ){
+    if(!amount || amount <= 0){
 
         toast(
             "Enter a valid payment amount."
@@ -5001,13 +4849,12 @@ function confirmAddPayment(){
     }
 
     if(
-        amount > remaining
+        amount >
+        remaining + 0.000001
     ){
 
         toast(
-            "Maximum payment is " +
-            money(remaining) +
-            "."
+            `Payment cannot exceed ${money(remaining)}.`
         );
 
         input.focus();
@@ -5016,30 +4863,33 @@ function confirmAddPayment(){
 
     }
 
-    debt.paidAmount =
-        Number(
-            debt.paidAmount ||
-            0
+    if(
+        !Array.isArray(
+            debt.payments
         )
-        +
-        amount;
+    ){
 
-    debt.payments ||=
-        [];
+        debt.payments = [];
+
+    }
+
+    debt.paidAmount =
+        Math.min(
+            total,
+            paid + amount
+        );
 
     debt.payments.push({
 
-        id:
-            uid(),
+        id:uid(),
 
-        amount:
-            amount,
+        amount:amount,
 
-        date:
-            today(),
+        date:today(),
 
-        automatic:
-            false
+        automatic:false,
+
+        monthlyKey:null
 
     });
 
@@ -5048,7 +4898,7 @@ function confirmAddPayment(){
     closePaymentModal();
 
     toast(
-        "Payment added."
+        "Payment added successfully."
     );
 
     refreshCurrentDetail();
@@ -5056,6 +4906,46 @@ function confirmAddPayment(){
     renderAll();
 
 }
+
+/* ============================================================
+   ENTER KEY FOR PAYMENT
+============================================================ */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        const modal =
+            document.getElementById(
+                "paymentModal"
+            );
+
+        if(
+            event.key === "Enter" &&
+            modal &&
+            modal.classList.contains("show")
+        ){
+
+            event.preventDefault();
+
+            confirmAddPayment();
+
+        }
+
+        if(
+            event.key === "Escape" &&
+            modal &&
+            modal.classList.contains("show")
+        ){
+
+            event.preventDefault();
+
+            closePaymentModal();
+
+        }
+
+    }
+);
 
 /* ============================================================
    EDIT DEBT
@@ -5085,17 +4975,12 @@ function editDebt(
     currentDetail = {
 
         id,
-
         type,
-
-        mode:
-            "debt"
+        mode:"debt"
 
     };
 
-    if(
-        type === "utang"
-    ){
+    if(type === "utang"){
 
         document.getElementById(
             "editUtangId"
@@ -5115,32 +5000,27 @@ function editDebt(
         document.getElementById(
             "editUtangReason"
         ).value =
-            debt.reason ||
-            "";
+            debt.reason || "";
 
         document.getElementById(
             "editUtangPaymentType"
         ).value =
-            debt.paymentType ||
-            "one-time";
+            debt.paymentType;
 
         document.getElementById(
             "editUtangMonthlyPayment"
         ).value =
-            debt.monthlyPayment ||
-            "";
+            debt.monthlyPayment || "";
 
         document.getElementById(
             "editUtangStartDate"
         ).value =
-            debt.startDate ||
-            "";
+            debt.startDate || "";
 
         document.getElementById(
             "editUtangEndDate"
         ).value =
-            debt.endDate ||
-            "";
+            debt.endDate || "";
 
         toggleDebtFields(
             "editUtang"
@@ -5170,32 +5050,27 @@ function editDebt(
         document.getElementById(
             "editMyDebtReason"
         ).value =
-            debt.reason ||
-            "";
+            debt.reason || "";
 
         document.getElementById(
             "editMyDebtPaymentType"
         ).value =
-            debt.paymentType ||
-            "one-time";
+            debt.paymentType;
 
         document.getElementById(
             "editMyDebtMonthlyPayment"
         ).value =
-            debt.monthlyPayment ||
-            "";
+            debt.monthlyPayment || "";
 
         document.getElementById(
             "editMyDebtStartDate"
         ).value =
-            debt.startDate ||
-            "";
+            debt.startDate || "";
 
         document.getElementById(
             "editMyDebtEndDate"
         ).value =
-            debt.endDate ||
-            "";
+            debt.endDate || "";
 
         toggleDebtFields(
             "editMyDebt"
@@ -5249,11 +5124,13 @@ function updateUtang(event){
 
     if(
         form.amount <
-        debt.paidAmount
+        Number(
+            debt.paidAmount || 0
+        )
     ){
 
         toast(
-            "Total amount cannot be lower than amount already paid."
+            "Total amount cannot be lower than paid amount."
         );
 
         return;
@@ -5282,7 +5159,7 @@ function updateUtang(event){
         form.endDate;
 
     if(
-        form.paymentType ===
+        debt.paymentType ===
         "one-time"
     ){
 
@@ -5345,11 +5222,13 @@ function updateMyDebt(event){
 
     if(
         form.amount <
-        debt.paidAmount
+        Number(
+            debt.paidAmount || 0
+        )
     ){
 
         toast(
-            "Total amount cannot be lower than amount already paid."
+            "Total amount cannot be lower than paid amount."
         );
 
         return;
@@ -5378,7 +5257,7 @@ function updateMyDebt(event){
         form.endDate;
 
     if(
-        form.paymentType ===
+        debt.paymentType ===
         "one-time"
     ){
 
@@ -5409,20 +5288,28 @@ function removeAutomaticPayments(
     debt
 ){
 
-    const automatic =
-        (debt.payments || [])
-            .filter(
-                p =>
-                    p.automatic
-            );
+    if(
+        !Array.isArray(
+            debt.payments
+        )
+    ){
+
+        debt.payments = [];
+
+    }
+
+    const automaticPayments =
+        debt.payments.filter(
+            p =>
+                p.automatic === true
+        );
 
     const automaticTotal =
-        automatic.reduce(
-            (sum,p)=>
+        automaticPayments.reduce(
+            (sum,p) =>
                 sum +
                 Number(
-                    p.amount ||
-                    0
+                    p.amount || 0
                 ),
             0
         );
@@ -5431,26 +5318,20 @@ function removeAutomaticPayments(
         Math.max(
             0,
             Number(
-                debt.paidAmount ||
-                0
-            )
-            -
+                debt.paidAmount || 0
+            ) -
             automaticTotal
         );
 
     debt.payments =
-        (debt.payments || [])
-            .filter(
-                p =>
-                    !p.automatic
-            );
+        debt.payments.filter(
+            p =>
+                p.automatic !== true
+        );
 
     debt.monthlyPaid = {};
-
     debt.monthlyPayment = 0;
-
     debt.startDate = "";
-
     debt.endDate = "";
 
 }
@@ -5471,99 +5352,73 @@ function deleteDebt(
         );
 
     if(!debt){
-        return;
-    }
 
-    const confirmed =
-        confirm(
-            `Delete "${debt.name}"?\n\nThis will remove this debt record.`
+        toast(
+            "Account not found."
         );
 
-    if(!confirmed){
+        return;
+
+    }
+
+    const ok =
+        confirm(
+            `Delete ${debt.name}'s account?`
+        );
+
+    if(!ok){
         return;
     }
 
-    const personName =
-        debt.name;
-
-    if(
-        type === "utang"
-    ){
+    if(type === "utang"){
 
         data.debts =
             data.debts.filter(
-                d =>
-                    d.id !== id
+                d => d.id !== id
             );
-
-        saveData();
-
-        toast(
-            "Utang deleted."
-        );
-
-        const stillExists =
-            getPersonRecords(
-                personName,
-                type
-            ).length;
-
-        if(stillExists){
-
-            openPersonDetail(
-                personName,
-                type
-            );
-
-        }else{
-
-            showPage(
-                "utangPage"
-            );
-
-        }
 
     }else{
 
         data.myDebts =
             data.myDebts.filter(
-                d =>
-                    d.id !== id
+                d => d.id !== id
             );
 
-        saveData();
+    }
 
-        toast(
-            "My debt deleted."
+    saveData();
+
+    toast(
+        "Account deleted."
+    );
+
+    const remainingRecords =
+        getPersonRecords(
+            debt.name,
+            type
         );
 
-        const stillExists =
-            getPersonRecords(
-                personName,
-                type
-            ).length;
+    if(remainingRecords.length){
 
-        if(stillExists){
+        openPersonDetail(
+            debt.name,
+            type
+        );
 
-            openPersonDetail(
-                personName,
-                type
-            );
+    }else{
 
-        }else{
-
-            showPage(
-                "myDebtsPage"
-            );
-
-        }
+        showPage(
+            type === "utang"
+                ? "utangPage"
+                : "myDebtsPage"
+        );
 
     }
 
 }
 
 /* ============================================================
-   DEBT PIE OVERVIEW
+   DEBT OVERVIEW
 ============================================================ */
 
 function debtOverviewHTML(
@@ -5573,22 +5428,20 @@ function debtOverviewHTML(
 
     const total =
         debts.reduce(
-            (sum,d)=>
+            (sum,d) =>
                 sum +
                 Number(
-                    d.amount ||
-                    0
+                    d.amount || 0
                 ),
             0
         );
 
     const paid =
         debts.reduce(
-            (sum,d)=>
+            (sum,d) =>
                 sum +
                 Number(
-                    d.paidAmount ||
-                    0
+                    d.paidAmount || 0
                 ),
             0
         );
@@ -5606,9 +5459,9 @@ function debtOverviewHTML(
         );
 
     const paidDeg =
-        Math.round(
-            p * 3.6
-        );
+        total > 0
+            ? (paid / total) * 360
+            : 0;
 
     return `
 
@@ -5623,12 +5476,7 @@ function debtOverviewHTML(
                     </div>
 
                     <div class="overview-sub">
-                        ${debts.length}
-                        account${
-                            debts.length === 1
-                                ? ""
-                                : "s"
-                        }
+                        Payment progress
                     </div>
 
                 </div>
@@ -5638,7 +5486,6 @@ function debtOverviewHTML(
                 </div>
 
             </div>
-
 
             <div class="pie-row">
 
@@ -5668,7 +5515,6 @@ function debtOverviewHTML(
 
                 </div>
 
-
                 <div class="pie-legend">
 
                     <div class="legend-row">
@@ -5688,7 +5534,6 @@ function debtOverviewHTML(
                         </span>
 
                     </div>
-
 
                     <div class="legend-row">
 
@@ -5712,7 +5557,6 @@ function debtOverviewHTML(
 
             </div>
 
-
             <div class="overview-stats">
 
                 <div class="overview-stat">
@@ -5727,7 +5571,6 @@ function debtOverviewHTML(
 
                 </div>
 
-
                 <div class="overview-stat">
 
                     <div class="overview-stat-label">
@@ -5740,11 +5583,10 @@ function debtOverviewHTML(
 
                 </div>
 
-
                 <div class="overview-stat">
 
                     <div class="overview-stat-label">
-                        REMAINING
+                        LEFT
                     </div>
 
                     <div class="overview-stat-value red">
@@ -5762,7 +5604,7 @@ function debtOverviewHTML(
 }
 
 /* ============================================================
-   UTANG PAGE
+   RENDER UTANG
 ============================================================ */
 
 function renderUtang(){
@@ -5777,10 +5619,7 @@ function renderUtang(){
             "utangList"
         );
 
-    if(
-        !overview ||
-        !list
-    ){
+    if(!overview || !list){
         return;
     }
 
@@ -5798,11 +5637,9 @@ function renderUtang(){
     if(!groups.length){
 
         list.innerHTML = `
-
             <div class="empty">
-                No Utang accounts yet.
+                No utang accounts yet.
             </div>
-
         `;
 
         return;
@@ -5811,34 +5648,26 @@ function renderUtang(){
 
     list.innerHTML =
         groups.map(
-            group=>{
+            group => {
 
                 const total =
                     group.records.reduce(
-                        (sum,d)=>
+                        (sum,d) =>
                             sum +
                             Number(
-                                d.amount ||
-                                0
+                                d.amount || 0
                             ),
                         0
                     );
 
                 const paid =
                     group.records.reduce(
-                        (sum,d)=>
+                        (sum,d) =>
                             sum +
                             Number(
-                                d.paidAmount ||
-                                0
+                                d.paidAmount || 0
                             ),
                         0
-                    );
-
-                const p =
-                    percent(
-                        paid,
-                        total
                     );
 
                 const remaining =
@@ -5847,21 +5676,19 @@ function renderUtang(){
                         total-paid
                     );
 
+                const p =
+                    percent(
+                        paid,
+                        total
+                    );
+
                 return `
 
                     <div class="list-item">
 
-                        <div
-                            class="list-top"
-                            onclick="
-                                openPersonDetail(
-                                    '${escapeAttribute(group.name)}',
-                                    'utang'
-                                )
-                            "
-                            style="cursor:pointer">
+                        <div class="list-top">
 
-                            <div style="flex:1">
+                            <div>
 
                                 <div class="list-name">
                                     ${escapeHTML(
@@ -5870,7 +5697,6 @@ function renderUtang(){
                                 </div>
 
                                 <div class="list-meta">
-
                                     ${
                                         group.records.length
                                     }
@@ -5879,17 +5705,15 @@ function renderUtang(){
                                             ? ""
                                             : "s"
                                     }
-
                                 </div>
 
                             </div>
 
                             <div class="amount blue">
-                                ${money(total)}
+                                ${money(remaining)}
                             </div>
 
                         </div>
-
 
                         <div class="progress-wrap">
 
@@ -5911,44 +5735,38 @@ function renderUtang(){
                             <div class="progress-label">
 
                                 <span>
-                                    ${p.toFixed(0)}% paid
+                                    ${money(paid)} paid
                                 </span>
 
                                 <span>
-                                    ${money(remaining)}
+                                    ${p.toFixed(0)}%
                                 </span>
 
                             </div>
 
                         </div>
 
-
                         <div class="form-actions">
 
                             <button
-                                class="btn primary"
+                                class="btn secondary"
                                 onclick="
                                     openPersonDetail(
                                         '${escapeAttribute(group.name)}',
                                         'utang'
                                     )
                                 ">
-
                                 Open
-
                             </button>
 
-
                             <button
-                                class="btn secondary"
+                                class="btn primary"
                                 onclick="
                                     openAddUtang(
                                         '${escapeAttribute(group.name)}'
                                     )
                                 ">
-
                                 ＋ Add Utang
-
                             </button>
 
                         </div>
@@ -5963,7 +5781,7 @@ function renderUtang(){
 }
 
 /* ============================================================
-   MY DEBTS PAGE
+   RENDER MY DEBTS
 ============================================================ */
 
 function renderMyDebts(){
@@ -5978,17 +5796,14 @@ function renderMyDebts(){
             "myDebtList"
         );
 
-    if(
-        !overview ||
-        !list
-    ){
+    if(!overview || !list){
         return;
     }
 
     overview.innerHTML =
         debtOverviewHTML(
             data.myDebts,
-            "My Debts Overview"
+            "My Debt Overview"
         );
 
     const groups =
@@ -5999,11 +5814,9 @@ function renderMyDebts(){
     if(!groups.length){
 
         list.innerHTML = `
-
             <div class="empty">
-                No My Debt accounts yet.
+                No debt accounts yet.
             </div>
-
         `;
 
         return;
@@ -6012,34 +5825,26 @@ function renderMyDebts(){
 
     list.innerHTML =
         groups.map(
-            group=>{
+            group => {
 
                 const total =
                     group.records.reduce(
-                        (sum,d)=>
+                        (sum,d) =>
                             sum +
                             Number(
-                                d.amount ||
-                                0
+                                d.amount || 0
                             ),
                         0
                     );
 
                 const paid =
                     group.records.reduce(
-                        (sum,d)=>
+                        (sum,d) =>
                             sum +
                             Number(
-                                d.paidAmount ||
-                                0
+                                d.paidAmount || 0
                             ),
                         0
-                    );
-
-                const p =
-                    percent(
-                        paid,
-                        total
                     );
 
                 const remaining =
@@ -6048,21 +5853,19 @@ function renderMyDebts(){
                         total-paid
                     );
 
+                const p =
+                    percent(
+                        paid,
+                        total
+                    );
+
                 return `
 
                     <div class="list-item">
 
-                        <div
-                            class="list-top"
-                            onclick="
-                                openPersonDetail(
-                                    '${escapeAttribute(group.name)}',
-                                    'myDebt'
-                                )
-                            "
-                            style="cursor:pointer">
+                        <div class="list-top">
 
-                            <div style="flex:1">
+                            <div>
 
                                 <div class="list-name">
                                     ${escapeHTML(
@@ -6071,7 +5874,6 @@ function renderMyDebts(){
                                 </div>
 
                                 <div class="list-meta">
-
                                     ${
                                         group.records.length
                                     }
@@ -6080,17 +5882,15 @@ function renderMyDebts(){
                                             ? ""
                                             : "s"
                                     }
-
                                 </div>
 
                             </div>
 
                             <div class="amount yellow">
-                                ${money(total)}
+                                ${money(remaining)}
                             </div>
 
                         </div>
-
 
                         <div class="progress-wrap">
 
@@ -6112,44 +5912,38 @@ function renderMyDebts(){
                             <div class="progress-label">
 
                                 <span>
-                                    ${p.toFixed(0)}% paid
+                                    ${money(paid)} paid
                                 </span>
 
                                 <span>
-                                    ${money(remaining)}
+                                    ${p.toFixed(0)}%
                                 </span>
 
                             </div>
 
                         </div>
 
-
                         <div class="form-actions">
 
                             <button
-                                class="btn primary"
+                                class="btn secondary"
                                 onclick="
                                     openPersonDetail(
                                         '${escapeAttribute(group.name)}',
                                         'myDebt'
                                     )
                                 ">
-
                                 Open
-
                             </button>
 
-
                             <button
-                                class="btn secondary"
+                                class="btn primary"
                                 onclick="
                                     openAddMyDebtForPerson(
                                         '${escapeAttribute(group.name)}'
                                     )
                                 ">
-
                                 ＋ Add Debt
-
                             </button>
 
                         </div>
@@ -6196,11 +5990,13 @@ function saveExpense(event){
     if(
         !description ||
         !amount ||
+        amount <= 0 ||
+        !category ||
         !date
     ){
 
         toast(
-            "Complete all fields."
+            "Complete the required fields."
         );
 
         return;
@@ -6209,8 +6005,7 @@ function saveExpense(event){
 
     data.expenses.push({
 
-        id:
-            uid(),
+        id:uid(),
 
         description,
 
@@ -6245,12 +6040,17 @@ function editExpense(id){
 
     const expense =
         data.expenses.find(
-            e =>
-                e.id === id
+            e => e.id === id
         );
 
     if(!expense){
+
+        toast(
+            "Expense not found."
+        );
+
         return;
+
     }
 
     document.getElementById(
@@ -6278,6 +6078,8 @@ function editExpense(id){
     ).value =
         expense.date;
 
+    currentDetail = null;
+
     showPage(
         "editExpensePage"
     );
@@ -6295,35 +6097,68 @@ function updateExpense(event){
 
     const expense =
         data.expenses.find(
-            e =>
-                e.id === id
+            e => e.id === id
         );
 
     if(!expense){
+
+        toast(
+            "Expense not found."
+        );
+
         return;
+
     }
 
-    expense.description =
+    const description =
         document.getElementById(
             "editExpenseDescription"
         ).value.trim();
 
-    expense.amount =
+    const amount =
         Number(
             document.getElementById(
                 "editExpenseAmount"
             ).value
         );
 
-    expense.category =
+    const category =
         document.getElementById(
             "editExpenseCategory"
         ).value.trim();
 
-    expense.date =
+    const date =
         document.getElementById(
             "editExpenseDate"
         ).value;
+
+    if(
+        !description ||
+        !amount ||
+        amount <= 0 ||
+        !category ||
+        !date
+    ){
+
+        toast(
+            "Complete the required fields."
+        );
+
+        return;
+
+    }
+
+    expense.description =
+        description;
+
+    expense.amount =
+        amount;
+
+    expense.category =
+        category;
+
+    expense.date =
+        date;
 
     saveData();
 
@@ -6339,20 +6174,26 @@ function updateExpense(event){
 
 function deleteExpense(id){
 
+    const expense =
+        data.expenses.find(
+            e => e.id === id
+        );
+
+    if(!expense){
+        return;
+    }
+
     if(
         !confirm(
-            "Delete this expense?"
+            `Delete "${expense.description}"?`
         )
     ){
-
         return;
-
     }
 
     data.expenses =
         data.expenses.filter(
-            e =>
-                e.id !== id
+            e => e.id !== id
         );
 
     saveData();
@@ -6394,11 +6235,12 @@ function saveSavings(event){
 
     if(
         !name ||
-        !target
+        !target ||
+        target <= 0
     ){
 
         toast(
-            "Complete the savings goal."
+            "Complete the required fields."
         );
 
         return;
@@ -6407,8 +6249,7 @@ function saveSavings(event){
 
     data.savings.push({
 
-        id:
-            uid(),
+        id:uid(),
 
         name,
 
@@ -6440,12 +6281,17 @@ function editSavings(id){
 
     const saving =
         data.savings.find(
-            s =>
-                s.id === id
+            s => s.id === id
         );
 
     if(!saving){
+
+        toast(
+            "Savings goal not found."
+        );
+
         return;
+
     }
 
     document.getElementById(
@@ -6485,31 +6331,65 @@ function updateSavings(event){
 
     const saving =
         data.savings.find(
-            s =>
-                s.id === id
+            s => s.id === id
         );
 
     if(!saving){
+
+        toast(
+            "Savings goal not found."
+        );
+
         return;
+
     }
 
-    saving.name =
+    const name =
         document.getElementById(
             "editSavingName"
         ).value.trim();
 
-    saving.target =
+    const target =
         Number(
             document.getElementById(
                 "editSavingTarget"
             ).value
         );
 
-    saving.current =
+    const current =
         Number(
             document.getElementById(
                 "editSavingCurrent"
             ).value
+        );
+
+    if(
+        !name ||
+        !target ||
+        target <= 0
+    ){
+
+        toast(
+            "Complete the required fields."
+        );
+
+        return;
+
+    }
+
+    saving.name =
+        name;
+
+    saving.target =
+        target;
+
+    saving.current =
+        Math.min(
+            target,
+            Math.max(
+                0,
+                current
+            )
         );
 
     saveData();
@@ -6528,8 +6408,7 @@ function addSavingsMoney(id){
 
     const saving =
         data.savings.find(
-            s =>
-                s.id === id
+            s => s.id === id
         );
 
     if(!saving){
@@ -6540,49 +6419,40 @@ function addSavingsMoney(id){
         Math.max(
             0,
             Number(
-                saving.target ||
-                0
-            )
-            -
+                saving.target || 0
+            ) -
             Number(
-                saving.current ||
-                0
+                saving.current || 0
             )
         );
 
-    if(
-        remaining <= 0
-    ){
+    if(remaining <= 0){
 
         toast(
-            "Goal already completed."
+            "Savings goal is complete."
         );
 
         return;
 
     }
 
-    const entered =
-        window.prompt(
-            "Remaining: " +
-            money(remaining) +
-            "\n\nEnter amount to add:"
+    const answer =
+        prompt(
+            `Enter amount to add.\nRemaining: ${money(remaining)}`
         );
 
     if(
-        entered === null
+        answer === null
     ){
         return;
     }
 
     const amount =
         Number(
-            String(
-                entered
-            )
-            .replace(/,/g,"")
-            .replace(/₱/g,"")
-            .trim()
+            String(answer)
+                .replace(/,/g,"")
+                .replace(/₱/g,"")
+                .trim()
         );
 
     if(
@@ -6600,15 +6470,10 @@ function addSavingsMoney(id){
 
     saving.current =
         Math.min(
+            saving.target,
             Number(
-                saving.target ||
-                0
-            ),
-            Number(
-                saving.current ||
-                0
-            )
-            +
+                saving.current || 0
+            ) +
             amount
         );
 
@@ -6624,20 +6489,26 @@ function addSavingsMoney(id){
 
 function deleteSavings(id){
 
+    const saving =
+        data.savings.find(
+            s => s.id === id
+        );
+
+    if(!saving){
+        return;
+    }
+
     if(
         !confirm(
-            "Delete this savings goal?"
+            `Delete savings goal "${saving.name}"?`
         )
     ){
-
         return;
-
     }
 
     data.savings =
         data.savings.filter(
-            s =>
-                s.id !== id
+            s => s.id !== id
         );
 
     saveData();
@@ -6659,27 +6530,37 @@ function savingsPieHTML(
     target
 ){
 
+    const safeTarget =
+        Number(
+            target || 0
+        );
+
+    const safeCurrent =
+        Math.min(
+            safeTarget,
+            Math.max(
+                0,
+                Number(
+                    current || 0
+                )
+            )
+        );
+
     const p =
         percent(
-            current,
-            target
+            safeCurrent,
+            safeTarget
         );
+
+    const savedDeg =
+        safeTarget > 0
+            ? (safeCurrent / safeTarget) * 360
+            : 0;
 
     const remaining =
         Math.max(
             0,
-            Number(
-                target || 0
-            )
-            -
-            Number(
-                current || 0
-            )
-        );
-
-    const deg =
-        Math.round(
-            p * 3.6
+            safeTarget-safeCurrent
         );
 
     return `
@@ -6692,8 +6573,8 @@ function savingsPieHTML(
                     background:
                     conic-gradient(
                         #31c985 0deg,
-                        #31c985 ${deg}deg,
-                        #1598db ${deg}deg,
+                        #31c985 ${savedDeg}deg,
+                        #1598db ${savedDeg}deg,
                         #1598db 360deg
                     );
                 ">
@@ -6712,7 +6593,6 @@ function savingsPieHTML(
 
             </div>
 
-
             <div class="pie-legend">
 
                 <div class="legend-row">
@@ -6728,11 +6608,10 @@ function savingsPieHTML(
                     </div>
 
                     <span class="legend-value">
-                        ${money(current)}
+                        ${money(safeCurrent)}
                     </span>
 
                 </div>
-
 
                 <div class="legend-row">
 
@@ -6776,39 +6655,40 @@ function renderSavings(){
             "savingsList"
         );
 
-    if(
-        !overview ||
-        !list
-    ){
+    if(!overview || !list){
         return;
     }
 
-    const target =
+    const totalTarget =
         data.savings.reduce(
-            (sum,s)=>
+            (sum,s) =>
                 sum +
                 Number(
-                    s.target ||
-                    0
+                    s.target || 0
                 ),
             0
         );
 
-    const current =
+    const totalCurrent =
         data.savings.reduce(
-            (sum,s)=>
+            (sum,s) =>
                 sum +
                 Number(
-                    s.current ||
-                    0
+                    s.current || 0
                 ),
             0
+        );
+
+    const totalRemaining =
+        Math.max(
+            0,
+            totalTarget-totalCurrent
         );
 
     const p =
         percent(
-            current,
-            target
+            totalCurrent,
+            totalTarget
         );
 
     overview.innerHTML = `
@@ -6824,50 +6704,23 @@ function renderSavings(){
                     </div>
 
                     <div class="overview-sub">
-
-                        ${
-                            data.savings.length
-                        }
-                        goal${
-                            data.savings.length === 1
-                                ? ""
-                                : "s"
-                        }
-
+                        All savings goals
                     </div>
 
                 </div>
 
-
                 <div class="amount green">
-
                     ${p.toFixed(0)}%
-
                 </div>
 
             </div>
 
-
             ${savingsPieHTML(
-                current,
-                target
+                totalCurrent,
+                totalTarget
             )}
 
-
             <div class="overview-stats">
-
-                <div class="overview-stat">
-
-                    <div class="overview-stat-label">
-                        SAVED
-                    </div>
-
-                    <div class="overview-stat-value green">
-                        ${money(current)}
-                    </div>
-
-                </div>
-
 
                 <div class="overview-stat">
 
@@ -6876,20 +6729,31 @@ function renderSavings(){
                     </div>
 
                     <div class="overview-stat-value">
-                        ${money(target)}
+                        ${money(totalTarget)}
                     </div>
 
                 </div>
 
+                <div class="overview-stat">
+
+                    <div class="overview-stat-label">
+                        SAVED
+                    </div>
+
+                    <div class="overview-stat-value green">
+                        ${money(totalCurrent)}
+                    </div>
+
+                </div>
 
                 <div class="overview-stat">
 
                     <div class="overview-stat-label">
-                        GOALS
+                        LEFT
                     </div>
 
-                    <div class="overview-stat-value">
-                        ${data.savings.length}
+                    <div class="overview-stat-value blue">
+                        ${money(totalRemaining)}
                     </div>
 
                 </div>
@@ -6900,16 +6764,12 @@ function renderSavings(){
 
     `;
 
-    if(
-        !data.savings.length
-    ){
+    if(!data.savings.length){
 
         list.innerHTML = `
-
             <div class="empty">
                 No savings goals yet.
             </div>
-
         `;
 
         return;
@@ -6918,12 +6778,28 @@ function renderSavings(){
 
     list.innerHTML =
         data.savings.map(
-            s=>{
+            saving => {
+
+                const target =
+                    Number(
+                        saving.target || 0
+                    );
+
+                const current =
+                    Number(
+                        saving.current || 0
+                    );
 
                 const p =
                     percent(
-                        s.current,
-                        s.target
+                        current,
+                        target
+                    );
+
+                const remaining =
+                    Math.max(
+                        0,
+                        target-current
                     );
 
                 return `
@@ -6936,35 +6812,23 @@ function renderSavings(){
 
                                 <div class="list-name">
                                     ${escapeHTML(
-                                        s.name
+                                        saving.name
                                     )}
                                 </div>
 
                                 <div class="list-meta">
-
-                                    ${money(
-                                        s.current
-                                    )}
-
-                                    /
-
-                                    ${money(
-                                        s.target
-                                    )}
-
+                                    ${money(current)}
+                                    of
+                                    ${money(target)}
                                 </div>
 
                             </div>
 
-
                             <div class="amount green">
-
                                 ${p.toFixed(0)}%
-
                             </div>
 
                         </div>
-
 
                         <div class="progress-wrap">
 
@@ -6983,55 +6847,57 @@ function renderSavings(){
 
                             </div>
 
+                            <div class="progress-label">
+
+                                <span>
+                                    ${money(current)} saved
+                                </span>
+
+                                <span>
+                                    ${money(remaining)} left
+                                </span>
+
+                            </div>
+
                         </div>
 
-
-                        <div
-                            class="list-actions"
-                            style="
+                        <div class="list-actions"
+                             style="
+                                margin-top:8px;
                                 justify-content:flex-end;
-                                margin-top:8px
-                            ">
+                             ">
 
                             <button
                                 class="icon-btn payment"
                                 title="Add Savings"
                                 onclick="
                                     addSavingsMoney(
-                                        '${s.id}'
+                                        '${saving.id}'
                                     )
                                 ">
-
                                 ＋
-
                             </button>
-
 
                             <button
                                 class="icon-btn edit"
                                 title="Edit"
                                 onclick="
                                     editSavings(
-                                        '${s.id}'
+                                        '${saving.id}'
                                     )
                                 ">
-
                                 ✎
-
                             </button>
-
 
                             <button
                                 class="icon-btn delete"
                                 title="Delete"
                                 onclick="
                                     deleteSavings(
-                                        '${s.id}'
+                                        '${saving.id}'
                                     )
                                 ">
-
-                                🗑
-
+                                ×
                             </button>
 
                         </div>
@@ -7046,7 +6912,7 @@ function renderSavings(){
 }
 
 /* ============================================================
-   MONTHLY DASHBOARD
+   MONTHLY TRACKING
 ============================================================ */
 
 function renderMonthly(){
@@ -7061,79 +6927,103 @@ function renderMonthly(){
             "monthlyTrackingList"
         );
 
-    if(
-        !overview ||
-        !list
-    ){
+    if(!overview || !list){
         return;
     }
 
-    const allMonthly = [
+    const all = [
 
         ...data.debts.map(
-            d=>({
-
+            d => ({
                 ...d,
-
-                type:
-                    "utang"
-
+                type:"utang"
             })
         ),
 
         ...data.myDebts.map(
-            d=>({
-
+            d => ({
                 ...d,
-
-                type:
-                    "myDebt"
-
+                type:"myDebt"
             })
         )
 
-    ]
-    .filter(
-        d =>
-            d.paymentType ===
-            "monthly"
-            &&
-            isScheduledForMonth(
-                d,
-                selectedYear,
-                selectedMonth
-            )
-    );
+    ];
 
     const scheduled =
-        allMonthly.length;
-
-    const key =
-        monthKey(
-            selectedYear,
-            selectedMonth
+        all.filter(
+            debt =>
+                isScheduledForMonth(
+                    debt,
+                    selectedYear,
+                    selectedMonth
+                )
         );
 
-    const paid =
-        allMonthly.filter(
-            d =>
-                !!d.monthlyPaid[
-                    key
-                ]
-        ).length;
+    let scheduledTotal = 0;
+    let paidTotal = 0;
 
-    const percentage =
-        scheduled
-            ? (
-                paid /
-                scheduled
-            ) * 100
-            : 0;
+    scheduled.forEach(
+        debt => {
+
+            const amount =
+                Number(
+                    debt.monthlyPayment || 0
+                );
+
+            scheduledTotal += amount;
+
+            const key =
+                monthKey(
+                    selectedYear,
+                    selectedMonth
+                );
+
+            if(
+                debt.monthlyPaid &&
+                debt.monthlyPaid[key]
+            ){
+
+                const payment =
+                    Array.isArray(
+                        debt.payments
+                    )
+                        ? debt.payments.find(
+                            p =>
+                                p.automatic === true &&
+                                p.monthlyKey === key
+                        )
+                        : null;
+
+                paidTotal +=
+                    payment
+                        ? Number(
+                            payment.amount || 0
+                        )
+                        : Math.min(
+                            amount,
+                            Number(
+                                debt.amount || 0
+                            )
+                        );
+
+            }
+
+        }
+    );
+
+    const monthlyPercent =
+        percent(
+            paidTotal,
+            scheduledTotal
+        );
 
     const paidDeg =
-        Math.round(
-            percentage * 3.6
-        );
+        scheduledTotal > 0
+            ? (
+                paidTotal /
+                scheduledTotal
+            ) * 360
+            : 0;
 
     overview.innerHTML = `
 
@@ -7144,41 +7034,32 @@ function renderMonthly(){
                 <div>
 
                     <div class="overview-title">
-                        Monthly Overview
-                    </div>
-
-                    <div class="overview-sub">
-
                         ${
                             new Date(
                                 selectedYear,
                                 selectedMonth,
                                 1
-                            )
-                            .toLocaleString(
+                            ).toLocaleString(
                                 "en-US",
                                 {
-                                    month:
-                                        "long"
+                                    month:"long",
+                                    year:"numeric"
                                 }
                             )
                         }
+                    </div>
 
-                        ${selectedYear}
-
+                    <div class="overview-sub">
+                        Scheduled payment progress
                     </div>
 
                 </div>
 
-
                 <div class="amount blue">
-
-                    ${paid}/${scheduled}
-
+                    ${monthlyPercent.toFixed(0)}%
                 </div>
 
             </div>
-
 
             <div class="pie-row">
 
@@ -7189,15 +7070,15 @@ function renderMonthly(){
                         conic-gradient(
                             #31c985 0deg,
                             #31c985 ${paidDeg}deg,
-                            #ff858f ${paidDeg}deg,
-                            #ff858f 360deg
+                            #1598db ${paidDeg}deg,
+                            #1598db 360deg
                         );
                     ">
 
                     <div class="pie-center">
 
                         <div class="pie-percent">
-                            ${percentage.toFixed(0)}%
+                            ${monthlyPercent.toFixed(0)}%
                         </div>
 
                         <div class="pie-label">
@@ -7207,7 +7088,6 @@ function renderMonthly(){
                     </div>
 
                 </div>
-
 
                 <div class="pie-legend">
 
@@ -7224,26 +7104,25 @@ function renderMonthly(){
                         </div>
 
                         <span class="legend-value">
-                            ${paid}
+                            ${money(paidTotal)}
                         </span>
 
                     </div>
-
 
                     <div class="legend-row">
 
                         <div class="legend-left">
 
-                            <span class="legend-dot unpaid"></span>
+                            <span class="legend-dot remaining"></span>
 
                             <span class="legend-text">
-                                Unpaid
+                                Scheduled
                             </span>
 
                         </div>
 
                         <span class="legend-value">
-                            ${scheduled-paid}
+                            ${money(scheduledTotal)}
                         </span>
 
                     </div>
@@ -7252,35 +7131,43 @@ function renderMonthly(){
 
             </div>
 
+            <div class="overview-stats">
 
-            <div class="progress">
+                <div class="overview-stat">
 
-                <div
-                    class="progress-bar ${
-                        percentage >= 100
-                            ? "complete"
-                            : ""
-                    }"
-                    style="
-                        width:${percentage}%
-                    ">
+                    <div class="overview-stat-label">
+                        ACCOUNTS
+                    </div>
+
+                    <div class="overview-stat-value">
+                        ${scheduled.length}
+                    </div>
+
                 </div>
 
-            </div>
+                <div class="overview-stat">
 
+                    <div class="overview-stat-label">
+                        PAID
+                    </div>
 
-            <div class="progress-label">
+                    <div class="overview-stat-value green">
+                        ${money(paidTotal)}
+                    </div>
 
-                <span>
-                    ${paid} paid
-                </span>
+                </div>
 
-                <span>
-                    ${Math.max(
-                        0,
-                        scheduled-paid
-                    )} unpaid
-                </span>
+                <div class="overview-stat">
+
+                    <div class="overview-stat-label">
+                        SCHEDULED
+                    </div>
+
+                    <div class="overview-stat-value blue">
+                        ${money(scheduledTotal)}
+                    </div>
+
+                </div>
 
             </div>
 
@@ -7288,45 +7175,54 @@ function renderMonthly(){
 
     `;
 
-    if(
-        !allMonthly.length
-    ){
+    if(!scheduled.length){
 
         list.innerHTML = `
-
             <div class="empty">
-                No monthly payments scheduled
-                for this month.
+                No scheduled payments for this month.
             </div>
-
         `;
 
         return;
 
     }
 
+    const key =
+        monthKey(
+            selectedYear,
+            selectedMonth
+        );
+
     list.innerHTML =
-        allMonthly.map(
-            debt=>{
+        scheduled.map(
+            debt => {
+
+                const amount =
+                    Number(
+                        debt.monthlyPayment || 0
+                    );
 
                 const isPaid =
-                    !!debt.monthlyPaid[
-                        key
-                    ];
+                    !!(
+                        debt.monthlyPaid &&
+                        debt.monthlyPaid[key]
+                    );
 
                 const remaining =
                     Math.max(
                         0,
                         Number(
-                            debt.amount ||
-                            0
-                        )
-                        -
+                            debt.amount || 0
+                        ) -
                         Number(
-                            debt.paidAmount ||
-                            0
+                            debt.paidAmount || 0
                         )
                     );
+
+                const typeName =
+                    debt.type === "utang"
+                        ? "Utang"
+                        : "My Debt";
 
                 return `
 
@@ -7343,30 +7239,19 @@ function renderMonthly(){
                                 </div>
 
                                 <div class="list-meta">
-
-                                    ${
-                                        debt.type === "utang"
-                                            ? "Utang"
-                                            : "My Debt"
-                                    }
-
-                                    •
-
-                                    ${money(
-                                        debt.monthlyPayment
-                                    )}
-
+                                    ${typeName}
+                                    ·
+                                    ${money(amount)}
+                                    scheduled
                                 </div>
 
                             </div>
 
-
-                            <span
-                                class="status ${
-                                    isPaid
-                                        ? "paid"
-                                        : "unpaid"
-                                }">
+                            <span class="status ${
+                                isPaid
+                                    ? "paid"
+                                    : "unpaid"
+                            }">
 
                                 ${
                                     isPaid
@@ -7378,75 +7263,77 @@ function renderMonthly(){
 
                         </div>
 
+                        <div class="list-meta"
+                             style="margin-top:7px">
 
-                        <div class="progress-label">
-
-                            <span>
-                                Remaining
-                                ${money(remaining)}
-                            </span>
+                            ${
+                                isPaid
+                                    ? "This month's payment has been recorded."
+                                    : `Remaining balance: ${money(remaining)}`
+                            }
 
                         </div>
 
-
-                        <div
-                            class="list-actions"
-                            style="
-                                justify-content:flex-end;
-                                margin-top:7px
-                            ">
+                        <div class="form-actions">
 
                             ${
                                 !isPaid
-                                ?
-                                `
-                                    <button
-                                        class="icon-btn payment"
-                                        title="Add Payment"
-                                        onclick="
-                                            addPayment(
-                                                '${debt.id}',
-                                                '${debt.type}'
-                                            )
-                                        ">
+                                    ? `
+                                        <button
+                                            class="btn primary"
+                                            onclick="
+                                                addPayment(
+                                                    '${debt.id}',
+                                                    '${debt.type}'
+                                                )
+                                            ">
+                                            ＋ Add Payment
+                                        </button>
 
-                                        ₱
+                                        <button
+                                            class="btn secondary"
+                                            onclick="
+                                                toggleMonthlyPayment(
+                                                    '${debt.id}',
+                                                    '${debt.type}',
+                                                    ${selectedYear},
+                                                    ${selectedMonth}
+                                                )
+                                            ">
+                                            ✓ Mark Paid
+                                        </button>
+                                    `
+                                    : `
+                                        <button
+                                            class="btn secondary"
+                                            onclick="
+                                                toggleMonthlyPayment(
+                                                    '${debt.id}',
+                                                    '${debt.type}',
+                                                    ${selectedYear},
+                                                    ${selectedMonth}
+                                                )
+                                            ">
+                                            Undo Monthly Payment
+                                        </button>
 
-                                    </button>
-
-
-                                    <button
-                                        class="icon-btn"
-                                        title="Mark Monthly Payment Paid"
-                                        onclick="
-                                            toggleMonthlyPayment(
-                                                '${debt.id}',
-                                                '${debt.type}',
-                                                ${selectedYear},
-                                                ${selectedMonth}
-                                            )
-                                        ">
-
-                                        ✓
-
-                                    </button>
-                                `
-                                :
-                                `
-                                    <button
-                                        class="icon-btn payment"
-                                        title="Add Extra Payment"
-                                        onclick="
-                                            addPayment(
-                                                '${debt.id}',
-                                                '${debt.type}'
-                                            )
-                                        ">
-
-                                        ₱
-
-                                    </button>
-                                `
+                                        ${
+                                            remaining > 0
+                                                ? `
+                                                    <button
+                                                        class="btn primary"
+                                                        onclick="
+                                                            addPayment(
+                                                                '${debt.id}',
+                                                                '${debt.type}'
+                                                            )
+                                                        ">
+                                                        ＋ Extra Payment
+                                                    </button>
+                                                  `
+                                                : ""
+                                        }
+                                    `
                             }
 
                         </div>
@@ -7468,24 +7355,22 @@ function expensePieHTML(
     expenses
 ){
 
-    const map = {};
+    const grouped = {};
 
     expenses.forEach(
-        e=>{
+        expense => {
 
             const category =
-                e.category ||
+                expense.category ||
                 "Other";
 
-            map[category] =
+            grouped[category] =
                 (
-                    map[category] ||
+                    grouped[category] ||
                     0
-                )
-                +
+                ) +
                 Number(
-                    e.amount ||
-                    0
+                    expense.amount || 0
                 );
 
         }
@@ -7493,14 +7378,13 @@ function expensePieHTML(
 
     const entries =
         Object.entries(
-            map
+            grouped
         );
 
     const total =
         entries.reduce(
-            (sum,[,value])=>
-                sum +
-                Number(value),
+            (sum,[,amount]) =>
+                sum + amount,
             0
         );
 
@@ -7513,7 +7397,11 @@ function expensePieHTML(
                 <div
                     class="pie-chart"
                     style="
-                        background:#102838;
+                        background:
+                        conic-gradient(
+                            #102838 0deg,
+                            #102838 360deg
+                        );
                     ">
 
                     <div class="pie-center">
@@ -7523,13 +7411,12 @@ function expensePieHTML(
                         </div>
 
                         <div class="pie-label">
-                            EXPENSES
+                            EMPTY
                         </div>
 
                     </div>
 
                 </div>
-
 
                 <div class="pie-legend">
 
@@ -7545,99 +7432,55 @@ function expensePieHTML(
 
     }
 
+    const colors = [
+        "#1598db",
+        "#31c985",
+        "#ffd875",
+        "#ff858f",
+        "#9d8cff"
+    ];
+
     let currentDeg = 0;
 
-    const stops = [];
+    const segments =
+        entries.map(
+            ([category,amount],index) => {
 
-    entries.forEach(
-        ([,value],index)=>{
+                const deg =
+                    total > 0
+                        ? amount / total * 360
+                        : 0;
 
-            const degrees =
-                total
-                    ? (
-                        Number(value) /
-                        total
-                    ) * 360
-                    : 0;
+                const start =
+                    currentDeg;
 
-            const start =
-                currentDeg;
+                const end =
+                    currentDeg + deg;
 
-            const end =
-                currentDeg +
-                degrees;
+                currentDeg = end;
 
-            const segmentColor =
-                index % 4 === 0
-                    ? "#1598db"
-                    : index % 4 === 1
-                        ? "#31c985"
-                        : index % 4 === 2
-                            ? "#ffd875"
-                            : "#ff858f";
+                return {
 
-            stops.push(
-                `${segmentColor} ${start}deg ${end}deg`
-            );
+                    category,
+                    amount,
+                    color:
+                        colors[
+                            index %
+                            colors.length
+                        ],
+                    start,
+                    end
 
-            currentDeg =
-                end;
+                };
 
-        }
-    );
+            }
+        );
 
-    const legend =
-        entries
-            .slice(0,5)
-            .map(
-                ([category,value],index)=>{
-
-                    const segmentColor =
-                        index % 4 === 0
-                            ? "#1598db"
-                            : index % 4 === 1
-                                ? "#31c985"
-                                : index % 4 === 2
-                                    ? "#ffd875"
-                                    : "#ff858f";
-
-                    return `
-
-                        <div class="legend-row">
-
-                            <div class="legend-left">
-
-                                <span
-                                    class="legend-dot"
-                                    style="
-                                        background:${segmentColor};
-                                    ">
-                                </span>
-
-                                <span class="legend-text">
-
-                                    ${escapeHTML(
-                                        category
-                                    )}
-
-                                </span>
-
-                            </div>
-
-
-                            <span class="legend-value">
-
-                                ${money(value)}
-
-                            </span>
-
-                        </div>
-
-                    `;
-
-                }
-            )
-            .join("");
+    const gradient =
+        segments.map(
+            segment =>
+                `${segment.color} ${segment.start}deg ${segment.end}deg`
+        ).join(",");
 
     return `
 
@@ -7648,7 +7491,7 @@ function expensePieHTML(
                 style="
                     background:
                     conic-gradient(
-                        ${stops.join(",")}
+                        ${gradient}
                     );
                 ">
 
@@ -7666,10 +7509,57 @@ function expensePieHTML(
 
             </div>
 
-
             <div class="pie-legend">
 
-                ${legend}
+                ${
+                    segments
+                        .slice(0,5)
+                        .map(
+                            segment =>
+                                `
+
+                                    <div class="legend-row">
+
+                                        <div class="legend-left">
+
+                                            <span
+                                                class="legend-dot"
+                                                style="
+                                                    background:${segment.color}
+                                                ">
+                                            </span>
+
+                                            <span class="legend-text">
+                                                ${escapeHTML(
+                                                    segment.category
+                                                )}
+                                            </span>
+
+                                        </div>
+
+                                        <span class="legend-value">
+                                            ${money(
+                                                segment.amount
+                                            )}
+                                        </span>
+
+                                    </div>
+
+                                `
+                        )
+                        .join("")
+                }
+
+                ${
+                    segments.length > 5
+                        ? `
+                            <div class="legend-text">
+                                + ${segments.length-5}
+                                more categories
+                            </div>
+                          `
+                        : ""
+                }
 
             </div>
 
@@ -7695,27 +7585,23 @@ function renderExpenses(){
             "expenseList"
         );
 
-    if(
-        !overview ||
-        !list
-    ){
+    if(!overview || !list){
         return;
     }
 
-    const total =
+    const totalAll =
         data.expenses.reduce(
-            (sum,e)=>
+            (sum,e) =>
                 sum +
                 Number(
-                    e.amount ||
-                    0
+                    e.amount || 0
                 ),
             0
         );
 
-    const currentMonth =
+    const monthlyExpenses =
         data.expenses.filter(
-            e=>{
+            e => {
 
                 if(!e.date){
                     return false;
@@ -7723,17 +7609,14 @@ function renderExpenses(){
 
                 const d =
                     new Date(
-                        e.date+
+                        e.date +
                         "T00:00:00"
                     );
 
                 return (
-                    d.getFullYear()
-                    ===
-                    selectedYear
-                    &&
-                    d.getMonth()
-                    ===
+                    d.getFullYear() ===
+                    selectedYear &&
+                    d.getMonth() ===
                     selectedMonth
                 );
 
@@ -7741,12 +7624,11 @@ function renderExpenses(){
         );
 
     const monthlyTotal =
-        currentMonth.reduce(
-            (sum,e)=>
+        monthlyExpenses.reduce(
+            (sum,e) =>
                 sum +
                 Number(
-                    e.amount ||
-                    0
+                    e.amount || 0
                 ),
             0
         );
@@ -7764,37 +7646,32 @@ function renderExpenses(){
                     </div>
 
                     <div class="overview-sub">
-
                         ${
-                            currentMonth.length
+                            new Date(
+                                selectedYear,
+                                selectedMonth,
+                                1
+                            ).toLocaleString(
+                                "en-US",
+                                {
+                                    month:"long",
+                                    year:"numeric"
+                                }
+                            )
                         }
-                        transaction${
-                            currentMonth.length === 1
-                                ? ""
-                                : "s"
-                        }
-                        this month
-
                     </div>
 
                 </div>
 
-
                 <div class="amount red">
-
-                    ${money(
-                        monthlyTotal
-                    )}
-
+                    ${money(monthlyTotal)}
                 </div>
 
             </div>
 
-
             ${expensePieHTML(
-                currentMonth
+                monthlyExpenses
             )}
-
 
             <div class="overview-stats">
 
@@ -7805,13 +7682,10 @@ function renderExpenses(){
                     </div>
 
                     <div class="overview-stat-value red">
-                        ${money(
-                            monthlyTotal
-                        )}
+                        ${money(monthlyTotal)}
                     </div>
 
                 </div>
-
 
                 <div class="overview-stat">
 
@@ -7820,22 +7694,19 @@ function renderExpenses(){
                     </div>
 
                     <div class="overview-stat-value">
-                        ${money(
-                            total
-                        )}
+                        ${money(totalAll)}
                     </div>
 
                 </div>
 
-
                 <div class="overview-stat">
 
                     <div class="overview-stat-label">
-                        RECORDS
+                        ITEMS
                     </div>
 
                     <div class="overview-stat-value">
-                        ${data.expenses.length}
+                        ${monthlyExpenses.length}
                     </div>
 
                 </div>
@@ -7846,36 +7717,33 @@ function renderExpenses(){
 
     `;
 
-    const sorted =
-        [...data.expenses]
-            .sort(
-                (a,b)=>
-                    String(
-                        b.date
-                    ).localeCompare(
-                        String(
-                            a.date
-                        )
-                    )
-            );
-
-    if(!sorted.length){
+    if(!data.expenses.length){
 
         list.innerHTML = `
-
             <div class="empty">
-                No expenses recorded yet.
+                No expenses yet.
             </div>
-
         `;
 
         return;
 
     }
 
+    const sorted =
+        [...data.expenses].sort(
+            (a,b) =>
+                String(
+                    b.date || ""
+                ).localeCompare(
+                    String(
+                        a.date || ""
+                    )
+                )
+        );
+
     list.innerHTML =
         sorted.map(
-            e=>`
+            expense => `
 
                 <div class="list-item">
 
@@ -7884,74 +7752,55 @@ function renderExpenses(){
                         <div>
 
                             <div class="list-name">
-
                                 ${escapeHTML(
-                                    e.description
+                                    expense.description
                                 )}
-
                             </div>
 
-
                             <div class="list-meta">
-
                                 ${escapeHTML(
-                                    e.category
+                                    expense.category
                                 )}
-
-                                •
-
+                                ·
                                 ${formatDate(
-                                    e.date
+                                    expense.date
                                 )}
-
                             </div>
 
                         </div>
 
-
                         <div class="amount red">
-
                             ${money(
-                                e.amount
+                                expense.amount
                             )}
-
                         </div>
 
                     </div>
 
-
-                    <div
-                        class="list-actions"
-                        style="
+                    <div class="list-actions"
+                         style="
+                            margin-top:8px;
                             justify-content:flex-end;
-                            margin-top:7px
-                        ">
+                         ">
 
                         <button
                             class="icon-btn edit"
-                            title="Edit"
                             onclick="
                                 editExpense(
-                                    '${e.id}'
+                                    '${expense.id}'
                                 )
                             ">
-
                             ✎
-
                         </button>
-
 
                         <button
                             class="icon-btn delete"
-                            title="Delete"
                             onclick="
                                 deleteExpense(
-                                    '${e.id}'
+                                    '${expense.id}'
                                 )
                             ">
-
-                            🗑
-
+                            ×
                         </button>
 
                     </div>
@@ -7971,114 +7820,112 @@ function renderDashboard(){
 
     const totalExpenses =
         data.expenses.reduce(
-            (sum,e)=>
+            (sum,e) =>
                 sum +
                 Number(
-                    e.amount ||
-                    0
+                    e.amount || 0
                 ),
             0
         );
 
     const totalSavings =
         data.savings.reduce(
-            (sum,s)=>
+            (sum,s) =>
                 sum +
                 Number(
-                    s.current ||
-                    0
+                    s.current || 0
                 ),
             0
         );
 
-    const totalUtang =
+    const utangRemaining =
         data.debts.reduce(
-            (sum,d)=>
+            (sum,d) =>
                 sum +
                 Math.max(
                     0,
                     Number(
-                        d.amount ||
-                        0
-                    )
-                    -
+                        d.amount || 0
+                    ) -
                     Number(
-                        d.paidAmount ||
-                        0
+                        d.paidAmount || 0
                     )
                 ),
             0
         );
 
-    const totalMyDebt =
+    const myDebtRemaining =
         data.myDebts.reduce(
-            (sum,d)=>
+            (sum,d) =>
                 sum +
                 Math.max(
                     0,
                     Number(
-                        d.amount ||
-                        0
-                    )
-                    -
+                        d.amount || 0
+                    ) -
                     Number(
-                        d.paidAmount ||
-                        0
+                        d.paidAmount || 0
                     )
                 ),
             0
         );
 
-    document.getElementById(
-        "dashExpenses"
-    ).textContent =
-        money(
-            totalExpenses
+    const dashExpenses =
+        document.getElementById(
+            "dashExpenses"
         );
 
-    document.getElementById(
-        "dashSavings"
-    ).textContent =
-        money(
-            totalSavings
+    const dashSavings =
+        document.getElementById(
+            "dashSavings"
         );
 
-    document.getElementById(
-        "dashUtang"
-    ).textContent =
-        money(
-            totalUtang
+    const dashUtang =
+        document.getElementById(
+            "dashUtang"
         );
 
-    document.getElementById(
-        "dashMyDebt"
-    ).textContent =
-        money(
-            totalMyDebt
+    const dashMyDebt =
+        document.getElementById(
+            "dashMyDebt"
         );
+
+    if(dashExpenses)
+        dashExpenses.textContent =
+            money(totalExpenses);
+
+    if(dashSavings)
+        dashSavings.textContent =
+            money(totalSavings);
+
+    if(dashUtang)
+        dashUtang.textContent =
+            money(utangRemaining);
+
+    if(dashMyDebt)
+        dashMyDebt.textContent =
+            money(myDebtRemaining);
 
 }
 
 /* ============================================================
-   DATE FORMAT
+   FORMAT DATE
 ============================================================ */
 
-function formatDate(
-    date
-){
+function formatDate(date){
 
     if(!date){
-        return "—";
+        return "";
     }
 
     const d =
         new Date(
-            date+
+            date +
             "T00:00:00"
         );
 
     if(
-        isNaN(
+        Number.isNaN(
             d.getTime()
         )
     ){
@@ -8090,11 +7937,9 @@ function formatDate(
     return d.toLocaleDateString(
         "en-US",
         {
-
             month:"short",
             day:"numeric",
             year:"numeric"
-
         }
     );
 
@@ -8116,17 +7961,15 @@ function renderHeaderDate(){
     }
 
     el.textContent =
-        new Date()
-            .toLocaleDateString(
-                "en-US",
-                {
-
-                    month:"short",
-                    day:"numeric",
-                    year:"numeric"
-
-                }
-            );
+        new Date().toLocaleDateString(
+            "en-US",
+            {
+                weekday:"short",
+                month:"short",
+                day:"numeric",
+                year:"numeric"
+            }
+        );
 
 }
 
@@ -8154,46 +7997,18 @@ function renderAll(){
 
     renderSavings();
 
+    const activePage =
+        document.querySelector(
+            ".page.active"
+        );
+
     if(
-        currentDetail &&
-        document.getElementById(
-            "detailPage"
-        ) &&
-        document.getElementById(
-            "detailPage"
-        ).classList.contains(
-            "active"
-        )
+        activePage &&
+        activePage.id ===
+        "detailPage"
     ){
 
-        if(
-            currentDetail.mode ===
-            "person"
-        ){
-
-            renderPersonDetail(
-                currentDetail.name,
-                currentDetail.type
-            );
-
-        }else{
-
-            const debt =
-                findDebt(
-                    currentDetail.id,
-                    currentDetail.type
-                );
-
-            if(debt){
-
-                renderDebtDetail(
-                    debt,
-                    currentDetail.type
-                );
-
-            }
-
-        }
+        refreshCurrentDetail();
 
     }
 
@@ -8249,36 +8064,18 @@ function initializeForms(){
 
     }
 
-    const editUtangType =
-        document.getElementById(
-            "editUtangPaymentType"
-        );
+    toggleDebtFields(
+        "editUtang"
+    );
 
-    if(editUtangType){
-
-        toggleDebtFields(
-            "editUtang"
-        );
-
-    }
-
-    const editMyDebtType =
-        document.getElementById(
-            "editMyDebtPaymentType"
-        );
-
-    if(editMyDebtType){
-
-        toggleDebtFields(
-            "editMyDebt"
-        );
-
-    }
+    toggleDebtFields(
+        "editMyDebt"
+    );
 
 }
 
 /* ============================================================
-   START APP
+   START
 ============================================================ */
 
 loadData();
