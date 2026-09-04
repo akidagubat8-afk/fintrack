@@ -3,21 +3,19 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- PHONE: PREVENT AUTO-ZOOM -->
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+content="width=device-width, initial-scale=1.0,
+maximum-scale=1.0, user-scalable=no">
 
 <title>Liah's Fin.Track</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
     -webkit-text-size-adjust:100%;
     touch-action:manipulation;
 }
@@ -34,10 +32,7 @@ body{
     padding:20px;
 }
 
-button,
-input,
-select,
-textarea{
+button,input,select,textarea{
     font-family:inherit;
 }
 
@@ -50,10 +45,6 @@ button:disabled{
     opacity:.45;
     cursor:not-allowed;
 }
-
-/* ==============================
-   APP
-============================== */
 
 .app{
     width:100%;
@@ -68,10 +59,6 @@ button:disabled{
     flex-direction:column;
     position:relative;
 }
-
-/* ==============================
-   TOP
-============================== */
 
 .top{
     padding:14px 17px;
@@ -126,10 +113,6 @@ button:disabled{
     box-shadow:0 0 8px #59d78d;
 }
 
-/* ==============================
-   CONTENT
-============================== */
-
 .content{
     flex:1;
     overflow-y:auto;
@@ -161,10 +144,6 @@ button:disabled{
     margin-top:4px;
     margin-bottom:17px;
 }
-
-/* ==============================
-   CARDS
-============================== */
 
 .grid{
     display:grid;
@@ -198,10 +177,6 @@ button:disabled{
 .yellow{color:#f2cd61}
 .white{color:#edf7ff}
 
-/* ==============================
-   SECTIONS
-============================== */
-
 .section{
     margin-top:18px;
 }
@@ -220,10 +195,6 @@ button:disabled{
     align-items:center;
 }
 
-/* ==============================
-   BUTTONS
-============================== */
-
 .btn{
     border:1px solid #285775;
     background:#102e47;
@@ -232,9 +203,6 @@ button:disabled{
     padding:10px 12px;
     font-size:9px;
     font-weight:700;
-    touch-action:manipulation;
-    -webkit-user-select:none;
-    user-select:none;
 }
 
 .btn:active{
@@ -269,10 +237,6 @@ button:disabled{
     margin-bottom:14px;
 }
 
-/* ==============================
-   YEAR
-============================== */
-
 .year-control{
     display:flex;
     align-items:center;
@@ -302,10 +266,6 @@ button:disabled{
     outline:none;
 }
 
-/* ==============================
-   MONTHS
-============================== */
-
 .months{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -327,10 +287,6 @@ button:disabled{
     border-color:#3c9ad0;
     color:white;
 }
-
-/* ==============================
-   LIST
-============================== */
 
 .list{
     display:flex;
@@ -367,14 +323,14 @@ button:disabled{
     font-weight:800;
 }
 
-/* ==============================
-   PIE
-============================== */
-
 .account-row{
     display:flex;
     align-items:center;
     gap:13px;
+}
+
+.account-info{
+    flex:1;
 }
 
 .pie{
@@ -410,14 +366,6 @@ button:disabled{
     margin-top:2px;
 }
 
-.account-info{
-    flex:1;
-}
-
-/* ==============================
-   PROGRESS
-============================== */
-
 .progress-box{
     margin-top:10px;
 }
@@ -443,10 +391,6 @@ button:disabled{
     background:#36a9e8;
     border-radius:20px;
 }
-
-/* ==============================
-   STATUS
-============================== */
 
 .badge{
     display:inline-block;
@@ -474,10 +418,6 @@ button:disabled{
     color:#ff8798;
 }
 
-/* ==============================
-   FILTER
-============================== */
-
 .filter-row{
     display:flex;
     gap:6px;
@@ -501,10 +441,6 @@ button:disabled{
     color:white;
 }
 
-/* ==============================
-   ACTIONS
-============================== */
-
 .actions{
     display:flex;
     gap:6px;
@@ -516,10 +452,6 @@ button:disabled{
     padding:7px 9px;
     font-size:8px;
 }
-
-/* ==============================
-   FORMS
-============================== */
 
 .form-group{
     margin-bottom:12px;
@@ -533,14 +465,11 @@ button:disabled{
     margin-bottom:6px;
 }
 
-/*
-IMPORTANT:
-16px prevents Safari/iPhone auto zoom.
-*/
-
 .input,
 .select,
-textarea{
+textarea,
+input,
+select{
     width:100%;
     padding:11px;
     background:#061522;
@@ -548,30 +477,18 @@ textarea{
     color:white;
     border-radius:9px;
     outline:none;
-
     font-size:16px !important;
-
     -webkit-text-size-adjust:100%;
     touch-action:manipulation;
 }
 
 .input:focus,
 .select:focus,
-textarea:focus{
+input:focus,
+select:focus{
     border-color:#3c91c5;
     font-size:16px !important;
 }
-
-input,
-select,
-textarea{
-    -webkit-appearance:none;
-    appearance:none;
-}
-
-/* ==============================
-   MONTHLY
-============================== */
 
 .month-box{
     background:#091f32;
@@ -584,7 +501,7 @@ textarea{
     display:flex;
     justify-content:space-between;
     gap:10px;
-    padding:8px 0;
+    padding:9px 0;
     border-bottom:1px solid #123149;
     font-size:8px;
 }
@@ -600,10 +517,6 @@ textarea{
     margin-bottom:9px;
 }
 
-/* ==============================
-   EMPTY
-============================== */
-
 .empty{
     padding:24px 10px;
     text-align:center;
@@ -613,9 +526,84 @@ textarea{
     font-size:9px;
 }
 
-/* ==============================
-   NAV
-============================== */
+/* MONTHLY CHECKLIST */
+
+.checklist{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-top:10px;
+}
+
+.check-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:#081a2b;
+    border:1px solid #173b56;
+    border-radius:9px;
+    padding:8px;
+}
+
+.check-row.done{
+    border-color:#247459;
+    background:#0b2a25;
+}
+
+.check{
+    width:21px;
+    height:21px;
+    min-width:21px;
+    padding:0;
+    border-radius:6px;
+    border:1px solid #3d6681;
+    background:#061522;
+    color:#63dfa3;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:13px;
+    font-weight:900;
+}
+
+.check.checked{
+    background:#12533f;
+    border-color:#2b9671;
+}
+
+.check-month{
+    font-size:8px;
+    font-weight:800;
+    width:32px;
+}
+
+.check-info{
+    flex:1;
+}
+
+.check-amount{
+    font-size:9px;
+    font-weight:800;
+}
+
+.check-status{
+    font-size:6px;
+    color:#7594ac;
+    margin-top:2px;
+}
+
+.check-progress{
+    height:5px;
+    background:#06121d;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:8px;
+}
+
+.check-progress-bar{
+    height:100%;
+    background:#36a9e8;
+}
 
 .nav{
     display:grid;
@@ -643,10 +631,6 @@ textarea{
 .nav button.active{
     color:#5bbcf3;
 }
-
-/* ==============================
-   TOAST
-============================== */
 
 .toast{
     position:absolute;
@@ -676,10 +660,6 @@ textarea{
     border-color:#854354;
 }
 
-/* ==============================
-   PHONE
-============================== */
-
 @media(max-width:500px){
 
     body{
@@ -693,9 +673,7 @@ textarea{
         border:0;
         border-radius:0;
     }
-
 }
-
 </style>
 </head>
 
@@ -703,119 +681,61 @@ textarea{
 
 <div class="app">
 
-<!-- =====================================================
-HEADER
-===================================================== -->
-
 <div class="top">
-
     <div class="logo">₱</div>
 
     <div class="brand">
-
-        <div class="brand-name">
-            Liah's Fin.Track
-        </div>
-
-        <div class="brand-sub">
-            PERSONAL FINANCE SYSTEM
-        </div>
-
+        <div class="brand-name">Liah's Fin.Track</div>
+        <div class="brand-sub">PERSONAL FINANCE SYSTEM</div>
     </div>
 
     <div class="online">
-
-        <span class="dot"></span>
-        ONLINE
-
+        <span class="dot"></span>ONLINE
     </div>
-
 </div>
-
-
-<!-- =====================================================
-CONTENT
-===================================================== -->
 
 <div class="content">
 
-
-<!-- =====================================================
-HOME
-===================================================== -->
+<!-- HOME -->
 
 <div id="page-home" class="page active">
 
-    <div class="title">
-        Dashboard
-    </div>
-
+    <div class="title">Dashboard</div>
     <div class="subtitle">
         Financial overview & monthly tracking
     </div>
 
-
     <div class="grid">
 
         <div class="card">
-
-            <div class="label">
-                Expenses
-            </div>
-
-            <div id="dashExpenses"
-                 class="number red">
+            <div class="label">Expenses</div>
+            <div id="dashExpenses" class="number red">
                 ₱0.00
             </div>
-
         </div>
 
-
         <div class="card">
-
-            <div class="label">
-                Savings
-            </div>
-
-            <div id="dashSavings"
-                 class="number green">
+            <div class="label">Savings</div>
+            <div id="dashSavings" class="number green">
                 ₱0.00
             </div>
-
         </div>
 
-
         <div class="card">
-
-            <div class="label">
-                Money Owed to Me
-            </div>
-
-            <div id="dashOwed"
-                 class="number blue">
+            <div class="label">Money Owed to Me</div>
+            <div id="dashOwed" class="number blue">
                 ₱0.00
             </div>
-
         </div>
 
-
         <div class="card">
-
-            <div class="label">
-                My Debts
-            </div>
-
-            <div id="dashMyDebt"
-                 class="number yellow">
+            <div class="label">My Debts</div>
+            <div id="dashMyDebt" class="number yellow">
                 ₱0.00
             </div>
-
         </div>
 
     </div>
-
-
-    <!-- QUICK ACTIONS -->
 
     <div class="section">
 
@@ -825,95 +745,60 @@ HOME
 
         <div class="grid">
 
-            <button type="button"
-                    class="btn primary"
+            <button class="btn primary"
                     onclick="showPage('add-person')">
-
                 👥 + Utang
-
             </button>
 
-
-            <button type="button"
-                    class="btn primary"
+            <button class="btn primary"
                     onclick="showPage('add-mydebt')">
-
                 💳 + My Debt
-
             </button>
 
-
-            <button type="button"
-                    class="btn"
+            <button class="btn"
                     onclick="showPage('add-expense')">
-
                 🧾 + Expense
-
             </button>
 
-
-            <button type="button"
-                    class="btn"
+            <button class="btn"
                     onclick="showPage('add-savings')">
-
                 💰 + Savings
-
             </button>
 
         </div>
 
     </div>
 
-
-    <!-- YEAR + MONTH -->
-
     <div class="section">
 
-        <div class="section-head">
-
-            <div class="section-title">
-                Monthly Tracking
-            </div>
-
+        <div class="section-title">
+            Monthly Tracking
         </div>
-
 
         <div class="year-control">
 
-            <button type="button"
-                    class="btn year-arrow"
+            <button class="btn year-arrow"
                     onclick="changeYear(-1)">
-
                 ◀
-
             </button>
-
 
             <select id="yearSelect"
                     class="year-select"
                     onchange="selectYear(this.value)">
             </select>
 
-
-            <button type="button"
-                    class="btn year-arrow"
+            <button class="btn year-arrow"
                     onclick="changeYear(1)">
-
                 ▶
-
             </button>
 
         </div>
-
 
         <div id="monthGrid"
              class="months">
         </div>
 
     </div>
-
-
-    <!-- MONTH SUMMARY -->
 
     <div class="section">
 
@@ -925,13 +810,10 @@ HOME
 
     </div>
 
-
-    <!-- UNPAID -->
-
     <div class="section">
 
         <div class="section-title">
-            Monthly Unpaid
+            Monthly Payment Checklist
         </div>
 
         <div id="monthlyList"></div>
@@ -941,38 +823,25 @@ HOME
 </div>
 
 
-<!-- =====================================================
-UTANG
-===================================================== -->
+<!-- UTANG -->
 
 <div id="page-people" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('home')">
-
         ← Back
-
     </button>
 
-
-    <div class="title">
-        Utang
-    </div>
+    <div class="title">Utang</div>
 
     <div class="subtitle">
         People who owe money to you
     </div>
 
-
-    <button type="button"
-            class="btn primary full"
+    <button class="btn primary full"
             onclick="showPage('add-person')">
-
         👤 + Add Utang
-
     </button>
-
 
     <div class="section">
 
@@ -987,38 +856,25 @@ UTANG
 </div>
 
 
-<!-- =====================================================
-MY DEBTS
-===================================================== -->
+<!-- MY DEBTS -->
 
 <div id="page-mydebts" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('home')">
-
         ← Back
-
     </button>
 
-
-    <div class="title">
-        My Debts
-    </div>
+    <div class="title">My Debts</div>
 
     <div class="subtitle">
         Money that you need to pay
     </div>
 
-
-    <button type="button"
-            class="btn primary full"
+    <button class="btn primary full"
             onclick="showPage('add-mydebt')">
-
         💳 + Add My Debt
-
     </button>
-
 
     <div class="section">
 
@@ -1033,29 +889,20 @@ MY DEBTS
 </div>
 
 
-<!-- =====================================================
-ADD UTANG
-===================================================== -->
+<!-- ADD UTANG -->
 
 <div id="page-add-person" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('people')">
-
         ← Back
-
     </button>
 
-
-    <div class="title">
-        Add Utang
-    </div>
+    <div class="title">Add Utang</div>
 
     <div class="subtitle">
         Record money owed to you
     </div>
-
 
     <form onsubmit="addPersonDebt(event)">
 
@@ -1072,7 +919,6 @@ ADD UTANG
                    required>
 
         </div>
-
 
         <div class="form-group">
 
@@ -1091,7 +937,6 @@ ADD UTANG
 
         </div>
 
-
         <div class="form-group">
 
             <label class="form-label">
@@ -1108,7 +953,6 @@ ADD UTANG
 
         </div>
 
-
         <div class="form-group">
 
             <label class="form-label">
@@ -1122,12 +966,9 @@ ADD UTANG
 
         </div>
 
-
         <button type="submit"
                 class="btn primary full">
-
             💾 Save Utang
-
         </button>
 
     </form>
@@ -1135,29 +976,20 @@ ADD UTANG
 </div>
 
 
-<!-- =====================================================
-ADD MY DEBT
-===================================================== -->
+<!-- ADD MY DEBT -->
 
 <div id="page-add-mydebt" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('mydebts')">
-
         ← Back
-
     </button>
 
-
-    <div class="title">
-        Add My Debt
-    </div>
+    <div class="title">Add My Debt</div>
 
     <div class="subtitle">
         Record money that you need to pay
     </div>
-
 
     <form onsubmit="addMyDebt(event)">
 
@@ -1175,7 +1007,6 @@ ADD MY DEBT
 
         </div>
 
-
         <div class="form-group">
 
             <label class="form-label">
@@ -1191,7 +1022,6 @@ ADD MY DEBT
                    required>
 
         </div>
-
 
         <div class="form-group">
 
@@ -1209,7 +1039,6 @@ ADD MY DEBT
 
         </div>
 
-
         <div class="form-group">
 
             <label class="form-label">
@@ -1223,12 +1052,9 @@ ADD MY DEBT
 
         </div>
 
-
         <button type="submit"
                 class="btn primary full">
-
             💾 Save My Debt
-
         </button>
 
     </form>
@@ -1236,18 +1062,13 @@ ADD MY DEBT
 </div>
 
 
-<!-- =====================================================
-PERSON DETAIL
-===================================================== -->
+<!-- PERSON DETAIL -->
 
 <div id="page-person-detail" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('people')">
-
         ← Back
-
     </button>
 
     <div id="personDetail"></div>
@@ -1255,18 +1076,13 @@ PERSON DETAIL
 </div>
 
 
-<!-- =====================================================
-MY DEBT DETAIL
-===================================================== -->
+<!-- MY DEBT DETAIL -->
 
 <div id="page-mydebt-detail" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('mydebts')">
-
         ← Back
-
     </button>
 
     <div id="myDebtDetail"></div>
@@ -1274,36 +1090,27 @@ MY DEBT DETAIL
 </div>
 
 
-<!-- =====================================================
-PAYMENT
-===================================================== -->
+<!-- PAYMENT -->
 
 <div id="page-payment" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="backFromPayment()">
-
         ← Back
-
     </button>
-
 
     <div class="title">
         Add Payment
     </div>
 
-
     <div id="paymentSubtitle"
          class="subtitle">
     </div>
-
 
     <div id="paymentRemaining"
          class="card"
          style="margin-bottom:14px;">
     </div>
-
 
     <form onsubmit="savePayment(event)">
 
@@ -1324,12 +1131,9 @@ PAYMENT
 
         </div>
 
-
         <button type="submit"
                 class="btn success full">
-
             💵 Save Payment
-
         </button>
 
     </form>
@@ -1337,38 +1141,25 @@ PAYMENT
 </div>
 
 
-<!-- =====================================================
-EXPENSES
-===================================================== -->
+<!-- EXPENSES -->
 
 <div id="page-expenses" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('home')">
-
         ← Back
-
     </button>
 
-
-    <div class="title">
-        Expenses
-    </div>
+    <div class="title">Expenses</div>
 
     <div class="subtitle">
         Track your spending
     </div>
 
-
-    <button type="button"
-            class="btn primary full"
+    <button class="btn primary full"
             onclick="showPage('add-expense')">
-
         🧾 + Add Expense
-
     </button>
-
 
     <div class="section">
 
@@ -1383,25 +1174,18 @@ EXPENSES
 </div>
 
 
-<!-- =====================================================
-ADD EXPENSE
-===================================================== -->
+<!-- ADD EXPENSE -->
 
 <div id="page-add-expense" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('expenses')">
-
         ← Back
-
     </button>
-
 
     <div class="title">
         Add Expense
     </div>
-
 
     <form onsubmit="addExpense(event)">
 
@@ -1414,11 +1198,9 @@ ADD EXPENSE
             <input id="expenseDescription"
                    class="input"
                    placeholder="Example: Food"
-                   autocomplete="off"
                    required>
 
         </div>
-
 
         <div class="form-group">
 
@@ -1435,7 +1217,6 @@ ADD EXPENSE
                    required>
 
         </div>
-
 
         <div class="form-group">
 
@@ -1458,12 +1239,9 @@ ADD EXPENSE
 
         </div>
 
-
         <button type="submit"
                 class="btn primary full">
-
             💾 Save Expense
-
         </button>
 
     </form>
@@ -1471,67 +1249,45 @@ ADD EXPENSE
 </div>
 
 
-<!-- =====================================================
-SAVINGS
-===================================================== -->
+<!-- SAVINGS -->
 
 <div id="page-savings" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('home')">
-
         ← Back
-
     </button>
 
-
-    <div class="title">
-        Savings
-    </div>
+    <div class="title">Savings</div>
 
     <div class="subtitle">
         Track your savings goals
     </div>
 
-
-    <button type="button"
-            class="btn primary full"
+    <button class="btn primary full"
             onclick="showPage('add-savings')">
-
         💰 + Add Savings Goal
-
     </button>
 
-
     <div class="section">
-
         <div id="savingsList"></div>
-
     </div>
 
 </div>
 
 
-<!-- =====================================================
-ADD SAVINGS
-===================================================== -->
+<!-- ADD SAVINGS -->
 
 <div id="page-add-savings" class="page">
 
-    <button type="button"
-            class="btn back"
+    <button class="btn back"
             onclick="showPage('savings')">
-
         ← Back
-
     </button>
-
 
     <div class="title">
         Add Savings Goal
     </div>
-
 
     <form onsubmit="addSavings(event)">
 
@@ -1544,11 +1300,9 @@ ADD SAVINGS
             <input id="savingsName"
                    class="input"
                    placeholder="Example: Emergency Fund"
-                   autocomplete="off"
                    required>
 
         </div>
-
 
         <div class="form-group">
 
@@ -1566,7 +1320,6 @@ ADD SAVINGS
 
         </div>
 
-
         <div class="form-group">
 
             <label class="form-label">
@@ -1583,80 +1336,54 @@ ADD SAVINGS
 
         </div>
 
-
         <button type="submit"
                 class="btn primary full">
-
             💾 Save Goal
-
         </button>
 
     </form>
 
 </div>
 
+</div>
 
-</div><!-- content -->
 
-
-<!-- =====================================================
-BOTTOM NAV
-===================================================== -->
+<!-- NAV -->
 
 <div class="nav">
 
-    <button type="button"
-            id="nav-home"
+    <button id="nav-home"
             class="active"
             onclick="showPage('home')">
-
         <span class="nav-icon">🏠</span>
         Home
-
     </button>
 
-
-    <button type="button"
-            id="nav-people"
+    <button id="nav-people"
             onclick="showPage('people')">
-
         <span class="nav-icon">👥</span>
         Utang
-
     </button>
 
-
-    <button type="button"
-            id="nav-mydebts"
+    <button id="nav-mydebts"
             onclick="showPage('mydebts')">
-
         <span class="nav-icon">💳</span>
         My Debts
-
     </button>
 
-
-    <button type="button"
-            id="nav-expenses"
+    <button id="nav-expenses"
             onclick="showPage('expenses')">
-
         <span class="nav-icon">🧾</span>
         Expenses
-
     </button>
 
-
-    <button type="button"
-            id="nav-savings"
+    <button id="nav-savings"
             onclick="showPage('savings')">
-
         <span class="nav-icon">💰</span>
         Savings
-
     </button>
 
 </div>
-
 
 <div id="toast"
      class="toast">
@@ -1668,7 +1395,7 @@ BOTTOM NAV
 <script>
 
 /* =====================================================
-DATABASE
+DATA
 ===================================================== */
 
 const KEY="liahs_fintrack_v7";
@@ -1683,16 +1410,11 @@ const defaultData={
 let data;
 
 try{
-
-    data=
-        JSON.parse(
-            localStorage.getItem(KEY)
-        ) || structuredClone(defaultData);
-
+    data=JSON.parse(
+        localStorage.getItem(KEY)
+    ) || structuredClone(defaultData);
 }catch{
-
     data=structuredClone(defaultData);
-
 }
 
 data.expenses ||= [];
@@ -1705,17 +1427,20 @@ data.savings ||= [];
 MIGRATION
 ===================================================== */
 
+function uid(){
+    return Date.now()+"_"+
+        Math.random()
+        .toString(36)
+        .slice(2);
+}
+
 data.debts.forEach(d=>{
 
     d.id ||= uid();
-
-    d.paidAmount=
-        Number(d.paidAmount||0);
-
-    d.monthlyPayment=
-        Number(d.monthlyPayment||0);
-
+    d.paidAmount=Number(d.paidAmount||0);
+    d.monthlyPayment=Number(d.monthlyPayment||0);
     d.payments ||= [];
+    d.monthlyPaid ||= {};
 
     if(!d.date){
         d.date=today();
@@ -1723,18 +1448,13 @@ data.debts.forEach(d=>{
 
 });
 
-
 data.myDebts.forEach(d=>{
 
     d.id ||= uid();
-
-    d.paidAmount=
-        Number(d.paidAmount||0);
-
-    d.monthlyPayment=
-        Number(d.monthlyPayment||0);
-
+    d.paidAmount=Number(d.paidAmount||0);
+    d.monthlyPayment=Number(d.monthlyPayment||0);
     d.payments ||= [];
+    d.monthlyPaid ||= {};
 
     if(!d.date){
         d.date=today();
@@ -1747,15 +1467,12 @@ data.myDebts.forEach(d=>{
 STATE
 ===================================================== */
 
-let currentPage="home";
-
 const now=new Date();
 
-let selectedYear=
-    now.getFullYear();
+let selectedYear=now.getFullYear();
+let selectedMonth=now.getMonth();
 
-let selectedMonth=
-    now.getMonth();
+let currentPage="home";
 
 let selectedPerson=null;
 let selectedMyDebtName=null;
@@ -1770,18 +1487,14 @@ let detailFilter="all";
 HELPERS
 ===================================================== */
 
-function uid(){
-
-    return Date.now()+"_"+
-        Math.random()
-        .toString(36)
-        .slice(2);
-
+function saveData(){
+    localStorage.setItem(
+        KEY,
+        JSON.stringify(data)
+    );
 }
 
-
 function peso(value){
-
     return Number(value||0)
         .toLocaleString(
             "en-PH",
@@ -1790,35 +1503,24 @@ function peso(value){
                 currency:"PHP"
             }
         );
-
 }
 
-
 function today(){
-
     return new Date()
         .toISOString()
         .split("T")[0];
-
 }
-
 
 function formatDate(value){
 
     if(!value) return "-";
 
-    const date=
-        new Date(value);
+    const d=new Date(value);
 
-    if(
-        Number.isNaN(
-            date.getTime()
-        )
-    ){
+    if(Number.isNaN(d.getTime()))
         return "-";
-    }
 
-    return date.toLocaleDateString(
+    return d.toLocaleDateString(
         "en-PH",
         {
             month:"short",
@@ -1826,9 +1528,7 @@ function formatDate(value){
             year:"numeric"
         }
     );
-
 }
-
 
 function esc(value){
 
@@ -1841,15 +1541,7 @@ function esc(value){
 
 }
 
-
-/* =====================================================
-TOAST
-===================================================== */
-
-function toast(
-    message,
-    error=false
-){
+function toast(message,error=false){
 
     const el=
         document.getElementById(
@@ -1868,24 +1560,8 @@ function toast(
 
     window.toastTimer=
         setTimeout(()=>{
-
             el.className="toast";
-
         },2400);
-
-}
-
-
-/* =====================================================
-SAVE
-===================================================== */
-
-function saveData(){
-
-    localStorage.setItem(
-        KEY,
-        JSON.stringify(data)
-    );
 
 }
 
@@ -1899,43 +1575,27 @@ function showPage(page){
     document
         .querySelectorAll(".page")
         .forEach(p=>{
-            p.classList.remove(
-                "active"
-            );
+            p.classList.remove("active");
         });
-
 
     const target=
         document.getElementById(
             "page-"+page
         );
 
-
     if(target){
-
-        target.classList.add(
-            "active"
-        );
-
+        target.classList.add("active");
     }
-
 
     currentPage=page;
 
-
     document
-        .querySelectorAll(
-            ".nav button"
-        )
+        .querySelectorAll(".nav button")
         .forEach(b=>{
-            b.classList.remove(
-                "active"
-            );
+            b.classList.remove("active");
         });
 
-
     let navPage=page;
-
 
     if(
         page==="person-detail" ||
@@ -1944,7 +1604,6 @@ function showPage(page){
         navPage="people";
     }
 
-
     if(
         page==="mydebt-detail" ||
         page==="add-mydebt"
@@ -1952,83 +1611,52 @@ function showPage(page){
         navPage="mydebts";
     }
 
-
-    if(
-        page==="add-expense"
-    ){
+    if(page==="add-expense"){
         navPage="expenses";
     }
 
-
-    if(
-        page==="add-savings"
-    ){
+    if(page==="add-savings"){
         navPage="savings";
     }
 
-
     if(page==="payment"){
-
         navPage=
             paymentType==="person"
             ?"people"
             :"mydebts";
-
     }
-
 
     const nav=
         document.getElementById(
             "nav-"+navPage
         );
 
-
     if(nav){
-
-        nav.classList.add(
-            "active"
-        );
-
+        nav.classList.add("active");
     }
 
-
     refresh();
-
 }
 
 
 /* =====================================================
-YEAR SYSTEM
+YEAR
 ===================================================== */
 
-function addYear(
-    set,
-    date
-){
+function addYear(set,date){
 
     if(!date) return;
 
     const d=new Date(date);
 
-    if(
-        !Number.isNaN(
-            d.getTime()
-        )
-    ){
-
-        set.add(
-            d.getFullYear()
-        );
-
+    if(!Number.isNaN(d.getTime())){
+        set.add(d.getFullYear());
     }
-
 }
-
 
 function getAvailableYears(){
 
-    const years=
-        new Set();
+    const years=new Set();
 
     const current=
         new Date().getFullYear();
@@ -2037,70 +1665,48 @@ function getAvailableYears(){
     years.add(current+1);
     years.add(current-1);
 
-
     data.expenses.forEach(e=>{
-        addYear(
-            years,
-            e.date
-        );
+        addYear(years,e.date);
     });
-
 
     data.debts.forEach(d=>{
 
-        addYear(
-            years,
-            d.date
-        );
+        addYear(years,d.date);
+        addYear(years,d.dueDate);
 
-        addYear(
-            years,
-            d.dueDate
-        );
-
-
-        (d.payments||[])
-            .forEach(p=>{
-                addYear(
-                    years,
-                    p.date
-                );
-            });
+        Object.keys(
+            d.monthlyPaid||{}
+        ).forEach(key=>{
+            years.add(
+                Number(
+                    key.split("-")[0]
+                )
+            );
+        });
 
     });
-
 
     data.myDebts.forEach(d=>{
 
-        addYear(
-            years,
-            d.date
-        );
+        addYear(years,d.date);
+        addYear(years,d.dueDate);
 
-        addYear(
-            years,
-            d.dueDate
-        );
-
-
-        (d.payments||[])
-            .forEach(p=>{
-                addYear(
-                    years,
-                    p.date
-                );
-            });
+        Object.keys(
+            d.monthlyPaid||{}
+        ).forEach(key=>{
+            years.add(
+                Number(
+                    key.split("-")[0]
+                )
+            );
+        });
 
     });
 
-
-    return [...years]
-        .sort(
-            (a,b)=>b-a
-        );
-
+    return [...years].sort(
+        (a,b)=>b-a
+    );
 }
-
 
 function renderYearSelector(){
 
@@ -2111,58 +1717,41 @@ function renderYearSelector(){
 
     if(!select) return;
 
-
     const years=
         getAvailableYears();
-
 
     if(
         !years.includes(
             selectedYear
         )
     ){
-
-        years.push(
-            selectedYear
-        );
-
+        years.push(selectedYear);
     }
 
-
-    years.sort(
-        (a,b)=>b-a
-    );
-
+    years.sort((a,b)=>b-a);
 
     select.innerHTML=
-        years
-        .map(year=>`
+        years.map(y=>`
 
-            <option value="${year}"
-                ${year===selectedYear
+            <option value="${y}"
+                ${y===selectedYear
                     ?"selected"
                     :""}>
 
-                ${year}
+                ${y}
 
             </option>
 
-        `)
-        .join("");
-
+        `).join("");
 }
-
 
 function selectYear(year){
 
-    selectedYear=
-        Number(year);
+    selectedYear=Number(year);
 
     renderMonths();
     renderMonthly();
-
 }
-
 
 function changeYear(amount){
 
@@ -2171,7 +1760,6 @@ function changeYear(amount){
     renderYearSelector();
     renderMonths();
     renderMonthly();
-
 }
 
 
@@ -2185,7 +1773,6 @@ const months=[
     "SEP","OCT","NOV","DEC"
 ];
 
-
 function renderMonths(){
 
     const grid=
@@ -2195,9 +1782,7 @@ function renderMonths(){
 
     if(!grid) return;
 
-
     grid.innerHTML="";
-
 
     months.forEach(
         (month,index)=>{
@@ -2206,7 +1791,6 @@ function renderMonths(){
                 document.createElement(
                     "button"
                 );
-
 
             btn.type="button";
 
@@ -2219,140 +1803,384 @@ function renderMonths(){
                     :""
                 );
 
-
-            btn.textContent=
-                month;
-
+            btn.textContent=month;
 
             btn.onclick=()=>{
 
-                selectedMonth=
-                    index;
+                selectedMonth=index;
 
                 renderMonths();
                 renderMonthly();
 
             };
 
-
-            grid.appendChild(
-                btn
-            );
-
+            grid.appendChild(btn);
         }
     );
-
 }
 
 
 /* =====================================================
-DATE FUNCTIONS
+MONTH KEY
 ===================================================== */
 
-function dateParts(date){
-
-    if(!date)
-        return null;
-
-
-    const d=
-        new Date(date);
-
-
-    if(
-        Number.isNaN(
-            d.getTime()
-        )
-    ){
-        return null;
-    }
-
-
-    return {
-        year:d.getFullYear(),
-        month:d.getMonth()
-    };
-
+function monthKey(
+    year,
+    month
+){
+    return year+"-"+String(
+        month+1
+    ).padStart(2,"0");
 }
 
+
+/* =====================================================
+CHECKLIST FUNCTIONS
+===================================================== */
+
+function isMonthPaid(
+    debt,
+    year,
+    month
+){
+
+    const key=
+        monthKey(
+            year,
+            month
+        );
+
+    return Boolean(
+        debt.monthlyPaid &&
+        debt.monthlyPaid[key]
+    );
+}
+
+
+function toggleMonthlyPayment(
+    id,
+    type,
+    year,
+    month
+){
+
+    const list=
+        type==="person"
+        ?data.debts
+        :data.myDebts;
+
+    const debt=
+        list.find(
+            d=>
+            String(d.id)===
+            String(id)
+        );
+
+    if(!debt){
+
+        toast(
+            "Debt record not found.",
+            true
+        );
+
+        return;
+
+    }
+
+    debt.monthlyPaid ||= {};
+
+    const key=
+        monthKey(
+            year,
+            month
+        );
+
+    debt.monthlyPaid[key]=
+        !debt.monthlyPaid[key];
+
+    saveData();
+
+    renderMonthly();
+
+    if(type==="person"){
+        renderPersonDetail();
+    }else{
+        renderMyDebtDetail();
+    }
+
+    toast(
+        debt.monthlyPaid[key]
+        ?"Monthly payment marked as paid."
+        :"Monthly payment marked as unpaid."
+    );
+}
+
+
+/* =====================================================
+MONTHLY CHECKLIST
+===================================================== */
+
+function monthlyChecklist(
+    debt,
+    type
+){
+
+    const due=
+        new Date(
+            debt.dueDate ||
+            debt.date
+        );
+
+    if(Number.isNaN(due.getTime())){
+        return "";
+    }
+
+    const startYear=
+        due.getFullYear();
+
+    const startMonth=
+        due.getMonth();
+
+    const monthly=
+        Number(
+            debt.monthlyPayment||0
+        );
+
+    if(monthly<=0){
+        return "";
+    }
+
+    const totalAmount=
+        Number(
+            debt.amount||0
+        );
+
+    const maxMonths=
+        Math.max(
+            1,
+            Math.ceil(
+                totalAmount/monthly
+            )
+        );
+
+    const maxDisplay=
+        Math.min(
+            60,
+            maxMonths
+        );
+
+    let paidCount=0;
+
+    for(
+        let i=0;
+        i<maxDisplay;
+        i++
+    ){
+
+        const date=
+            new Date(
+                startYear,
+                startMonth+i,
+                1
+            );
+
+        if(
+            isMonthPaid(
+                debt,
+                date.getFullYear(),
+                date.getMonth()
+            )
+        ){
+            paidCount++;
+        }
+    }
+
+    const percent=
+        maxDisplay>0
+        ?Math.round(
+            paidCount/
+            maxDisplay*
+            100
+        )
+        :0;
+
+    let html=`
+
+        <div class="section">
+
+            <div class="section-title">
+                Monthly Payments
+            </div>
+
+            <div class="item-meta">
+                ${paidCount} of ${maxDisplay}
+                months paid
+            </div>
+
+            <div class="check-progress">
+
+                <div class="check-progress-bar"
+                     style="width:${percent}%">
+                </div>
+
+            </div>
+
+            <div class="checklist">
+
+    `;
+
+    for(
+        let i=0;
+        i<maxDisplay;
+        i++
+    ){
+
+        const date=
+            new Date(
+                startYear,
+                startMonth+i,
+                1
+            );
+
+        const year=
+            date.getFullYear();
+
+        const month=
+            date.getMonth();
+
+        const paid=
+            isMonthPaid(
+                debt,
+                year,
+                month
+            );
+
+        const key=
+            monthKey(
+                year,
+                month
+            );
+
+        html+=`
+
+            <div class="check-row
+                ${paid?"done":""}">
+
+                <button type="button"
+                        class="check
+                        ${paid?"checked":""}"
+                        onclick="toggleMonthlyPayment(
+                            '${debt.id}',
+                            '${type}',
+                            ${year},
+                            ${month}
+                        )">
+
+                    ${paid?"✓":""}
+
+                </button>
+
+                <div class="check-month">
+                    ${months[month]}
+                </div>
+
+                <div class="check-info">
+
+                    <div class="check-amount">
+                        ${peso(monthly)}
+                    </div>
+
+                    <div class="check-status">
+
+                        ${year}
+                        •
+                        ${paid?"PAID":"UNPAID"}
+
+                    </div>
+
+                </div>
+
+                <div>
+                    ${
+                        paid
+                        ?'<span class="badge paid">PAID</span>'
+                        :'<span class="badge unpaid">UNPAID</span>'
+                    }
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+    html+=`
+
+            </div>
+
+        </div>
+
+    `;
+
+    return html;
+}
+
+
+/* =====================================================
+DATE
+===================================================== */
 
 function isSelectedMonth(date){
 
-    const parts=
-        dateParts(date);
+    if(!date) return false;
 
+    const d=new Date(date);
 
-    if(!parts)
+    if(Number.isNaN(d.getTime()))
         return false;
 
-
     return(
-        parts.year===
+        d.getFullYear()===
         selectedYear &&
-        parts.month===
+        d.getMonth()===
         selectedMonth
     );
-
 }
-
-
-function monthEnd(){
-
-    return new Date(
-        selectedYear,
-        selectedMonth+1,
-        0,
-        23,
-        59,
-        59,
-        999
-    );
-
-}
-
-
-function debtDueDate(debt){
-
-    return new Date(
-        debt.dueDate ||
-        debt.date
-    );
-
-}
-
-
-/* =====================================================
-MONTHLY UNPAID
-===================================================== */
 
 function isUnpaidForSelectedMonth(
     debt
 ){
 
-    const remaining=
-        Number(debt.amount||0)-
-        Number(debt.paidAmount||0);
+    const due=
+        new Date(
+            debt.dueDate ||
+            debt.date
+        );
 
-
-    if(remaining<=0)
+    if(Number.isNaN(due.getTime()))
         return false;
 
-
-    const due=
-        debtDueDate(debt);
-
-
     if(
-        Number.isNaN(
-            due.getTime()
-        )
+        due.getFullYear()>
+        selectedYear
     ){
         return false;
     }
 
+    if(
+        due.getFullYear()===
+        selectedYear &&
+        due.getMonth()>
+        selectedMonth
+    ){
+        return false;
+    }
 
-    return due<=monthEnd();
+    const remaining=
+        Number(debt.amount||0)-
+        Number(debt.paidAmount||0);
 
+    return remaining>0;
 }
 
 
@@ -2368,56 +2196,28 @@ function getStatus(debt){
     const paid=
         Number(debt.paidAmount||0);
 
-
     if(paid>=total)
         return "paid";
-
 
     if(paid>0)
         return "partial";
 
-
     return "unpaid";
-
 }
-
 
 function statusBadge(debt){
 
-    const s=
+    const status=
         getStatus(debt);
 
+    if(status==="paid")
+        return `<span class="badge paid">PAID</span>`;
 
-    if(s==="paid"){
+    if(status==="partial")
+        return `<span class="badge partial">PARTIAL</span>`;
 
-        return `
-            <span class="badge paid">
-                PAID
-            </span>
-        `;
-
-    }
-
-
-    if(s==="partial"){
-
-        return `
-            <span class="badge partial">
-                PARTIAL
-            </span>
-        `;
-
-    }
-
-
-    return `
-        <span class="badge unpaid">
-            UNPAID
-        </span>
-    `;
-
+    return `<span class="badge unpaid">UNPAID</span>`;
 }
-
 
 function getPercent(debt){
 
@@ -2427,10 +2227,8 @@ function getPercent(debt){
     const paid=
         Number(debt.paidAmount||0);
 
-
     if(total<=0)
         return 0;
-
 
     return Math.min(
         100,
@@ -2438,7 +2236,6 @@ function getPercent(debt){
             paid/total*100
         )
     );
-
 }
 
 
@@ -2453,7 +2250,6 @@ function pie(percent){
             percent*3.6
         );
 
-
     return `
 
         <div class="pie"
@@ -2464,8 +2260,7 @@ function pie(percent){
                 #36a9e8 ${degree}deg,
                 #10283c ${degree}deg,
                 #10283c 360deg
-             );
-             ">
+             );">
 
             <div class="pie-inner">
 
@@ -2482,7 +2277,6 @@ function pie(percent){
         </div>
 
     `;
-
 }
 
 
@@ -2494,12 +2288,10 @@ function addPersonDebt(e){
 
     e.preventDefault();
 
-
     const name=
         document.getElementById(
             "personName"
         ).value.trim();
-
 
     const amount=
         Number(
@@ -2508,7 +2300,6 @@ function addPersonDebt(e){
             ).value
         );
 
-
     const monthly=
         Number(
             document.getElementById(
@@ -2516,12 +2307,10 @@ function addPersonDebt(e){
             ).value||0
         );
 
-
     const due=
         document.getElementById(
             "personDue"
         ).value;
-
 
     if(!name){
 
@@ -2531,9 +2320,7 @@ function addPersonDebt(e){
         );
 
         return;
-
     }
-
 
     if(amount<=0){
 
@@ -2543,9 +2330,7 @@ function addPersonDebt(e){
         );
 
         return;
-
     }
-
 
     if(monthly>amount){
 
@@ -2555,9 +2340,7 @@ function addPersonDebt(e){
         );
 
         return;
-
     }
-
 
     data.debts.push({
 
@@ -2575,29 +2358,21 @@ function addPersonDebt(e){
 
         date:today(),
 
-        payments:[]
+        payments:[],
+
+        monthlyPaid:{}
 
     });
-
 
     saveData();
 
     e.target.reset();
 
-    selectedMonth=
-        new Date().getMonth();
-
-    selectedYear=
-        new Date().getFullYear();
-
     toast(
         "Utang successfully saved."
     );
 
-    showPage(
-        "people"
-    );
-
+    showPage("people");
 }
 
 
@@ -2612,10 +2387,7 @@ function renderPeople(){
             "peopleList"
         );
 
-
-    if(!box)
-        return;
-
+    if(!box) return;
 
     if(!data.debts.length){
 
@@ -2628,9 +2400,7 @@ function renderPeople(){
         `;
 
         return;
-
     }
-
 
     const names=[
         ...new Set(
@@ -2640,9 +2410,7 @@ function renderPeople(){
         )
     ].sort();
 
-
     box.innerHTML="";
-
 
     names.forEach(name=>{
 
@@ -2651,33 +2419,25 @@ function renderPeople(){
                 d=>d.person===name
             );
 
-
         const total=
             records.reduce(
-                (sum,d)=>
-                sum+
-                Number(d.amount||0),
+                (s,d)=>
+                s+Number(d.amount||0),
                 0
             );
-
 
         const paid=
             records.reduce(
-                (sum,d)=>
-                sum+
-                Number(
-                    d.paidAmount||0
-                ),
+                (s,d)=>
+                s+Number(d.paidAmount||0),
                 0
             );
-
 
         const remaining=
             Math.max(
                 0,
                 total-paid
             );
-
 
         const pct=
             total>0
@@ -2686,12 +2446,8 @@ function renderPeople(){
             )
             :0;
 
-
         const encoded=
-            encodeURIComponent(
-                name
-            );
-
+            encodeURIComponent(name);
 
         box.innerHTML+=`
 
@@ -2726,60 +2482,46 @@ function renderPeople(){
 
                 </div>
 
-
                 <div class="progress-box">
 
                     <div class="progress-info">
 
                         <span>
-
                             <span class="green">
                                 ${peso(paid)}
                             </span>
-
                             paid
-
                         </span>
 
-
                         <span>
-
                             <span class="red">
                                 ${peso(remaining)}
                             </span>
-
                             remaining
-
                         </span>
 
                     </div>
 
-
                     <div class="progress">
 
                         <div class="bar"
-                             style="
-                             width:${pct}%">
+                             style="width:${pct}%">
                         </div>
 
                     </div>
 
                 </div>
 
-
                 <div class="actions">
 
-                    <button type="button"
-                            class="btn primary"
+                    <button class="btn primary"
                             onclick="openPerson('${encoded}')">
 
                         👤 View Account
 
                     </button>
 
-
-                    <button type="button"
-                            class="btn danger"
+                    <button class="btn danger"
                             onclick="deletePerson('${encoded}')">
 
                         🗑️ Delete
@@ -2793,7 +2535,6 @@ function renderPeople(){
         `;
 
     });
-
 }
 
 
@@ -2815,18 +2556,14 @@ function openPerson(encoded){
     showPage(
         "person-detail"
     );
-
 }
-
 
 function setPersonFilter(filter){
 
     detailFilter=filter;
 
     renderPersonDetail();
-
 }
-
 
 function renderPersonDetail(){
 
@@ -2835,10 +2572,7 @@ function renderPersonDetail(){
             "personDetail"
         );
 
-
-    if(!box)
-        return;
-
+    if(!box) return;
 
     const allRecords=
         data.debts.filter(
@@ -2846,7 +2580,6 @@ function renderPersonDetail(){
             d.person===
             selectedPerson
         );
-
 
     if(!allRecords.length){
 
@@ -2859,36 +2592,27 @@ function renderPersonDetail(){
         `;
 
         return;
-
     }
-
 
     const total=
         allRecords.reduce(
             (s,d)=>
-            s+
-            Number(d.amount||0),
+            s+Number(d.amount||0),
             0
         );
-
 
     const paid=
         allRecords.reduce(
             (s,d)=>
-            s+
-            Number(
-                d.paidAmount||0
-            ),
+            s+Number(d.paidAmount||0),
             0
         );
-
 
     const remaining=
         Math.max(
             0,
             total-paid
         );
-
 
     const pct=
         total>0
@@ -2897,32 +2621,26 @@ function renderPersonDetail(){
         )
         :0;
 
-
     let records=
         allRecords;
-
 
     if(detailFilter==="paid"){
 
         records=
             allRecords.filter(
-                d=>
-                getStatus(d)==="paid"
+                d=>getStatus(d)==="paid"
             );
 
     }
-
 
     if(detailFilter==="unpaid"){
 
         records=
             allRecords.filter(
-                d=>
-                getStatus(d)!=="paid"
+                d=>getStatus(d)!=="paid"
             );
 
     }
-
 
     let html=`
 
@@ -2946,70 +2664,44 @@ function renderPersonDetail(){
 
             </div>
 
-
             <div class="grid"
                  style="margin-top:15px;">
 
                 <div class="card">
-
-                    <div class="label">
-                        Total
-                    </div>
-
+                    <div class="label">Total</div>
                     <div class="number blue">
                         ${peso(total)}
                     </div>
-
                 </div>
 
-
                 <div class="card">
-
-                    <div class="label">
-                        Paid
-                    </div>
-
+                    <div class="label">Paid</div>
                     <div class="number green">
                         ${peso(paid)}
                     </div>
-
                 </div>
 
-
                 <div class="card">
-
-                    <div class="label">
-                        Remaining
-                    </div>
-
+                    <div class="label">Remaining</div>
                     <div class="number red">
                         ${peso(remaining)}
                     </div>
-
                 </div>
 
-
                 <div class="card">
-
-                    <div class="label">
-                        Progress
-                    </div>
-
+                    <div class="label">Progress</div>
                     <div class="number yellow">
                         ${pct}%
                     </div>
-
                 </div>
 
             </div>
 
         </div>
 
-
         <div class="section">
 
-            <button type="button"
-                    class="btn success full"
+            <button class="btn success full"
                     onclick="startPayment('person')"
                     ${remaining<=0?"disabled":""}>
 
@@ -3019,32 +2711,29 @@ function renderPersonDetail(){
 
         </div>
 
-
         <div class="section">
 
             <div class="filter-row">
 
-                <button type="button"
-                        class="filter-btn ${detailFilter==="all"?"active":""}"
-                        onclick="setPersonFilter('all')">
+                <button class="filter-btn
+                    ${detailFilter==="all"?"active":""}"
+                    onclick="setPersonFilter('all')">
 
                     📋 All
 
                 </button>
 
-
-                <button type="button"
-                        class="filter-btn ${detailFilter==="paid"?"active":""}"
-                        onclick="setPersonFilter('paid')">
+                <button class="filter-btn
+                    ${detailFilter==="paid"?"active":""}"
+                    onclick="setPersonFilter('paid')">
 
                     🟢 Paid
 
                 </button>
 
-
-                <button type="button"
-                        class="filter-btn ${detailFilter==="unpaid"?"active":""}"
-                        onclick="setPersonFilter('unpaid')">
+                <button class="filter-btn
+                    ${detailFilter==="unpaid"?"active":""}"
+                    onclick="setPersonFilter('unpaid')">
 
                     🔴 Unpaid
 
@@ -3053,7 +2742,6 @@ function renderPersonDetail(){
             </div>
 
         </div>
-
 
         <div class="section">
 
@@ -3064,7 +2752,6 @@ function renderPersonDetail(){
             <div class="list">
 
     `;
-
 
     if(!records.length){
 
@@ -3078,130 +2765,120 @@ function renderPersonDetail(){
 
     }
 
+    records.forEach(debt=>{
 
-    records.forEach(
-        debt=>{
+        const left=
+            Math.max(
+                0,
+                Number(debt.amount||0)-
+                Number(debt.paidAmount||0)
+            );
 
-            const left=
-                Math.max(
-                    0,
-                    Number(
-                        debt.amount||0
-                    )-
-                    Number(
-                        debt.paidAmount||0
-                    )
-                );
+        html+=`
 
+            <div class="item">
 
-            html+=`
+                <div class="item-top">
 
-                <div class="item">
+                    <div>
 
-                    <div class="item-top">
-
-                        <div>
-
-                            <div class="item-name">
-                                Utang
-                            </div>
-
-                            <div class="item-meta">
-                                📅 Due:
-                                ${formatDate(
-                                    debt.dueDate
-                                )}
-                            </div>
-
-                            <div class="item-meta">
-                                📆 Monthly:
-                                <span class="yellow">
-                                    ${peso(
-                                        debt.monthlyPayment
-                                    )}
-                                </span>
-                            </div>
-
-                            <div class="item-meta">
-                                🗓️ Added:
-                                ${formatDate(
-                                    debt.date
-                                )}
-                            </div>
-
+                        <div class="item-name">
+                            Utang
                         </div>
 
+                        <div class="item-meta">
+                            📅 Due:
+                            ${formatDate(debt.dueDate)}
+                        </div>
 
-                        <div>
-                            ${statusBadge(debt)}
+                        <div class="item-meta">
+                            📆 Monthly:
+                            <span class="yellow">
+                                ${peso(
+                                    debt.monthlyPayment
+                                )}
+                            </span>
+                        </div>
+
+                        <div class="item-meta">
+                            🗓️ Added:
+                            ${formatDate(debt.date)}
                         </div>
 
                     </div>
 
+                    <div>
+                        ${statusBadge(debt)}
+                    </div>
 
-                    <div class="progress-box">
+                </div>
 
-                        <div class="progress-info">
+                <div class="progress-box">
 
-                            <span>
-                                ${getPercent(debt)}% Paid
-                            </span>
+                    <div class="progress-info">
 
-                            <span class="red">
-                                ${peso(left)} left
-                            </span>
+                        <span>
+                            ${getPercent(debt)}% Paid
+                        </span>
 
-                        </div>
-
-
-                        <div class="progress">
-
-                            <div class="bar"
-                                 style="
-                                 width:${getPercent(debt)}%">
-                            </div>
-
-                        </div>
+                        <span class="red">
+                            ${peso(left)} left
+                        </span>
 
                     </div>
 
+                    <div class="progress">
 
-                    <div class="actions">
-
-                        ${
-                            getStatus(debt)!=="paid"
-                            ?
-                            `
-                            <button type="button"
-                                    class="btn success"
-                                    onclick="startPaymentForDebt('${debt.id}','person')">
-
-                                💵 Add Payment
-
-                            </button>
-                            `
-                            :
-                            ""
-                        }
-
-
-                        <button type="button"
-                                class="btn danger"
-                                onclick="deleteDebt('${debt.id}','person')">
-
-                            🗑️ Delete
-
-                        </button>
+                        <div class="bar"
+                             style="
+                             width:${getPercent(debt)}%">
+                        </div>
 
                     </div>
 
                 </div>
 
-            `;
+                ${monthlyChecklist(
+                    debt,
+                    "person"
+                )}
 
-        }
-    );
+                <div class="actions">
 
+                    ${
+                        getStatus(debt)!=="paid"
+                        ?
+                        `
+                        <button class="btn success"
+                                onclick="startPaymentForDebt(
+                                    '${debt.id}',
+                                    'person'
+                                )">
+
+                            💵 Add Payment
+
+                        </button>
+                        `
+                        :""
+                    }
+
+                    <button class="btn danger"
+                            onclick="deleteDebt(
+                                '${debt.id}',
+                                'person'
+                            )">
+
+                        🗑️ Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
 
     html+=`
 
@@ -3209,24 +2886,19 @@ function renderPersonDetail(){
 
         </div>
 
-
         <div class="section">
 
             <div class="section-title">
                 Payment History
             </div>
 
-            ${paymentHistory(
-                allRecords
-            )}
+            ${paymentHistory(allRecords)}
 
         </div>
 
     `;
 
-
     box.innerHTML=html;
-
 }
 
 
@@ -3238,32 +2910,21 @@ function paymentHistory(records){
 
     const payments=[];
 
+    records.forEach(debt=>{
 
-    records.forEach(
-        debt=>{
+        (debt.payments||[])
+            .forEach(payment=>{
 
-            (debt.payments||[])
-                .forEach(
-                    payment=>{
+                payments.push({
+                    amount:Number(
+                        payment.amount||0
+                    ),
+                    date:payment.date
+                });
 
-                        payments.push({
+            });
 
-                            amount:
-                                Number(
-                                    payment.amount||0
-                                ),
-
-                            date:
-                                payment.date
-
-                        });
-
-                    }
-                );
-
-        }
-    );
-
+    });
 
     payments.sort(
         (a,b)=>
@@ -3271,19 +2932,15 @@ function paymentHistory(records){
         new Date(a.date)
     );
 
-
     if(!payments.length){
 
         return `
-
             <div class="empty">
                 No payment history yet.
             </div>
-
         `;
 
     }
-
 
     return `
 
@@ -3303,13 +2960,10 @@ function paymentHistory(records){
                             </div>
 
                             <div class="item-meta">
-                                ${formatDate(
-                                    p.date
-                                )}
+                                ${formatDate(p.date)}
                             </div>
 
                         </div>
-
 
                         <div class="item-money green">
                             +${peso(p.amount)}
@@ -3325,7 +2979,6 @@ function paymentHistory(records){
         </div>
 
     `;
-
 }
 
 
@@ -3336,11 +2989,8 @@ PAYMENT
 function startPayment(type){
 
     paymentType=type;
-    paymentDebtId=null;
-
 
     let debt;
-
 
     if(type==="person"){
 
@@ -3351,11 +3001,6 @@ function startPayment(type){
                     d.person===
                     selectedPerson
                 )
-                .sort(
-                    (a,b)=>
-                    new Date(a.date)-
-                    new Date(b.date)
-                )
                 .find(
                     d=>
                     Number(
@@ -3366,6 +3011,15 @@ function startPayment(type){
                     )
                 );
 
+        if(!debt){
+
+            toast(
+                "No unpaid debt record found.",
+                true
+            );
+
+            return;
+        }
 
     }else{
 
@@ -3376,11 +3030,6 @@ function startPayment(type){
                     d.name===
                     selectedMyDebtName
                 )
-                .sort(
-                    (a,b)=>
-                    new Date(a.date)-
-                    new Date(b.date)
-                )
                 .find(
                     d=>
                     Number(
@@ -3391,66 +3040,46 @@ function startPayment(type){
                     )
                 );
 
-    }
+        if(!debt){
 
+            toast(
+                "No unpaid debt record found.",
+                true
+            );
 
-    if(!debt){
-
-        toast(
-            "No unpaid debt record found.",
-            true
-        );
-
-        return;
+            return;
+        }
 
     }
-
 
     paymentDebtId=
         String(debt.id);
 
-
-    showPaymentPage(
-        debt
-    );
-
+    showPaymentPage(debt);
 }
 
 
 function startPaymentForDebt(
-    idValue,
+    id,
     type
 ){
 
     paymentType=type;
 
     paymentDebtId=
-        String(idValue);
+        String(id);
 
+    const list=
+        type==="person"
+        ?data.debts
+        :data.myDebts;
 
-    let debt;
-
-
-    if(type==="person"){
-
-        debt=
-            data.debts.find(
-                d=>
-                String(d.id)===
-                String(idValue)
-            );
-
-    }else{
-
-        debt=
-            data.myDebts.find(
-                d=>
-                String(d.id)===
-                String(idValue)
-            );
-
-    }
-
+    const debt=
+        list.find(
+            d=>
+            String(d.id)===
+            String(id)
+        );
 
     if(!debt){
 
@@ -3460,32 +3089,20 @@ function startPaymentForDebt(
         );
 
         return;
-
     }
 
-
-    showPaymentPage(
-        debt
-    );
-
+    showPaymentPage(debt);
 }
 
 
-function showPaymentPage(
-    debt
-){
+function showPaymentPage(debt){
 
     const remaining=
         Math.max(
             0,
-            Number(
-                debt.amount||0
-            )-
-            Number(
-                debt.paidAmount||0
-            )
+            Number(debt.amount||0)-
+            Number(debt.paidAmount||0)
         );
-
 
     document.getElementById(
         "paymentSubtitle"
@@ -3493,7 +3110,6 @@ function showPaymentPage(
         paymentType==="person"
         ?selectedPerson
         :selectedMyDebtName;
-
 
     document.getElementById(
         "paymentRemaining"
@@ -3511,7 +3127,6 @@ function showPaymentPage(
              style="margin-top:6px;">
 
             Monthly Payment:
-
             <span class="yellow">
                 ${peso(
                     debt.monthlyPayment
@@ -3522,27 +3137,17 @@ function showPaymentPage(
 
     `;
 
-
     document.getElementById(
         "paymentAmount"
     ).value="";
 
-
-    showPage(
-        "payment"
-    );
-
+    showPage("payment");
 }
 
-
-/* =====================================================
-SAVE PAYMENT
-===================================================== */
 
 function savePayment(e){
 
     e.preventDefault();
-
 
     const amount=
         Number(
@@ -3550,7 +3155,6 @@ function savePayment(e){
                 "paymentAmount"
             ).value
         );
-
 
     if(amount<=0){
 
@@ -3560,33 +3164,19 @@ function savePayment(e){
         );
 
         return;
-
     }
 
+    const list=
+        paymentType==="person"
+        ?data.debts
+        :data.myDebts;
 
-    let debt;
-
-
-    if(paymentType==="person"){
-
-        debt=
-            data.debts.find(
-                d=>
-                String(d.id)===
-                String(paymentDebtId)
-            );
-
-    }else{
-
-        debt=
-            data.myDebts.find(
-                d=>
-                String(d.id)===
-                String(paymentDebtId)
-            );
-
-    }
-
+    const debt=
+        list.find(
+            d=>
+            String(d.id)===
+            String(paymentDebtId)
+        );
 
     if(!debt){
 
@@ -3596,21 +3186,14 @@ function savePayment(e){
         );
 
         return;
-
     }
-
 
     const remaining=
         Math.max(
             0,
-            Number(
-                debt.amount||0
-            )-
-            Number(
-                debt.paidAmount||0
-            )
+            Number(debt.amount||0)-
+            Number(debt.paidAmount||0)
         );
-
 
     if(amount>remaining){
 
@@ -3621,9 +3204,7 @@ function savePayment(e){
         );
 
         return;
-
     }
-
 
     debt.paidAmount=
         Number(
@@ -3631,32 +3212,20 @@ function savePayment(e){
         )+
         amount;
 
-
     debt.payments ||= [];
 
-
     debt.payments.push({
-
         id:uid(),
-
         amount:amount,
-
         date:today()
-
     });
 
-
     saveData();
-
-
-    paymentDebtId=null;
-
 
     toast(
         "Payment successfully saved."
     );
 
-
     if(paymentType==="person"){
 
         renderPersonDetail();
@@ -3674,48 +3243,35 @@ function savePayment(e){
         );
 
     }
-
 }
 
-
-/* =====================================================
-BACK FROM PAYMENT
-===================================================== */
 
 function backFromPayment(){
 
     if(paymentType==="person"){
 
-        renderPersonDetail();
-
         showPage(
             "person-detail"
         );
 
     }else{
 
-        renderMyDebtDetail();
-
         showPage(
             "mydebt-detail"
         );
 
     }
-
 }
 
 
 /* =====================================================
-DELETE PERSON
+DELETE
 ===================================================== */
 
 function deletePerson(encoded){
 
     const name=
-        decodeURIComponent(
-            encoded
-        );
-
+        decodeURIComponent(encoded);
 
     if(!confirm(
         `Delete all records for ${name}?`
@@ -3723,42 +3279,22 @@ function deletePerson(encoded){
         return;
     }
 
-
     data.debts=
         data.debts.filter(
-            d=>
-            d.person!==name
+            d=>d.person!==name
         );
 
-
     saveData();
-
-
-    if(selectedPerson===name){
-
-        selectedPerson=null;
-
-    }
-
 
     toast(
         "Records deleted."
     );
 
-
     refresh();
-
 }
 
 
-/* =====================================================
-DELETE DEBT
-===================================================== */
-
-function deleteDebt(
-    idValue,
-    type
-){
+function deleteDebt(id,type){
 
     if(!confirm(
         "Delete this debt record?"
@@ -3766,14 +3302,13 @@ function deleteDebt(
         return;
     }
 
-
     if(type==="person"){
 
         data.debts=
             data.debts.filter(
                 d=>
                 String(d.id)!==
-                String(idValue)
+                String(id)
             );
 
         saveData();
@@ -3786,7 +3321,7 @@ function deleteDebt(
             data.myDebts.filter(
                 d=>
                 String(d.id)!==
-                String(idValue)
+                String(id)
             );
 
         saveData();
@@ -3795,28 +3330,24 @@ function deleteDebt(
 
     }
 
-
     toast(
         "Debt record deleted."
     );
-
 }
 
 
 /* =====================================================
-MY DEBTS
+MY DEBT
 ===================================================== */
 
 function addMyDebt(e){
 
     e.preventDefault();
 
-
     const name=
         document.getElementById(
             "myDebtName"
         ).value.trim();
-
 
     const amount=
         Number(
@@ -3825,7 +3356,6 @@ function addMyDebt(e){
             ).value
         );
 
-
     const monthly=
         Number(
             document.getElementById(
@@ -3833,12 +3363,10 @@ function addMyDebt(e){
             ).value
         );
 
-
     const due=
         document.getElementById(
             "myDebtDue"
         ).value;
-
 
     if(!name){
 
@@ -3848,9 +3376,7 @@ function addMyDebt(e){
         );
 
         return;
-
     }
-
 
     if(amount<=0){
 
@@ -3860,9 +3386,17 @@ function addMyDebt(e){
         );
 
         return;
-
     }
 
+    if(monthly<=0){
+
+        toast(
+            "Please enter a valid monthly payment.",
+            true
+        );
+
+        return;
+    }
 
     if(monthly>amount){
 
@@ -3872,9 +3406,7 @@ function addMyDebt(e){
         );
 
         return;
-
     }
-
 
     data.myDebts.push({
 
@@ -3892,36 +3424,25 @@ function addMyDebt(e){
 
         date:today(),
 
-        payments:[]
+        payments:[],
+
+        monthlyPaid:{}
 
     });
-
 
     saveData();
 
     e.target.reset();
 
-    selectedMonth=
-        new Date().getMonth();
-
-    selectedYear=
-        new Date().getFullYear();
-
     toast(
         "My debt successfully saved."
     );
 
-
     showPage(
         "mydebts"
     );
-
 }
 
-
-/* =====================================================
-RENDER MY DEBTS
-===================================================== */
 
 function renderMyDebts(){
 
@@ -3930,10 +3451,7 @@ function renderMyDebts(){
             "myDebtList"
         );
 
-
-    if(!box)
-        return;
-
+    if(!box) return;
 
     if(!data.myDebts.length){
 
@@ -3946,9 +3464,7 @@ function renderMyDebts(){
         `;
 
         return;
-
     }
-
 
     const names=[
         ...new Set(
@@ -3958,9 +3474,7 @@ function renderMyDebts(){
         )
     ].sort();
 
-
     box.innerHTML="";
-
 
     names.forEach(name=>{
 
@@ -3969,35 +3483,25 @@ function renderMyDebts(){
                 d=>d.name===name
             );
 
-
         const total=
             records.reduce(
                 (s,d)=>
-                s+
-                Number(
-                    d.amount||0
-                ),
+                s+Number(d.amount||0),
                 0
             );
-
 
         const paid=
             records.reduce(
                 (s,d)=>
-                s+
-                Number(
-                    d.paidAmount||0
-                ),
+                s+Number(d.paidAmount||0),
                 0
             );
-
 
         const remaining=
             Math.max(
                 0,
                 total-paid
             );
-
 
         const pct=
             total>0
@@ -4006,12 +3510,8 @@ function renderMyDebts(){
             )
             :0;
 
-
         const encoded=
-            encodeURIComponent(
-                name
-            );
-
+            encodeURIComponent(name);
 
         box.innerHTML+=`
 
@@ -4046,60 +3546,46 @@ function renderMyDebts(){
 
                 </div>
 
-
                 <div class="progress-box">
 
                     <div class="progress-info">
 
                         <span>
-
                             <span class="green">
                                 ${peso(paid)}
                             </span>
-
                             paid
-
                         </span>
 
-
                         <span>
-
                             <span class="red">
                                 ${peso(remaining)}
                             </span>
-
                             remaining
-
                         </span>
 
                     </div>
 
-
                     <div class="progress">
 
                         <div class="bar"
-                             style="
-                             width:${pct}%">
+                             style="width:${pct}%">
                         </div>
 
                     </div>
 
                 </div>
 
-
                 <div class="actions">
 
-                    <button type="button"
-                            class="btn primary"
+                    <button class="btn primary"
                             onclick="openMyDebt('${encoded}')">
 
                         💳 View Account
 
                     </button>
 
-
-                    <button type="button"
-                            class="btn danger"
+                    <button class="btn danger"
                             onclick="deleteMyDebtPerson('${encoded}')">
 
                         🗑️ Delete
@@ -4113,20 +3599,13 @@ function renderMyDebts(){
         `;
 
     });
-
 }
 
-
-/* =====================================================
-MY DEBT DETAIL
-===================================================== */
 
 function openMyDebt(encoded){
 
     selectedMyDebtName=
-        decodeURIComponent(
-            encoded
-        );
+        decodeURIComponent(encoded);
 
     detailFilter="all";
 
@@ -4135,7 +3614,6 @@ function openMyDebt(encoded){
     showPage(
         "mydebt-detail"
     );
-
 }
 
 
@@ -4144,7 +3622,6 @@ function setMyDebtFilter(filter){
     detailFilter=filter;
 
     renderMyDebtDetail();
-
 }
 
 
@@ -4155,10 +3632,7 @@ function renderMyDebtDetail(){
             "myDebtDetail"
         );
 
-
-    if(!box)
-        return;
-
+    if(!box) return;
 
     const allRecords=
         data.myDebts.filter(
@@ -4166,7 +3640,6 @@ function renderMyDebtDetail(){
             d.name===
             selectedMyDebtName
         );
-
 
     if(!allRecords.length){
 
@@ -4179,38 +3652,27 @@ function renderMyDebtDetail(){
         `;
 
         return;
-
     }
-
 
     const total=
         allRecords.reduce(
             (s,d)=>
-            s+
-            Number(
-                d.amount||0
-            ),
+            s+Number(d.amount||0),
             0
         );
-
 
     const paid=
         allRecords.reduce(
             (s,d)=>
-            s+
-            Number(
-                d.paidAmount||0
-            ),
+            s+Number(d.paidAmount||0),
             0
         );
-
 
     const remaining=
         Math.max(
             0,
             total-paid
         );
-
 
     const pct=
         total>0
@@ -4219,32 +3681,26 @@ function renderMyDebtDetail(){
         )
         :0;
 
-
     let records=
         allRecords;
-
 
     if(detailFilter==="paid"){
 
         records=
             allRecords.filter(
-                d=>
-                getStatus(d)==="paid"
+                d=>getStatus(d)==="paid"
             );
 
     }
-
 
     if(detailFilter==="unpaid"){
 
         records=
             allRecords.filter(
-                d=>
-                getStatus(d)!=="paid"
+                d=>getStatus(d)!=="paid"
             );
 
     }
-
 
     let html=`
 
@@ -4270,70 +3726,44 @@ function renderMyDebtDetail(){
 
             </div>
 
-
             <div class="grid"
                  style="margin-top:15px;">
 
                 <div class="card">
-
-                    <div class="label">
-                        Total
-                    </div>
-
+                    <div class="label">Total</div>
                     <div class="number yellow">
                         ${peso(total)}
                     </div>
-
                 </div>
 
-
                 <div class="card">
-
-                    <div class="label">
-                        Paid
-                    </div>
-
+                    <div class="label">Paid</div>
                     <div class="number green">
                         ${peso(paid)}
                     </div>
-
                 </div>
 
-
                 <div class="card">
-
-                    <div class="label">
-                        Remaining
-                    </div>
-
+                    <div class="label">Remaining</div>
                     <div class="number red">
                         ${peso(remaining)}
                     </div>
-
                 </div>
 
-
                 <div class="card">
-
-                    <div class="label">
-                        Progress
-                    </div>
-
+                    <div class="label">Progress</div>
                     <div class="number blue">
                         ${pct}%
                     </div>
-
                 </div>
 
             </div>
 
         </div>
 
-
         <div class="section">
 
-            <button type="button"
-                    class="btn success full"
+            <button class="btn success full"
                     onclick="startPayment('mydebt')"
                     ${remaining<=0?"disabled":""}>
 
@@ -4343,32 +3773,29 @@ function renderMyDebtDetail(){
 
         </div>
 
-
         <div class="section">
 
             <div class="filter-row">
 
-                <button type="button"
-                        class="filter-btn ${detailFilter==="all"?"active":""}"
-                        onclick="setMyDebtFilter('all')">
+                <button class="filter-btn
+                    ${detailFilter==="all"?"active":""}"
+                    onclick="setMyDebtFilter('all')">
 
                     📋 All
 
                 </button>
 
-
-                <button type="button"
-                        class="filter-btn ${detailFilter==="paid"?"active":""}"
-                        onclick="setMyDebtFilter('paid')">
+                <button class="filter-btn
+                    ${detailFilter==="paid"?"active":""}"
+                    onclick="setMyDebtFilter('paid')">
 
                     🟢 Paid
 
                 </button>
 
-
-                <button type="button"
-                        class="filter-btn ${detailFilter==="unpaid"?"active":""}"
-                        onclick="setMyDebtFilter('unpaid')">
+                <button class="filter-btn
+                    ${detailFilter==="unpaid"?"active":""}"
+                    onclick="setMyDebtFilter('unpaid')">
 
                     🔴 Unpaid
 
@@ -4377,7 +3804,6 @@ function renderMyDebtDetail(){
             </div>
 
         </div>
-
 
         <div class="section">
 
@@ -4388,7 +3814,6 @@ function renderMyDebtDetail(){
             <div class="list">
 
     `;
-
 
     if(!records.length){
 
@@ -4402,130 +3827,120 @@ function renderMyDebtDetail(){
 
     }
 
+    records.forEach(debt=>{
 
-    records.forEach(
-        debt=>{
+        const left=
+            Math.max(
+                0,
+                Number(debt.amount||0)-
+                Number(debt.paidAmount||0)
+            );
 
-            const left=
-                Math.max(
-                    0,
-                    Number(
-                        debt.amount||0
-                    )-
-                    Number(
-                        debt.paidAmount||0
-                    )
-                );
+        html+=`
 
+            <div class="item">
 
-            html+=`
+                <div class="item-top">
 
-                <div class="item">
+                    <div>
 
-                    <div class="item-top">
-
-                        <div>
-
-                            <div class="item-name">
-                                💳 Debt
-                            </div>
-
-                            <div class="item-meta">
-                                📅 Due:
-                                ${formatDate(
-                                    debt.dueDate
-                                )}
-                            </div>
-
-                            <div class="item-meta">
-                                📆 Monthly:
-                                <span class="yellow">
-                                    ${peso(
-                                        debt.monthlyPayment
-                                    )}
-                                </span>
-                            </div>
-
-                            <div class="item-meta">
-                                🗓️ Added:
-                                ${formatDate(
-                                    debt.date
-                                )}
-                            </div>
-
+                        <div class="item-name">
+                            💳 Debt
                         </div>
 
+                        <div class="item-meta">
+                            📅 Due:
+                            ${formatDate(debt.dueDate)}
+                        </div>
 
-                        <div>
-                            ${statusBadge(debt)}
+                        <div class="item-meta">
+                            📆 Monthly:
+                            <span class="yellow">
+                                ${peso(
+                                    debt.monthlyPayment
+                                )}
+                            </span>
+                        </div>
+
+                        <div class="item-meta">
+                            🗓️ Added:
+                            ${formatDate(debt.date)}
                         </div>
 
                     </div>
 
+                    <div>
+                        ${statusBadge(debt)}
+                    </div>
 
-                    <div class="progress-box">
+                </div>
 
-                        <div class="progress-info">
+                <div class="progress-box">
 
-                            <span>
-                                ${getPercent(debt)}% Paid
-                            </span>
+                    <div class="progress-info">
 
-                            <span class="red">
-                                ${peso(left)} left
-                            </span>
+                        <span>
+                            ${getPercent(debt)}% Paid
+                        </span>
 
-                        </div>
-
-
-                        <div class="progress">
-
-                            <div class="bar"
-                                 style="
-                                 width:${getPercent(debt)}%">
-                            </div>
-
-                        </div>
+                        <span class="red">
+                            ${peso(left)} left
+                        </span>
 
                     </div>
 
+                    <div class="progress">
 
-                    <div class="actions">
-
-                        ${
-                            getStatus(debt)!=="paid"
-                            ?
-                            `
-                            <button type="button"
-                                    class="btn success"
-                                    onclick="startPaymentForDebt('${debt.id}','mydebt')">
-
-                                💵 Add Payment
-
-                            </button>
-                            `
-                            :
-                            ""
-                        }
-
-
-                        <button type="button"
-                                class="btn danger"
-                                onclick="deleteDebt('${debt.id}','mydebt')">
-
-                            🗑️ Delete
-
-                        </button>
+                        <div class="bar"
+                             style="
+                             width:${getPercent(debt)}%">
+                        </div>
 
                     </div>
 
                 </div>
 
-            `;
+                ${monthlyChecklist(
+                    debt,
+                    "mydebt"
+                )}
 
-        }
-    );
+                <div class="actions">
 
+                    ${
+                        getStatus(debt)!=="paid"
+                        ?
+                        `
+                        <button class="btn success"
+                                onclick="startPaymentForDebt(
+                                    '${debt.id}',
+                                    'mydebt'
+                                )">
+
+                            💵 Add Payment
+
+                        </button>
+                        `
+                        :""
+                    }
+
+                    <button class="btn danger"
+                            onclick="deleteDebt(
+                                '${debt.id}',
+                                'mydebt'
+                            )">
+
+                        🗑️ Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
 
     html+=`
 
@@ -4533,36 +3948,26 @@ function renderMyDebtDetail(){
 
         </div>
 
-
         <div class="section">
 
             <div class="section-title">
                 Payment History
             </div>
 
-            ${paymentHistory(
-                allRecords
-            )}
+            ${paymentHistory(allRecords)}
 
         </div>
 
     `;
 
-
     box.innerHTML=html;
-
 }
 
 
-function deleteMyDebtPerson(
-    encoded
-){
+function deleteMyDebtPerson(encoded){
 
     const name=
-        decodeURIComponent(
-            encoded
-        );
-
+        decodeURIComponent(encoded);
 
     if(!confirm(
         `Delete all debt records for ${name}?`
@@ -4570,34 +3975,18 @@ function deleteMyDebtPerson(
         return;
     }
 
-
     data.myDebts=
         data.myDebts.filter(
-            d=>
-            d.name!==name
+            d=>d.name!==name
         );
 
-
     saveData();
-
-
-    if(
-        selectedMyDebtName===
-        name
-    ){
-
-        selectedMyDebtName=null;
-
-    }
-
 
     toast(
         "Debt records deleted."
     );
 
-
     refresh();
-
 }
 
 
@@ -4609,12 +3998,10 @@ function addExpense(e){
 
     e.preventDefault();
 
-
     const description=
         document.getElementById(
             "expenseDescription"
         ).value.trim();
-
 
     const amount=
         Number(
@@ -4623,12 +4010,10 @@ function addExpense(e){
             ).value
         );
 
-
     const category=
         document.getElementById(
             "expenseCategory"
         ).value;
-
 
     if(
         !description ||
@@ -4641,50 +4026,33 @@ function addExpense(e){
         );
 
         return;
-
     }
-
 
     data.expenses.push({
 
         id:uid(),
 
-        description:
-            description,
+        description,
 
-        amount:
-            amount,
+        amount,
 
-        category:
-            category,
+        category,
 
-        date:
-            today()
+        date:today()
 
     });
-
 
     saveData();
 
     e.target.reset();
 
-
-    selectedMonth=
-        new Date().getMonth();
-
-    selectedYear=
-        new Date().getFullYear();
-
-
     toast(
         "Expense successfully saved."
     );
 
-
     showPage(
         "expenses"
     );
-
 }
 
 
@@ -4695,10 +4063,7 @@ function renderExpenses(){
             "expenseList"
         );
 
-
-    if(!box)
-        return;
-
+    if(!box) return;
 
     if(!data.expenses.length){
 
@@ -4711,12 +4076,9 @@ function renderExpenses(){
         `;
 
         return;
-
     }
 
-
     box.innerHTML="";
-
 
     [...data.expenses]
         .sort(
@@ -4724,72 +4086,66 @@ function renderExpenses(){
             new Date(b.date)-
             new Date(a.date)
         )
-        .forEach(
-            expense=>{
+        .forEach(expense=>{
 
-                box.innerHTML+=`
+            box.innerHTML+=`
 
-                    <div class="item">
+                <div class="item">
 
-                        <div class="item-top">
+                    <div class="item-top">
 
-                            <div>
+                        <div>
 
-                                <div class="item-name">
-                                    ${esc(
-                                        expense.description
-                                    )}
-                                </div>
-
-                                <div class="item-meta">
-                                    🏷️ ${esc(
-                                        expense.category
-                                    )}
-                                </div>
-
-                                <div class="item-meta">
-                                    📅 ${formatDate(
-                                        expense.date
-                                    )}
-                                </div>
-
+                            <div class="item-name">
+                                ${esc(
+                                    expense.description
+                                )}
                             </div>
 
+                            <div class="item-meta">
+                                🏷️ ${esc(
+                                    expense.category
+                                )}
+                            </div>
 
-                            <div class="item-money red">
-                                ${peso(
-                                    expense.amount
+                            <div class="item-meta">
+                                📅 ${formatDate(
+                                    expense.date
                                 )}
                             </div>
 
                         </div>
 
-
-                        <div class="actions">
-
-                            <button type="button"
-                                    class="btn danger"
-                                    onclick="deleteExpense('${expense.id}')">
-
-                                🗑️ Delete
-
-                            </button>
-
+                        <div class="item-money red">
+                            ${peso(
+                                expense.amount
+                            )}
                         </div>
 
                     </div>
 
-                `;
+                    <div class="actions">
 
-            }
-        );
+                        <button class="btn danger"
+                                onclick="deleteExpense(
+                                    '${expense.id}'
+                                )">
 
+                            🗑️ Delete
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        });
 }
 
 
-function deleteExpense(
-    idValue
-){
+function deleteExpense(id){
 
     if(!confirm(
         "Delete this expense?"
@@ -4797,25 +4153,20 @@ function deleteExpense(
         return;
     }
 
-
     data.expenses=
         data.expenses.filter(
             e=>
             String(e.id)!==
-            String(idValue)
+            String(id)
         );
 
-
     saveData();
-
 
     toast(
         "Expense deleted."
     );
 
-
     refresh();
-
 }
 
 
@@ -4827,12 +4178,10 @@ function addSavings(e){
 
     e.preventDefault();
 
-
     const name=
         document.getElementById(
             "savingsName"
         ).value.trim();
-
 
     const target=
         Number(
@@ -4841,14 +4190,12 @@ function addSavings(e){
             ).value
         );
 
-
     const current=
         Number(
             document.getElementById(
                 "savingsCurrent"
             ).value||0
         );
-
 
     if(
         !name ||
@@ -4861,17 +4208,15 @@ function addSavings(e){
         );
 
         return;
-
     }
-
 
     data.savings.push({
 
         id:uid(),
 
-        name:name,
+        name,
 
-        target:target,
+        target,
 
         current:Math.max(
             0,
@@ -4880,21 +4225,17 @@ function addSavings(e){
 
     });
 
-
     saveData();
 
     e.target.reset();
-
 
     toast(
         "Savings goal successfully saved."
     );
 
-
     showPage(
         "savings"
     );
-
 }
 
 
@@ -4905,10 +4246,7 @@ function renderSavings(){
             "savingsList"
         );
 
-
-    if(!box)
-        return;
-
+    if(!box) return;
 
     if(!data.savings.length){
 
@@ -4921,126 +4259,114 @@ function renderSavings(){
         `;
 
         return;
-
     }
-
 
     box.innerHTML="";
 
+    data.savings.forEach(goal=>{
 
-    data.savings.forEach(
-        goal=>{
-
-            const pct=
-                goal.target>0
-                ?Math.min(
-                    100,
-                    Math.round(
-                        goal.current/
-                        goal.target*100
-                    )
+        const pct=
+            goal.target>0
+            ?Math.min(
+                100,
+                Math.round(
+                    goal.current/
+                    goal.target*
+                    100
                 )
-                :0;
+            )
+            :0;
 
+        box.innerHTML+=`
 
-            box.innerHTML+=`
+            <div class="item">
 
-                <div class="item">
+                <div class="account-row">
 
-                    <div class="account-row">
+                    ${pie(pct)}
 
-                        ${pie(pct)}
+                    <div class="account-info">
 
-                        <div class="account-info">
+                        <div class="item-name">
+                            ${esc(goal.name)}
+                        </div>
 
-                            <div class="item-name">
-                                ${esc(
-                                    goal.name
-                                )}
-                            </div>
-
-                            <div class="item-meta">
-                                Target:
-                                <span class="blue">
-                                    ${peso(
-                                        goal.target
-                                    )}
-                                </span>
-                            </div>
-
-                            <div class="green"
-                                 style="
-                                 margin-top:6px;
-                                 font-size:12px;
-                                 font-weight:800;">
-
+                        <div class="item-meta">
+                            Target:
+                            <span class="blue">
                                 ${peso(
-                                    goal.current
+                                    goal.target
                                 )}
-
-                            </div>
-
+                            </span>
                         </div>
 
-                    </div>
+                        <div class="green"
+                             style="
+                             margin-top:6px;
+                             font-size:12px;
+                             font-weight:800;">
 
-
-                    <div class="progress-box">
-
-                        <div class="progress">
-
-                            <div class="bar"
-                                 style="
-                                 width:${pct}%">
-                            </div>
+                            ${peso(
+                                goal.current
+                            )}
 
                         </div>
-
-                    </div>
-
-
-                    <div class="actions">
-
-                        <button type="button"
-                                class="btn success"
-                                onclick="addSavingsMoney('${goal.id}')">
-
-                            💵 Add Money
-
-                        </button>
-
-
-                        <button type="button"
-                                class="btn danger"
-                                onclick="deleteSavings('${goal.id}')">
-
-                            🗑️ Delete
-
-                        </button>
 
                     </div>
 
                 </div>
 
-            `;
+                <div class="progress-box">
 
-        }
-    );
+                    <div class="progress">
 
+                        <div class="bar"
+                             style="
+                             width:${pct}%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="actions">
+
+                    <button class="btn success"
+                            onclick="addSavingsMoney(
+                                '${goal.id}'
+                            )">
+
+                        💵 Add Money
+
+                    </button>
+
+                    <button class="btn danger"
+                            onclick="deleteSavings(
+                                '${goal.id}'
+                            )">
+
+                        🗑️ Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
 }
 
 
-function addSavingsMoney(
-    idValue
-){
+function addSavingsMoney(id){
 
     const goal=
         data.savings.find(
             s=>
             String(s.id)===
-            String(idValue)
+            String(id)
         );
-
 
     if(!goal){
 
@@ -5050,26 +4376,18 @@ function addSavingsMoney(
         );
 
         return;
-
     }
-
 
     const answer=
         prompt(
             "Enter amount to add:"
         );
 
-
-    if(
-        answer===null
-    ){
+    if(answer===null)
         return;
-    }
-
 
     const amount=
         Number(answer);
-
 
     if(
         !Number.isFinite(amount) ||
@@ -5082,31 +4400,23 @@ function addSavingsMoney(
         );
 
         return;
-
     }
-
 
     goal.current=
         Number(goal.current||0)+
         amount;
 
-
     saveData();
-
 
     toast(
         "Savings updated."
     );
 
-
     refresh();
-
 }
 
 
-function deleteSavings(
-    idValue
-){
+function deleteSavings(id){
 
     if(!confirm(
         "Delete this savings goal?"
@@ -5114,109 +4424,25 @@ function deleteSavings(
         return;
     }
 
-
     data.savings=
         data.savings.filter(
             s=>
             String(s.id)!==
-            String(idValue)
+            String(id)
         );
 
-
     saveData();
-
 
     toast(
         "Savings goal deleted."
     );
 
-
     refresh();
-
 }
 
 
 /* =====================================================
-MONTHLY SUMMARY
-===================================================== */
-
-function getMonthlyDebtTotal(
-    list
-){
-
-    return list.reduce(
-        (sum,d)=>
-        sum+
-        Number(
-            d.amount||0
-        ),
-        0
-    );
-
-}
-
-
-function getMonthlyPaid(
-    list
-){
-
-    return list.reduce(
-        (sum,d)=>
-        sum+
-        Number(
-            d.paidAmount||0
-        ),
-        0
-    );
-
-}
-
-
-/* =====================================================
-PAYMENTS MADE IN MONTH
-===================================================== */
-
-function getPaymentsInMonth(
-    debts
-){
-
-    let total=0;
-
-
-    debts.forEach(
-        debt=>{
-
-            (debt.payments||[])
-                .forEach(
-                    payment=>{
-
-                        if(
-                            isSelectedMonth(
-                                payment.date
-                            )
-                        ){
-
-                            total+=
-                                Number(
-                                    payment.amount||0
-                                );
-
-                        }
-
-                    }
-                );
-
-        }
-    );
-
-
-    return total;
-
-}
-
-
-/* =====================================================
-MONTHLY RENDER
+MONTHLY DASHBOARD
 ===================================================== */
 
 function renderMonthly(){
@@ -5226,40 +4452,29 @@ function renderMonthly(){
             "monthlySummary"
         );
 
-
     const list=
         document.getElementById(
             "monthlyList"
         );
 
-
-    if(
-        !summary ||
-        !list
-    ){
+    if(!summary||!list)
         return;
-    }
-
 
     const personMonth=
         data.debts.filter(
             d=>
             isSelectedMonth(
-                d.dueDate ||
-                d.date
+                d.dueDate||d.date
             )
         );
-
 
     const myMonth=
         data.myDebts.filter(
             d=>
             isSelectedMonth(
-                d.dueDate ||
-                d.date
+                d.dueDate||d.date
             )
         );
-
 
     const expensesMonth=
         data.expenses.filter(
@@ -5269,52 +4484,169 @@ function renderMonthly(){
             )
         );
 
-
     const personTotal=
-        getMonthlyDebtTotal(
-            personMonth
+        personMonth.reduce(
+            (s,d)=>
+            s+Number(d.amount||0),
+            0
         );
-
-
-    const personPaid=
-        getMonthlyPaid(
-            personMonth
-        );
-
 
     const myTotal=
-        getMonthlyDebtTotal(
-            myMonth
+        myMonth.reduce(
+            (s,d)=>
+            s+Number(d.amount||0),
+            0
         );
-
-
-    const myPaid=
-        getMonthlyPaid(
-            myMonth
-        );
-
 
     const expenseTotal=
         expensesMonth.reduce(
             (s,e)=>
-            s+
-            Number(
-                e.amount||0
-            ),
+            s+Number(e.amount||0),
             0
         );
 
+    let personPaidMonths=0;
+    let personTotalMonths=0;
 
-    const personPayments=
-        getPaymentsInMonth(
-            data.debts
-        );
+    data.debts.forEach(debt=>{
+
+        const due=
+            new Date(
+                debt.dueDate||
+                debt.date
+            );
+
+        if(
+            Number.isNaN(
+                due.getTime()
+            )
+        ) return;
+
+        const monthly=
+            Number(
+                debt.monthlyPayment||0
+            );
+
+        if(monthly<=0) return;
+
+        const count=
+            Math.max(
+                1,
+                Math.ceil(
+                    Number(debt.amount||0)/
+                    monthly
+                )
+            );
+
+        for(
+            let i=0;
+            i<count;
+            i++
+        ){
+
+            const d=
+                new Date(
+                    due.getFullYear(),
+                    due.getMonth()+i,
+                    1
+                );
+
+            if(
+                d.getFullYear()===
+                selectedYear &&
+                d.getMonth()===
+                selectedMonth
+            ){
+
+                personTotalMonths++;
+
+                if(
+                    isMonthPaid(
+                        debt,
+                        selectedYear,
+                        selectedMonth
+                    )
+                ){
+                    personPaidMonths++;
+                }
+
+            }
+
+        }
+
+    });
 
 
-    const myPayments=
-        getPaymentsInMonth(
-            data.myDebts
-        );
+    let myPaidMonths=0;
+    let myTotalMonths=0;
+
+    data.myDebts.forEach(debt=>{
+
+        const due=
+            new Date(
+                debt.dueDate||
+                debt.date
+            );
+
+        if(
+            Number.isNaN(
+                due.getTime()
+            )
+        ) return;
+
+        const monthly=
+            Number(
+                debt.monthlyPayment||0
+            );
+
+        if(monthly<=0) return;
+
+        const count=
+            Math.max(
+                1,
+                Math.ceil(
+                    Number(debt.amount||0)/
+                    monthly
+                )
+            );
+
+        for(
+            let i=0;
+            i<count;
+            i++
+        ){
+
+            const d=
+                new Date(
+                    due.getFullYear(),
+                    due.getMonth()+i,
+                    1
+                );
+
+            if(
+                d.getFullYear()===
+                selectedYear &&
+                d.getMonth()===
+                selectedMonth
+            ){
+
+                myTotalMonths++;
+
+                if(
+                    isMonthPaid(
+                        debt,
+                        selectedYear,
+                        selectedMonth
+                    )
+                ){
+                    myPaidMonths++;
+                }
+
+            }
+
+        }
+
+    });
 
 
     summary.innerHTML=`
@@ -5328,22 +4660,16 @@ function renderMonthly(){
                 </div>
 
                 <div class="number blue">
-                    ${peso(
-                        personTotal
-                    )}
+                    ${peso(personTotal)}
                 </div>
 
                 <div class="item-meta">
-                    Paid:
-                    <span class="green">
-                        ${peso(
-                            personPaid
-                        )}
-                    </span>
+                    ${personPaidMonths}
+                    /${personTotalMonths}
+                    monthly paid
                 </div>
 
             </div>
-
 
             <div class="card">
 
@@ -5352,22 +4678,16 @@ function renderMonthly(){
                 </div>
 
                 <div class="number yellow">
-                    ${peso(
-                        myTotal
-                    )}
+                    ${peso(myTotal)}
                 </div>
 
                 <div class="item-meta">
-                    Paid:
-                    <span class="green">
-                        ${peso(
-                            myPaid
-                        )}
-                    </span>
+                    ${myPaidMonths}
+                    /${myTotalMonths}
+                    monthly paid
                 </div>
 
             </div>
-
 
             <div class="card">
 
@@ -5376,29 +4696,22 @@ function renderMonthly(){
                 </div>
 
                 <div class="number red">
-                    ${peso(
-                        expenseTotal
-                    )}
+                    ${peso(expenseTotal)}
                 </div>
 
             </div>
 
-
             <div class="card">
 
                 <div class="label">
-                    Payments
+                    Month
                 </div>
 
-                <div class="number green">
-                    ${peso(
-                        personPayments+
-                        myPayments
-                    )}
+                <div class="number white">
+                    ${months[selectedMonth]}
                 </div>
 
                 <div class="item-meta">
-                    ${months[selectedMonth]}
                     ${selectedYear}
                 </div>
 
@@ -5409,7 +4722,7 @@ function renderMonthly(){
     `;
 
 
-    const peopleUnpaid=
+    const people=
         data.debts.filter(
             debt=>
             isUnpaidForSelectedMonth(
@@ -5418,7 +4731,7 @@ function renderMonthly(){
         );
 
 
-    const myUnpaid=
+    const myDebts=
         data.myDebts.filter(
             debt=>
             isUnpaidForSelectedMonth(
@@ -5428,16 +4741,16 @@ function renderMonthly(){
 
 
     if(
-        !peopleUnpaid.length &&
-        !myUnpaid.length
+        !people.length &&
+        !myDebts.length
     ){
 
         list.innerHTML=`
 
             <div class="empty">
 
-                No unpaid debts for
-                ${months[selectedMonth]}
+                No unpaid monthly payments
+                for ${months[selectedMonth]}
                 ${selectedYear}.
 
             </div>
@@ -5445,16 +4758,13 @@ function renderMonthly(){
         `;
 
         return;
-
     }
 
 
     let html="";
 
 
-    if(
-        peopleUnpaid.length
-    ){
+    if(people.length){
 
         html+=`
 
@@ -5466,75 +4776,58 @@ function renderMonthly(){
 
         `;
 
+        people.forEach(debt=>{
 
-        peopleUnpaid.forEach(
-            debt=>{
+            const monthly=
+                Number(
+                    debt.monthlyPayment||0
+                );
 
-                const remaining=
-                    Math.max(
-                        0,
-                        Number(
-                            debt.amount||0
-                        )-
-                        Number(
-                            debt.paidAmount||0
-                        )
-                    );
+            const paid=
+                isMonthPaid(
+                    debt,
+                    selectedYear,
+                    selectedMonth
+                );
 
+            html+=`
 
-                html+=`
+                <div class="month-row">
 
-                    <div class="month-row">
+                    <div>
 
-                        <div>
+                        <strong>
+                            ${esc(debt.person)}
+                        </strong>
 
-                            <strong>
-                                ${esc(
-                                    debt.person
-                                )}
-                            </strong>
-
-                            <div class="item-meta">
-
-                                Monthly:
-
-                                <span class="yellow">
-                                    ${peso(
-                                        debt.monthlyPayment
-                                    )}
-                                </span>
-
-                            </div>
-
-                        </div>
-
-
-                        <div style="
-                             text-align:right;">
-
-                            <strong class="red">
-                                ${peso(
-                                    remaining
-                                )}
-                            </strong>
-
-                            <div class="item-meta">
-
-                                ${statusBadge(
-                                    debt
-                                )}
-
-                            </div>
-
+                        <div class="item-meta">
+                            Monthly:
+                            <span class="yellow">
+                                ${peso(monthly)}
+                            </span>
                         </div>
 
                     </div>
 
-                `;
+                    <button type="button"
+                            class="check
+                            ${paid?"checked":""}"
+                            onclick="toggleMonthlyPayment(
+                                '${debt.id}',
+                                'person',
+                                ${selectedYear},
+                                ${selectedMonth}
+                            )">
 
-            }
-        );
+                        ${paid?"✓":"☐"}
 
+                    </button>
+
+                </div>
+
+            `;
+
+        });
 
         html+=`
 
@@ -5545,9 +4838,7 @@ function renderMonthly(){
     }
 
 
-    if(
-        myUnpaid.length
-    ){
+    if(myDebts.length){
 
         html+=`
 
@@ -5560,75 +4851,58 @@ function renderMonthly(){
 
         `;
 
+        myDebts.forEach(debt=>{
 
-        myUnpaid.forEach(
-            debt=>{
+            const monthly=
+                Number(
+                    debt.monthlyPayment||0
+                );
 
-                const remaining=
-                    Math.max(
-                        0,
-                        Number(
-                            debt.amount||0
-                        )-
-                        Number(
-                            debt.paidAmount||0
-                        )
-                    );
+            const paid=
+                isMonthPaid(
+                    debt,
+                    selectedYear,
+                    selectedMonth
+                );
 
+            html+=`
 
-                html+=`
+                <div class="month-row">
 
-                    <div class="month-row">
+                    <div>
 
-                        <div>
+                        <strong>
+                            ${esc(debt.name)}
+                        </strong>
 
-                            <strong>
-                                ${esc(
-                                    debt.name
-                                )}
-                            </strong>
-
-                            <div class="item-meta">
-
-                                Monthly:
-
-                                <span class="yellow">
-                                    ${peso(
-                                        debt.monthlyPayment
-                                    )}
-                                </span>
-
-                            </div>
-
-                        </div>
-
-
-                        <div style="
-                             text-align:right;">
-
-                            <strong class="red">
-                                ${peso(
-                                    remaining
-                                )}
-                            </strong>
-
-                            <div class="item-meta">
-
-                                ${statusBadge(
-                                    debt
-                                )}
-
-                            </div>
-
+                        <div class="item-meta">
+                            Monthly:
+                            <span class="yellow">
+                                ${peso(monthly)}
+                            </span>
                         </div>
 
                     </div>
 
-                `;
+                    <button type="button"
+                            class="check
+                            ${paid?"checked":""}"
+                            onclick="toggleMonthlyPayment(
+                                '${debt.id}',
+                                'mydebt',
+                                ${selectedYear},
+                                ${selectedMonth}
+                            )">
 
-            }
-        );
+                        ${paid?"✓":"☐"}
 
+                    </button>
+
+                </div>
+
+            `;
+
+        });
 
         html+=`
 
@@ -5639,9 +4913,7 @@ function renderMonthly(){
     }
 
 
-    list.innerHTML=
-        html;
-
+    list.innerHTML=html;
 }
 
 
@@ -5654,24 +4926,16 @@ function refreshDashboard(){
     const expenses=
         data.expenses.reduce(
             (s,e)=>
-            s+
-            Number(
-                e.amount||0
-            ),
+            s+Number(e.amount||0),
             0
         );
-
 
     const savings=
         data.savings.reduce(
             (s,e)=>
-            s+
-            Number(
-                e.current||0
-            ),
+            s+Number(e.current||0),
             0
         );
-
 
     const owed=
         data.debts.reduce(
@@ -5679,16 +4943,11 @@ function refreshDashboard(){
             s+
             Math.max(
                 0,
-                Number(
-                    d.amount||0
-                )-
-                Number(
-                    d.paidAmount||0
-                )
+                Number(d.amount||0)-
+                Number(d.paidAmount||0)
             ),
             0
         );
-
 
     const myDebt=
         data.myDebts.reduce(
@@ -5696,40 +4955,31 @@ function refreshDashboard(){
             s+
             Math.max(
                 0,
-                Number(
-                    d.amount||0
-                )-
-                Number(
-                    d.paidAmount||0
-                )
+                Number(d.amount||0)-
+                Number(d.paidAmount||0)
             ),
             0
         );
-
 
     document.getElementById(
         "dashExpenses"
     ).textContent=
         peso(expenses);
 
-
     document.getElementById(
         "dashSavings"
     ).textContent=
         peso(savings);
-
 
     document.getElementById(
         "dashOwed"
     ).textContent=
         peso(owed);
 
-
     document.getElementById(
         "dashMyDebt"
     ).textContent=
         peso(myDebt);
-
 }
 
 
@@ -5754,12 +5004,11 @@ function refresh(){
     renderExpenses();
 
     renderSavings();
-
 }
 
 
 /* =====================================================
-INITIALIZE
+START
 ===================================================== */
 
 refresh();
