@@ -2189,6 +2189,8 @@ textarea:focus{
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 
 /* ============================================================
@@ -2196,28 +2198,545 @@ textarea:focus{
    V9
 ============================================================ */
 
-const STORAGE_KEY = "liahs_fintrack_v7";
+const SUPABASE_URL =
+    "https://oiqcjznldinajhyuhyrp.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_5bl66_SK0bZd5IeoDgZDSA_vmho_yqT";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+/* ============================================================
+   SUPABASE SYNC
+============================================================ */
+
+let supabaseSyncRunning = false;
+
+
+/* ============================================================
+   EXPENSE SYNC
+============================================================ */
+
+async function syncExpenseToSupabase(expense){
+
+    if(!expense){
+        return;
+    }
+
+    try{
+
+        const { error } =
+            await supabaseClient
+                .from("expenses")
+                .upsert({
+
+                    id:
+                        expense.id,
+
+                    description:
+                        expense.description,
+
+                    amount:
+                        Number(
+                            expense.amount || 0
+                        ),
+
+                    category:
+                        expense.category || "Other",
+
+                    expense_date:
+                        expense.date
+
+                });
+
+        if(error){
+
+            console.error(
+                "Supabase expense sync failed:",
+                error
+            );
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Supabase expense sync error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   DEBT SYNC
+============================================================ */
+
+async function syncDebtToSupabase(
+    debt,
+    type
+){
+
+    if(!debt){
+        return;
+    }
+
+    try{
+
+        const { error } =
+            await supabaseClient
+                .from("debts")
+                .upsert({
+
+                    id:
+                        debt.id,
+
+                    name:
+                        debt.name,
+
+                    reason:
+                        debt.reason || "",
+
+                    total_amount:
+                        Number(
+                            debt.amount || 0
+                        ),
+
+                    debt_type:
+                        type,
+
+                    paid_amount:
+                        Number(
+                            debt.paidAmount || 0
+                        ),
+
+                    payment_type:
+                        debt.paymentType ||
+                        "one-time",
+
+                    monthly_payment:
+                        Number(
+                            debt.monthlyPayment || 0
+                        ),
+
+                    start_date:
+                        debt.startDate || null,
+
+                    end_date:
+                        debt.endDate || null,
+
+                    debt_date:
+                        debt.date || today()
+
+                });
+
+        if(error){
+
+            console.error(
+                "Supabase debt sync failed:",
+                error
+            );
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Supabase debt sync error:",
+            error
+        );
+
+    }
+
+}
+
+/* ============================================================
+   SAVINGS SYNC
+============================================================ */
+
+async function syncSavingsToSupabase(saving){
+
+    if(!saving){
+        return;
+    }
+
+    try{
+
+        const { error } =
+            await supabaseClient
+                .from("savings")
+                .upsert({
+
+                    id:
+                        saving.id,
+
+                    name:
+                        saving.name ||
+                        "Savings Goal",
+
+                    amount:
+                        Number(
+                        saving.current || 0
+                        ),
+
+                    target:
+                        Number(
+                        saving.target || 0
+                    ),
+
+                    current_amount:
+                        Number(
+                            saving.current || 0
+                        )
+
+                });
+
+        if(error){
+
+            alert(
+                "❌ SAVINGS SUPABASE ERROR:\n\n" +
+                error.message
+            );
+
+            console.error(
+                "Supabase savings sync failed:",
+                error
+            );
+
+            return;
+
+        }
+
+        alert(
+            "✅ SAVINGS SAVED TO SUPABASE!"
+        );
+
+    }catch(error){
+
+        alert(
+            "❌ SAVINGS SYNC ERROR:\n\n" +
+            error.message
+        );
+
+        console.error(
+            "Supabase savings sync error:",
+            error
+        );
+
+    }
+
+}
+
+/* ============================================================
+   PAYMENT SYNC
+============================================================ */
+
+async function syncPaymentToSupabase(
+    debt,
+    payment
+){
+
+    if(!debt || !payment){
+        return;
+    }
+
+    try{
+
+        const { error } =
+            await supabaseClient
+                .from("payments")
+                .upsert({
+
+                    id:
+                        payment.id,
+
+                    debt_id:
+                        debt.id,
+
+                    amount:
+                        Number(
+                            payment.amount || 0
+                        ),
+
+                    payment_date:
+                        payment.date ||
+                        today(),
+
+                    notes:
+                        payment.notes || null,
+
+                    automatic:
+                        payment.automatic === true,
+
+                    monthly_key:
+                        payment.monthlyKey || null,
+
+                    payment_type:
+                        payment.automatic
+                            ? "automatic"
+                            : "manual"
+
+                });
+
+        if(error){
+
+            console.error(
+                "Supabase payment sync failed:",
+                error
+            );
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Supabase payment sync error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   SYNC ALL LOCAL DATA
+============================================================ */
+
+async function syncAllDataToSupabase(){
+
+    if(supabaseSyncRunning){
+        return;
+    }
+
+    supabaseSyncRunning = true;
+
+    try{
+
+        /* =========================
+           EXPENSES
+        ========================= */
+
+        for(
+            const expense
+            of data.expenses
+        ){
+
+            await syncExpenseToSupabase(
+                expense
+            );
+
+        }
+
+
+        /* =========================
+           UTANG
+        ========================= */
+
+        for(
+            const debt
+            of data.debts
+        ){
+
+            await syncDebtToSupabase(
+                debt,
+                "utang"
+            );
+
+            if(
+                Array.isArray(
+                    debt.payments
+                )
+            ){
+
+                for(
+                    const payment
+                    of debt.payments
+                ){
+
+                    await syncPaymentToSupabase(
+                        debt,
+                        payment
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        /* =========================
+           MY DEBTS
+        ========================= */
+
+        for(
+            const debt
+            of data.myDebts
+        ){
+
+            await syncDebtToSupabase(
+                debt,
+                "myDebt"
+            );
+
+            if(
+                Array.isArray(
+                    debt.payments
+                )
+            ){
+
+                for(
+                    const payment
+                    of debt.payments
+                ){
+
+                    await syncPaymentToSupabase(
+                        debt,
+                        payment
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        /* =========================
+           SAVINGS
+        ========================= */
+
+        for(
+            const saving
+            of data.savings
+        ){
+
+            await syncSavingsToSupabase(
+                saving
+            );
+
+        }
+
+
+        console.log(
+            "✅ FinTrack synced with Supabase."
+        );
+
+    }catch(error){
+
+        console.error(
+            "❌ Supabase sync error:",
+            error
+        );
+
+    }finally{
+
+        supabaseSyncRunning = false;
+
+    }
+
+}
+
+/* ============================================================
+   SUPABASE CONNECTION TEST
+============================================================ */
+
+console.log(
+    "FinTrack Supabase client:",
+    supabaseClient
+);
+
+window.addEventListener(
+    "load",
+    async () => {
+
+        try{
+
+            const { data, error } =
+                await supabaseClient
+                    .from("expenses")
+                    .select("*")
+                    .limit(1);
+
+            if(error){
+
+                alert(
+                    "❌ Supabase connection FAILED!\n\n" +
+                    error.message
+                );
+
+                console.error(
+                    "Supabase error:",
+                    error
+                );
+
+                return;
+
+            }
+
+            console.log(
+                "Supabase test successful:",
+                data
+            );
+
+        }catch(err){
+
+            alert(
+                "❌ Connection error!\n\n" +
+                err.message
+            );
+
+            console.error(err);
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   FINTRACK DATA
+============================================================ */
+
+const STORAGE_KEY =
+    "liahs_fintrack_v7";
 
 let data = {
+
     expenses:[],
+
     debts:[],
+
     myDebts:[],
+
     savings:[]
+
 };
 
-let selectedYear = new Date().getFullYear();
-let selectedMonth = new Date().getMonth();
+let selectedYear =
+    new Date().getFullYear();
 
-let currentDetail = null;
-let lastPage = "homePage";
+let selectedMonth =
+    new Date().getMonth();
+
+let currentDetail =
+    null;
+
+let lastPage =
+    "homePage";
 
 /* ============================================================
    BASIC HELPERS
 ============================================================ */
 
 function uid(){
-    return Date.now().toString(36) +
-        Math.random().toString(36).slice(2);
+    return crypto.randomUUID();
 }
 
 function today(){
@@ -2340,6 +2859,8 @@ function saveData(){
 
     }
 
+    syncAllDataToSupabase();
+
 }
 
 function loadData(){
@@ -2397,6 +2918,543 @@ function loadData(){
 
     migrateData();
     saveData();
+
+}
+
+/* ============================================================
+   LOAD DATA FROM SUPABASE
+============================================================ */
+
+async function loadDataFromSupabase(){
+
+    try{
+
+        /* =========================
+           LOAD EXPENSES
+        ========================= */
+
+        const {
+            data: expenses,
+            error: expensesError
+        } =
+            await supabaseClient
+                .from("expenses")
+                .select("*")
+                .order(
+                    "expense_date",
+                    {
+                        ascending:true
+                    }
+                );
+
+        if(expensesError){
+            throw expensesError;
+        }
+
+
+        /* =========================
+           LOAD DEBTS
+        ========================= */
+
+        const {
+            data: debts,
+            error: debtsError
+        } =
+            await supabaseClient
+                .from("debts")
+                .select("*")
+                .order(
+                    "created_at",
+                    {
+                        ascending:true
+                    }
+                );
+
+        if(debtsError){
+            throw debtsError;
+        }
+
+
+        /* =========================
+           LOAD PAYMENTS
+        ========================= */
+
+        const {
+            data: payments,
+            error: paymentsError
+        } =
+            await supabaseClient
+                .from("payments")
+                .select("*")
+                .order(
+                    "payment_date",
+                    {
+                        ascending:true
+                    }
+                );
+
+         if(paymentsError){
+            throw paymentsError;
+        }
+
+
+        /* =========================
+           LOAD SAVINGS
+        ========================= */
+
+        const {
+            data: savings,
+            error: savingsError
+        } =
+            await supabaseClient
+                .from("savings")
+                .select("*")
+                .order(
+                    "id",
+                    {
+                        ascending:true
+                    }
+                );
+
+        if(savingsError){
+            throw savingsError;
+        }
+
+
+        /* =========================
+           CONVERT EXPENSES
+        ========================= */
+
+        const remoteExpenses =
+            Array.isArray(expenses)
+                ? expenses.map(
+                    expense => ({
+
+                        id:
+                            expense.id,
+
+                        description:
+                            expense.description || "",
+
+                        amount:
+                            Number(
+                                expense.amount || 0
+                            ),
+
+                        category:
+                            expense.category ||
+                            "Other",
+
+                        date:
+                            expense.expense_date ||
+                            today()
+
+                    })
+                )
+                : [];
+
+        /* =========================
+           CONVERT SAVINGS
+        ========================= */
+
+        const remoteSavings =
+            Array.isArray(savings)
+                ? savings.map(
+                    saving => ({
+
+                        id:
+                            saving.id,
+
+                        name:
+                            saving.name ||
+                            "Savings Goal",
+
+                        target:
+                            Number(
+                            saving.target ||
+                            0
+                        ),
+
+                        current:
+                            Number(
+                                saving.current_amount ||
+                                0
+                            )
+
+                    })
+                )
+                : [];
+
+        /* =========================
+           CONVERT DEBTS
+        ========================= */
+
+        const remoteDebts =
+            Array.isArray(debts)
+                ? debts.map(
+                    debt => ({
+
+                        id:
+                            debt.id,
+
+                        name:
+                            debt.name ||
+                            "Unnamed",
+
+                        amount:
+                            Number(
+                                debt.total_amount || 0
+                            ),
+
+                        paidAmount:
+                            Number(
+                                debt.paid_amount || 0
+                            ),
+
+                        reason:
+                            debt.reason || "",
+
+                        paymentType:
+                            debt.payment_type ||
+                            "one-time",
+
+                        monthlyPayment:
+                            Number(
+                                debt.monthly_payment || 0
+                            ),
+
+                        startDate:
+                            debt.start_date || "",
+
+                        endDate:
+                            debt.end_date || "",
+
+                        date:
+                            debt.debt_date ||
+                            today(),
+
+                        payments:[],
+
+                        monthlyPaid:{}
+
+                    })
+                )
+                : [];
+
+
+        /* =========================
+           ATTACH PAYMENTS
+        ========================= */
+
+        if(Array.isArray(payments)){
+
+            payments.forEach(
+                payment => {
+
+                    const debt =
+                        remoteDebts.find(
+                            debt =>
+                                debt.id ===
+                                payment.debt_id
+                        );
+
+                    if(!debt){
+                        return;
+                    }
+
+                    debt.payments.push({
+
+                        id:
+                            payment.id,
+
+                        amount:
+                            Number(
+                                payment.amount || 0
+                            ),
+
+                        date:
+                            payment.payment_date ||
+                            today(),
+
+                        automatic:
+                            payment.automatic === true,
+
+                        monthlyKey:
+                            payment.monthly_key ||
+                            null,
+
+                        notes:
+                            payment.notes ||
+                            ""
+
+                    });
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           SPLIT DEBT TYPES
+        ========================= */
+
+        const remoteUtang =
+            remoteDebts.filter(
+                debt => {
+
+                    const original =
+                        debts.find(
+                            item =>
+                                item.id ===
+                                debt.id
+                        );
+
+                    return (
+                        !original ||
+                        original.debt_type ===
+                        "utang"
+                    );
+
+                }
+            );
+
+
+        const remoteMyDebts =
+            remoteDebts.filter(
+                debt => {
+
+                    const original =
+                        debts.find(
+                            item =>
+                                item.id ===
+                                debt.id
+                        );
+
+                    return (
+                        original &&
+                        original.debt_type ===
+                        "myDebt"
+                    );
+
+                }
+            );
+
+        /* =========================
+           MERGE WITH LOCAL DATA
+        ========================= */
+
+        const localExpenses =
+            Array.isArray(data.expenses)
+                ? data.expenses
+                : [];
+
+        const localDebts =
+            Array.isArray(data.debts)
+                ? data.debts
+                : [];
+
+        const localMyDebts =
+            Array.isArray(data.myDebts)
+                ? data.myDebts
+                : [];
+
+        const localSavings =
+            Array.isArray(data.savings)
+                ? data.savings
+                : [];
+
+
+        /* =========================
+           MERGE EXPENSES
+        ========================= */
+
+        const expenseMap =
+            new Map();
+
+        localExpenses.forEach(
+            expense => {
+
+                expenseMap.set(
+                    expense.id,
+                    expense
+                );
+
+            }
+        );
+
+        remoteExpenses.forEach(
+            expense => {
+
+                expenseMap.set(
+                    expense.id,
+                    expense
+                );
+
+            }
+        );
+
+        data.expenses =
+            Array.from(
+                expenseMap.values()
+            );
+
+
+        /* =========================
+           MERGE UTANG
+        ========================= */
+
+        const utangMap =
+            new Map();
+
+        localDebts.forEach(
+            debt => {
+
+                utangMap.set(
+                    debt.id,
+                    debt
+                );
+
+            }
+        );
+
+        remoteUtang.forEach(
+            debt => {
+
+                utangMap.set(
+                    debt.id,
+                    debt
+                );
+
+            }
+        );
+
+        data.debts =
+            Array.from(
+                utangMap.values()
+            );
+
+
+        /* =========================
+           MERGE MY DEBTS
+        ========================= */
+
+        const myDebtMap =
+            new Map();
+
+        localMyDebts.forEach(
+            debt => {
+
+                myDebtMap.set(
+                    debt.id,
+                    debt
+                );
+
+            }
+        );
+
+        remoteMyDebts.forEach(
+            debt => {
+
+                myDebtMap.set(
+                    debt.id,
+                    debt
+                );
+
+            }
+        );
+
+        data.myDebts =
+            Array.from(
+                myDebtMap.values()
+            );
+
+
+        /* =========================
+           MERGE SAVINGS
+        ========================= */
+
+        const savingsMap =
+            new Map();
+
+        localSavings.forEach(
+            saving => {
+
+                savingsMap.set(
+                    saving.id,
+                    saving
+                );
+
+            }
+        );
+
+        remoteSavings.forEach(
+            saving => {
+
+                savingsMap.set(
+                    saving.id,
+                    saving
+                );
+
+            }
+        );
+
+        data.savings =
+            Array.from(
+                savingsMap.values()
+            );
+
+        /* =========================
+           SAVE MERGED DATA
+        ========================= */
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(data)
+        );
+
+
+        console.log(
+            "✅ Data loaded from Supabase."
+        );
+
+        console.log(
+            "Expenses:",
+            data.expenses.length
+        );
+
+        console.log(
+            "Utang:",
+            data.debts.length
+        );
+
+        console.log(
+            "My Debts:",
+            data.myDebts.length
+        );
+
+
+        /* =========================
+           REFRESH UI
+        ========================= */
+
+        if(
+            typeof renderAll ===
+            "function"
+        ){
+
+            renderAll();
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "❌ Failed to load data from Supabase:",
+            error
+        );
+
+    }
 
 }
 
@@ -5088,7 +6146,7 @@ function editDebt(
    UPDATE UTANG
 ============================================================ */
 
-function updateUtang(event){
+async function updateUtang(event){
 
     event.preventDefault();
 
@@ -5137,6 +6195,94 @@ function updateUtang(event){
 
     }
 
+    /*
+       UPDATE SUPABASE FIRST
+    */
+
+    try{
+
+        const { error } =
+            await supabaseClient
+                .from("debts")
+                .update({
+
+                    name:
+                        form.name,
+
+                    reason:
+                        form.reason || "",
+
+                    total_amount:
+                        Number(
+                            form.amount || 0
+                        ),
+
+                    debt_type:
+                        "utang",
+
+                    paid_amount:
+                        Number(
+                            debt.paidAmount || 0
+                        ),
+
+                    payment_type:
+                        form.paymentType ||
+                        "one-time",
+
+                    monthly_payment:
+                        Number(
+                            form.monthlyPayment || 0
+                        ),
+
+                    start_date:
+                        form.startDate ||
+                        null,
+
+                    end_date:
+                        form.endDate ||
+                        null
+
+                })
+                .eq(
+                    "id",
+                    id
+                );
+
+        if(error){
+
+            console.error(
+                "Supabase utang update failed:",
+                error
+            );
+
+            toast(
+                "Unable to update utang in database."
+            );
+
+            return;
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Supabase utang update error:",
+            error
+        );
+
+        toast(
+            "Unable to update utang."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       UPDATE LOCAL DATA
+    */
+
     debt.name =
         form.name;
 
@@ -5158,6 +6304,11 @@ function updateUtang(event){
     debt.endDate =
         form.endDate;
 
+
+    /*
+       ONE-TIME PAYMENT CLEANUP
+    */
+
     if(
         debt.paymentType ===
         "one-time"
@@ -5169,11 +6320,21 @@ function updateUtang(event){
 
     }
 
-    saveData();
+
+    /*
+       SAVE LOCAL DATA
+    */
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
 
     toast(
         "Utang updated."
     );
+
 
     openPersonDetail(
         debt.name,
@@ -5182,11 +6343,12 @@ function updateUtang(event){
 
 }
 
+
 /* ============================================================
    UPDATE MY DEBT
 ============================================================ */
 
-function updateMyDebt(event){
+async function updateMyDebt(event){
 
     event.preventDefault();
 
@@ -5235,6 +6397,94 @@ function updateMyDebt(event){
 
     }
 
+    /*
+       UPDATE SUPABASE FIRST
+    */
+
+    try{
+
+        const { error } =
+            await supabaseClient
+                .from("debts")
+                .update({
+
+                    name:
+                        form.name,
+
+                    reason:
+                        form.reason || "",
+
+                    total_amount:
+                        Number(
+                            form.amount || 0
+                        ),
+
+                    debt_type:
+                        "myDebt",
+
+                    paid_amount:
+                        Number(
+                            debt.paidAmount || 0
+                        ),
+
+                    payment_type:
+                        form.paymentType ||
+                        "one-time",
+
+                    monthly_payment:
+                        Number(
+                            form.monthlyPayment || 0
+                        ),
+
+                    start_date:
+                        form.startDate ||
+                        null,
+
+                    end_date:
+                        form.endDate ||
+                        null
+
+                })
+                .eq(
+                    "id",
+                    id
+                );
+
+        if(error){
+
+            console.error(
+                "Supabase my debt update failed:",
+                error
+            );
+
+            toast(
+                "Unable to update my debt in database."
+            );
+
+            return;
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Supabase my debt update error:",
+            error
+        );
+
+        toast(
+            "Unable to update my debt."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       UPDATE LOCAL DATA
+    */
+
     debt.name =
         form.name;
 
@@ -5256,6 +6506,11 @@ function updateMyDebt(event){
     debt.endDate =
         form.endDate;
 
+
+    /*
+       ONE-TIME PAYMENT CLEANUP
+    */
+
     if(
         debt.paymentType ===
         "one-time"
@@ -5267,11 +6522,21 @@ function updateMyDebt(event){
 
     }
 
-    saveData();
+
+    /*
+       SAVE LOCAL DATA
+    */
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
 
     toast(
         "My debt updated."
     );
+
 
     openPersonDetail(
         debt.name,
@@ -5340,7 +6605,7 @@ function removeAutomaticPayments(
    DELETE DEBT
 ============================================================ */
 
-function deleteDebt(
+async function deleteDebt(
     id,
     type
 ){
@@ -5370,6 +6635,90 @@ function deleteDebt(
         return;
     }
 
+
+    /* =========================
+       DELETE PAYMENTS FIRST
+    ========================= */
+
+    try{
+
+        const {
+            error: paymentError
+        } =
+            await supabaseClient
+                .from("payments")
+                .delete()
+                .eq(
+                    "debt_id",
+                    id
+                );
+
+        if(paymentError){
+
+            console.error(
+                "Supabase payment delete failed:",
+                paymentError
+            );
+
+            toast(
+                "Unable to delete account payments."
+            );
+
+            return;
+
+        }
+
+
+        /* =========================
+           DELETE DEBT
+        ========================= */
+
+        const {
+            error: debtError
+        } =
+            await supabaseClient
+                .from("debts")
+                .delete()
+                .eq(
+                    "id",
+                    id
+                );
+
+        if(debtError){
+
+            console.error(
+                "Supabase debt delete failed:",
+                debtError
+            );
+
+            toast(
+                "Unable to delete account from database."
+            );
+
+            return;
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Supabase debt delete error:",
+            error
+        );
+
+        toast(
+            "Unable to delete account."
+        );
+
+        return;
+
+    }
+
+
+    /* =========================
+       DELETE LOCALLY
+    ========================= */
+
     if(type === "utang"){
 
         data.debts =
@@ -5386,11 +6735,17 @@ function deleteDebt(
 
     }
 
-    saveData();
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
 
     toast(
         "Account deleted."
     );
+
 
     const remainingRecords =
         getPersonRecords(
@@ -6086,7 +7441,7 @@ function editExpense(id){
 
 }
 
-function updateExpense(event){
+async function updateExpense(event){
 
     event.preventDefault();
 
@@ -6148,6 +7503,71 @@ function updateExpense(event){
 
     }
 
+
+    /* =========================
+       UPDATE SUPABASE
+    ========================= */
+
+    try{
+
+        const { error } =
+            await supabaseClient
+                .from("expenses")
+                .update({
+
+                    description:
+                        description,
+
+                    amount:
+                        amount,
+
+                    category:
+                        category,
+
+                    expense_date:
+                        date
+
+                })
+                .eq(
+                    "id",
+                    id
+                );
+
+        if(error){
+
+            console.error(
+                "Supabase expense update failed:",
+                error
+            );
+
+            toast(
+                "Unable to update expense in database."
+            );
+
+            return;
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Supabase expense update error:",
+            error
+        );
+
+        toast(
+            "Unable to update expense."
+        );
+
+        return;
+
+    }
+
+
+    /* =========================
+       UPDATE LOCALLY
+    ========================= */
+
     expense.description =
         description;
 
@@ -6160,7 +7580,11 @@ function updateExpense(event){
     expense.date =
         date;
 
-    saveData();
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
 
     toast(
         "Expense updated."
@@ -6170,9 +7594,11 @@ function updateExpense(event){
         "expensesPage"
     );
 
+    renderAll();
+
 }
 
-function deleteExpense(id){
+async function deleteExpense(id){
 
     const expense =
         data.expenses.find(
@@ -6191,12 +7617,67 @@ function deleteExpense(id){
         return;
     }
 
+
+    /* =========================
+       DELETE FROM SUPABASE
+    ========================= */
+
+    try{
+
+        const { error } =
+            await supabaseClient
+                .from("expenses")
+                .delete()
+                .eq(
+                    "id",
+                    id
+                );
+
+        if(error){
+
+            console.error(
+                "Supabase expense delete failed:",
+                error
+            );
+
+            toast(
+                "Unable to delete expense from database."
+            );
+
+            return;
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Supabase expense delete error:",
+            error
+        );
+
+        toast(
+            "Unable to delete expense."
+        );
+
+        return;
+
+    }
+
+
+    /* =========================
+       DELETE LOCALLY
+    ========================= */
+
     data.expenses =
         data.expenses.filter(
             e => e.id !== id
         );
 
-    saveData();
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
 
     toast(
         "Expense deleted."
@@ -6205,12 +7686,11 @@ function deleteExpense(id){
     renderAll();
 
 }
-
 /* ============================================================
    SAVINGS
 ============================================================ */
 
-function saveSavings(event){
+async function saveSavings(event){
 
     event.preventDefault();
 
@@ -6247,21 +7727,29 @@ function saveSavings(event){
 
     }
 
-    data.savings.push({
+    const saving = {
 
-        id:uid(),
+        id:
+            uid(),
 
         name,
 
         target,
 
         current:
-            Math.max(
-                0,
-                current
+            Math.min(
+                target,
+                Math.max(
+                    0,
+                    current
+                )
             )
 
-    });
+    };
+
+    data.savings.push(
+        saving
+    );
 
     saveData();
 
@@ -6276,6 +7764,7 @@ function saveSavings(event){
     );
 
 }
+
 
 function editSavings(id){
 
@@ -6320,7 +7809,8 @@ function editSavings(id){
 
 }
 
-function updateSavings(event){
+
+async function updateSavings(event){
 
     event.preventDefault();
 
@@ -6404,7 +7894,8 @@ function updateSavings(event){
 
 }
 
-function addSavingsMoney(id){
+
+async function addSavingsMoney(id){
 
     const saving =
         data.savings.find(
@@ -6487,7 +7978,8 @@ function addSavingsMoney(id){
 
 }
 
-function deleteSavings(id){
+
+async function deleteSavings(id){
 
     const saving =
         data.savings.find(
@@ -6510,6 +8002,47 @@ function deleteSavings(id){
         data.savings.filter(
             s => s.id !== id
         );
+
+    try{
+
+        const { error } =
+            await supabaseClient
+                .from("savings")
+                .delete()
+                .eq(
+                    "id",
+                    id
+                );
+
+        if(error){
+
+            console.error(
+                "Supabase savings delete failed:",
+                error
+            );
+
+            toast(
+                "Deleted locally, but Supabase sync failed."
+            );
+
+            return;
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Supabase savings delete error:",
+            error
+        );
+
+        toast(
+            "Deleted locally, but Supabase sync failed."
+        );
+
+        return;
+
+    }
 
     saveData();
 
@@ -8078,11 +9611,45 @@ function initializeForms(){
    START
 ============================================================ */
 
-loadData();
+async function startApp(){
 
-initializeForms();
+    /* =========================
+       LOAD LOCAL DATA FIRST
+    ========================= */
 
-renderAll();
+    loadData();
+
+
+    /* =========================
+       INITIALIZE UI
+    ========================= */
+
+    initializeForms();
+
+    renderAll();
+
+
+    /* =========================
+       LOAD SUPABASE DATA
+    ========================= */
+
+    await loadDataFromSupabase();
+
+
+    /* =========================
+       REFRESH UI
+    ========================= */
+
+    renderAll();
+
+}
+
+
+/* =========================
+   START APP
+========================= */
+
+startApp();
 
 </script>
 
