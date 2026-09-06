@@ -1129,9 +1129,25 @@ textarea:focus{
 
     <div id="monthlyOverview"></div>
 
-    <div class="section-title">Scheduled Payments</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
 
-    <div id="monthlyTrackingList" class="list"></div>
+    <div class="section-title">
+        Scheduled Payments
+    </div>
+
+    <button
+        class="btn secondary"
+        id="toggleCompletedBtn"
+        onclick="toggleCompletedMonthly()">
+        Show Completed
+    </button>
+
+</div>
+
+<div
+    id="monthlyTrackingList"
+    class="list">
+</div>
 
 </section>
 
@@ -8443,10 +8459,35 @@ function renderSavings(){
         ).join("");
 
 }
-
+      
 /* ============================================================
    MONTHLY TRACKING
 ============================================================ */
+
+let showCompletedMonthly = false;
+
+function toggleCompletedMonthly(){
+
+    showCompletedMonthly =
+        !showCompletedMonthly;
+
+    const btn =
+        document.getElementById(
+            "toggleCompletedBtn"
+        );
+
+    if(btn){
+
+        btn.textContent =
+            showCompletedMonthly
+                ? "Hide Completed"
+                : "Show Completed";
+
+    }
+
+    renderMonthly();
+
+}
 
 function renderMonthly(){
 
@@ -8482,6 +8523,12 @@ function renderMonthly(){
 
     ];
 
+    const key =
+        monthKey(
+            selectedYear,
+            selectedMonth
+        );
+
     const scheduled =
         all.filter(
             debt =>
@@ -8491,6 +8538,10 @@ function renderMonthly(){
                     selectedMonth
                 )
         );
+
+    /* =========================
+       MONTHLY TOTALS
+    ========================= */
 
     let scheduledTotal = 0;
     let paidTotal = 0;
@@ -8504,12 +8555,6 @@ function renderMonthly(){
                 );
 
             scheduledTotal += amount;
-
-            const key =
-                monthKey(
-                    selectedYear,
-                    selectedMonth
-                );
 
             if(
                 debt.monthlyPaid &&
@@ -8557,6 +8602,10 @@ function renderMonthly(){
                 scheduledTotal
             ) * 360
             : 0;
+
+    /* =========================
+       OVERVIEW
+    ========================= */
 
     overview.innerHTML = `
 
@@ -8708,26 +8757,84 @@ function renderMonthly(){
 
     `;
 
-    if(!scheduled.length){
+    /* =========================
+       FILTER COMPLETED
+    ========================= */
+
+    let visible =
+        scheduled.filter(
+            debt => {
+
+                const isPaid =
+                    !!(
+                        debt.monthlyPaid &&
+                        debt.monthlyPaid[key]
+                    );
+
+                return showCompletedMonthly
+                    ? true
+                    : !isPaid;
+
+            }
+        );
+
+    /* =========================
+       SORT BY DUE DAY
+       EARLIEST DUE FIRST
+    ========================= */
+
+    visible.sort(
+        (a,b) => {
+
+            const dayA =
+                getMonthlyDueDay(
+                    a,
+                    selectedYear,
+                    selectedMonth
+                );
+
+            const dayB =
+                getMonthlyDueDay(
+                    b,
+                    selectedYear,
+                    selectedMonth
+                );
+
+            return dayA - dayB;
+
+        }
+    );
+
+    /* =========================
+       EMPTY STATE
+    ========================= */
+
+    if(!visible.length){
 
         list.innerHTML = `
+
             <div class="empty">
-                No scheduled payments for this month.
+
+                ${
+                    showCompletedMonthly
+                        ? "No scheduled payments for this month."
+                        : "All scheduled payments are completed."
+                }
+
             </div>
+
         `;
 
         return;
 
     }
 
-    const key =
-        monthKey(
-            selectedYear,
-            selectedMonth
-        );
+    /* =========================
+       SCHEDULED PAYMENT LIST
+    ========================= */
 
     list.innerHTML =
-        scheduled.map(
+        visible.map(
             debt => {
 
                 const amount =
@@ -8757,6 +8864,13 @@ function renderMonthly(){
                         ? "Utang"
                         : "My Debt";
 
+                const dueDay =
+                    getMonthlyDueDay(
+                        debt,
+                        selectedYear,
+                        selectedMonth
+                    );
+
                 return `
 
                     <div class="list-item">
@@ -8772,10 +8886,13 @@ function renderMonthly(){
                                 </div>
 
                                 <div class="list-meta">
+
                                     ${typeName}
                                     ·
+                                    Due ${dueDay}
+                                    ·
                                     ${money(amount)}
-                                    scheduled
+
                                 </div>
 
                             </div>
@@ -8796,8 +8913,9 @@ function renderMonthly(){
 
                         </div>
 
-                        <div class="list-meta"
-                             style="margin-top:7px">
+                        <div
+                            class="list-meta"
+                            style="margin-top:7px">
 
                             ${
                                 isPaid
@@ -8812,6 +8930,7 @@ function renderMonthly(){
                             ${
                                 !isPaid
                                     ? `
+
                                         <button
                                             class="btn primary"
                                             onclick="
@@ -8820,7 +8939,9 @@ function renderMonthly(){
                                                     '${debt.type}'
                                                 )
                                             ">
+
                                             ＋ Add Payment
+
                                         </button>
 
                                         <button
@@ -8833,10 +8954,14 @@ function renderMonthly(){
                                                     ${selectedMonth}
                                                 )
                                             ">
+
                                             ✓ Mark Paid
+
                                         </button>
-                                    `
+
+                                      `
                                     : `
+
                                         <button
                                             class="btn secondary"
                                             onclick="
@@ -8847,12 +8972,15 @@ function renderMonthly(){
                                                     ${selectedMonth}
                                                 )
                                             ">
+
                                             Undo Monthly Payment
+
                                         </button>
 
                                         ${
                                             remaining > 0
                                                 ? `
+
                                                     <button
                                                         class="btn primary"
                                                         onclick="
@@ -8861,12 +8989,16 @@ function renderMonthly(){
                                                                 '${debt.type}'
                                                             )
                                                         ">
+
                                                         ＋ Extra Payment
+
                                                     </button>
+
                                                   `
                                                 : ""
                                         }
-                                    `
+
+                                      `
                             }
 
                         </div>
@@ -8880,6 +9012,71 @@ function renderMonthly(){
 
 }
 
+
+/* ============================================================
+   GET MONTHLY DUE DAY
+============================================================ */
+
+function getMonthlyDueDay(
+    debt,
+    year,
+    month
+){
+
+    /*
+       Use the start date's day
+       as the monthly due day.
+    */
+
+    if(debt.startDate){
+
+        const start =
+            new Date(
+                debt.startDate +
+                "T00:00:00"
+            );
+
+        if(
+            !Number.isNaN(
+                start.getTime()
+            )
+        ){
+
+            return Math.min(
+                start.getDate(),
+                new Date(
+                    year,
+                    month + 1,
+                    0
+                ).getDate()
+            );
+
+        }
+
+    }
+
+    /*
+       Fallback to existing values
+    */
+
+    const fallback =
+        Number(
+            debt.dueDay ||
+            debt.dueDate ||
+            31
+        );
+
+    return Math.min(
+        fallback,
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate()
+    );
+
+}
+      
 /* ============================================================
    EXPENSE PIE
 ============================================================ */
